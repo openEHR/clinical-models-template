@@ -1,0 +1,657 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-OBSERVATION.humpty_dumpty_fall_scale.v1.0.0
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+
+description
+	lifecycle_state = <"unmanaged">
+	original_author = <
+		["name"] = <"Beatriz de Faria Leao">
+		["organisation"] = <"Hospital Sirio Libanes">
+		["email"] = <"beatriz.leao@hsl.org.br">
+		["date"] = <"2015-06-29">
+	>
+	copyright = <"© openEHR Foundation">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information about factors used to assess  pediatric inpatients’ risk for falls">
+			use = <"The Humpty Dumpty Falls Scale (HDFS), a seven-item assessment scale used to document age, gender, diagnosis, cognitive impairments, environmental factors, response to surgery/sedation, and medication usage, is one of several instruments developed to assess fall risk in pediatric patients.
+
+Details about the use of  Humpty Dumpty Falls Scale (HDFS) are found at:http://www.utmb.edu/policies_and_procedures/IHOP/Supporting_Documents/IHOP%20-%2009.13.39%20-%20Humpty%20Dumpty%20Fall%20Assessment%20Scale.pdf
+http://www.ncbi.nlm.nih.gov/pubmed/25134228
+
+   ">
+			keywords = <"pressure", "sore", "ulcer", "Braden", "adult", "score", "assessment">
+			misuse = <" ">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*To record information about factors used to assess the risk of pressure ulcer development, and the total Braden Scale score.(en)">
+			use = <"*To assess risk of pressure ulcer development in an adult population or for children aged 5 and over, in both hospital and community settings. The published scale has two variants, for hospital and home use respectively. These vary only very slightly in the description of the Moisture element, and these variations have been combined in the definitions used in this archetype.
+Details about the use of Braden Scale are found at: http:\\\\bradenscale.com/index.htm.
+Use this archetype in accordance with the copyright requirements found at: http://bradenscale.com/copyright.htm.(en)">
+			keywords = <"*pressure(en)", "*sore(en)", "*ulcer(en)", "*Braden(en)", "*adult(en)", "*score(en)", "*assessment(en)">
+			misuse = <"*The Braden Scale should not be used unless the terms of copyright have been observed -see http://bradenscale.com/copyright.htm for details.
+The Braden Scale should not be used for children between 21 days and 5 years - use OPENEHR-EHR-OBSERVATION.braden_scale-child.v1.
+The Braden Scale should not be used for children aged less than 21 days - use OPENEHR-EHR-OBSERVATION.braden_scale_neonate.v1.(en)">
+		>
+	>
+	other_contributors = <"Cibele Ribeiro Melo - cibele.melo@hsl.org.br", "Ana Marta Rodrigues Branco, ana.branco@hsl.org.br", "Adriana Claudia Martins Mendonza Cuellas, adriana.cuellas@hsl.org.br">
+	other_details = <
+		["references"] = <"
+Hill-Rodriguez D, Messmer PR, Williams PD, Zeller RA, Williams AR, Wood M, Henry M. The Humpty Dumpty Falls Scale: a case-control study.J Spec Pediatr Nurs. 2009 Jan; 14(1):22-32.
+Pauley BJ, Houston LS, Cheng D, Johnston DM.Clinical relevance of the Humpty Dumpty Falls Scale in a pediatric specialty hospital.Pediatr Nurs. 2014 May-Jun;40(3):137-42.">
+		["current_contact"] = <"Beatriz de Faria Leao, Hospital Sirio Libanes, São Paulo. beatriz.leao@hsl.opr.br">
+		["MD5-CAM-1.0.1"] = <"A5C709E265ADC1C5931DA9E76C1A5B8B">
+	>
+
+definition
+	OBSERVATION[id1] matches {	-- Risco para queda pediátrica  
+		data matches {
+			HISTORY[id2] matches {	-- *Event Series(en)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[id3] occurrences matches {0..1} matches {	-- *Any event(en)
+						data matches {
+							ITEM_TREE[id4] matches {	-- *Tree(en)
+								items matches {
+									ELEMENT[id5] occurrences matches {0..1} matches {	-- Idade
+										value matches {
+											DV_ORDINAL[id48] matches {
+												[value, symbol] matches {
+													[{1}, {[at6]}],
+													[{2}, {[at7]}],
+													[{3}, {[at8]}],
+													[{4}, {[at9]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id10] occurrences matches {0..1} matches {	-- Genero
+										value matches {
+											DV_ORDINAL[id49] matches {
+												[value, symbol] matches {
+													[{1}, {[at16]}],
+													[{2}, {[at17]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id11] occurrences matches {0..1} matches {	-- Diagnóstico
+										value matches {
+											DV_ORDINAL[id50] matches {
+												[value, symbol] matches {
+													[{1}, {[at12]}],
+													[{2}, {[at13]}],
+													[{3}, {[at14]}],
+													[{4}, {[at15]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id20] occurrences matches {0..1} matches {	-- Prejuízo cognitivo
+										value matches {
+											DV_ORDINAL[id51] matches {
+												[value, symbol] matches {
+													[{1}, {[at27]}],
+													[{2}, {[at28]}],
+													[{3}, {[at29]}],
+													[{4}, {[at30]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id22] occurrences matches {0..1} matches {	-- Fatores ambientais
+										value matches {
+											DV_ORDINAL[id52] matches {
+												[value, symbol] matches {
+													[{1}, {[at24]}],
+													[{2}, {[at25]}],
+													[{3}, {[at26]}],
+													[{4}, {[at42]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id43] occurrences matches {0..1} matches {	-- Submetido a cirurgia/sedação/anestesia
+										value matches {
+											DV_ORDINAL[id53] matches {
+												[value, symbol] matches {
+													[{1}, {[at44]}],
+													[{2}, {[at45]}],
+													[{3}, {[at46]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id47] occurrences matches {0..1} matches {	-- Uso de Medicamentos
+										value matches {
+											DV_ORDINAL[id54] matches {
+												[value, symbol] matches {
+													[{1}, {[at48]}],
+													[{2}, {[at49]}],
+													[{3}, {[at50]}]
+												}
+											}
+										}
+									}
+									ELEMENT[id35] occurrences matches {0..1} matches {	-- Comentários Adicionais
+										value matches {
+											DV_TEXT[id55] 
+										}
+									}
+									ELEMENT[id23] occurrences matches {0..1} matches {	-- Escore total de risco de queda pediátrica
+										value matches {
+											DV_COUNT[id56] matches {
+												magnitude matches {|6..23|}
+											}
+										}
+									}
+									ELEMENT[id36] occurrences matches {0..1} matches {	-- Grau de risco de queda pediátrica
+										value matches {
+											DV_ORDINAL[id57] matches {
+												[value, symbol] matches {
+													[{0}, {[at37]}],
+													[{1}, {[at38]}],
+													[{2}, {[at39]}],
+													[{3}, {[at40]}],
+													[{4}, {[at41]}]
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Risco para queda pediátrica  ">
+				description = <"A escalaa Humpty Dumpty para avaliação de risco de queda pediátrica">
+			>
+			["id2"] = <
+				text = <"*Event Series(en)">
+				description = <"*@ internal @(en)">
+			>
+			["id3"] = <
+				text = <"*Any event(en)">
+				description = <"*Any event.(en)">
+			>
+			["id4"] = <
+				text = <"*Tree(en)">
+				description = <"*@ internal @(en)">
+			>
+			["id5"] = <
+				text = <"Idade">
+				description = <"*Ability to respond meaningfully to pressure-related discomfort.(en)">
+			>
+			["at6"] = <
+				text = <"13 anos ou mais ( > 13 anos)">
+				description = <"Idade acima de 13 anos">
+			>
+			["at7"] = <
+				text = <"7 anos até menor que 13 anos ( 7 - <13 anos)">
+				description = <"Idade entre 7 e  menor que 13 anos">
+			>
+			["at8"] = <
+				text = <"3 anos até menor que 7 anos  ( 3 - <7 anos)">
+				description = <"Idade entre 3 menor que 7 anos">
+			>
+			["at9"] = <
+				text = <"Menores que 3 anos ( < 3 anos )">
+				description = <"Idade < 3 anos">
+			>
+			["id10"] = <
+				text = <"Genero">
+				description = <"Genero da criança.">
+			>
+			["id11"] = <
+				text = <"Diagnóstico">
+				description = <"Grau de atividade física">
+			>
+			["at12"] = <
+				text = <"Outros diagnósticos">
+				description = <"Paciente apresenta outros diagnósticos">
+			>
+			["at13"] = <
+				text = <"Psíquico/ desordem comportamental">
+				description = <"Paciente com diagnóstico psíquico/ desordem comportamental ">
+			>
+			["at14"] = <
+				text = <"Alteração na oxigenação (diagnóstico respiratório, desidratação, anemia, anorexia, sincope/tontura)">
+				description = <"Paciente com alteração na oxigenação (diagnóstico respiratório,desidratação, anemia, anorexia, sincope/tontura) ">
+			>
+			["at15"] = <
+				text = <"Diagnóstico neurológico">
+				description = <"Paciente com diagnóstico neurológico">
+			>
+			["at16"] = <
+				text = <"Feminino">
+				description = <"*">
+			>
+			["at17"] = <
+				text = <"Masculino">
+				description = <"*">
+			>
+			["id20"] = <
+				text = <"Prejuízo cognitivo">
+				description = <"Avaliação da cognição da criança">
+			>
+			["id22"] = <
+				text = <"Fatores ambientais">
+				description = <"Avalia os fatores ambientais que podem influenciar a queda">
+			>
+			["id23"] = <
+				text = <"Escore total de risco de queda pediátrica">
+				description = <"*Total score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en)">
+			>
+			["at24"] = <
+				text = <"Área ambulatorial">
+				description = <"*Requires moderate to maximum assistance in moving. Complete lifting without sliding against sheets is impossible. Frequently slides down in bed or chair, requiring frequent repositioning with maximum assistance. Spasticity, contractures or agitation leads to almost constant friction.(en)">
+			>
+			["at25"] = <
+				text = <"Paciente > 3 anos que utiliza cama movimentação ou criança de 0 a 3 anos que utiliza berço">
+				description = <"Paciente > 3 anos que utiliza cama movimentação ou criança de 0 a 3 anos que utiliza berço">
+			>
+			["at26"] = <
+				text = <"Paciente que utiliza dispositivos de auxilio para movimentação ou criança de 0 a 3 anos que utiliza berço">
+				description = <"Paciente que utiliza dispositivos de auxilio para movimentação ou criança de 0 a 3 anos que utiliza berço">
+			>
+			["at27"] = <
+				text = <"Orientado para a própria capacidade">
+				description = <"Orientado para a própria capacidade">
+			>
+			["at28"] = <
+				text = <"Esquece das limitações">
+				description = <"Esquece das limitações">
+			>
+			["at29"] = <
+				text = <"Não tem conhecimento das limitações">
+				description = <"Não tem conhecimento das limitações">
+			>
+			["at30"] = <
+				text = <" ">
+				description = <"*">
+			>
+			["id35"] = <
+				text = <"Comentários Adicionais">
+				description = <"*An additional comment about use of the Braden scale.(en)">
+			>
+			["id36"] = <
+				text = <"Grau de risco de queda pediátrica">
+				description = <"*A graded risk score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en)">
+			>
+			["at37"] = <
+				text = <"Sem Risco: escore 19 ou maior">
+				description = <"*No risk for developing a pressure ulcer in an adult patient.(en)">
+			>
+			["at38"] = <
+				text = <"Risco baixo: escore 15-18">
+				description = <"Baixo risco para úlcera por pressão (Braden) (Enf).">
+			>
+			["at39"] = <
+				text = <"Risco moderado: escore 13-14">
+				description = <"*At moderate risk for developing pressure ulcers and a prevention protocol should be initiated.(en)">
+			>
+			["at40"] = <
+				text = <"Risco alto: escore 10-12">
+				description = <"*At high risk for developing pressure ulcers and an aggressive prevention protocol should be initiated.(en)">
+			>
+			["at41"] = <
+				text = <"Risco severo: escore 9 ou menor">
+				description = <"*At extreme risk for developing pressure ulcers and an aggressive prevention protocol should be initiated.(en)">
+			>
+			["at42"] = <
+				text = <"História de queda ou criança de 0 a 3 anos que utiliza cama">
+				description = <"*">
+			>
+			["id43"] = <
+				text = <"Submetido a cirurgia/sedação/anestesia">
+				description = <"Verifica se paciente foi submetido a cirurgia  e ou sedação e ou anestesia">
+			>
+			["at44"] = <
+				text = <"Mais de 48 horas/ nenhuma ">
+				description = <"Cirurgia, sedação e ou anestesia não realizada ou realizada há mais de 48 h">
+			>
+			["at45"] = <
+				text = <"No prazo de 48 horas ">
+				description = <"No prazo de 48 horas ">
+			>
+			["at46"] = <
+				text = <"No prazo de 24 horas">
+				description = <"No prazo de 24 horas">
+			>
+			["id47"] = <
+				text = <"Uso de Medicamentos">
+				description = <"Uso de Medicamentos">
+			>
+			["at48"] = <
+				text = <"Outras medicações/nenhuma">
+				description = <"Outras medicações/nenhuma">
+			>
+			["at49"] = <
+				text = <"Apenas um dos medicamentos acima citados ">
+				description = <"Apenas um dos medicamentos acima citados ">
+			>
+			["at50"] = <
+				text = <"Uso múltiplo de: sedação (excluir pacientes sedados na UTI), hipnótico, barbitúrico, tranquilizante, ansiolítico, antipsicótico, antidepressivo, laxativo/diurético, psicotrópico">
+				description = <"Uso múltiplo de: sedação (excluir pacientes sedados na UTI), hipnótico, barbitúrico, tranquilizante, ansiolítico, antipsicótico, antidepressivo, laxativo/diurético, psicotrópico">
+			>
+			["ac1"] = <
+				text = <"Idade (synthesised)">
+				description = <"*Ability to respond meaningfully to pressure-related discomfort.(en) (synthesised)">
+			>
+			["ac2"] = <
+				text = <"Genero (synthesised)">
+				description = <"Genero da criança. (synthesised)">
+			>
+			["ac3"] = <
+				text = <"Diagnóstico (synthesised)">
+				description = <"Grau de atividade física (synthesised)">
+			>
+			["ac4"] = <
+				text = <"Prejuízo cognitivo (synthesised)">
+				description = <"Avaliação da cognição da criança (synthesised)">
+			>
+			["ac5"] = <
+				text = <"Fatores ambientais (synthesised)">
+				description = <"Avalia os fatores ambientais que podem influenciar a queda (synthesised)">
+			>
+			["ac6"] = <
+				text = <"Submetido a cirurgia/sedação/anestesia (synthesised)">
+				description = <"Verifica se paciente foi submetido a cirurgia  e ou sedação e ou anestesia (synthesised)">
+			>
+			["ac7"] = <
+				text = <"Uso de Medicamentos (synthesised)">
+				description = <"Uso de Medicamentos (synthesised)">
+			>
+			["ac8"] = <
+				text = <"Grau de risco de queda pediátrica (synthesised)">
+				description = <"*A graded risk score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en) (synthesised)">
+			>
+		>
+		["pt-br"] = <
+			["id1"] = <
+				text = <"*Risco para queda pediátrica  (en)">
+				description = <"*A escala Humpty Dumpty para avaliação de risco de queda pediátrica(en)">
+			>
+			["id2"] = <
+				text = <"**Event Series(en)(en)">
+				description = <"**@ internal @(en)(en)">
+			>
+			["id3"] = <
+				text = <"Any event">
+				description = <"Any event.">
+			>
+			["id4"] = <
+				text = <"Tree">
+				description = <"@ internal @">
+			>
+			["id5"] = <
+				text = <"*Idade(en)">
+				description = <"**Ability to respond meaningfully to pressure-related discomfort.(en)(en)">
+			>
+			["at6"] = <
+				text = <"*13 anos ou mais ( > 13 anos)(en)">
+				description = <"*Idade acima de 13 anos(en)">
+			>
+			["at7"] = <
+				text = <"*7 anos até menor que 13 anos ( 7 - <13 anos)(en)">
+				description = <"*Idade entre 7 e  menor que 13 anos(en)">
+			>
+			["at8"] = <
+				text = <"*3 anos até menor que 7 anos  ( 3 - <7 anos)(en)">
+				description = <"*Idade entre 3 menor que 7 anos(en)">
+			>
+			["at9"] = <
+				text = <"*Menores que 3 anos ( < 3 anos )(en)">
+				description = <"*Idade < 3 anos(en)">
+			>
+			["id10"] = <
+				text = <"*Genero(en)">
+				description = <"*Genero da criança.(en)">
+			>
+			["id11"] = <
+				text = <"*Diagnóstico(en)">
+				description = <"*Grau de atividade física(en)">
+			>
+			["at12"] = <
+				text = <"*Outros diagnósticos(en)">
+				description = <"*Paciente apresenta outros diagnósticos(en)">
+			>
+			["at13"] = <
+				text = <"*Psíquico/ desordem comportamental(en)">
+				description = <"*Paciente com diagnóstico psíquico/ desordem comportamental (en)">
+			>
+			["at14"] = <
+				text = <"*Alteração na oxigenação (diagnóstico respiratório, desidratação, anemia, anorexia, sincope/tontura)(en)">
+				description = <"*Paciente com alteração na oxigenação (diagnóstico respiratório,desidratação, anemia, anorexia, sincope/tontura) (en)">
+			>
+			["at15"] = <
+				text = <"*Diagnóstico neurológico(en)">
+				description = <"*Paciente com diagnóstico neurológico(en)">
+			>
+			["at16"] = <
+				text = <"*Feminino(en)">
+				description = <"*(en)">
+			>
+			["at17"] = <
+				text = <"*Masculino(en)">
+				description = <"*(en)">
+			>
+			["id20"] = <
+				text = <"*Prejuízo cognitivo(en)">
+				description = <"*Avaliação da cognição da criança(en)">
+			>
+			["id22"] = <
+				text = <"*Fatores ambientais(en)">
+				description = <"*Avalia os fatores ambientais que podem influenciar a queda(en)">
+			>
+			["id23"] = <
+				text = <"*Escore total de risco de queda pediátrica(en)">
+				description = <"**Total score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en)(en)">
+			>
+			["at24"] = <
+				text = <"*Área ambulatorial(en)">
+				description = <"**Requires moderate to maximum assistance in moving. Complete lifting without sliding against sheets is impossible. Frequently slides down in bed or chair, requiring frequent repositioning with maximum assistance. Spasticity, contractures or agitation leads to almost constant friction.(en)(en)">
+			>
+			["at25"] = <
+				text = <"*Paciente > 3 anos que utiliza cama movimentação ou criança de 0 a 3 anos que utiliza berço(en)">
+				description = <"*Paciente > 3 anos que utiliza cama movimentação ou criança de 0 a 3 anos que utiliza berço(en)">
+			>
+			["at26"] = <
+				text = <"*Paciente que utiliza dispositivos de auxilio para movimentação ou criança de 0 a 3 anos que utiliza berço(en)">
+				description = <"*Paciente que utiliza dispositivos de auxilio para movimentação ou criança de 0 a 3 anos que utiliza berço(en)">
+			>
+			["at27"] = <
+				text = <"*Orientado para a própria capacidade(en)">
+				description = <"*Orientado para a própria capacidade(en)">
+			>
+			["at28"] = <
+				text = <"*Esquece das limitações(en)">
+				description = <"*Esquece das limitações(en)">
+			>
+			["at29"] = <
+				text = <"*Não tem conhecimento das limitações(en)">
+				description = <"*Não tem conhecimento das limitações(en)">
+			>
+			["at30"] = <
+				text = <"* (en)">
+				description = <"*(en)">
+			>
+			["id35"] = <
+				text = <"Comment">
+				description = <"An additional comment about use of the Braden scale.">
+			>
+			["id36"] = <
+				text = <"*Grau de risco de queda pediátrica(en)">
+				description = <"**A graded risk score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en)(en)">
+			>
+			["at37"] = <
+				text = <"No Risk  : score 19 or higher">
+				description = <"No risk for developing a pressure ulcer in an adult patient.">
+			>
+			["at38"] = <
+				text = <"At Risk : score 15-18">
+				description = <"At risk for developing pressure ulcers and a prevention protocol should be initiated.">
+			>
+			["at39"] = <
+				text = <"Moderate Risk : score 13-14">
+				description = <"At moderate risk for developing pressure ulcers and a prevention protocol should be initiated.">
+			>
+			["at40"] = <
+				text = <"High Risk : score 10-12">
+				description = <"At high risk for developing pressure ulcers and an aggressive prevention protocol should be initiated.">
+			>
+			["at41"] = <
+				text = <"Severe Risk : score 9 or below">
+				description = <"At extreme risk for developing pressure ulcers and an aggressive prevention protocol should be initiated.">
+			>
+			["at42"] = <
+				text = <"*História de queda ou criança de 0 a 3 anos que utiliza cama(en)">
+				description = <"**(en)">
+			>
+			["id43"] = <
+				text = <"*Submetido a cirurgia/sedação/anestesia(en)">
+				description = <"*Verifica se paciente foi submetido a cirurgia  e ou sedação e ou anestesia(en)">
+			>
+			["at44"] = <
+				text = <"*Mais de 48 horas/ nenhuma (en)">
+				description = <"*Cirurgia, sedação e ou anestesia não realizada ou realizada há mais de 48 h(en)">
+			>
+			["at45"] = <
+				text = <"*No prazo de 48 horas (en)">
+				description = <"*No prazo de 48 horas (en)">
+			>
+			["at46"] = <
+				text = <"*No prazo de 24 horas(en)">
+				description = <"*No prazo de 24 horas(en)">
+			>
+			["id47"] = <
+				text = <"*Uso de Medicamentos(en)">
+				description = <"*Uso de Medicamentos(en)">
+			>
+			["at48"] = <
+				text = <"*Outras medicações/nenhuma(en)">
+				description = <"*Outras medicações/nenhuma(en)">
+			>
+			["at49"] = <
+				text = <"*Apenas um dos medicamentos acima citados (en)">
+				description = <"*Apenas um dos medicamentos acima citados (en)">
+			>
+			["at50"] = <
+				text = <"*Uso múltiplo de: sedação (excluir pacientes sedados na UTI), hipnótico, barbitúrico, tranquilizante, ansiolítico, antipsicótico, antidepressivo, laxativo/diurético, psicotrópico(en)">
+				description = <"*Uso múltiplo de: sedação (excluir pacientes sedados na UTI), hipnótico, barbitúrico, tranquilizante, ansiolítico, antipsicótico, antidepressivo, laxativo/diurético, psicotrópico(en)">
+			>
+			["ac1"] = <
+				text = <"*Idade(en) (synthesised)">
+				description = <"**Ability to respond meaningfully to pressure-related discomfort.(en)(en) (synthesised)">
+			>
+			["ac2"] = <
+				text = <"*Genero(en) (synthesised)">
+				description = <"*Genero da criança.(en) (synthesised)">
+			>
+			["ac3"] = <
+				text = <"*Diagnóstico(en) (synthesised)">
+				description = <"*Grau de atividade física(en) (synthesised)">
+			>
+			["ac4"] = <
+				text = <"*Prejuízo cognitivo(en) (synthesised)">
+				description = <"*Avaliação da cognição da criança(en) (synthesised)">
+			>
+			["ac5"] = <
+				text = <"*Fatores ambientais(en) (synthesised)">
+				description = <"*Avalia os fatores ambientais que podem influenciar a queda(en) (synthesised)">
+			>
+			["ac6"] = <
+				text = <"*Submetido a cirurgia/sedação/anestesia(en) (synthesised)">
+				description = <"*Verifica se paciente foi submetido a cirurgia  e ou sedação e ou anestesia(en) (synthesised)">
+			>
+			["ac7"] = <
+				text = <"*Uso de Medicamentos(en) (synthesised)">
+				description = <"*Uso de Medicamentos(en) (synthesised)">
+			>
+			["ac8"] = <
+				text = <"*Grau de risco de queda pediátrica(en) (synthesised)">
+				description = <"**A graded risk score based upon addition of all sub-scores that determines the patient's overall risk for developing a pressure ulcer.(en)(en) (synthesised)">
+			>
+		>
+	>
+	term_bindings = <
+		["Snomed"] = <
+			["id23"] = <http://snomed.info/id/443428004>
+		>
+		["LOINC"] = <
+			["id5"] = <http://loinc.org/id/38222-6>
+			["at6"] = <http://loinc.org/id/LA9603-7>
+			["at7"] = <http://loinc.org/id/LA9605-4>
+			["at8"] = <http://loinc.org/id/LA9605-2>
+			["at9"] = <http://loinc.org/id/LA9606-0>
+			["id10"] = <http://loinc.org/id/38229-1>
+			["id11"] = <http://loinc.org/id/38223-4>
+			["at12"] = <http://loinc.org/id/LA6742-6>
+			["at13"] = <http://loinc.org/id/LA9611-0>
+			["at14"] = <http://loinc.org/id/LA9612-8>
+			["at15"] = <http://loinc.org/id/LA9613-6>
+			["at16"] = <http://loinc.org/id/LA9607-8>
+			["at17"] = <http://loinc.org/id/LA9608-6>
+			["id20"] = <http://loinc.org/id/38224-2>
+			["id22"] = <http://loinc.org/id/38226-7>
+			["id23"] = <http://loinc.org/id/38227-5>
+			["at24"] = <http://loinc.org/id/LA9617-7>
+			["at25"] = <http://loinc.org/id/LA9618-5>
+			["at26"] = <http://loinc.org/id/LA9619-3>
+			["at27"] = <http://loinc.org/id/LA9614-4>
+			["at30"] = <http://loinc.org/id/LA120-8>
+		>
+	>
+	value_sets = <
+		["ac1"] = <
+			id = <"ac1">
+			members = <"at6", "at7", "at8", "at9">
+		>
+		["ac2"] = <
+			id = <"ac2">
+			members = <"at16", "at17">
+		>
+		["ac3"] = <
+			id = <"ac3">
+			members = <"at12", "at13", "at14", "at15">
+		>
+		["ac4"] = <
+			id = <"ac4">
+			members = <"at27", "at28", "at29", "at30">
+		>
+		["ac5"] = <
+			id = <"ac5">
+			members = <"at24", "at25", "at26", "at42">
+		>
+		["ac6"] = <
+			id = <"ac6">
+			members = <"at44", "at45", "at46">
+		>
+		["ac7"] = <
+			id = <"ac7">
+			members = <"at48", "at49", "at50">
+		>
+		["ac8"] = <
+			id = <"ac8">
+			members = <"at37", "at38", "at39", "at40", "at41">
+		>
+	>

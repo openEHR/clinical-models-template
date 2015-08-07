@@ -1,0 +1,495 @@
+archetype (adl_version=2.0.5; rm_release=1.0.2; generated)
+	openEHR-EHR-EVALUATION.basic_daily_activities_prodemge.v1.0.0
+
+language
+	original_language = <[openEHR::en]>
+
+description
+	lifecycle_state = <"in_development">
+	original_author = <
+		["name"] = <"John Doe">
+	>
+	details = <
+		["en"] = <
+			language = <[openEHR::en]>
+			purpose = <"Unknown">
+		>
+	>
+
+definition
+	EVALUATION[id1] matches {	-- Avaliação Funcional -Atividades Diárias
+		data matches {
+			ITEM_TREE[id2] matches {
+				items matches {
+					CLUSTER[id13] occurrences matches {0..1} matches {	-- Avaliação Funcional Global
+						items matches {
+							CLUSTER[id3] occurrences matches {0..1} matches {	-- Teste - AVD´S Básicas - Autocuidados
+								items matches {
+									CLUSTER[id40] occurrences matches {0..1} matches {	-- Assinale as respostas verdadeiras abaixo com relação aos autocuidados:
+										items matches {
+											ELEMENT[id30] occurrences matches {0..1} matches {	-- Tomar banho: Banho: não recebe ajuda ou somente recebe ajuda para uma parte do corpo
+												value matches {
+													DV_BOOLEAN[id57] matches {
+														value matches {True, False; False}
+													}
+												}
+											}
+											ELEMENT[id31] occurrences matches {0..1} matches {	-- Vestir-se: pega as roupas e se veste sem qualquer ajuda, exceto para amarrar sapatos
+												value matches {
+													DV_BOOLEAN[id58] matches {
+														value matches {True, False; False}
+													}
+												}
+											}
+											ELEMENT[id32] occurrences matches {0..1} matches {	-- Higiene pessoal: vai ao banheiro; usa o banheiro; veste-se e retorna sem qualquer ajuda (pode usar andador ou bengala).
+												value matches {
+													DV_BOOLEAN[id59] matches {
+														value matches {True, False; False}
+													}
+												}
+											}
+											ELEMENT[id33] occurrences matches {0..1} matches {	-- Transferência: consegue deitar na cama, sentar na cadeira e levantar sem ajuda (pode usar andador ou bengala).
+												value matches {
+													DV_BOOLEAN[id60] matches {
+														value matches {True, False; False}
+													}
+												}
+											}
+											ELEMENT[id35] occurrences matches {0..1} matches {	-- Continência: controla completamente urina ou fezes.
+												value matches {
+													DV_BOOLEAN[id61] matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[id34] occurrences matches {0..1} matches {	-- Alimentação: come sem ajuda (exceto ajuda para cortar carne ou passar manteiga no pão)
+												value matches {
+													DV_BOOLEAN[id62] matches {
+														value matches {True, False; False}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[id36] occurrences matches {0..1} matches {	-- Avaliação da independência para a realização de atividades básicas de vida diária 
+										value matches {
+											DV_CODED_TEXT[id63] matches {
+												defining_code matches {[ac1]}		-- Avaliação da independência para a realização de atividades básicas de vida diária  (synthesised)
+											}
+										}
+									}
+								}
+							}
+							CLUSTER[id41] occurrences matches {0..1} matches {	-- Teste de atividades instrumentais de vida diária
+								items matches {
+									CLUSTER[id42] occurrences matches {0..1} matches {	-- O Sr.(a) consegue:
+										items matches {
+											ELEMENT[id44] occurrences matches {0..1} matches {	-- Usar o telefone?
+												value matches {
+													DV_CODED_TEXT[id64] matches {
+														defining_code matches {[ac2]}		-- Usar o telefone? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id48] occurrences matches {0..1} matches {	-- Fazer compras?
+												value matches {
+													DV_CODED_TEXT[id65] matches {
+														defining_code matches {[ac3]}		-- Fazer compras? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id49] occurrences matches {0..1} matches {	-- Cuidar de suas finanças?
+												value matches {
+													DV_CODED_TEXT[id66] matches {
+														defining_code matches {[ac4]}		-- Cuidar de suas finanças? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id50] occurrences matches {0..1} matches {	-- Preparar suas próprias refeições
+												value matches {
+													DV_CODED_TEXT[id67] matches {
+														defining_code matches {[ac5]}		-- Preparar suas próprias refeições (synthesised)
+													}
+												}
+											}
+											ELEMENT[id51] occurrences matches {0..1} matches {	-- Arrumar a casa?
+												value matches {
+													DV_CODED_TEXT[id68] matches {
+														defining_code matches {[ac6]}		-- Arrumar a casa? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id52] occurrences matches {0..1} matches {	-- Fazer os trabalhos manuais domésticos, como pequenos reparos?
+												value matches {
+													DV_CODED_TEXT[id69] matches {
+														defining_code matches {[ac7]}		-- Fazer os trabalhos manuais domésticos, como pequenos reparos? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id53] occurrences matches {0..1} matches {	-- Lavar passar roupa?
+												value matches {
+													DV_CODED_TEXT[id70] matches {
+														defining_code matches {[ac8]}		-- Lavar passar roupa? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id55] occurrences matches {0..1} matches {	-- Sair de casa sozinho, para lugares mais distantes, usando algum transporte sem necessidade de planejamento especial?
+												value matches {
+													DV_CODED_TEXT[id71] matches {
+														defining_code matches {[ac9]}		-- Sair de casa sozinho, para lugares mais distantes, usando algum transporte sem necessidade de planejamento especial? (synthesised)
+													}
+												}
+											}
+											ELEMENT[id54] occurrences matches {0..1} matches {	-- Tomar os seus remédios na dose certa e horário correto?
+												value matches {
+													DV_CODED_TEXT[id72] matches {
+														defining_code matches {[ac10]}		-- Tomar os seus remédios na dose certa e horário correto? (synthesised)
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[id56] occurrences matches {0..1} matches {	-- Avaliação da independência para a realização de atividades instrumentais de vida diária
+										value matches {
+											DV_CODED_TEXT[id73] matches {
+												defining_code matches {[ac11]}		-- Avaliação da independência para a realização de atividades instrumentais de vida diária (synthesised)
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+terminology
+	term_definitions = <
+		["en"] = <
+			["id1"] = <
+				text = <"Avaliação Funcional -Atividades Diárias">
+				description = <"*">
+			>
+			["id3"] = <
+				text = <"Teste - AVD´S Básicas - Autocuidados">
+				description = <"*">
+			>
+			["at4"] = <
+				text = <"Tomar Banho">
+				description = <"*">
+			>
+			["at5"] = <
+				text = <"Tomar Banho">
+				description = <"*">
+			>
+			["at6"] = <
+				text = <"Independente">
+				description = <"Banho: não recebe ajuda ou somente recebe ajuda para uma parte do corpo.">
+			>
+			["at7"] = <
+				text = <"Dependência parcial">
+				description = <"Necessita auxílio para tomar banho">
+			>
+			["at8"] = <
+				text = <"Dependência importante">
+				description = <"Necessita auxílio em todas as etapas do banho ou é totalmente dependente">
+			>
+			["at9"] = <
+				text = <"Vestir-se">
+				description = <"*">
+			>
+			["at10"] = <
+				text = <"Independente">
+				description = <"Pega as roupas e se veste sem qualquer ajuda, exceto para amarrar sapatos">
+			>
+			["at11"] = <
+				text = <"Dependência parcial">
+				description = <"Necessita auxílio parcial para vestir-se">
+			>
+			["at12"] = <
+				text = <"Dependência Importante">
+				description = <"Necessita auxílio em todas as etapas. Não consegue vestir-se sozinho">
+			>
+			["id13"] = <
+				text = <"Avaliação Funcional Global">
+				description = <"*">
+			>
+			["at14"] = <
+				text = <"Uso do vaso sanitário">
+				description = <"*">
+			>
+			["at15"] = <
+				text = <"Independente">
+				description = <"Higiene pessoal: vai ao banheiro; usa o banheiro; veste-se e retorna sem qualquer ajuda (pode usar
+andador ou bengala)">
+			>
+			["at16"] = <
+				text = <"Dependência Parcial">
+				description = <"Necessita auxílio em algumas etapas da atividade">
+			>
+			["at17"] = <
+				text = <"Dependência Importante">
+				description = <"Necessita auxílio em todas as etapas da atividade - não realiza a higiene pessoal sozinho">
+			>
+			["at18"] = <
+				text = <"Transferência">
+				description = <"*">
+			>
+			["at19"] = <
+				text = <"Independente">
+				description = <"Consegue deitar na cama, sentar na cadeira e levantar sem ajuda (pode usar andador ou bengala).">
+			>
+			["at20"] = <
+				text = <"Dependência parcial">
+				description = <"Necessita auxílio em algumas etapas do processo de transferência">
+			>
+			["at21"] = <
+				text = <"Dependência Importante">
+				description = <"Necessita auxílio em todas as etapas do processo. Não  realiza transferências sózinho.">
+			>
+			["at22"] = <
+				text = <"Alimentação">
+				description = <"*">
+			>
+			["at23"] = <
+				text = <"Independente">
+				description = <"Come sem ajuda (exceto ajuda para cortar carne ou passar manteiga no pão).">
+			>
+			["at24"] = <
+				text = <"Dependência Parcial">
+				description = <"Necessita auxílio parcial para alimentar-se além de cortar carne e passr manteiga no pão.">
+			>
+			["at25"] = <
+				text = <"Dependência Importante">
+				description = <"Não se alimenta sózinho - necessita auxílio">
+			>
+			["at26"] = <
+				text = <"Continência">
+				description = <"*">
+			>
+			["at27"] = <
+				text = <"Independência">
+				description = <"Controla completamente urina ou fezes">
+			>
+			["at28"] = <
+				text = <"Dependência Parcial">
+				description = <"Controla parcialmente fezes e ou urina">
+			>
+			["at29"] = <
+				text = <"Dependência Importante">
+				description = <"Não controla fezes ou urina">
+			>
+			["id30"] = <
+				text = <"Tomar banho: Banho: não recebe ajuda ou somente recebe ajuda para uma parte do corpo">
+				description = <"*">
+			>
+			["id31"] = <
+				text = <"Vestir-se: pega as roupas e se veste sem qualquer ajuda, exceto para amarrar sapatos">
+				description = <"*">
+			>
+			["id32"] = <
+				text = <"Higiene pessoal: vai ao banheiro; usa o banheiro; veste-se e retorna sem qualquer ajuda (pode usar andador ou bengala).">
+				description = <"*">
+			>
+			["id33"] = <
+				text = <"Transferência: consegue deitar na cama, sentar na cadeira e levantar sem ajuda (pode usar andador ou bengala).">
+				description = <"*">
+			>
+			["id34"] = <
+				text = <"Alimentação: come sem ajuda (exceto ajuda para cortar carne ou passar manteiga no pão)">
+				description = <"*">
+			>
+			["id35"] = <
+				text = <"Continência: controla completamente urina ou fezes.">
+				description = <"*">
+			>
+			["id36"] = <
+				text = <"Avaliação da independência para a realização de atividades básicas de vida diária ">
+				description = <"*">
+			>
+			["at37"] = <
+				text = <"Independente">
+				description = <"5 a 6 pontos: INDEPENDÊNCIA">
+			>
+			["at38"] = <
+				text = <"Dependência Parcial">
+				description = <"3 a 4 pontos: DEPENDÊNCIA PARCIAL">
+			>
+			["at39"] = <
+				text = <"Dependência Importante">
+				description = <"0 a 2 pontos: DEPENDÊNCIA IMPORTANTE">
+			>
+			["id40"] = <
+				text = <"Assinale as respostas verdadeiras abaixo com relação aos autocuidados:">
+				description = <"*">
+			>
+			["id41"] = <
+				text = <"Teste de atividades instrumentais de vida diária">
+				description = <"*">
+			>
+			["id42"] = <
+				text = <"O Sr.(a) consegue:">
+				description = <"*">
+			>
+			["at43"] = <
+				text = <"Usar o telefone?">
+				description = <"*">
+			>
+			["id44"] = <
+				text = <"Usar o telefone?">
+				description = <"*">
+			>
+			["at45"] = <
+				text = <"Sem ajuda ">
+				description = <"Sem ajuda: 3 pontos">
+			>
+			["at46"] = <
+				text = <"Com ajuda parcial">
+				description = <"Com ajuda parcial: 2 pontos">
+			>
+			["at47"] = <
+				text = <"Não consegue">
+				description = <"Não consegue: 1 ponto">
+			>
+			["id48"] = <
+				text = <"Fazer compras?">
+				description = <"*">
+			>
+			["id49"] = <
+				text = <"Cuidar de suas finanças?">
+				description = <"*">
+			>
+			["id50"] = <
+				text = <"Preparar suas próprias refeições">
+				description = <"*">
+			>
+			["id51"] = <
+				text = <"Arrumar a casa?">
+				description = <"*">
+			>
+			["id52"] = <
+				text = <"Fazer os trabalhos manuais domésticos, como pequenos reparos?">
+				description = <"*">
+			>
+			["id53"] = <
+				text = <"Lavar passar roupa?">
+				description = <"*">
+			>
+			["id54"] = <
+				text = <"Tomar os seus remédios na dose certa e horário correto?">
+				description = <"*">
+			>
+			["id55"] = <
+				text = <"Sair de casa sozinho, para lugares mais distantes, usando algum transporte sem necessidade de planejamento especial?">
+				description = <"*">
+			>
+			["id56"] = <
+				text = <"Avaliação da independência para a realização de atividades instrumentais de vida diária">
+				description = <"*">
+			>
+			["at57"] = <
+				text = <"Independente">
+				description = <"19 a 27 pontos">
+			>
+			["at58"] = <
+				text = <"Dependência Parcial">
+				description = <"10 a 18 pontos">
+			>
+			["at59"] = <
+				text = <"Dependência Importante">
+				description = <"Abaixo de 09 pontos">
+			>
+			["ac1"] = <
+				text = <"Avaliação da independência para a realização de atividades básicas de vida diária  (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac2"] = <
+				text = <"Usar o telefone? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac3"] = <
+				text = <"Fazer compras? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac4"] = <
+				text = <"Cuidar de suas finanças? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac5"] = <
+				text = <"Preparar suas próprias refeições (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac6"] = <
+				text = <"Arrumar a casa? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac7"] = <
+				text = <"Fazer os trabalhos manuais domésticos, como pequenos reparos? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac8"] = <
+				text = <"Lavar passar roupa? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac9"] = <
+				text = <"Sair de casa sozinho, para lugares mais distantes, usando algum transporte sem necessidade de planejamento especial? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac10"] = <
+				text = <"Tomar os seus remédios na dose certa e horário correto? (synthesised)">
+				description = <"* (synthesised)">
+			>
+			["ac11"] = <
+				text = <"Avaliação da independência para a realização de atividades instrumentais de vida diária (synthesised)">
+				description = <"* (synthesised)">
+			>
+		>
+	>
+	value_sets = <
+		["ac1"] = <
+			id = <"ac1">
+			members = <"at37", "at38", "at39">
+		>
+		["ac2"] = <
+			id = <"ac2">
+			members = <"at45", "at46", "at47">
+		>
+		["ac3"] = <
+			id = <"ac3">
+			members = <"at45", "at46", "at47">
+		>
+		["ac4"] = <
+			id = <"ac4">
+			members = <"at45", "at46", "at47">
+		>
+		["ac5"] = <
+			id = <"ac5">
+			members = <"at45", "at46", "at47">
+		>
+		["ac6"] = <
+			id = <"ac6">
+			members = <"at45", "at46", "at47">
+		>
+		["ac7"] = <
+			id = <"ac7">
+			members = <"at45", "at46", "at47">
+		>
+		["ac8"] = <
+			id = <"ac8">
+			members = <"at45", "at46", "at47">
+		>
+		["ac9"] = <
+			id = <"ac9">
+			members = <"at45", "at46", "at47">
+		>
+		["ac10"] = <
+			id = <"ac10">
+			members = <"at45", "at46", "at47">
+		>
+		["ac11"] = <
+			id = <"ac11">
+			members = <"at57", "at58", "at59">
+		>
+	>
