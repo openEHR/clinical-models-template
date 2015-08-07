@@ -1,0 +1,175 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.care_conduct_plan_prodemge.v1
+
+concept
+	[at0000]	-- Conduta/ Plano de Cuidado
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"09B50371E4AC3040554035C8FC9A20D7">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Conduta/ Plano de Cuidado
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..*} matches {	-- Medicamentos Prescritos
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Nome(Nome do Fármaco, Concentração, Forma Farmac.)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Posologia
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0010] occurrences matches {0..*} matches {	-- Exames Complementares Solicitados
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Nome
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {[ac0001]}		-- New constraint
+													}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Especificação do Exame
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Encaminhamentos
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Orientações
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Metas de Autocuidado Apoiado
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"MDDB99", ...>
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Conduta/ Plano de Cuidado">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Medicamentos Prescritos">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Posologia">
+					description = <"Posologia do medicamento prescrito. ">
+				>
+				["at0010"] = <
+					text = <"Exames Complementares Solicitados">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Nome">
+					description = <"Apresentar os nomes dos exames complementares solicitados. ">
+				>
+				["at0012"] = <
+					text = <"Especificação do Exame">
+					description = <"Apresentar a especificação do exame solicitado.">
+				>
+				["at0013"] = <
+					text = <"Orientações">
+					description = <"Orientações dadas ao cidadão.">
+				>
+				["at0014"] = <
+					text = <"Encaminhamentos">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Metas de Autocuidado Apoiado">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Nome(Nome do Fármaco, Concentração, Forma Farmac.)">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["MDDB99"] = <
+			items = <
+			>
+		>
+	>
+	constraint_binding = <
+		["MDDB99"] = <
+			items = <
+				["ac0001"] = <http://terminology.zilics.com.br?terminologyId=PROCEDURE&groupId=CURRENT_HEALTHCARE_PROVIDER>
+			>
+		>
+	>

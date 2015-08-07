@@ -1,0 +1,5 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=sprainsWithSuspiciousOfFracture:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0005]=luxation:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0006]=luxationCharacterization:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0016]=fracture:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0009]=castEvaluation:true

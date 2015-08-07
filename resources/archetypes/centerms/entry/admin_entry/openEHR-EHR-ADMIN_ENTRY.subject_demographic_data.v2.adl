@@ -1,0 +1,163 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.subject_demographic_data.v2
+
+concept
+	[at0000]	-- Subject demographic data
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Fátima Almeida">
+		["organisation"] = <"Critical Software">
+		["email"] = <"fatima.c.almeida@criticalsoftware.com">
+		["date"] = <"July 2013">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Record  patient clinically relevant demographic data.">
+			use = <"Record  patient clinically relevant demographic data">
+			misuse = <"Any patient identifiable demographic data cannot be record in this composition">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar informação demográfica do sujeito que poderá ser também relevante em contexto clínico.">
+			use = <"Usar para registrar informação demográfica do sujeito que poderá ser também relevante em contexto clínico.">
+			keywords = <"demográficos", "dados", "profissão", "raça", "cor", "educação", "sexo">
+			misuse = <"Não usar para registrar informação demográfica do sujeito que o possa identificar diretamente.">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"01A2EF88237A5D13813D52E4CA1D2F43">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Informação demográfica do sujeito
+		data matches {
+			ITEM_LIST[at0001] matches {	-- *Tree(en)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Data de nascimento
+						value matches {
+							DV_DATE matches {
+								value matches {yyyy-mm-dd}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sexo
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Nível de educação
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Profissão
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0021] occurrences matches {0..1} matches {	-- Cor/raça
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0022] occurrences matches {0..1} matches {	-- CEP
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Subject demographic data">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Birth date">
+					description = <"The subject birth date">
+				>
+				["at0004"] = <
+					text = <"Sex">
+					description = <"The subject sex">
+				>
+				["at0008"] = <
+					text = <"Education level">
+					description = <"Subject education level">
+				>
+				["at0020"] = <
+					text = <"Profession">
+					description = <"Profession">
+				>
+				["at0021"] = <
+					text = <"Color/Race">
+					description = <"The color/race of the subject">
+				>
+				["at0022"] = <
+					text = <"Zip code">
+					description = <"Zip code of the subject's address (it might only be a part of it)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informação demográfica do sujeito">
+					description = <"Informação demográfica do sujeito que pode possuir relevância no contexto clínico.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0003"] = <
+					text = <"Data de nascimento">
+					description = <"A data de nascimento do sujeito.">
+				>
+				["at0004"] = <
+					text = <"Sexo">
+					description = <"O sexo do sujeito.">
+				>
+				["at0008"] = <
+					text = <"Nível de educação">
+					description = <"O nível de educação do sujeito.">
+				>
+				["at0020"] = <
+					text = <"Profissão">
+					description = <"A profissão do sujeito.">
+				>
+				["at0021"] = <
+					text = <"Cor/raça">
+					description = <"A cor/raça do sujeito.">
+				>
+				["at0022"] = <
+					text = <"CEP">
+					description = <"O código de endereçamento postal (CEP) da residência do sujeito.">
+				>
+			>
+		>
+	>

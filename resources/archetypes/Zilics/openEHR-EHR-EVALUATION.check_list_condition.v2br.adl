@@ -1,0 +1,299 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.check_list_condition.v2br
+specialize
+	openEHR-EHR-EVALUATION.check_list.v2
+
+concept
+	[at0000.1]	-- Revisão de sinais e sintomas
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["organisation"] = <"ZILICS">
+				["name"] = <"Marivan Santiago Abrahão">
+				["email"] = <"marivan@abrahao.net">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"unknown">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"__unknown__">
+			use = <"">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"__unknown__">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000.1] matches {	-- Revisão de sinais e sintomas
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0004] occurrences matches {0..*} matches {	-- Antecedentes Pessoais
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comentário sobre a resposta
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- História Pregressa
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.16] occurrences matches {0..1} matches {	-- História Pregressa (CID-10)
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[ac0.1]}		-- *CID 10
+									}
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sumário
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.10"] = <
+					text = <"COPD">
+					description = <"*">
+				>
+				["at0.11"] = <
+					text = <"Malignancy">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"Presence">
+					description = <"The presence or absence of a history of the condition is asked">
+				>
+				["at0.13"] = <
+					text = <"Not asked">
+					description = <"*">
+				>
+				["at0.14"] = <
+					text = <"Negative history">
+					description = <"*">
+				>
+				["at0.15"] = <
+					text = <"Positive history">
+					description = <"*">
+				>
+				["at0.16"] = <
+					text = <"Past medical history">
+					description = <"*">
+				>
+				["at0.2"] = <
+					text = <"Past medical history">
+					description = <"Common medical conditions">
+				>
+				["at0.3"] = <
+					text = <"Diabetes Type 1">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"Diabetes Type 2">
+					description = <"*">
+				>
+				["at0.5"] = <
+					text = <"Hypertension">
+					description = <"*">
+				>
+				["at0.6"] = <
+					text = <"Ischaemic Heart Disease">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Thrombo-embolic Disease">
+					description = <"Previous PE or DVT">
+				>
+				["at0.8"] = <
+					text = <"Epilepsy">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Asthma">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"A health oriented check list">
+					description = <"A generic archetype for recording questions and answers to allow structured recording. Actual findings are recorded in other structures">
+				>
+				["at0000.1"] = <
+					text = <"A check list for specific health conditions">
+					description = <"A generic archetype for recording questions and about the presence or past occurrence of health conditions to allow structured recording. Actual findings are recorded in other structures">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Past medical history">
+					description = <"Past medical history as free text">
+				>
+				["at0004"] = <
+					text = <"Past medical history">
+					description = <"A grouping for questions and answers">
+				>
+				["at0005"] = <
+					text = <"A comment on the answer">
+					description = <"A comment on the question">
+				>
+				["at0006"] = <
+					text = <"Summary">
+					description = <"Summary of questions">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.10"] = <
+					text = <"DPOC">
+					description = <"*">
+				>
+				["at0.11"] = <
+					text = <"Neoplasia Maligna">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"Presença">
+					description = <"A presença ou ausência de dados na história é questionada">
+				>
+				["at0.13"] = <
+					text = <"Não perguntado">
+					description = <"*">
+				>
+				["at0.14"] = <
+					text = <"História Negativa">
+					description = <"*">
+				>
+				["at0.15"] = <
+					text = <"História Positiva">
+					description = <"*">
+				>
+				["at0.16"] = <
+					text = <"História Pregressa (CID-10)">
+					description = <"*">
+				>
+				["at0.2"] = <
+					text = <"História Pregressa">
+					description = <"Condições médicas comuns">
+				>
+				["at0.3"] = <
+					text = <"Diabetes Tipo 1">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"Diabetes Tipo 2">
+					description = <"*">
+				>
+				["at0.5"] = <
+					text = <"Hipertensão Arterial">
+					description = <"*">
+				>
+				["at0.6"] = <
+					text = <"Doença Cardíaca Isquêmica">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Doença Trombo-Embólica">
+					description = <"Trombo-embolismo e Trombose Venosa Profunda prévios">
+				>
+				["at0.8"] = <
+					text = <"Epilepsia">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Asma">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"Revisão de sinais e sintomas">
+					description = <"Arquétipo para registro de perguntas e respostas a fim de permitir o registro de dados estruturados. Dados atuais são registrados  outras estruturas.
+">
+				>
+				["at0000.1"] = <
+					text = <"Revisão de sinais e sintomas">
+					description = <"Arquétipo para registro de perguntas e sobre a ocorrência da presença, ou de dados pregressos, de sinais e sintomas a fim de permitir o registro de dados estruturados. Dados atuais são registrados  outras estruturas.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"História Pregressa">
+					description = <"História Patológica pregressa como texto livre">
+				>
+				["at0004"] = <
+					text = <"Antecedentes Pessoais">
+					description = <"Resumo de perguntas e respostas">
+				>
+				["at0005"] = <
+					text = <"Comentário sobre a resposta">
+					description = <"Comentário sobre a pergunta">
+				>
+				["at0006"] = <
+					text = <"Sumário">
+					description = <"Sumário das questões">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"CID 10">
+					description = <"Fazer Binding com CID 10">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"*CID 10">
+					description = <"*Fazer Binding com CID 10">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["ICD10_1998"] = <
+			items = <
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0.1"] = <http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=Z85_Z99>
+			>
+		>
+	>

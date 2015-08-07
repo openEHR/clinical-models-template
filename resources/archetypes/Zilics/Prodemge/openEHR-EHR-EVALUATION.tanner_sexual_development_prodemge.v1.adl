@@ -1,0 +1,526 @@
+archetype
+    openEHR-EHR-EVALUATION.tanner_sexual_development_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0042] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0043] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0044,
+                                            at0045,
+                                            at0046,
+                                            at0047,
+                                            at0048]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0049] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0036,
+                                            at0050,
+                                            at0038,
+                                            at0039,
+                                            at0040]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0035] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0036,
+                                            at0037,
+                                            at0038,
+                                            at0039,
+                                            at0040]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0029] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0030,
+                                            at0031,
+                                            at0032,
+                                            at0033,
+                                            at0034]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Avaliação de Ricos da Criança">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Desenvolvimento Puberal Masculino">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Mãe com baixa escolaridade">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Mãe adolescente">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Mãe deficiente mental">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Mãe soropositiva para HIV, toxoplasmose ou sífilis (obs.: enquanto não for concluído o diagnóstico negativo da criança, ela deve ser considerada dentro do Grupo II de risco);">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Morte materna">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"RIsco Grupo 1">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"História de óbito de menores de 1 ano na família">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Condições ambientais, sociais e familiares desfavoráveis">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Pais ou responsáveis dependentes de drogas lícitas e ilícitas">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Criança nascida de parto domiciliar não assistido">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Recém-nascido retido na maternidade">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Desmame antes do 6º mês de vida">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Desnutrição">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Internação prévia">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Criança não-vacinada ou com vacinação atrasada">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Risco Grupo 2">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Baixo peso ao nascer">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Prematuridade">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Desnutrição grave">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Triagem neonatal positiva para hipotireoidismo, fenilcetonúria, anemia falciforme ou fibrose cística">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Doenças de transmissão vertical: toxoplasmose, sífilis, Aids">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Intercorrências importantes, no período neonatal, notificadas na alta hospitalar">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Crescimento e/ou desenvolvimento inadequados">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Evolução desfavorável de qualquer doença">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Sem Risco">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Sem os critérios citados">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Genitalia">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"G1 - Pre-pubere (Infantil)">
+                    description = <"Pre-pubere (Infantil)">
+                >
+                ["at0031"] = <
+                    text = <"G2 - Aumento de escroto e testículos. Aumento de pênis ausente ou pequeno. Pele escrotal torna-se avermelhada e muda de textura">
+                    description = <"Aumento de escroto e testículos. Aumento de pênis ausente ou pequeno. Pele escrotal torna-se avermelhada e muda de textura">
+                >
+                ["at0032"] = <
+                    text = <"G3 - Aumento do pênis, principalmente em cumprimento. Continua o aumento de testículo e escroto.">
+                    description = <"Aumento do pênis, principalmente em cumprimento. Continua o aumento de testículo e escroto.">
+                >
+                ["at0033"] = <
+                    text = <"G4 - Aumento do diâmetro do pênis e há o desenvolvimento da glande.Continua o aumento de testículo e escroto, cuja pele escurece">
+                    description = <"Aumento do diâmetro do pênis e há o desenvolvimento da glande.Continua o aumento de testículo e escroto, cuja pele escurece">
+                >
+                ["at0034"] = <
+                    text = <"G5 - Genitais adultos em tamanho e forma">
+                    description = <"Genitais adultos em tamanho e forma">
+                >
+                ["at0035"] = <
+                    text = <"Pelos Pubianos">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"P1 - Ausência de pêlos pubianos. Pé-pubere (infantil)">
+                    description = <"Ausência de pêlos pubianos. Pé-pubere (infantil)">
+                >
+                ["at0037"] = <
+                    text = <"P2 - Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados, de cada lado da base do pênis ">
+                    description = <"Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados, de cada lado da base do pênis ">
+                >
+                ["at0038"] = <
+                    text = <"P3 - Os pêlos se estendem sobre a sínfise púbica e são consideravelmente mais escuros, grossos e comumente mais encaracolados.">
+                    description = <"Os pêlos se estendem sobre a sínfise púbica e são consideravelmente mais escuros, grossos e comumente mais encaracolados.">
+                >
+                ["at0039"] = <
+                    text = <"P4 - Os pêlos têm aspecto adulto, mas cobrem uma área menor do que na maioria dos adultos; não se estendem para a superfície medial das coxas.">
+                    description = <"Os pêlos têm aspecto adulto, mas cobrem uma área menor do que na maioria dos adultos; não se estendem para a superfície medial das coxas.">
+                >
+                ["at0040"] = <
+                    text = <"P5 - Pêlos são adultos em quantidade e aparência, estendendo-se para a face medial das coxas.">
+                    description = <"Pêlos são adultos em quantidade e aparência, estendendo-se para a face medial das coxas.">
+                >
+                ["at0041"] = <
+                    text = <"New cluster">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Desenvolvimento Puberal Feminino">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Mamas">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"M1 - Pré-púbere. Aspecto infantil, com apenas elevação das papilas">
+                    description = <"Pré-púbere. Aspecto infantil, com apenas elevação das papilas.">
+                >
+                ["at0045"] = <
+                    text = <"M2 -Broto mamário  (pela elevação da mama e da papila). Aumenta o diâmetro aerolar">
+                    description = <"Broto mamário  (pela elevação da mama e da papila). Aumenta o diâmetro aerolar">
+                >
+                ["at0046"] = <
+                    text = <"M3 - A mama e a aréola continuam aumentando, sem delimitar seus contornos.">
+                    description = <"A mama e a aréola continuam aumentando, sem delimitar seus contornos.">
+                >
+                ["at0047"] = <
+                    text = <"M4 - Projeção da áreola e da papila, formando uma segunda saliência acima do nível da mama">
+                    description = <"Projeção da áreola e da papila, formando uma segunda saliência acima do nível da mama">
+                >
+                ["at0048"] = <
+                    text = <"M5 - Mamas adultas com retração das áreola para o contorno da mama. Há saliência apenas da papila.">
+                    description = <"Mamas adultas com retração das áreola para o contorno da mama. Há saliência apenas da papila.">
+                >
+                ["at0049"] = <
+                    text = <"Pelos Pubianos">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"P2 - Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados ao longo dos grandes lábios.">
+                    description = <"Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados ao longo dos grandes lábios.">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Avaliação de Ricos da Criança">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Desenvolvimento Puberal Masculino">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Mãe com baixa escolaridade">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Mãe adolescente">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Mãe deficiente mental">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Mãe soropositiva para HIV, toxoplasmose ou sífilis (obs.: enquanto não for concluído o diagnóstico negativo da criança, ela deve ser considerada dentro do Grupo II de risco);">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Morte materna">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"RIsco Grupo 1">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"História de óbito de menores de 1 ano na família">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Condições ambientais, sociais e familiares desfavoráveis">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Pais ou responsáveis dependentes de drogas lícitas e ilícitas">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Criança nascida de parto domiciliar não assistido">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Recém-nascido retido na maternidade">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Desmame antes do 6º mês de vida">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Desnutrição">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Internação prévia">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Criança não-vacinada ou com vacinação atrasada">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Risco Grupo 2">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Baixo peso ao nascer">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Prematuridade">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Desnutrição grave">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Triagem neonatal positiva para hipotireoidismo, fenilcetonúria, anemia falciforme ou fibrose cística">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Doenças de transmissão vertical: toxoplasmose, sífilis, Aids">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Intercorrências importantes, no período neonatal, notificadas na alta hospitalar">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Crescimento e/ou desenvolvimento inadequados">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Evolução desfavorável de qualquer doença">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Sem Risco">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Sem os critérios citados">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Genitalia">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"G1  ">
+                    description = <"Pre-pubere (Infantil)">
+                >
+                ["at0031"] = <
+                    text = <"G2">
+                    description = <"Aumento de escroto e testículos. Aumento de pênis ausente ou pequeno. Pele escrotal torna-se avermelhada e muda de textura">
+                >
+                ["at0032"] = <
+                    text = <"G3">
+                    description = <"Aumento do pênis, principalmente em cumprimento. Continua o aumento de testículo e escroto.">
+                >
+                ["at0033"] = <
+                    text = <"G4">
+                    description = <"Aumento do diâmetro do pênis e há o desenvolvimento da glande.Continua o aumento de testículo e escroto, cuja pele escurece">
+                >
+                ["at0034"] = <
+                    text = <"G5">
+                    description = <"Genitais adultos em tamanho e forma">
+                >
+                ["at0035"] = <
+                    text = <"Pelos Pubianos">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"P1">
+                    description = <"Ausência de pêlos pubianos. Pé-pubere (infantil)">
+                >
+                ["at0037"] = <
+                    text = <"P2">
+                    description = <"Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados, de cada lado da base do pênis ">
+                >
+                ["at0038"] = <
+                    text = <"P3">
+                    description = <"Os pêlos se estendem sobre a sínfise púbica e são consideravelmente mais escuros, grossos e comumente mais encaracolados.">
+                >
+                ["at0039"] = <
+                    text = <"P4">
+                    description = <"Os pêlos têm aspecto adulto, mas cobrem uma área menor do que na maioria dos adultos; não se estendem para a superfície medial das coxas.">
+                >
+                ["at0040"] = <
+                    text = <"P5">
+                    description = <"Pêlos são adultos em quantidade e aparência, estendendo-se para a face medial das coxas.">
+                >
+                ["at0041"] = <
+                    text = <"New cluster">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Desenvolvimento Puberal Feminino">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Mamas">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"M1">
+                    description = <"Pré-púbere. Aspecto infantil, com apenas elevação das papilas.">
+                >
+                ["at0045"] = <
+                    text = <"M2">
+                    description = <"Broto mamário  (pela elevação da mama e da papila). Aumenta o diâmetro aerolar">
+                >
+                ["at0046"] = <
+                    text = <"M3">
+                    description = <"A mama e a aréola continuam aumentando, sem delimitar seus contornos.">
+                >
+                ["at0047"] = <
+                    text = <"M4">
+                    description = <"Projeção da áreola e da papila, formando uma segunda saliência acima do nível da mama">
+                >
+                ["at0048"] = <
+                    text = <"M5">
+                    description = <"Mamas adultas com retração das áreola para o contorno da mama. Há saliência apenas da papila.">
+                >
+                ["at0049"] = <
+                    text = <"Pelos Pubianos">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"P2">
+                    description = <"Pêlos pubianos com distribuição esparsa, pequena quantidade, levemente pigmentados, lisos ou discretamente encaracolados ao longo dos grandes lábios.">
+                >
+            >
+        >
+    >

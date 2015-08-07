@@ -1,0 +1,401 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.dwelling_data.v1
+
+concept
+	[at0000]	-- Dados da Moradia
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Armazenar dados da moradia do benificiário">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Armazenar dados da moradia do benificiário">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"7E4456CF856895460ABBADF828457A2D">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Dados da Moradia
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_LIST[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Tipo de Domicílio
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Tijolo/Alvenaria – parede construída com tijolo (cimento, cerâmica, etc.)
+													at0006, 	-- Adobe – parede construída com adobe (bloco semelhante ao tijolo, preparado com argila crua, seca ao sol) adobão e semelhantes
+													at0007, 	-- Taipa revestida – parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)
+													at0008, 	-- Taipa não revestida – parede de taipa sem revestimento
+													at0009, 	-- Madeira – parede de madeira
+													at0010, 	-- Material aproveitado – materiais impróprios para construção, como papelão, plástico, lona, palha, flandres, etc
+													at0011]	-- Outros – Materiais apropriados para construção, como pedra, concreto, etc
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Tratamento de água no domicílio
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0014, 	-- Filtração
+													at0015, 	-- Fervura
+													at0016, 	-- Cloração
+													at0017]	-- Sem tratamento – assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores
+												}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Abastecimento de água
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0019, 	-- Rede pública – domicílio servido de água proveniente de uma rede geral de abastecimento, no domicílio ou no peridomicílio
+													at0020, 	-- Poço ou nascente – domicílio servido de água proveniente de poço ou nascente próprios
+													at0021]	-- Outros – domicílio abastecido com água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio
+												}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Energia elétrica
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023, 	-- Sim – se o domicílio possuir energia elétrica, mesmo que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina, “gato”, “gambiarra”)
+													at0024]	-- Não – se o domicílio não possuir energia elétrica.
+												}
+											}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Esgotamento sanitário
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0026, 	-- Rede pública – fezes e urina são canalizadas para o sistema de esgoto do município
+													at0027, 	-- Fossa – qualquer tipo de fossa
+													at0028]	-- Céu aberto – fezes e urina são despejadas no quintal, na rua, em um riacho
+												}
+											}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Destino do lixo
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0030, 	-- Coletado – por serviço, empresa pública ou particular
+													at0031, 	-- Queimado ou enterrado
+													at0032]	-- Jogado a céu aberto
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dados da Moradia">
+					description = <"*unknown(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tipo de Domicílio">
+					description = <"Tipo de parede da casa.">
+				>
+				["at0005"] = <
+					text = <"Tijolo/Alvenaria – parede construída com tijolo (cimento, cerâmica, etc.)">
+					description = <"Tijolo/Alvenaria – parede construída com tijolo (cimento, cerâmica, etc.)">
+				>
+				["at0006"] = <
+					text = <"Adobe – parede construída com adobe (bloco semelhante ao tijolo, preparado com argila crua, seca ao sol) adobão e semelhantes">
+					description = <"Adobe – parede construída com adobe (bloco semelhante ao tijolo, preparado com argila crua, seca ao sol) adobão e semelhantes">
+				>
+				["at0007"] = <
+					text = <"Taipa revestida – parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)">
+					description = <"Taipa revestida – parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)">
+				>
+				["at0008"] = <
+					text = <"Taipa não revestida – parede de taipa sem revestimento">
+					description = <"Taipa não revestida – parede de taipa sem revestimento">
+				>
+				["at0009"] = <
+					text = <"Madeira – parede de madeira">
+					description = <"Madeira – parede de madeira">
+				>
+				["at0010"] = <
+					text = <"Material aproveitado – materiais impróprios para construção, como papelão, plástico, lona, palha, flandres, etc">
+					description = <"Material aproveitado – materiais impróprios para construção, como papelão, plástico, lona, palha, flandres, etc">
+				>
+				["at0011"] = <
+					text = <"Outros – Materiais apropriados para construção, como pedra, concreto, etc">
+					description = <"Outros – Materiais apropriados para construção, como pedra, concreto, etc">
+				>
+				["at0012"] = <
+					text = <"Tratamento de água no domicílio">
+					description = <"Tipo de tratamento de água realizado continuamente no domicílio. Não considerar o tratamento da água realizado pela empresa fornecedora.">
+				>
+				["at0014"] = <
+					text = <"Filtração">
+					description = <"Filtração">
+				>
+				["at0015"] = <
+					text = <"Fervura">
+					description = <"Fervura">
+				>
+				["at0016"] = <
+					text = <"Cloração">
+					description = <"Cloração">
+				>
+				["at0017"] = <
+					text = <"Sem tratamento – assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores">
+					description = <"Sem tratamento – assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores">
+				>
+				["at0018"] = <
+					text = <"Abastecimento de água">
+					description = <"Tipo de origem da água utilizada no domicílio.">
+				>
+				["at0019"] = <
+					text = <"Rede pública – domicílio servido de água proveniente de uma rede geral de abastecimento, no domicílio ou no peridomicílio">
+					description = <"Rede pública – domicílio servido de água proveniente de uma rede geral de abastecimento, no domicílio ou no peridomicílio">
+				>
+				["at0020"] = <
+					text = <"Poço ou nascente – domicílio servido de água proveniente de poço ou nascente próprios">
+					description = <"Poço ou nascente – domicílio servido de água proveniente de poço ou nascente próprios">
+				>
+				["at0021"] = <
+					text = <"Outros – domicílio abastecido com água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio">
+					description = <"Outros – domicílio abastecido com água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio">
+				>
+				["at0022"] = <
+					text = <"Energia elétrica">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Sim – se o domicílio possuir energia elétrica, mesmo que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina, “gato”, “gambiarra”)">
+					description = <"Sim – se o domicílio possuir energia elétrica, mesmo que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina, “gato”, “gambiarra”)">
+				>
+				["at0024"] = <
+					text = <"Não – se o domicílio não possuir energia elétrica.">
+					description = <"Não – se o domicílio não possuir energia elétrica.">
+				>
+				["at0025"] = <
+					text = <"Esgotamento sanitário">
+					description = <"Tipo de destino dado às fezes e urina.">
+				>
+				["at0026"] = <
+					text = <"Rede pública – fezes e urina são canalizadas para o sistema de esgoto do município">
+					description = <"Rede pública – fezes e urina são canalizadas para o sistema de esgoto do município">
+				>
+				["at0027"] = <
+					text = <"Fossa – qualquer tipo de fossa">
+					description = <"Fossa – qualquer tipo de fossa">
+				>
+				["at0028"] = <
+					text = <"Céu aberto – fezes e urina são despejadas no quintal, na rua, em um riacho">
+					description = <"Céu aberto – fezes e urina são despejadas no quintal, na rua, em um riacho">
+				>
+				["at0029"] = <
+					text = <"Destino do lixo">
+					description = <"Destino dado ao lixo do domicílio">
+				>
+				["at0030"] = <
+					text = <"Coletado – por serviço, empresa pública ou particular">
+					description = <"Coletado – por serviço, empresa pública ou particular">
+				>
+				["at0031"] = <
+					text = <"Queimado ou enterrado">
+					description = <"Queimado ou enterrado">
+				>
+				["at0032"] = <
+					text = <"Jogado a céu aberto">
+					description = <"Jogado a céu aberto">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"unknown">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*Tijolo/Alvenaria – parede construída com tijolo (cimento, cerâmica, etc.)(pt)">
+					description = <"*Tijolo/Alvenaria – parede construída com tijolo (cimento, cerâmica, etc.)(pt)">
+				>
+				["at0006"] = <
+					text = <"*Adobe – parede construída com adobe (bloco semelhante ao tijolo, preparado com argila crua, seca ao sol) adobão e semelhantes(pt)">
+					description = <"*Adobe – parede construída com adobe (bloco semelhante ao tijolo, preparado com argila crua, seca ao sol) adobão e semelhantes(pt)">
+				>
+				["at0007"] = <
+					text = <"*Taipa revestida – parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)(pt)">
+					description = <"*Taipa revestida – parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)(pt)">
+				>
+				["at0008"] = <
+					text = <"*Taipa não revestida – parede de taipa sem revestimento(pt)">
+					description = <"*Taipa não revestida – parede de taipa sem revestimento(pt)">
+				>
+				["at0009"] = <
+					text = <"*Madeira – parede de madeira(pt)">
+					description = <"*Madeira – parede de madeira(pt)">
+				>
+				["at0010"] = <
+					text = <"*Material aproveitado – materiais impróprios para construção, como papelão, plástico, lona, palha, flandres, etc(pt)">
+					description = <"*Material aproveitado – materiais impróprios para construção, como papelão, plástico, lona, palha, flandres, etc(pt)">
+				>
+				["at0011"] = <
+					text = <"*Outros – Materiais apropriados para construção, como pedra, concreto, etc(pt)">
+					description = <"*Outros – Materiais apropriados para construção, como pedra, concreto, etc(pt)">
+				>
+				["at0012"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"*Filtração(pt)">
+					description = <"*Filtração(pt)">
+				>
+				["at0015"] = <
+					text = <"*Fervura(pt)">
+					description = <"*Fervura(pt)">
+				>
+				["at0016"] = <
+					text = <"*Cloração(pt)">
+					description = <"*Cloração(pt)">
+				>
+				["at0017"] = <
+					text = <"*Sem tratamento – assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores(pt)">
+					description = <"*Sem tratamento – assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores(pt)">
+				>
+				["at0018"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*Rede pública – domicílio servido de água proveniente de uma rede geral de abastecimento, no domicílio ou no peridomicílio(pt)">
+					description = <"*Rede pública – domicílio servido de água proveniente de uma rede geral de abastecimento, no domicílio ou no peridomicílio(pt)">
+				>
+				["at0020"] = <
+					text = <"*Poço ou nascente – domicílio servido de água proveniente de poço ou nascente próprios(pt)">
+					description = <"*Poço ou nascente – domicílio servido de água proveniente de poço ou nascente próprios(pt)">
+				>
+				["at0021"] = <
+					text = <"*Outros – domicílio abastecido com água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio(pt)">
+					description = <"*Outros – domicílio abastecido com água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio(pt)">
+				>
+				["at0022"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"*Sim – se o domicílio possuir energia elétrica, mesmo que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina, “gato”, “gambiarra”)(pt)">
+					description = <"*Sim – se o domicílio possuir energia elétrica, mesmo que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina, “gato”, “gambiarra”)(pt)">
+				>
+				["at0024"] = <
+					text = <"*Não – se o domicílio não possuir energia elétrica.(pt)">
+					description = <"*Não – se o domicílio não possuir energia elétrica.(pt)">
+				>
+				["at0025"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0026"] = <
+					text = <"*Rede pública – fezes e urina são canalizadas para o sistema de esgoto do município(pt)">
+					description = <"*Rede pública – fezes e urina são canalizadas para o sistema de esgoto do município(pt)">
+				>
+				["at0027"] = <
+					text = <"*Fossa – qualquer tipo de fossa(pt)">
+					description = <"*Fossa – qualquer tipo de fossa(pt)">
+				>
+				["at0028"] = <
+					text = <"*Céu aberto – fezes e urina são despejadas no quintal, na rua, em um riacho(pt)">
+					description = <"*Céu aberto – fezes e urina são despejadas no quintal, na rua, em um riacho(pt)">
+				>
+				["at0029"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"*Coletado – por serviço, empresa pública ou particular(pt)">
+					description = <"*Coletado – por serviço, empresa pública ou particular(pt)">
+				>
+				["at0031"] = <
+					text = <"*Queimado ou enterrado(pt)">
+					description = <"*Queimado ou enterrado(pt)">
+				>
+				["at0032"] = <
+					text = <"*Jogado a céu aberto(pt)">
+					description = <"*Jogado a céu aberto(pt)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,81 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.prenatal_phisical_exam_prodemge.v1
+
+concept
+	[at0000]	-- Exame Físico
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Exame Físico">
+			use = <"Exame Físico">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Exame Físico">
+			use = <"Exame Físico">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"C5AC00A3AC2891979862D459DCB0A797">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Exame Físico
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0003] occurrences matches {0..1} matches {	-- *testeSection(pt)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exame Físico">
+					description = <"Exame Físico">
+				>
+				["at0003"] = <
+					text = <"Exame Físico">
+					description = <"Exame Físico">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exame Físico">
+					description = <"Exame Físico">
+				>
+				["at0003"] = <
+					text = <"Exame Físico">
+					description = <"Exame Físico">
+				>
+			>
+		>
+	>

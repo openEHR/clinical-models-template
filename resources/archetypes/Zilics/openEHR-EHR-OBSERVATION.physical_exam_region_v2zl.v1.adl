@@ -1,0 +1,1824 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.physical_exam_region_v2zl.v1
+
+concept
+	[at0000]	-- Revisão de Sinais e Sintomas - Assinale se alterado
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"nobody">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Fornece um guia de orientação para exame físico a fim de permitir uma organização dos dados em regiões examinadas">
+			use = <"Fornece um guia de orientação para exame físico preservando forma de recuperação dos dados do exame físico ">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Revisão de Sinais e Sintomas - Assinale se alterado
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Geral
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0101] occurrences matches {0..1} matches {	-- Febre
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0102] occurrences matches {0..1} matches {	-- Fadiga
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0103] occurrences matches {0..1} matches {	-- Fraqueza
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0104] occurrences matches {0..1} matches {	-- Perda de Peso
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0105] occurrences matches {0..1} matches {	-- Obesidade
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0106] occurrences matches {0..1} matches {	-- Icterícia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0107] occurrences matches {0..1} matches {	-- Tontura
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0108] occurrences matches {0..1} matches {	-- Edema
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0109] occurrences matches {0..1} matches {	-- Insônia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0219] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0237] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0014] occurrences matches {0..1} matches {	-- Cabeça
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0110] occurrences matches {0..1} matches {	-- Trauma
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0111] occurrences matches {0..1} matches {	-- Cefaléia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0220] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0238] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0017] occurrences matches {0..1} matches {	-- Olhos
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0112] occurrences matches {0..1} matches {	-- Dor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0113] occurrences matches {0..1} matches {	-- Secreção
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0114] occurrences matches {0..1} matches {	-- Visão Borrada
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0115] occurrences matches {0..1} matches {	-- Diplopia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0116] occurrences matches {0..1} matches {	-- Glaucoma
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0117] occurrences matches {0..1} matches {	-- Catarata
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0221] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0239] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0024] occurrences matches {0..1} matches {	-- Orelhas
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0118] occurrences matches {0..1} matches {	-- Dor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0119] occurrences matches {0..1} matches {	-- Secreção
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0120] occurrences matches {0..1} matches {	-- Sangue
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0121] occurrences matches {0..1} matches {	-- Zumbidos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0122] occurrences matches {0..1} matches {	-- Hipoacusia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0222] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0240] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0030] occurrences matches {0..1} matches {	-- Boca/ Nariz/ Garganta
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0123] occurrences matches {0..1} matches {	-- Alteração da Voz
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0124] occurrences matches {0..1} matches {	-- Dificuldade de Deglutir
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0125] occurrences matches {0..1} matches {	-- Próteses
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0126] occurrences matches {0..1} matches {	-- Coriza
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0127] occurrences matches {0..1} matches {	-- Sangramento
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0128] occurrences matches {0..1} matches {	-- Sinusite
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0223] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0241] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0037] occurrences matches {0..1} matches {	-- Respiratório
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0129] occurrences matches {0..1} matches {	-- Dor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0130] occurrences matches {0..1} matches {	-- Tosse Seca
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0131] occurrences matches {0..1} matches {	-- Expectoração
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0132] occurrences matches {0..1} matches {	-- Sibilos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0133] occurrences matches {0..1} matches {	-- Dispnéia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0134] occurrences matches {0..1} matches {	-- Hemoptise
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0135] occurrences matches {0..1} matches {	-- Enfisema
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0136] occurrences matches {0..1} matches {	-- Asma
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0137] occurrences matches {0..1} matches {	-- Bronquite
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0224] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0242] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0047] occurrences matches {0..1} matches {	-- Cardíaco
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0138] occurrences matches {0..1} matches {	-- Dor Precordial
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0139] occurrences matches {0..1} matches {	-- Taquicardia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0140] occurrences matches {0..1} matches {	-- Bradicardia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0141] occurrences matches {0..1} matches {	-- Palpitações
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0142] occurrences matches {0..1} matches {	-- Pressão Arterial Elevada
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0143] occurrences matches {0..1} matches {	-- Sopros
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0144] occurrences matches {0..1} matches {	-- Edema
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0225] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0243] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0055] occurrences matches {0..1} matches {	-- Vascular
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0145] occurrences matches {0..1} matches {	-- Claudicação
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0146] occurrences matches {0..1} matches {	-- Varizes
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0147] occurrences matches {0..1} matches {	-- Trombose
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0148] occurrences matches {0..1} matches {	-- Câimbras
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0149] occurrences matches {0..1} matches {	-- Cianose
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0226] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0244] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0061] occurrences matches {0..1} matches {	-- Gastrointestinal
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0150] occurrences matches {0..1} matches {	-- Dor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0151] occurrences matches {0..1} matches {	-- Azia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0152] occurrences matches {0..1} matches {	-- Refluxo
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0153] occurrences matches {0..1} matches {	-- Disfagia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0154] occurrences matches {0..1} matches {	-- Plenitude Gástrica
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0155] occurrences matches {0..1} matches {	-- Náusea
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0156] occurrences matches {0..1} matches {	-- Vômito
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0157] occurrences matches {0..1} matches {	-- Diarréia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0158] occurrences matches {0..1} matches {	-- Obstipação
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0159] occurrences matches {0..1} matches {	-- Hematêmese
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0160] occurrences matches {0..1} matches {	-- Melena
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0161] occurrences matches {0..1} matches {	-- Enterorragia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0162] occurrences matches {0..1} matches {	-- Tenesmo
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0227] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0245] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0075] occurrences matches {0..1} matches {	-- Urinário
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0163] occurrences matches {0..1} matches {	-- Disúria
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0164] occurrences matches {0..1} matches {	-- Noctúria
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0165] occurrences matches {0..1} matches {	-- Polaciúria
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0166] occurrences matches {0..1} matches {	-- Hematúria
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0167] occurrences matches {0..1} matches {	-- Retenção Urinária
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0168] occurrences matches {0..1} matches {	-- Urgência Miccional
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0169] occurrences matches {0..1} matches {	-- Incontinência
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0170] occurrences matches {0..1} matches {	-- Infecção
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0171] occurrences matches {0..1} matches {	-- Poliúria
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0228] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0246] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0085] occurrences matches {0..1} matches {	-- Genital Masculino
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0172] occurrences matches {0..1} matches {	-- Dor Testicular
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0173] occurrences matches {0..1} matches {	-- Secreção Uretral
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0174] occurrences matches {0..1} matches {	-- Hematospermia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0175] occurrences matches {0..1} matches {	-- Prostatismo
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0229] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0247] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0091] occurrences matches {0..1} matches {	-- Genital Feminino
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0177] occurrences matches {0..1} matches {	-- Corrimento
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0178] occurrences matches {0..1} matches {	-- Prurido
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0179] occurrences matches {0..1} matches {	-- Alteração Menstrual
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0180] occurrences matches {0..1} matches {	-- Secreção Uretral
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0181] occurrences matches {0..1} matches {	-- Nódulos Mamários
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0176] occurrences matches {0..1} matches {	-- Secreção de Mamilo
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0230] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0248] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0098] occurrences matches {0..1} matches {	-- Músculo-Esquelético
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0100] occurrences matches {0..1} matches {	-- Dor Articular
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0182] occurrences matches {0..1} matches {	-- Dor Muscular
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0183] occurrences matches {0..1} matches {	-- Limitação de Movimento
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0184] occurrences matches {0..1} matches {	-- Força Diminuída
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0185] occurrences matches {0..1} matches {	-- Cervicalgia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0186] occurrences matches {0..1} matches {	-- Dorsalgia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0187] occurrences matches {0..1} matches {	-- Lombalgia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0188] occurrences matches {0..1} matches {	-- Rigidez Vertebral
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0231] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0249] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0189] occurrences matches {0..1} matches {	-- Neurológico
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0190] occurrences matches {0..1} matches {	-- Desmaio
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0191] occurrences matches {0..1} matches {	-- Convulsões
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0192] occurrences matches {0..1} matches {	-- Tremor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0193] occurrences matches {0..1} matches {	-- Formigamento
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0194] occurrences matches {0..1} matches {	-- Parestesias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0195] occurrences matches {0..1} matches {	-- Paralisias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0196] occurrences matches {0..1} matches {	-- Paresias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0197] occurrences matches {0..1} matches {	-- Claudicação
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0198] occurrences matches {0..1} matches {	-- Rigidez de Nuca
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0232] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0250] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0199] occurrences matches {0..1} matches {	-- Pele
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0200] occurrences matches {0..1} matches {	-- Palidez
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0201] occurrences matches {0..1} matches {	-- Cianose
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0202] occurrences matches {0..1} matches {	-- Prurido
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0203] occurrences matches {0..1} matches {	-- Hematomas
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0233] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0251] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0204] occurrences matches {0..1} matches {	-- Hematológico
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0205] occurrences matches {0..1} matches {	-- Anemia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0206] occurrences matches {0..1} matches {	-- Sangramento
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0207] occurrences matches {0..1} matches {	-- Transfusão
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0234] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0252] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0208] occurrences matches {0..1} matches {	-- Endócrino
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0209] occurrences matches {0..1} matches {	-- Alteração da Tireóide
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0210] occurrences matches {0..1} matches {	-- Intolerância ao Frio ou Calor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0211] occurrences matches {0..1} matches {	-- Sudorese Excessiva
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0212] occurrences matches {0..1} matches {	-- Sede
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0213] occurrences matches {0..1} matches {	-- Fome
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0235] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0253] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0214] occurrences matches {0..1} matches {	-- Psiquiátrico
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0215] occurrences matches {0..1} matches {	-- Depressão
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0216] occurrences matches {0..1} matches {	-- Tensão
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0217] occurrences matches {0..1} matches {	-- Alteração de Humor
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0218] occurrences matches {0..1} matches {	-- Alteração de Memória
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0236] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0254] occurrences matches {0..1} matches {	-- Não Avaliado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Revisão de Sinais e Sintomas - Assinale se alterado">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Geral">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Cabeça">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Olhos">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Orelhas">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Boca/ Nariz/ Garganta">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Respiratório">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Cardíaco">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Vascular">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Gastrointestinal">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Urinário">
+					description = <"*">
+				>
+				["at0085"] = <
+					text = <"Genital Masculino">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"Genital Feminino">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Músculo-Esquelético">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"Dor Articular">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Febre">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"Fadiga">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Fraqueza">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"Perda de Peso">
+					description = <"*">
+				>
+				["at0105"] = <
+					text = <"Obesidade">
+					description = <"*">
+				>
+				["at0106"] = <
+					text = <"Icterícia">
+					description = <"*">
+				>
+				["at0107"] = <
+					text = <"Tontura">
+					description = <"*">
+				>
+				["at0108"] = <
+					text = <"Edema">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"Insônia">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"Trauma">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Cefaléia">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"Dor">
+					description = <"*">
+				>
+				["at0113"] = <
+					text = <"Secreção">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"Visão Borrada">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"Diplopia">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Glaucoma">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Catarata">
+					description = <"*">
+				>
+				["at0118"] = <
+					text = <"Dor">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Secreção">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"Sangue">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Zumbidos">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Hipoacusia">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Alteração da Voz">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"Dificuldade de Deglutir">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Próteses">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Coriza">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"Sangramento">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Sinusite">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Dor">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Tosse Seca">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"Expectoração">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Sibilos">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Dispnéia">
+					description = <"*">
+				>
+				["at0134"] = <
+					text = <"Hemoptise">
+					description = <"*">
+				>
+				["at0135"] = <
+					text = <"Enfisema">
+					description = <"*">
+				>
+				["at0136"] = <
+					text = <"Asma">
+					description = <"*">
+				>
+				["at0137"] = <
+					text = <"Bronquite">
+					description = <"*">
+				>
+				["at0138"] = <
+					text = <"Dor Precordial">
+					description = <"*">
+				>
+				["at0139"] = <
+					text = <"Taquicardia">
+					description = <"*">
+				>
+				["at0140"] = <
+					text = <"Bradicardia">
+					description = <"*">
+				>
+				["at0141"] = <
+					text = <"Palpitações">
+					description = <"*">
+				>
+				["at0142"] = <
+					text = <"Pressão Arterial Elevada">
+					description = <"*">
+				>
+				["at0143"] = <
+					text = <"Sopros">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"Edema">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"Claudicação">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"Varizes">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"Trombose">
+					description = <"*">
+				>
+				["at0148"] = <
+					text = <"Câimbras">
+					description = <"*">
+				>
+				["at0149"] = <
+					text = <"Cianose">
+					description = <"*">
+				>
+				["at0150"] = <
+					text = <"Dor">
+					description = <"*">
+				>
+				["at0151"] = <
+					text = <"Azia">
+					description = <"*">
+				>
+				["at0152"] = <
+					text = <"Refluxo">
+					description = <"*">
+				>
+				["at0153"] = <
+					text = <"Disfagia">
+					description = <"*">
+				>
+				["at0154"] = <
+					text = <"Plenitude Gástrica">
+					description = <"*">
+				>
+				["at0155"] = <
+					text = <"Náusea">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"Vômito">
+					description = <"*">
+				>
+				["at0157"] = <
+					text = <"Diarréia">
+					description = <"*">
+				>
+				["at0158"] = <
+					text = <"Obstipação">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Hematêmese">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Melena">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Enterorragia">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Tenesmo">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"Disúria">
+					description = <"*">
+				>
+				["at0164"] = <
+					text = <"Noctúria">
+					description = <"*">
+				>
+				["at0165"] = <
+					text = <"Polaciúria">
+					description = <"*">
+				>
+				["at0166"] = <
+					text = <"Hematúria">
+					description = <"*">
+				>
+				["at0167"] = <
+					text = <"Retenção Urinária">
+					description = <"*">
+				>
+				["at0168"] = <
+					text = <"Urgência Miccional">
+					description = <"*">
+				>
+				["at0169"] = <
+					text = <"Incontinência">
+					description = <"*">
+				>
+				["at0170"] = <
+					text = <"Infecção">
+					description = <"*">
+				>
+				["at0171"] = <
+					text = <"Poliúria">
+					description = <"*">
+				>
+				["at0172"] = <
+					text = <"Dor Testicular">
+					description = <"*">
+				>
+				["at0173"] = <
+					text = <"Secreção Uretral">
+					description = <"*">
+				>
+				["at0174"] = <
+					text = <"Hematospermia">
+					description = <"*">
+				>
+				["at0175"] = <
+					text = <"Prostatismo">
+					description = <"*">
+				>
+				["at0176"] = <
+					text = <"Secreção de Mamilo">
+					description = <"*">
+				>
+				["at0177"] = <
+					text = <"Corrimento">
+					description = <"*">
+				>
+				["at0178"] = <
+					text = <"Prurido">
+					description = <"*">
+				>
+				["at0179"] = <
+					text = <"Alteração Menstrual">
+					description = <"*">
+				>
+				["at0180"] = <
+					text = <"Secreção Uretral">
+					description = <"*">
+				>
+				["at0181"] = <
+					text = <"Nódulos Mamários">
+					description = <"*">
+				>
+				["at0182"] = <
+					text = <"Dor Muscular">
+					description = <"*">
+				>
+				["at0183"] = <
+					text = <"Limitação de Movimento">
+					description = <"*">
+				>
+				["at0184"] = <
+					text = <"Força Diminuída">
+					description = <"*">
+				>
+				["at0185"] = <
+					text = <"Cervicalgia">
+					description = <"*">
+				>
+				["at0186"] = <
+					text = <"Dorsalgia">
+					description = <"*">
+				>
+				["at0187"] = <
+					text = <"Lombalgia">
+					description = <"*">
+				>
+				["at0188"] = <
+					text = <"Rigidez Vertebral">
+					description = <"*">
+				>
+				["at0189"] = <
+					text = <"Neurológico">
+					description = <"*">
+				>
+				["at0190"] = <
+					text = <"Desmaio">
+					description = <"*">
+				>
+				["at0191"] = <
+					text = <"Convulsões">
+					description = <"*">
+				>
+				["at0192"] = <
+					text = <"Tremor">
+					description = <"*">
+				>
+				["at0193"] = <
+					text = <"Formigamento">
+					description = <"*">
+				>
+				["at0194"] = <
+					text = <"Parestesias">
+					description = <"*">
+				>
+				["at0195"] = <
+					text = <"Paralisias">
+					description = <"*">
+				>
+				["at0196"] = <
+					text = <"Paresias">
+					description = <"*">
+				>
+				["at0197"] = <
+					text = <"Claudicação">
+					description = <"*">
+				>
+				["at0198"] = <
+					text = <"Rigidez de Nuca">
+					description = <"*">
+				>
+				["at0199"] = <
+					text = <"Pele">
+					description = <"*">
+				>
+				["at0200"] = <
+					text = <"Palidez">
+					description = <"*">
+				>
+				["at0201"] = <
+					text = <"Cianose">
+					description = <"*">
+				>
+				["at0202"] = <
+					text = <"Prurido">
+					description = <"*">
+				>
+				["at0203"] = <
+					text = <"Hematomas">
+					description = <"*">
+				>
+				["at0204"] = <
+					text = <"Hematológico">
+					description = <"*">
+				>
+				["at0205"] = <
+					text = <"Anemia">
+					description = <"*">
+				>
+				["at0206"] = <
+					text = <"Sangramento">
+					description = <"*">
+				>
+				["at0207"] = <
+					text = <"Transfusão">
+					description = <"*">
+				>
+				["at0208"] = <
+					text = <"Endócrino">
+					description = <"*">
+				>
+				["at0209"] = <
+					text = <"Alteração da Tireóide">
+					description = <"*">
+				>
+				["at0210"] = <
+					text = <"Intolerância ao Frio ou Calor">
+					description = <"*">
+				>
+				["at0211"] = <
+					text = <"Sudorese Excessiva">
+					description = <"*">
+				>
+				["at0212"] = <
+					text = <"Sede">
+					description = <"*">
+				>
+				["at0213"] = <
+					text = <"Fome">
+					description = <"*">
+				>
+				["at0214"] = <
+					text = <"Psiquiátrico">
+					description = <"*">
+				>
+				["at0215"] = <
+					text = <"Depressão">
+					description = <"*">
+				>
+				["at0216"] = <
+					text = <"Tensão">
+					description = <"*">
+				>
+				["at0217"] = <
+					text = <"Alteração de Humor">
+					description = <"*">
+				>
+				["at0218"] = <
+					text = <"Alteração de Memória">
+					description = <"*">
+				>
+				["at0219"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0220"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0221"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0222"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0223"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0224"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0225"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0226"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0227"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0228"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0229"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0230"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0231"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0232"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0233"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0234"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0235"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0236"] = <
+					text = <"Observações">
+					description = <"*">
+				>
+				["at0237"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0238"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0239"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0240"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0241"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0242"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0243"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0244"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0245"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0246"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0247"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0248"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0249"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0250"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0251"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0252"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0253"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+				["at0254"] = <
+					text = <"Não Avaliado">
+					description = <"*">
+				>
+			>
+		>
+	>

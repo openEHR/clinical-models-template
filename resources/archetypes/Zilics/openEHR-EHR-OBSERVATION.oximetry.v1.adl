@@ -1,0 +1,289 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.oximetry.v1
+
+concept
+	[at0000]	-- Oximetria
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"7/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Records a measure of oxygen saturation in the blood using a pulse oximeter
+
+
+">
+			use = <"">
+			keywords = <"oxygen", "oxygenation", "pulse oximeter", "pulse oximetry">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registra a medida de saturação de oxigênio sanguíneo usando um oxímetro de pulso.">
+			use = <"*
+
+
+
+
+
+
+
+">
+			keywords = <"*oxygen(en)", "*oxygenation(en)", "*pulse oximeter(en)", "*pulse oximetry(en)">
+			misuse = <"*
+
+
+
+
+
+
+
+">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Oximetria
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer registro
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Saturação do oxigênio
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|1|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_LIST[at0004] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- FiO2
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|1|>
+													>
+												>
+												assumed_value = <
+													precision = <1>
+													magnitude = <0.0>
+													units = <"%">
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_LIST[at0007] matches {	-- List
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Local da medição
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Dedos das mãos
+									at0011, 	-- Dedos dos pés
+									at0012, 	-- Orelha
+									at0013]	-- Pulsos
+								}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Instrumento de medida
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0014, 	-- Digital (dedos)
+									at0015]	-- Pele
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oximetry">
+					description = <"Measure of oxygen saturation in the blood recorded using a pulse oximeter or similar device">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Timing event">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"FiO2">
+					description = <"The proportion of oxygen in the inspired air">
+				>
+				["at0006"] = <
+					text = <"Oxygen Saturation">
+					description = <"The saturation of oxygen in the blood">
+				>
+				["at0007"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Instrument">
+					description = <"The device used">
+				>
+				["at0009"] = <
+					text = <"Site">
+					description = <"The site of measurement">
+				>
+				["at0010"] = <
+					text = <"*Dedos das mãos(en)">
+					description = <"*Dedos das mãos(en)">
+				>
+				["at0011"] = <
+					text = <"*Dedos dos pés(en)">
+					description = <"*Dedos dos pés(en)">
+				>
+				["at0012"] = <
+					text = <"*Orelha(en)">
+					description = <"*Orelha(en)">
+				>
+				["at0013"] = <
+					text = <"*Pulsos(en)">
+					description = <"*Pulsos(en)">
+				>
+				["at0014"] = <
+					text = <"*Digital(en)">
+					description = <"*Digital(en)">
+				>
+				["at0015"] = <
+					text = <"*Pele(en)">
+					description = <"*Pele(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oximetria">
+					description = <"Registra a medida de saturação de oxigênio sanguíneo usando um oxímetro de pulso ou similar">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer registro">
+					description = <"Controle de registro">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"FiO2">
+					description = <"A proporção de oxigênio no ar inspirado">
+				>
+				["at0006"] = <
+					text = <"Saturação do oxigênio">
+					description = <"A saturação do oxigênio sanguíneo">
+				>
+				["at0007"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Instrumento de medida">
+					description = <"Tipo de aparelho utilizado">
+				>
+				["at0009"] = <
+					text = <"Local da medição">
+					description = <"O local onde foi realizada a medição">
+				>
+				["at0010"] = <
+					text = <"Dedos das mãos">
+					description = <"Dedos das mãos">
+				>
+				["at0011"] = <
+					text = <"Dedos dos pés">
+					description = <"Dedos dos pés">
+				>
+				["at0012"] = <
+					text = <"Orelha">
+					description = <"Orelha">
+				>
+				["at0013"] = <
+					text = <"Pulsos">
+					description = <"Pulsos">
+				>
+				["at0014"] = <
+					text = <"Digital (dedos)">
+					description = <"Digital (dedos)">
+				>
+				["at0015"] = <
+					text = <"Pele">
+					description = <"Pele">
+				>
+			>
+		>
+	>

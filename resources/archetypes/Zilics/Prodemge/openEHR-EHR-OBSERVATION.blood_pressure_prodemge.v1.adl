@@ -1,0 +1,323 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.blood_pressure_prodemge.v1
+
+concept
+	[at0000]	-- Pressão sanquínea
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Pressão sanguínea do Pacientre">
+			use = <"Pressão sanguínea do Paciente">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Pressão sanguínea do Pacientre">
+			use = <"Pressão sanguínea do Pacientre">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"D4CEB9595EAEAB6B83BB4CD4A2B688E9">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pressão sanquínea
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Posição
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Ortostática
+													at0006, 	-- Sentado
+													at0007, 	-- Reclinado
+													at0008, 	-- Deitado
+													at0009]	-- Decúbito Lateral Esquerdo
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Local da Mensuração
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0011, 	-- Braço Direito
+													at0012, 	-- Braço Esquerdo
+													at0013, 	-- Coxa Direita
+													at0014, 	-- Coxa Esquerda
+													at0015, 	-- Punho Direito
+													at0016, 	-- Punho Esquerdo
+													at0017, 	-- Tornozelo Direito
+													at0018, 	-- Tornozelo Esquerdo
+													at0019, 	-- Dedo da Mão
+													at0020, 	-- Dedo do Pé
+													at0021]	-- Intra-Arterial
+												}
+											}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Pressão Arterial Sistólica
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|0.0..1000.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Pressão Arterial Diastólica
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|0.0..1000.0|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pressão sanquínea">
+					description = <"Pressão sanguínea do Paciente">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Posição">
+					description = <"Posição do paciente na medição da pressão arterial">
+				>
+				["at0005"] = <
+					text = <"Ortostática">
+					description = <"Ortostática">
+				>
+				["at0006"] = <
+					text = <"Sentado">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Reclinado">
+					description = <"Reclinado">
+				>
+				["at0008"] = <
+					text = <"Deitado">
+					description = <"Deitado">
+				>
+				["at0009"] = <
+					text = <"Decúbito Lateral Esquerdo">
+					description = <"Decúbito Lateral Esquerdo">
+				>
+				["at0010"] = <
+					text = <"Local da Mensuração">
+					description = <"Local da mensuração da pressão arterial">
+				>
+				["at0011"] = <
+					text = <"Braço Direito">
+					description = <"Braço Direito">
+				>
+				["at0012"] = <
+					text = <"Braço Esquerdo">
+					description = <"Braço Esquerdo">
+				>
+				["at0013"] = <
+					text = <"Coxa Direita">
+					description = <"Coxa Direita">
+				>
+				["at0014"] = <
+					text = <"Coxa Esquerda">
+					description = <"Coxa Esquerda">
+				>
+				["at0015"] = <
+					text = <"Punho Direito">
+					description = <"Punho Direito">
+				>
+				["at0016"] = <
+					text = <"Punho Esquerdo">
+					description = <"Punho Esquerdo">
+				>
+				["at0017"] = <
+					text = <"Tornozelo Direito">
+					description = <"Tornozelo Direito">
+				>
+				["at0018"] = <
+					text = <"Tornozelo Esquerdo">
+					description = <"Tornozelo Esquerdo">
+				>
+				["at0019"] = <
+					text = <"Dedo da Mão">
+					description = <"Dedo da Mão">
+				>
+				["at0020"] = <
+					text = <"Dedo do Pé">
+					description = <"Dedo do Pé">
+				>
+				["at0021"] = <
+					text = <"Intra-Arterial">
+					description = <"Intra_Arterial">
+				>
+				["at0023"] = <
+					text = <"Pressão Arterial Sistólica">
+					description = <"Pico da pressão arterial sistêmica mensurada na fase sistólica ou de contração do ciclo do coração.
+">
+				>
+				["at0024"] = <
+					text = <"Pressão Arterial Diastólica">
+					description = <"Mínimo da pressão arterial sistêmica mensurada na fase diastólica ou de relaxamento do ciclo do coração.
+">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"*">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*Ortostática(pt)">
+					description = <"*Ortostática(pt)">
+				>
+				["at0006"] = <
+					text = <"*Sentado(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*Reclinado(pt)">
+					description = <"*Reclinado(pt)">
+				>
+				["at0008"] = <
+					text = <"*Deitado(pt)">
+					description = <"*Deitado(pt)">
+				>
+				["at0009"] = <
+					text = <"*Decúbito Lateral Esquerdo(pt)">
+					description = <"*Decúbito Lateral Esquerdo(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Braço Direito(pt)">
+					description = <"*Braço Direito(pt)">
+				>
+				["at0012"] = <
+					text = <"*Braço Esquerdo(pt)">
+					description = <"*Braço Esquerdo(pt)">
+				>
+				["at0013"] = <
+					text = <"*Coxa Direita(pt)">
+					description = <"*Coxa Direita(pt)">
+				>
+				["at0014"] = <
+					text = <"*Coxa Esquerda(pt)">
+					description = <"*Coxa Esquerda(pt)">
+				>
+				["at0015"] = <
+					text = <"*Punho Direito(pt)">
+					description = <"*Punho Direito(pt)">
+				>
+				["at0016"] = <
+					text = <"*Punho Esquerdo(pt)">
+					description = <"*Punho Esquerdo(pt)">
+				>
+				["at0017"] = <
+					text = <"*Tornozelo Direito(pt)">
+					description = <"*Tornozelo Direito(pt)">
+				>
+				["at0018"] = <
+					text = <"*Tornozelo Esquerdo(pt)">
+					description = <"*Tornozelo Esquerdo(pt)">
+				>
+				["at0019"] = <
+					text = <"*Dedo da Mão(pt)">
+					description = <"*Dedo da Mão(pt)">
+				>
+				["at0020"] = <
+					text = <"*Dedo do Pé(pt)">
+					description = <"*Dedo do Pé(pt)">
+				>
+				["at0021"] = <
+					text = <"*Intra-Arterial(pt)">
+					description = <"*Intra_Arterial(pt)">
+				>
+				["at0023"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0024"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,1443 @@
+archetype
+    openEHR-EHR-OBSERVATION.barthel_modificado_spa.brv1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::nl]>
+    translations = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            author = <
+                ["name"] = <"????">
+            >
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.com">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"22/03/2006">
+    >
+    lifecycle_state = <"Initial">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record a score of dependency on help to undertake important activities of daily living. The total score is the sum of the ordinal scores for each attribute.">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"For scoring people's independence - often in a nursing home.">
+            misuse = <"Not to be used to record individual features.">
+        >
+        ["nl"] = <
+            language = <[ISO_639-1::nl]>
+            purpose = <"To record a score of dependency on help to undertake important activities of daily living. The total score is the sum of the ordinal scores for each attribute.">
+            keywords = <"score","index","activities","daily living","dependency">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"For scoring people's independence - often in a nursing home.">
+            misuse = <"Not to be used to record individual features.">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*To record a score of dependency on help to undertake important activities of daily living. The total score is the sum of the ordinal scores for each attribute.">
+            keywords = <"score","index","activities","daily living","dependency">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"*For scoring people's independence - often in a nursing home.">
+            misuse = <"*Not to be used to record individual features.">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0002] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0003] occurrences matches {0..*} matches {
+                        data matches {
+                            ITEM_TREE[at0001] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0072] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0026] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0027],
+                                                    2|[local::at0055],
+                                                    3|[local::at0028],
+                                                    4|[local::at0056],
+                                                    5|[local::at0029]
+                                                }
+                                            }
+                                            ELEMENT[at0034] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0035],
+                                                    2|[local::at0052],
+                                                    3|[local::at0044],
+                                                    4|[local::at0053],
+                                                    5|[local::at0054]
+                                                }
+                                            }
+                                            ELEMENT[at0030] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0031],
+                                                    2|[local::at0057],
+                                                    3|[local::at0032],
+                                                    4|[local::at0058],
+                                                    5|[local::at0033]
+                                                }
+                                            }
+                                            ELEMENT[at0009] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0010],
+                                                    2|[local::at0059],
+                                                    3|[local::at0060],
+                                                    4|[local::at0061],
+                                                    5|[local::at0011]
+                                                }
+                                            }
+                                            ELEMENT[at0008] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0037],
+                                                    2|[local::at0062],
+                                                    3|[local::at0063],
+                                                    4|[local::at0006],
+                                                    5|[local::at0038]
+                                                }
+                                            }
+                                            ELEMENT[at0004] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0005],
+                                                    2|[local::at0064],
+                                                    3|[local::at0065],
+                                                    4|[local::at0006],
+                                                    5|[local::at0007]
+                                                }
+                                            }
+                                            ELEMENT[at0012] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0013],
+                                                    2|[local::at0066],
+                                                    3|[local::at0067],
+                                                    4|[local::at0014],
+                                                    5|[local::at0011]
+                                                }
+                                            }
+                                            ELEMENT[at0021] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0022],
+                                                    2|[local::at0023],
+                                                    3|[local::at0024],
+                                                    4|[local::at0068],
+                                                    5|[local::at0025]
+                                                }
+                                            }
+                                            ELEMENT[at0040] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0041],
+                                                    2|[local::at0069],
+                                                    3|[local::at0042],
+                                                    4|[local::at0093],
+                                                    5|[local::at0043]
+                                                }
+                                            }
+                                            ELEMENT[at0046] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0047],
+                                                    2|[local::at0048],
+                                                    3|[local::at0049],
+                                                    4|[local::at0050],
+                                                    5|[local::at0051]
+                                                }
+                                            }
+                                            ELEMENT[at0017] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0018],
+                                                    1|[local::at0019],
+                                                    2|[local::at0020],
+                                                    3|[local::at0070],
+                                                    4|[local::at0071],
+                                                    5|[local::at0039]
+                                                }
+                                            }
+                                            ELEMENT[at0016] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {
+                                                        magnitude matches {|0..20|}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0074] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0075] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0080] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0081] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0082] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0083] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0084] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0085] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0086] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0087] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0088] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0089] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0090] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0091] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    0|[local::at0076],
+                                                    1|[local::at0077],
+                                                    2|[local::at0078],
+                                                    3|[local::at0079]
+                                                }
+                                            }
+                                            ELEMENT[at0092] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Barthel Index">
+                    description = <"Barthel index of dependency in activities of daily living">
+                >
+                ["at0001"] = <
+                    text = <"**structure(en)(nl)">
+                    description = <"**@ internal @(en)(nl)">
+                >
+                ["at0002"] = <
+                    text = <"**history(en)(nl)">
+                    description = <"**@ internal @(en)(nl)">
+                >
+                ["at0003"] = <
+                    text = <"Any event">
+                    description = <"Any timing point">
+                >
+                ["at0004"] = <
+                    text = <"Bladder control">
+                    description = <"Assessment of urinary control over the previous week, occasional accident <= 1 time per week">
+                >
+                ["at0005"] = <
+                    text = <"Incontinent (or unable to manage catheter)">
+                    description = <"Incontinent of urine or catheterised">
+                >
+                ["at0006"] = <
+                    text = <"Occasional accident">
+                    description = <"less than or equal to once per week">
+                >
+                ["at0007"] = <
+                    text = <"Continent (manages catheter alone)">
+                    description = <"Continent includes self management of catheter">
+                >
+                ["at0008"] = <
+                    text = <"Continence of bowels">
+                    description = <"Over the previous week, occasional accident is once per week.">
+                >
+                ["at0009"] = <
+                    text = <"Bathing">
+                    description = <"Independent = without supervision or help when getting in and out of the bath and when washing">
+                >
+                ["at0010"] = <
+                    text = <"Dependent">
+                    description = <"Needs assistance with baths or showers">
+                >
+                ["at0011"] = <
+                    text = <"Independent">
+                    description = <"No help required when getting in and out of the bath or when washing">
+                >
+                ["at0012"] = <
+                    text = <"Dressing/undressing">
+                    description = <"Ability to choose clothes, put them on and fasten them">
+                >
+                ["at0013"] = <
+                    text = <"Dependent">
+                    description = <"Requires assistance choosing and putting on clothes">
+                >
+                ["at0014"] = <
+                    text = <"Needs help but can do about half unaided">
+                    description = <"Needs help only with buttons, zippers but can put on clothes unaided">
+                >
+                ["at0016"] = <
+                    text = <"Total">
+                    description = <"Total score of the 10 elements of the Bartel index. A score of 0-9 indicates high dependency, 10-19 moderate dependency and 20 is independent.">
+                >
+                ["at0017"] = <
+                    text = <"Mobility">
+                    description = <"Ability to get about the house or institution">
+                >
+                ["at0018"] = <
+                    text = <"Immobile or < 50 meters">
+                    description = <"Person can get less than 50 metres in wheelchair">
+                >
+                ["at0019"] = <
+                    text = <"Wheel chair independent">
+                    description = <"Person can negotiate corners and cover distances of greater than 50 meters">
+                >
+                ["at0020"] = <
+                    text = <"Walks with help">
+                    description = <"Person walks with assistance of one (untrained person) with physical or verbal assistance">
+                >
+                ["at0021"] = <
+                    text = <"Transfer">
+                    description = <"Ability to get up from a bed or chair">
+                >
+                ["at0022"] = <
+                    text = <"Unable">
+                    description = <"No sitting balance, a lifting device is used">
+                >
+                ["at0023"] = <
+                    text = <"Major help">
+                    description = <"A strong trained person or 2 people required, patient can sit straight">
+                >
+                ["at0024"] = <
+                    text = <"Minor help">
+                    description = <"A person is required for supervision or some help">
+                >
+                ["at0025"] = <
+                    text = <"Independent">
+                    description = <"**(nl)">
+                >
+                ["at0026"] = <
+                    text = <"Eating">
+                    description = <"Ability to eat food">
+                >
+                ["at0027"] = <
+                    text = <"Unable to eat unassisted">
+                    description = <"Requires manual feeding">
+                >
+                ["at0028"] = <
+                    text = <"Needs help">
+                    description = <"Requires help cutting, spreading butter or requires modified diet - able to eat alone">
+                >
+                ["at0029"] = <
+                    text = <"Independent">
+                    description = <"Able to eat alone">
+                >
+                ["at0030"] = <
+                    text = <"Toilet use">
+                    description = <"Ability to use toilet over the previous 48 hours">
+                >
+                ["at0031"] = <
+                    text = <"Dependent">
+                    description = <"**(nl)">
+                >
+                ["at0032"] = <
+                    text = <"Needs some help but can do some tasks alone">
+                    description = <"**(nl)">
+                >
+                ["at0033"] = <
+                    text = <"Independent (on & off, dressing, wiping)">
+                    description = <"**(nl)">
+                >
+                ["at0034"] = <
+                    text = <"Personal care/hygeine">
+                    description = <"Ability over the previous 24-48 hours to attend to personal hygiene such as brushing teeth, shaving and washing.">
+                >
+                ["at0035"] = <
+                    text = <"Needs help">
+                    description = <"Needs help with personal care">
+                >
+                ["at0036"] = <
+                    text = <"Independent">
+                    description = <"Able to brush teeth, hair, wash face, shave">
+                >
+                ["at0037"] = <
+                    text = <"Incontinent (or requires enemas)">
+                    description = <"incontinent of faeces or requires enemas">
+                >
+                ["at0038"] = <
+                    text = <"Continent">
+                    description = <"continent of faeces">
+                >
+                ["at0039"] = <
+                    text = <"Independent">
+                    description = <"Person can use any aid (not wheelchair) around the house or ward">
+                >
+                ["at0040"] = <
+                    text = <"Stairs">
+                    description = <"Ability to negotiate stairs">
+                >
+                ["at0041"] = <
+                    text = <"Unable">
+                    description = <"Unable to use stairs">
+                >
+                ["at0042"] = <
+                    text = <"Needs help">
+                    description = <"Verbal, physical or other assistance">
+                >
+                ["at0043"] = <
+                    text = <"Independent">
+                    description = <"Can carry aid alone if required">
+                >
+                ["at0015"] = <
+                    text = <"*Necessita assistência em todos as etapas da tarefa">
+                    description = <"*Assistência em todas as etapas">
+                >
+                ["at0044"] = <
+                    text = <"*Necessita assistência parcial">
+                    description = <"*Ajuda para algumas etapas do processo">
+                >
+                ["at0045"] = <
+                    text = <"*Independente">
+                    description = <"*Totalmente independente para realizar a higiene pessoal">
+                >
+                ["at0046"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0047"] = <
+                    text = <"*Dependente na ambulação da cadeira de rodas">
+                    description = <"**">
+                >
+                ["at0048"] = <
+                    text = <"*Propulsiona a cadeira em curtas distâncias. Necessita auxílio">
+                    description = <"*< 50m, com auxílio">
+                >
+                ["at0049"] = <
+                    text = <"*Assistência para manipular a cadeira para a mesa/banheiro">
+                    description = <"**">
+                >
+                ["at0050"] = <
+                    text = <"*Propulsiona a cadeira em terrenos irregulares. Mínima assistência para subir degraus">
+                    description = <"*Mínima assistência apenas para tarefas complexas">
+                >
+                ["at0051"] = <
+                    text = <"*Independente no uso da cadeira de rodas.">
+                    description = <"*Capaz de movimentar-se por mais de 50 m.">
+                >
+                ["at0052"] = <
+                    text = <"*Assistência Parcial em todas as etapas">
+                    description = <"*Alguma assistência em todos os passos da tarefa">
+                >
+                ["at0053"] = <
+                    text = <"*Assistência Mínima antes ou depois da tarefa">
+                    description = <"**">
+                >
+                ["at0054"] = <
+                    text = <"*Independente para todas as tarefas">
+                    description = <"*tomar banho, pentear cabelo. Homens - fazer barba (com aparelho elétrico ou lâmina). Mulheres - maquiar-se">
+                >
+                ["at0055"] = <
+                    text = <"*Assistência Ativa durante toda a tarefa">
+                    description = <"**">
+                >
+                ["at0056"] = <
+                    text = <"*Independente exceto para tarefas complexas">
+                    description = <"**">
+                >
+                ["at0057"] = <
+                    text = <"*Assistência em todos os aspectos da tarefa">
+                    description = <"**">
+                >
+                ["at0058"] = <
+                    text = <"*Independente com supervisão">
+                    description = <"*Pode utilizar  barra ou suporte. Se utiliza urinol não consegue esvaziá-lo">
+                >
+                ["at0059"] = <
+                    text = <"*Assistência em todos os aspectos">
+                    description = <"**">
+                >
+                ["at0060"] = <
+                    text = <"*Assistência em alguns passos como transferências, lavar ou enxugar">
+                    description = <"**">
+                >
+                ["at0061"] = <
+                    text = <"*Supervisão de segurança  como ajustr temperatura">
+                    description = <"**">
+                >
+                ["at0062"] = <
+                    text = <"*Incontinente mas capaz de ajudar com dispositivo interno ou externo">
+                    description = <"**">
+                >
+                ["at0063"] = <
+                    text = <"*Assistência para uso das técnicas facilitatórias e para limpar-se. Acidentes ocasionais.">
+                    description = <"**">
+                >
+                ["at0064"] = <
+                    text = <"*Incontinente mas capaz de ajudar com dispositivo interno ou externo">
+                    description = <"**">
+                >
+                ["at0065"] = <
+                    text = <"*Permance seco durante o dia mas não a noite.">
+                    description = <"*Necessita auxilio com o dispositivo">
+                >
+                ["at0066"] = <
+                    text = <"*Assistência em todos os aspectos.">
+                    description = <"*Participa de alguma forma">
+                >
+                ["at0067"] = <
+                    text = <"*Assistência é requerida para colocar e/ou remover alguma roupa">
+                    description = <"**">
+                >
+                ["at0068"] = <
+                    text = <"*Supervisão em algumas etapas do processo">
+                    description = <"**">
+                >
+                ["at0069"] = <
+                    text = <"*Assistência em todos os aspectos">
+                    description = <"**">
+                >
+                ["at0070"] = <
+                    text = <"*Assistência para alcançar apoio e deambular">
+                    description = <"**">
+                >
+                ["at0071"] = <
+                    text = <"*Assistência mínima ou supervisão em situações de risco">
+                    description = <"*No percurso de 50 m">
+                >
+                ["at0072"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0073"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0074"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0075"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0076"] = <
+                    text = <"*Sem dificuldade">
+                    description = <"**">
+                >
+                ["at0077"] = <
+                    text = <"*Com alguma dificuldade">
+                    description = <"**">
+                >
+                ["at0078"] = <
+                    text = <"*Com muita dificuldade">
+                    description = <"**">
+                >
+                ["at0079"] = <
+                    text = <"*Incapaz de fazer">
+                    description = <"**">
+                >
+                ["at0080"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0081"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0082"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0083"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0084"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0085"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0086"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0087"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0088"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0089"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0090"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0091"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0092"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0093"] = <
+                    text = <"*Supervisão para segurança ou em situações de risco">
+                    description = <"**">
+                >
+            >
+        >
+        ["nl"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Barthel Index">
+                    description = <"Een valide en betrouwbare manier te kunnen vastleggen en volgen van activiteiten van het dagelijks leven van pati?ten, vooral de mate van afhankelijk zijn van hulp">
+                >
+                ["at0001"] = <
+                    text = <"structure">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"history">
+                    description = <"*@ internal @(en)">
+                >
+                ["at0003"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Darm">
+                    description = <"Voorgaande week: Indien klysma noodzakelijk is dan wordt dit aangemerkt als 'incontinent'. Af en toe = 1 keer per week">
+                >
+                ["at0005"] = <
+                    text = <"incontinent of catheter">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"af en toe een ongelukje (max. 1 keer per 24 uur)">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"continent (gedurende meer dan 7 dagen)">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Blaas">
+                    description = <"Voorgaande week: Af en toe = 1 keer per dagEen pati??nt die zijn catheter zelf kan verzorgen wordt aangemerkt als 'continent'">
+                >
+                ["at0009"] = <
+                    text = <"Baden/douche">
+                    description = <"Onafhankelijk = zonder toezicht of hulp in en uit bad stappen en zichzelf wassen.">
+                >
+                ["at0010"] = <
+                    text = <"afhankelijk">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"onafinankelik">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Aan - en uitkleden">
+                    description = <"De helft  = alleen hulp bij knopen, ritssluitingen enz; kan enkele kledingstukken zelf aandoen.Onafhankelijk = in staat kleren te kiezen en aan te doen.">
+                >
+                ["at0013"] = <
+                    text = <"afhankelijk">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"heeft hulp nodig maar kan oeveer de helft zelf">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Totaal">
+                    description = <"Totaal Barthel-index voorbeeld">
+                >
+                ["at0017"] = <
+                    text = <"Mobiliteit">
+                    description = <"Hulp = een ongetraind persoon, incl. toezicht en morele steun.Onafhankelijk = kan zich verplaatsen in huis of op afdeling; hulpmiddel mag worden gebruikt.Een pati??nt in rolstoel moet zonder hulp met hoeken en deuren kunnen omgaan.">
+                >
+                ["at0018"] = <
+                    text = <"kan zich niet verplaatsen">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"onafhankelijk, maar maakt gebruik van rolstoel, incl. hoeken enz">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"loopt met hulp van 1 persoon (hulp van woorden of lichamelijk)">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Transfer (van bed naar stoel en terug)">
+                    description = <"Afhankelijk = niet in staat om te zitten; er wordt gebruik gemaakt van tillift.Veel hulp = een sterk, getraind persoon of 2 gewone personen; pati??nt kan rechtop zitten.Weinig hulp = een persoon voor toezicht of enige hulp.">
+                >
+                ["at0022"] = <
+                    text = <"niet in staat">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"veel hulp (1-2 mensen lichamelijk)">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"weinig hulp (met hulp van woorden of lichamelijk)">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"onafhankelijk">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Eten">
+                    description = <"Hulp = voedsel wordt fijngemaakt; pati??nt eet zelf.In staat om normaal voedsel (ook hard voedsel) te eten. (Het eten mag gekookt en geserveerd worden door anderen maar mag niet worden fijngemaakt).">
+                >
+                ["at0027"] = <
+                    text = <"niet in staat">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"heeft hulp nodig bij snijden, smeren van boter, enz.">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"onafhankelijk">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Toiletgebruik">
+                    description = <"Met hulp = kan zich afvegen en enige van bovenstaande handelingen uitvoeren.Onafhankelijk = in staat om naar toilet te gaan, zich voldoende uit te kleden, schoon te maken, aan te kleden en weg te gaan.">
+                >
+                ["at0031"] = <
+                    text = <"afhankelijk">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"heeft enige hulp nodig maar kan sommige dingen zelf">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"onafhankelijk (op en af, uit- en aankleden, afvegen)">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Uiterlijke verzorging">
+                    description = <"Voorgaande 24-48 uur: Verwijst naar persoonlijke hygi??ne zoals tandenpoetsen, scheren en wassen. Hierbij benodigde attributen mogen worden aangereikt.">
+                >
+                ["at0035"] = <
+                    text = <"heeft hulp nodig">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"onafhankelijk (gezicht, haar, tanden, scheren)">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"incontinent">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"continent">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"onafhankelijk">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Trappen">
+                    description = <"Trappen">
+                >
+                ["at0041"] = <
+                    text = <"neit in staat">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"heeft hulp nodig (woorden, lichamelijk of hulpmiddel)">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"onafhankelijk naar boven en naar beneden">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"*Necessita assistência em todos as etapas da tarefa">
+                    description = <"*Assistência em todas as etapas">
+                >
+                ["at0044"] = <
+                    text = <"*Necessita assistência parcial">
+                    description = <"*Ajuda para algumas etapas do processo">
+                >
+                ["at0045"] = <
+                    text = <"*Independente">
+                    description = <"*Totalmente independente para realizar a higiene pessoal">
+                >
+                ["at0046"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0047"] = <
+                    text = <"*Dependente na ambulação da cadeira de rodas">
+                    description = <"**">
+                >
+                ["at0048"] = <
+                    text = <"*Propulsiona a cadeira em curtas distâncias. Necessita auxílio">
+                    description = <"*< 50m, com auxílio">
+                >
+                ["at0049"] = <
+                    text = <"*Assistência para manipular a cadeira para a mesa/banheiro">
+                    description = <"**">
+                >
+                ["at0050"] = <
+                    text = <"*Propulsiona a cadeira em terrenos irregulares. Mínima assistência para subir degraus">
+                    description = <"*Mínima assistência apenas para tarefas complexas">
+                >
+                ["at0051"] = <
+                    text = <"*Independente no uso da cadeira de rodas.">
+                    description = <"*Capaz de movimentar-se por mais de 50 m.">
+                >
+                ["at0052"] = <
+                    text = <"*Assistência Parcial em todas as etapas">
+                    description = <"*Alguma assistência em todos os passos da tarefa">
+                >
+                ["at0053"] = <
+                    text = <"*Assistência Mínima antes ou depois da tarefa">
+                    description = <"**">
+                >
+                ["at0054"] = <
+                    text = <"*Independente para todas as tarefas">
+                    description = <"*tomar banho, pentear cabelo. Homens - fazer barba (com aparelho elétrico ou lâmina). Mulheres - maquiar-se">
+                >
+                ["at0055"] = <
+                    text = <"*Assistência Ativa durante toda a tarefa">
+                    description = <"**">
+                >
+                ["at0056"] = <
+                    text = <"*Independente exceto para tarefas complexas">
+                    description = <"**">
+                >
+                ["at0057"] = <
+                    text = <"*Assistência em todos os aspectos da tarefa">
+                    description = <"**">
+                >
+                ["at0058"] = <
+                    text = <"*Independente com supervisão">
+                    description = <"*Pode utilizar  barra ou suporte. Se utiliza urinol não consegue esvaziá-lo">
+                >
+                ["at0059"] = <
+                    text = <"*Assistência em todos os aspectos">
+                    description = <"**">
+                >
+                ["at0060"] = <
+                    text = <"*Assistência em alguns passos como transferências, lavar ou enxugar">
+                    description = <"**">
+                >
+                ["at0061"] = <
+                    text = <"*Supervisão de segurança  como ajustr temperatura">
+                    description = <"**">
+                >
+                ["at0062"] = <
+                    text = <"*Incontinente mas capaz de ajudar com dispositivo interno ou externo">
+                    description = <"**">
+                >
+                ["at0063"] = <
+                    text = <"*Assistência para uso das técnicas facilitatórias e para limpar-se. Acidentes ocasionais.">
+                    description = <"**">
+                >
+                ["at0064"] = <
+                    text = <"*Incontinente mas capaz de ajudar com dispositivo interno ou externo">
+                    description = <"**">
+                >
+                ["at0065"] = <
+                    text = <"*Permance seco durante o dia mas não a noite.">
+                    description = <"*Necessita auxilio com o dispositivo">
+                >
+                ["at0066"] = <
+                    text = <"*Assistência em todos os aspectos.">
+                    description = <"*Participa de alguma forma">
+                >
+                ["at0067"] = <
+                    text = <"*Assistência é requerida para colocar e/ou remover alguma roupa">
+                    description = <"**">
+                >
+                ["at0068"] = <
+                    text = <"*Supervisão em algumas etapas do processo">
+                    description = <"**">
+                >
+                ["at0069"] = <
+                    text = <"*Assistência em todos os aspectos">
+                    description = <"**">
+                >
+                ["at0070"] = <
+                    text = <"*Assistência para alcançar apoio e deambular">
+                    description = <"**">
+                >
+                ["at0071"] = <
+                    text = <"*Assistência mínima ou supervisão em situações de risco">
+                    description = <"*No percurso de 50 m">
+                >
+                ["at0072"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0073"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0074"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0075"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0076"] = <
+                    text = <"*Sem dificuldade">
+                    description = <"**">
+                >
+                ["at0077"] = <
+                    text = <"*Com alguma dificuldade">
+                    description = <"**">
+                >
+                ["at0078"] = <
+                    text = <"*Com muita dificuldade">
+                    description = <"**">
+                >
+                ["at0079"] = <
+                    text = <"*Incapaz de fazer">
+                    description = <"**">
+                >
+                ["at0080"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0081"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0082"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0083"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0084"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0085"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0086"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0087"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0088"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0089"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0090"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0091"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0092"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0093"] = <
+                    text = <"*Supervisão para segurança ou em situações de risco">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Barthel Index">
+                    description = <"*Barthel index of dependency in activities of daily living">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"***history(en)(nl)">
+                    description = <"***@ internal @(en)(nl)">
+                >
+                ["at0003"] = <
+                    text = <"*Any event">
+                    description = <"*Any timing point">
+                >
+                ["at0004"] = <
+                    text = <"Continência do esfíncter vesical">
+                    description = <"Avaliação do controle do esfíncter vesical. Acidentes ocasionais <= 1 x por semana.   ">
+                >
+                ["at0005"] = <
+                    text = <"Incontinente - uso de cateter interno ">
+                    description = <"Incontinência urinária e/ou utilizando cateter">
+                >
+                ["at0006"] = <
+                    text = <"Acidentes ocasionais. Ajuda para manejar dispositivo interno ou externo">
+                    description = <"Acidentes ocasionais  < ou = a uma vez por semana">
+                >
+                ["at0007"] = <
+                    text = <"Continente (capaz de manejar cateter/sonda sem auxílio)">
+                    description = <"Continente - capaz de manejar o cateter ou sonda                                ">
+                >
+                ["at0008"] = <
+                    text = <"Continência do esfincter anal">
+                    description = <"Avalia o grau de incontinência do esfíncter anal">
+                >
+                ["at0009"] = <
+                    text = <"Banho">
+                    description = <"*Independent = without supervision or help when getting in and out of the bath and when washing">
+                >
+                ["at0010"] = <
+                    text = <"Dependente">
+                    description = <"Necessita assistência em todas as etapas do processo">
+                >
+                ["at0011"] = <
+                    text = <"Independente">
+                    description = <"Não necessita ajuda. Realiza todas as tarefas sozinho">
+                >
+                ["at0012"] = <
+                    text = <"Vestir-se">
+                    description = <"Habilidade de escolher roupas, vestí-las e fechá-las. ">
+                >
+                ["at0013"] = <
+                    text = <"Dependente. Incapaz de vestir-se sozinho">
+                    description = <"Necessita assistência para escoher as roupas, vestí-las e fechá-las">
+                >
+                ["at0014"] = <
+                    text = <"Assistência mínima para fechar botões, zippers, amarrar sapatos, colocar meias..">
+                    description = <"Auxílio apenas em etapas específicas">
+                >
+                ["at0016"] = <
+                    text = <"Escore total">
+                    description = <"O escore total dos dez elementos do índice de Barthel. Totais de 0-9 = alta dependência; 10 - 19 = dependência moderada;  20 = independente">
+                >
+                ["at0017"] = <
+                    text = <"Deambulação">
+                    description = <"Capacidade de movimentar-se 
+">
+                >
+                ["at0018"] = <
+                    text = <"Dependente na deambulação">
+                    description = <"não participa">
+                >
+                ["at0019"] = <
+                    text = <"Assistência por uma ou duas pessoas durante toda a deambulação">
+                    description = <"assistência em todas as etapas">
+                >
+                ["at0020"] = <
+                    text = <"Assistência mínima para deambular">
+                    description = <"caminha com auxílio de uma pessoa ">
+                >
+                ["at0021"] = <
+                    text = <" Transferências (Cama e Cadeira)">
+                    description = <"Capacidade de se levantar da cama ou da cadeira">
+                >
+                ["at0022"] = <
+                    text = <"Dependente / Incapaz">
+                    description = <"não participa da ação. ">
+                >
+                ["at0023"] = <
+                    text = <"Assistência máxima">
+                    description = <"Exige duas pessoas ou uma pessoa forte e treinada. Paciente é capaz de sentar-se ">
+                >
+                ["at0024"] = <
+                    text = <"Assistência mínima">
+                    description = <"Necessita assistência ou supervisão em alguma etapa da transferência">
+                >
+                ["at0025"] = <
+                    text = <"Independente">
+                    description = <"Capaz de se transferir da cadeira p cama e vice-versa sem auxílio">
+                >
+                ["at0026"] = <
+                    text = <"Alimentação">
+                    description = <"Capacidade de se alimentar">
+                >
+                ["at0027"] = <
+                    text = <"Dependente. Precisa ser alimentado">
+                    description = <"Pecisa ser alimentado">
+                >
+                ["at0028"] = <
+                    text = <"Necessita auxílio em etapas do processo">
+                    description = <"Necessita auxílio para cortar, espalhar manteiga ou necessita dieta especial. É capaz de comer sózinho. ">
+                >
+                ["at0029"] = <
+                    text = <"Independente">
+                    description = <"Capaz de comer sozinho">
+                >
+                ["at0030"] = <
+                    text = <"Uso do banheiro">
+                    description = <"*Ability to use toilet over the previous 48 hours">
+                >
+                ["at0031"] = <
+                    text = <"Dependente">
+                    description = <"Incapaz de realizar a tarefa.">
+                >
+                ["at0032"] = <
+                    text = <"Assistência em alguns aspectos como limpar-se, transferências, lavar as mãos">
+                    description = <"Necessita auxílo em algumas tarefas">
+                >
+                ["at0033"] = <
+                    text = <"Independente (entrar/ sair, vestir-se, limpar-se)">
+                    description = <"Independente em todas as etapas">
+                >
+                ["at0034"] = <
+                    text = <"Higiene Pessoal">
+                    description = <"*Ability over the previous 24-48 hours to attend to personal hygiene such as brushing teeth, shaving and washing.">
+                >
+                ["at0035"] = <
+                    text = <"Dependente">
+                    description = <"Incapaz de cuidar da higiene pessoal">
+                >
+                ["at0036"] = <
+                    text = <"*Independent">
+                    description = <"*Able to brush teeth, hair, wash face, shave">
+                >
+                ["at0037"] = <
+                    text = <"Incontinente (ou exige enemas)">
+                    description = <"incontinência fecal ou exige enemas">
+                >
+                ["at0038"] = <
+                    text = <"Continente">
+                    description = <" Controla o esfíncter anal. Pode usar um supositório ou enema quando necessário                              ">
+                >
+                ["at0039"] = <
+                    text = <"Independente">
+                    description = <"Pode utilizar bengalas, órteses, andadores. Caminha por pelo menos 50 m">
+                >
+                ["at0040"] = <
+                    text = <"Subir e Descer Escadas">
+                    description = <"*Ability to negotiate stairs">
+                >
+                ["at0041"] = <
+                    text = <"Incapaz de utilizar escadas">
+                    description = <"Incapaz de subir ou descer escadas">
+                >
+                ["at0042"] = <
+                    text = <"Sobe e desce mas necessita assistência em alguns passos ">
+                    description = <"Necessita assistência em algumas etapas">
+                >
+                ["at0043"] = <
+                    text = <"Sobe e desce escadas sem supervisão. Pode usar corrimão">
+                    description = <"">
+                >
+                ["at0015"] = <
+                    text = <"Necessita assistência total">
+                    description = <"Assistência em todas as etapas">
+                >
+                ["at0044"] = <
+                    text = <"Assistência parcial em um ou mais passos">
+                    description = <"Alguma assistência em um ou mais passos da tarefa">
+                >
+                ["at0045"] = <
+                    text = <"Independente">
+                    description = <"Totalmente independente para realizar a higiene pessoal">
+                >
+                ["at0046"] = <
+                    text = <"Manuseio da cadeira de rodas">
+                    description = <"Avalia a capacidade de movimentar-se com uma cadeira de rodas">
+                >
+                ["at0047"] = <
+                    text = <"Dependente na ambulação da cadeira de rodas">
+                    description = <"Utiliza caderi de rodas. Auxílio total para movimentar-se">
+                >
+                ["at0048"] = <
+                    text = <"Propulsiona a cadeira em curtas distâncias. Necessita auxílio.">
+                    description = <"< 50m, com auxílio">
+                >
+                ["at0049"] = <
+                    text = <"Assistência para manipular a cadeira para a mesa/banheiro.">
+                    description = <"Assistência em algumas tarefas -  banheiro , mesa..">
+                >
+                ["at0050"] = <
+                    text = <"Propulsiona a cadeira em terrenos irregulares. Mínima assistência para subir degraus.">
+                    description = <"Mínima assistência apenas para tarefas complexas">
+                >
+                ["at0051"] = <
+                    text = <"Independente no uso da cadeira de rodas.">
+                    description = <"Capaz de movimentar-se por mais de 50 m.">
+                >
+                ["at0052"] = <
+                    text = <"Assistência parcial em todos os passos">
+                    description = <"Alguma assistência em todos os passos da tarefa">
+                >
+                ["at0053"] = <
+                    text = <"Assistência mínima antes ou depois da tarefa">
+                    description = <"*">
+                >
+                ["at0054"] = <
+                    text = <"Independente para todas as tarefas">
+                    description = <"tomar banho, pentear cabelo. Homens - fazer barba (com aparelho elétrico ou lâmina). Mulheres - maquiar-se">
+                >
+                ["at0055"] = <
+                    text = <"Assistência ativa durante toda a tarefa">
+                    description = <"*">
+                >
+                ["at0056"] = <
+                    text = <"Independente exceto para tarefas complexas">
+                    description = <"Auxílio para cortar  e abril leite ">
+                >
+                ["at0057"] = <
+                    text = <"Assistência em todos os aspectos da tarefa">
+                    description = <"*">
+                >
+                ["at0058"] = <
+                    text = <"Independente com supervisão">
+                    description = <"Pode utilizar  barra ou suporte. Se utiliza urinol não consegue esvaziá-lo">
+                >
+                ["at0059"] = <
+                    text = <"Assistência em todos os aspectos">
+                    description = <"*">
+                >
+                ["at0060"] = <
+                    text = <"Assistência em alguns passos como transferências, lavar ou enxugar">
+                    description = <"*">
+                >
+                ["at0061"] = <
+                    text = <"Supervisão de segurança  como ajustar temperatura">
+                    description = <"*">
+                >
+                ["at0062"] = <
+                    text = <"Assistência para assumir a posição apropriada para as técnicas de evacuação">
+                    description = <"">
+                >
+                ["at0063"] = <
+                    text = <"Assistência para uso das técnicas facilitatórias e para limpar-se.">
+                    description = <"Acidentes ocasionais frequentes">
+                >
+                ["at0064"] = <
+                    text = <"Incontinente mas capaz de ajudar com dispositivo interno ou externo">
+                    description = <"*">
+                >
+                ["at0065"] = <
+                    text = <"Permance seco durante o dia mas não a noite.">
+                    description = <"Necessita auxilio com o dispositivo">
+                >
+                ["at0066"] = <
+                    text = <"Assistência em todos os aspectos.">
+                    description = <"Participa de alguma forma">
+                >
+                ["at0067"] = <
+                    text = <"Assistência é requerida para colocar e/ou remover alguma roupa">
+                    description = <"*">
+                >
+                ["at0068"] = <
+                    text = <"Supervisão em algumas etapas do processo">
+                    description = <"*">
+                >
+                ["at0069"] = <
+                    text = <"Assistência em todos os aspectos">
+                    description = <"">
+                >
+                ["at0070"] = <
+                    text = <"Assistência necessária para alcançar apoio e deambular">
+                    description = <"*">
+                >
+                ["at0071"] = <
+                    text = <"Assistência mínima ou supervisão em situações de risco">
+                    description = <"No percurso de 50 m">
+                >
+                ["at0072"] = <
+                    text = <"Atividades Básicas Diárias">
+                    description = <"*">
+                >
+                ["at0073"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0074"] = <
+                    text = <"Medida de Independência Funcional">
+                    description = <"*">
+                >
+                ["at0075"] = <
+                    text = <"Vestir-se, inclusive amarrar cordões do sapato e abotoar suas roupas?">
+                    description = <"*">
+                >
+                ["at0076"] = <
+                    text = <"Sem dificuldade">
+                    description = <"*">
+                >
+                ["at0077"] = <
+                    text = <"Com alguma dificuldade">
+                    description = <"*">
+                >
+                ["at0078"] = <
+                    text = <"Com muita dificuldade">
+                    description = <"*">
+                >
+                ["at0079"] = <
+                    text = <"Incapaz de fazer">
+                    description = <"*">
+                >
+                ["at0080"] = <
+                    text = <"Lavar sua cabeça e seus cabelos?">
+                    description = <"*">
+                >
+                ["at0081"] = <
+                    text = <"Levantar-se de forma ereta de uma cadeira com encosto reto sem braços?">
+                    description = <"*">
+                >
+                ["at0082"] = <
+                    text = <"Deitar-se e levantar-se da cama?">
+                    description = <"*">
+                >
+                ["at0083"] = <
+                    text = <"Cortar um pedaço de carne?">
+                    description = <"*">
+                >
+                ["at0084"] = <
+                    text = <"Levar a boca um copo de água, café ou liete?">
+                    description = <"*">
+                >
+                ["at0085"] = <
+                    text = <"Abrir um saco de leite comum?">
+                    description = <"*">
+                >
+                ["at0086"] = <
+                    text = <"Caminhar em lugares planos?">
+                    description = <"*">
+                >
+                ["at0087"] = <
+                    text = <"Subir degraus?">
+                    description = <"*">
+                >
+                ["at0088"] = <
+                    text = <"Lavar e secar seu corpo após o banho?">
+                    description = <"*">
+                >
+                ["at0089"] = <
+                    text = <"Tomar banho de chuveiro?">
+                    description = <"*">
+                >
+                ["at0090"] = <
+                    text = <"Sentar-se e levantar-se de um vaso sanitário?">
+                    description = <"*">
+                >
+                ["at0091"] = <
+                    text = <"Levantar os braços e pegar um objeto?">
+                    description = <"*">
+                >
+                ["at0092"] = <
+                    text = <"Escore total">
+                    description = <"*">
+                >
+                ["at0093"] = <
+                    text = <"Supervisão para segurança ou em situações de risco">
+                    description = <"*">
+                >
+            >
+        >
+    >

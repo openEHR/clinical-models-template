@@ -1,0 +1,469 @@
+archetype  (adl_version=1.4)
+    openEHR-EHR-EVALUATION.basic_daily_activities_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0012] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            CLUSTER[at0002] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0039] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0029] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0030] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0031] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0032] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0034] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0033] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0035] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0036,
+                                                    at0037,
+                                                    at0038]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0040] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0041] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0043] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0047] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0048] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0049] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0050] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0051] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0052] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0054] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0053] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0044,
+                                                            at0045,
+                                                            at0046]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0055] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0056,
+                                                    at0057,
+                                                    at0058]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Avaliação Funcional -Atividades Diárias">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Teste - AVD´S Básicas - Autocuidados">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tomar Banho">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Tomar Banho">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Independente">
+                    description = <"Banho: não recebe ajuda ou somente recebe ajuda para uma parte do corpo.">
+                >
+                ["at0006"] = <
+                    text = <"Dependência parcial">
+                    description = <"Necessita auxílio para tomar banho">
+                >
+                ["at0007"] = <
+                    text = <"Dependência importante">
+                    description = <"Necessita auxílio em todas as etapas do banho ou é totalmente dependente">
+                >
+                ["at0008"] = <
+                    text = <"Vestir-se">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Independente">
+                    description = <"Pega as roupas e se veste sem qualquer ajuda, exceto para amarrar sapatos">
+                >
+                ["at0010"] = <
+                    text = <"Dependência parcial">
+                    description = <"Necessita auxílio parcial para vestir-se">
+                >
+                ["at0011"] = <
+                    text = <"Dependência Importante">
+                    description = <"Necessita auxílio em todas as etapas. Não consegue vestir-se sozinho">
+                >
+                ["at0012"] = <
+                    text = <"Avaliação Funcional Global">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Uso do vaso sanitário">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Independente">
+                    description = <"Higiene pessoal: vai ao banheiro; usa o banheiro; veste-se e retorna sem qualquer ajuda (pode usar
+andador ou bengala)">
+                >
+                ["at0015"] = <
+                    text = <"Dependência Parcial">
+                    description = <"Necessita auxílio em algumas etapas da atividade">
+                >
+                ["at0016"] = <
+                    text = <"Dependência Importante">
+                    description = <"Necessita auxílio em todas as etapas da atividade - não realiza a higiene pessoal sozinho">
+                >
+                ["at0017"] = <
+                    text = <"Transferência">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Independente">
+                    description = <"Consegue deitar na cama, sentar na cadeira e levantar sem ajuda (pode usar andador ou bengala).">
+                >
+                ["at0019"] = <
+                    text = <"Dependência parcial">
+                    description = <"Necessita auxílio em algumas etapas do processo de transferência">
+                >
+                ["at0020"] = <
+                    text = <"Dependência Importante">
+                    description = <"Necessita auxílio em todas as etapas do processo. Não  realiza transferências sózinho.">
+                >
+                ["at0021"] = <
+                    text = <"Alimentação">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Independente">
+                    description = <"Come sem ajuda (exceto ajuda para cortar carne ou passar manteiga no pão).">
+                >
+                ["at0023"] = <
+                    text = <"Dependência Parcial">
+                    description = <"Necessita auxílio parcial para alimentar-se além de cortar carne e passr manteiga no pão.">
+                >
+                ["at0024"] = <
+                    text = <"Dependência Importante">
+                    description = <"Não se alimenta sózinho - necessita auxílio">
+                >
+                ["at0025"] = <
+                    text = <"Continência">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Independência">
+                    description = <"Controla completamente urina ou fezes">
+                >
+                ["at0027"] = <
+                    text = <"Dependência Parcial">
+                    description = <"Controla parcialmente fezes e ou urina">
+                >
+                ["at0028"] = <
+                    text = <"Dependência Importante">
+                    description = <"Não controla fezes ou urina">
+                >
+                ["at0029"] = <
+                    text = <"Tomar banho: Banho: não recebe ajuda ou somente recebe ajuda para uma parte do corpo">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Vestir-se: pega as roupas e se veste sem qualquer ajuda, exceto para amarrar sapatos">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Higiene pessoal: vai ao banheiro; usa o banheiro; veste-se e retorna sem qualquer ajuda (pode usar andador ou bengala).">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Transferência: consegue deitar na cama, sentar na cadeira e levantar sem ajuda (pode usar andador ou bengala).">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Alimentação: come sem ajuda (exceto ajuda para cortar carne ou passar manteiga no pão)">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Continência: controla completamente urina ou fezes.">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"Avaliação da independência para a realização de atividades básicas de vida diária ">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Independente">
+                    description = <"5 a 6 pontos: INDEPENDÊNCIA">
+                >
+                ["at0037"] = <
+                    text = <"Dependência Parcial">
+                    description = <"3 a 4 pontos: DEPENDÊNCIA PARCIAL">
+                >
+                ["at0038"] = <
+                    text = <"Dependência Importante">
+                    description = <"0 a 2 pontos: DEPENDÊNCIA IMPORTANTE">
+                >
+                ["at0039"] = <
+                    text = <"Assinale as respostas verdadeiras abaixo com relação aos autocuidados:">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Teste de atividades instrumentais de vida diária">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"O Sr.(a) consegue:">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Usar o telefone?">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Usar o telefone?">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"Sem ajuda ">
+                    description = <"Sem ajuda: 3 pontos">
+                >
+                ["at0045"] = <
+                    text = <"Com ajuda parcial">
+                    description = <"Com ajuda parcial: 2 pontos">
+                >
+                ["at0046"] = <
+                    text = <"Não consegue">
+                    description = <"Não consegue: 1 ponto">
+                >
+                ["at0047"] = <
+                    text = <"Fazer compras?">
+                    description = <"*">
+                >
+                ["at0048"] = <
+                    text = <"Cuidar de suas finanças?">
+                    description = <"*">
+                >
+                ["at0049"] = <
+                    text = <"Preparar suas próprias refeições">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"Arrumar a casa?">
+                    description = <"*">
+                >
+                ["at0051"] = <
+                    text = <"Fazer os trabalhos manuais domésticos, como pequenos reparos?">
+                    description = <"*">
+                >
+                ["at0052"] = <
+                    text = <"Lavar passar roupa?">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Tomar os seus remédios na dose certa e horário correto?">
+                    description = <"*">
+                >
+                ["at0054"] = <
+                    text = <"Sair de casa sozinho, para lugares mais distantes, usando algum transporte sem necessidade de planejamento especial?">
+                    description = <"*">
+                >
+                ["at0055"] = <
+                    text = <"Avaliação da independência para a realização de atividades instrumentais de vida diária">
+                    description = <"*">
+                >
+                ["at0056"] = <
+                    text = <"Independente">
+                    description = <"19 a 27 pontos">
+                >
+                ["at0057"] = <
+                    text = <"Dependência Parcial">
+                    description = <"10 a 18 pontos">
+                >
+                ["at0058"] = <
+                    text = <"Dependência Importante">
+                    description = <"Abaixo de 09 pontos">
+                >
+            >
+        >
+    >

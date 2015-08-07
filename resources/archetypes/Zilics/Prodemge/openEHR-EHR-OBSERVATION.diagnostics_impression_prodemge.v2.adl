@@ -1,0 +1,159 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.diagnostics_impression_prodemge.v2
+
+concept
+	[at0000]	-- Impressão Diagnóstica
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"53018B6875797E4CA13639AFF5607BAA">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Impressão Diagnóstica
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0013] occurrences matches {0..*} matches {	-- Impressão diagnóstica
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Impressão Diagnóstica
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {[ac0001]}		-- New constraint
+													}
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Diagnóstico Relacionado ao Trabalho 
+												value matches {
+													1|[local::at0006], 	-- Sim
+													2|[local::at0007], 	-- Não
+													3|[local::at0008]  	-- Ignorado
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Diagnóstico Decorrente de Acidente de Trânsito
+												value matches {
+													1|[local::at0010], 	-- Sim
+													2|[local::at0011], 	-- Não
+													3|[local::at0012]  	-- Ignorado
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Impressão Diagnóstica">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Impressão Diagnóstica">
+					description = <"Diagnóstico do cidadão, conforme a CID-10.">
+				>
+				["at0005"] = <
+					text = <"Diagnóstico Relacionado ao Trabalho ">
+					description = <"Marcar se o diagnóstico se relaciona ao ambiente ou à prática de trabalho ou não. ">
+				>
+				["at0006"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Diagnóstico Decorrente de Acidente de Trânsito">
+					description = <"Marcar se o diagnóstico foi devido a acidente de trânsito ou não. ">
+				>
+				["at0010"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Impressão diagnóstica">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_bindings = <
+		["ICD10_1998"] = <
+			items = <
+			>
+		>
+	>
+	constraint_bindings = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0001"] = <http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=ALL>
+			>
+		>
+	>

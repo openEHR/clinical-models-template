@@ -1,0 +1,97 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.physical_activity_leisure_prodemge.v1
+
+concept
+	[at0000]	-- Atividades Físicas e de Lazer
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Atividades Físicas e de Lazer
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0008] occurrences matches {0..1} matches {	-- Atividades Físicas e de Lazer
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Realiza Atividades Físicas e de Lazer
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Atividades Físicas e de lazer realizadas
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Atividades Físicas e de Lazer">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Realiza Atividades Físicas e de Lazer">
+					description = <"Anotar se o cidadão realiza atividades físicas e de lazer. ">
+				>
+				["at0007"] = <
+					text = <"Atividades Físicas e de lazer realizadas">
+					description = <"Informações sobre a realização de atividade física ou de lazer.">
+				>
+				["at0008"] = <
+					text = <"Atividades Físicas e de Lazer">
+					description = <"*">
+				>
+			>
+		>
+	>

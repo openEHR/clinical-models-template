@@ -1,0 +1,1 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0026]=renderer:br.com.zilics.archetypes.notes.web.components.handlers.special.GlasgowScoreElementHandler

@@ -1,0 +1,129 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.tobacco_use_prodemge.v2
+
+concept
+	[at0000]	-- Tabagismo
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"69DE3A0ED4468F908600BEBC8DE5AE6B">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Tabagismo
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Tabagismo
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Tabagismo
+												value matches {
+													0|[local::at0016], 	-- Sim
+													1|[local::at0017], 	-- Não
+													2|[local::at0018]  	-- Não Informado
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Idade de Início
+												value matches {
+													DV_DATE matches {*}
+													1|[local::at0013], 	-- Não Informado
+													2|[local::at0014]  	-- Não Relatado
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Informações sobre o Tabagismo
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tabagismo">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tabagismo">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Informações sobre o Tabagismo">
+					description = <"Informações relativas ao tabagismo.">
+				>
+				["at0012"] = <
+					text = <"Idade de Início">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Não Relatado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Tabagismo">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+			>
+		>
+	>

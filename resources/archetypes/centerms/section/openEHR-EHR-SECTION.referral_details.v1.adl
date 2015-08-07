@@ -1,0 +1,88 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.referral_details.v1
+
+concept
+	[at0000]	-- Referral Details
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"07/03/2010">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To demonstrate a design pattern for representation of an Referral Request.">
+			use = <"Use within a COMPOSITION related to referral, such as COMPOSITION.referral.
+Supporting summary information can be added to the COMPOSITION slots - for example, SECTION.adverse_list, SECTION.problem_list, SECTION.medication_order_list.">
+			keywords = <"referral", "request">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Demonstrar um padrão de desenho para a representação de um pedido de referência.">
+			use = <"Usar dentro de arquétipos do tipo COMPOSITION relacionados com pedidos de referência, tal como o COMPOSITION.referral.
+Poderá ser adicionada informação sumária de suporte a slots da COMPOSITION - por exemplo, SECTION.adverse_list, SECTION.problem_list, SECTION.medication_order_list.">
+			keywords = <"referência", "pedido">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Heath Frankel, Ocean Informatics, Australia", "Ian McNicoll, Ocean Informatics, United Kingdom">
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"2682A1EE4EE32F73D67F33576167D0DE">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Detalhes do pedido de referência
+		items cardinality matches {1..*; unordered} matches {
+			allow_archetype INSTRUCTION[at0001] occurrences matches {0..1} matches {	-- Pedido de referência
+				include
+					archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.request(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Referral Details">
+					description = <"To demonstrate a design pattern for representation Referral details within a Referral composition.">
+				>
+				["at0001"] = <
+					text = <"Referral Request">
+					description = <"Slot constrained to specifically include archetypes representing referral requests.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Detalhes do pedido de referência">
+					description = <"Demonstrar um padrão para a representação dos detalhes de um pedido de referência numa composição de uma referência.">
+				>
+				["at0001"] = <
+					text = <"Pedido de referência">
+					description = <"Slot restringida de forma a incluir especificamente arquétipos que representem pedidos de referência.">
+				>
+			>
+		>
+	>

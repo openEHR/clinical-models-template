@@ -1,0 +1,683 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.substance_use_tobacco.v3br
+specialize
+	openEHR-EHR-OBSERVATION.substance_use.v1
+
+concept
+	[at0000.1]	-- Fumo
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"9/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record tobacco use based on information reported by the person.">
+			use = <"">
+			keywords = <"tobacco", "smoking", "cigarette", "cigar", "pipe">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*To record tobacco use based on information reported by the person.(en)">
+			use = <"*(en)">
+			keywords = <"*tobacco(en)", "*smoking(en)", "*cigarette(en)", "*cigar(en)", "*pipe(en)">
+			misuse = <"*(en)">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <"Sam Heard", ...>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000.1] matches {	-- Fumo
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Tabagismo
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Status
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0025, 	-- Nunca fumou
+															at0026, 	-- Ex-usuário
+															at0027, 	-- Usuário atualmente
+															at0.49, 	-- Não fuma há mais de 1 ano
+															at0.50]	-- Não fuma há menos de um ano
+														}
+													}
+												}
+											}
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Substância psicoativa em uso
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Forma de consumo
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0.38, 	-- Cigarro
+															at0.39, 	-- Charuto
+															at0.40]	-- Cachimbo
+														}
+													}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Regularidade de uso
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0028, 	-- Regular
+															at0029]	-- Irregular
+														}
+													}
+												}
+											}
+											CLUSTER[at0030] occurrences matches {0..1} matches {	-- Consumo
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0.64] occurrences matches {0..1} matches {	-- Consumo médio de unidades
+														value matches {
+															C_DV_QUANTITY <
+																property = <[openehr::128]>
+																list = <
+																	["1"] = <
+																		units = <"Diário">
+																	>
+																	["2"] = <
+																		units = <"Semanal">
+																	>
+																	["3"] = <
+																		units = <"Mensal">
+																	>
+																	["4"] = <
+																		units = <"Anual">
+																	>
+																>
+															>
+														}
+													}
+													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Consumo médio semanal
+														value matches {
+															DV_COUNT matches {*}
+															C_DV_QUANTITY <
+																property = <[openehr::124]>
+																list = <
+																	["1"] = <
+																		units = <"gm">
+																	>
+																	["2"] = <
+																		units = <"oz(avdp)">
+																	>
+																>
+															>
+														}
+													}
+													ELEMENT[at0009] occurrences matches {0..1} matches {	-- Consumo médio diário
+														value matches {
+															DV_COUNT matches {*}
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													ELEMENT[at0034] occurrences matches {0..1} matches {	-- Consumo máximo diário
+														value matches {
+															DV_COUNT matches {*}
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													ELEMENT[at0.41] occurrences matches {0..1} matches {	-- Consumo total
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+												}
+											}
+											ELEMENT[at0.62] occurrences matches {0..1} matches {	-- Interrupção do hábito há
+												value matches {
+													DV_DURATION matches {*}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0015] occurrences matches {0..1} matches {	-- Mudança no hábito de fumar
+										items cardinality matches {0..*; unordered} matches {
+											allow_archetype CLUSTER occurrences matches {0..1} matches {
+												include
+													archetype_id/value matches {/change\.v1draft/}
+												exclude
+													archetype_id/value matches {/.*/}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.38"] = <
+					text = <"Cigarette">
+					description = <"*">
+				>
+				["at0.39"] = <
+					text = <"Cigar">
+					description = <"*">
+				>
+				["at0.40"] = <
+					text = <"Pipe">
+					description = <"*">
+				>
+				["at0.41"] = <
+					text = <"Total cigarette consumption">
+					description = <"Total cigarette consumption in pack years to date - 1 pack year = 20 cigarettes per day for 1 year">
+				>
+				["at0.42"] = <
+					text = <"Exposure to tobacco smoke">
+					description = <"*">
+				>
+				["at0.43"] = <
+					text = <"Household members smoke">
+					description = <"*">
+				>
+				["at0.44"] = <
+					text = <"Current">
+					description = <"*">
+				>
+				["at0.45"] = <
+					text = <"In past">
+					description = <"*">
+				>
+				["at0.46"] = <
+					text = <"Workplace exposure">
+					description = <"*">
+				>
+				["at0.47"] = <
+					text = <"Current">
+					description = <"*">
+				>
+				["at0.48"] = <
+					text = <"In past">
+					description = <"*">
+				>
+				["at0.49"] = <
+					text = <"Stopped > 1 ago">
+					description = <"*">
+				>
+				["at0.50"] = <
+					text = <"Stopped < 1 year ago">
+					description = <"*">
+				>
+				["at0.51"] = <
+					text = <"Cessation advice/referral">
+					description = <"*">
+				>
+				["at0.52"] = <
+					text = <"Cessation advice offered">
+					description = <"True if cessation advice has been offered">
+				>
+				["at0.53"] = <
+					text = <"New element">
+					description = <"*">
+				>
+				["at0.54"] = <
+					text = <"Cessation advice status">
+					description = <"*">
+				>
+				["at0.55"] = <
+					text = <"Offered">
+					description = <"*">
+				>
+				["at0.56"] = <
+					text = <"Requested">
+					description = <"*">
+				>
+				["at0.57"] = <
+					text = <"Offered and accepted">
+					description = <"*">
+				>
+				["at0.58"] = <
+					text = <"Refused">
+					description = <"*">
+				>
+				["at0.59"] = <
+					text = <"Date of offer">
+					description = <"*">
+				>
+				["at0.60"] = <
+					text = <"Cessation referral offered">
+					description = <"True if a referral has be offered">
+				>
+				["at0.61"] = <
+					text = <"Cessation referral status">
+					description = <"*">
+				>
+				["at0.62"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.63"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.64"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0000"] = <
+					text = <"Substance use">
+					description = <"For recording substances used by the person
+REF: Smoking Cessation Guidelines for Australian General Practice - http://www.health.gov.au/internet/wcms/publishing.nsf/Content/health-pubhlth-publicat-document-smoking_cessation-cnt.htm/$FILE/smoking_cessation.pdf">
+				>
+				["at0000.1"] = <
+					text = <"Tobacco use">
+					description = <"For recording tobacco use by the person
+REF: Smoking Cessation Guidelines for Australian General Practice - http://www.health.gov.au/internet/wcms/publishing.nsf/Content/health-pubhlth-publicat-document-smoking_cessation-cnt.htm/$FILE/smoking_cessation.pdf!">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Substance name">
+					description = <"Name of substance being used by person">
+				>
+				["at0005"] = <
+					text = <"Status">
+					description = <"The person's status as a substance user">
+				>
+				["at0006"] = <
+					text = <"Details of Tobacco use">
+					description = <"Details about the use of the tobacco">
+				>
+				["at0007"] = <
+					text = <"Form">
+					description = <"Form or type of substance">
+				>
+				["at0008"] = <
+					text = <"Regularity of use">
+					description = <"Regularity of use">
+				>
+				["at0009"] = <
+					text = <"Average daily consumption">
+					description = <"Average number of cigarettes or cigars,  or weight of pipe tobacco, smoked in 24 hours.">
+				>
+				["at0014"] = <
+					text = <"Comment">
+					description = <"Other information on substance use">
+				>
+				["at0015"] = <
+					text = <"Changing smoking status">
+					description = <"Readiness for person to change their use of substance">
+				>
+				["at0016"] = <
+					text = <"Previous attempts to quit smoking">
+					description = <"Details about previous attempts to cease using substance">
+				>
+				["at0017"] = <
+					text = <"Location">
+					description = <"Place where attempt to cease use occurred eg home or name of institution">
+				>
+				["at0018"] = <
+					text = <"Therapeutic intervention">
+					description = <"Use of therapeutic agent to assist in ceasing use of substance">
+				>
+				["at0019"] = <
+					text = <"Date of attempt">
+					description = <"Date of attempt">
+				>
+				["at0020"] = <
+					text = <"Description of attempt">
+					description = <"Description of details of attempt">
+				>
+				["at0021"] = <
+					text = <"Outcome">
+					description = <"Outcome of attempt to cease smoking">
+				>
+				["at0022"] = <
+					text = <"Agent">
+					description = <"Name of agent used">
+				>
+				["at0023"] = <
+					text = <"Used optimally">
+					description = <"Was the agent used optimally?">
+				>
+				["at0024"] = <
+					text = <"Comment">
+					description = <"Comment about the effect of the agent on the attempt">
+				>
+				["at0025"] = <
+					text = <"Never used">
+					description = <"Person has never used the substance">
+				>
+				["at0026"] = <
+					text = <"Ex-user">
+					description = <"Person has used substance in the past but is currently not using it">
+				>
+				["at0027"] = <
+					text = <"Current user">
+					description = <"Person is currently using substance">
+				>
+				["at0028"] = <
+					text = <"Regular">
+					description = <"Regular use">
+				>
+				["at0029"] = <
+					text = <"Irregular">
+					description = <"Irregular use">
+				>
+				["at0030"] = <
+					text = <"Consumption">
+					description = <"Amount of substance">
+				>
+				["at0033"] = <
+					text = <"Average weekly consumption">
+					description = <"Average number of cigarettes or cigars, or weight of pipe tobacco, used in 7 days.">
+				>
+				["at0034"] = <
+					text = <"Maximal daily consumption">
+					description = <"Maximal number of cigarettes or cigars, or weight of pipe tobacco, smoked in a  day">
+				>
+				["at0035"] = <
+					text = <"Failed">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Successful ">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Successful but relapsed">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.38"] = <
+					text = <"Cigarro">
+					description = <"**(en)">
+				>
+				["at0.39"] = <
+					text = <"Charuto">
+					description = <"**(en)">
+				>
+				["at0.40"] = <
+					text = <"Cachimbo">
+					description = <"**(en)">
+				>
+				["at0.41"] = <
+					text = <"Consumo total">
+					description = <"*Total cigarette consumption in pack years to date - 1 pack year = 20 cigarettes per day for 1 year(en)">
+				>
+				["at0.42"] = <
+					text = <"Exposição à fumaça">
+					description = <"**(en)">
+				>
+				["at0.43"] = <
+					text = <"Membros da família fumam">
+					description = <"**(en)">
+				>
+				["at0.44"] = <
+					text = <"Hoje">
+					description = <"**(en)">
+				>
+				["at0.45"] = <
+					text = <"No Passado">
+					description = <"**(en)">
+				>
+				["at0.46"] = <
+					text = <"Exposição no local de trabalha">
+					description = <"**(en)">
+				>
+				["at0.47"] = <
+					text = <"Hoje">
+					description = <"**(en)">
+				>
+				["at0.48"] = <
+					text = <"No Passado">
+					description = <"**(en)">
+				>
+				["at0.49"] = <
+					text = <"Não fuma há mais de 1 ano">
+					description = <"**(en)">
+				>
+				["at0.50"] = <
+					text = <"Não fuma há menos de um ano">
+					description = <"**(en)">
+				>
+				["at0.51"] = <
+					text = <"Orientação para interrupção do hábito">
+					description = <"**(en)">
+				>
+				["at0.52"] = <
+					text = <"Orientação recebida">
+					description = <"*True if cessation advice has been offered(en)">
+				>
+				["at0.53"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.54"] = <
+					text = <"Status da orientação">
+					description = <"**(en)">
+				>
+				["at0.55"] = <
+					text = <"Oferecida">
+					description = <"**(en)">
+				>
+				["at0.56"] = <
+					text = <"Solicitada">
+					description = <"**(en)">
+				>
+				["at0.57"] = <
+					text = <"Aceita">
+					description = <"**(en)">
+				>
+				["at0.58"] = <
+					text = <"Recusada">
+					description = <"**(en)">
+				>
+				["at0.59"] = <
+					text = <"Data orientação">
+					description = <"**(en)">
+				>
+				["at0.60"] = <
+					text = <"Orientação p/ parar de fumar">
+					description = <"Verdadeiro se orientação foi recebida.">
+				>
+				["at0.61"] = <
+					text = <"*Cessation referral status(en)">
+					description = <"**(en)">
+				>
+				["at0.62"] = <
+					text = <"Interrupção do hábito há">
+					description = <"*">
+				>
+				["at0.63"] = <
+					text = <"New element">
+					description = <"*">
+				>
+				["at0.64"] = <
+					text = <"Consumo médio de unidades">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"Substâncias psicoativas em uso">
+					description = <"Para registrar substâncias psicoativas em uso pelo paciente ">
+				>
+				["at0000.1"] = <
+					text = <"Fumo">
+					description = <"Registro do uso de fumo">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Substância psicoativa em uso">
+					description = <"Nome da substância psicoativa em uso pela pessoa">
+				>
+				["at0005"] = <
+					text = <"Status">
+					description = <"Status como usuário de substância psico-ativa">
+				>
+				["at0006"] = <
+					text = <"Tabagismo">
+					description = <"Detalhes sobre o uso de fumo">
+				>
+				["at0007"] = <
+					text = <"Forma de consumo">
+					description = <"Forma ou tipo de substância psico-ativa em uso">
+				>
+				["at0008"] = <
+					text = <"Regularidade de uso">
+					description = <"Regularidade de uso da subst. psico-ativa">
+				>
+				["at0009"] = <
+					text = <"Consumo médio diário">
+					description = <"Número médio de cigarros ou charutos ou fumo  de cachimbo consumido em 24 horas">
+				>
+				["at0014"] = <
+					text = <"Observações">
+					description = <"Outras informações relevantes sobre uso de substâncias psico-ativas.">
+				>
+				["at0015"] = <
+					text = <"Mudança no hábito de fumar">
+					description = <"Capacidade de mudar habíto de fumar">
+				>
+				["at0016"] = <
+					text = <"Tentativas para interrupção do hábito">
+					description = <"Detalhes sobre tentativas anteriores de parar de fumar.">
+				>
+				["at0017"] = <
+					text = <"Local">
+					description = <"Local onde ocorreu tentativa de parar de fumar (casa ou instituição) ">
+				>
+				["at0018"] = <
+					text = <"Intervenção terapêutica">
+					description = <"Uso de intervenção terapêutics para apoiar a interrupção de uso da substância psico-ativa">
+				>
+				["at0019"] = <
+					text = <"Data da tentativa">
+					description = <"Data da tentativa">
+				>
+				["at0020"] = <
+					text = <"Descrição da tentativa">
+					description = <"Detalhes da tentativa de interrupção de uso da subst. psico-ativa.">
+				>
+				["at0021"] = <
+					text = <"Resultado">
+					description = <"Resultado da tentativa de cessar de fumar">
+				>
+				["at0022"] = <
+					text = <"Agente">
+					description = <"Nome do agente utilizado ">
+				>
+				["at0023"] = <
+					text = <"Utilização plena do agente">
+					description = <"O agente foi utilizado plenamente?">
+				>
+				["at0024"] = <
+					text = <"Comentário">
+					description = <"Comentários sobre o efeito do agente na remissão do uso da subst. psico-ativa.">
+				>
+				["at0025"] = <
+					text = <"Nunca fumou">
+					description = <"Pessoa nunca utilizou a substância">
+				>
+				["at0026"] = <
+					text = <"Ex-usuário">
+					description = <"Utilizou a substância no passado, não utiliza mais hoje.">
+				>
+				["at0027"] = <
+					text = <"Usuário atualmente">
+					description = <"Substância em uso hoje">
+				>
+				["at0028"] = <
+					text = <"Regular">
+					description = <"Uso regular">
+				>
+				["at0029"] = <
+					text = <"Irregular">
+					description = <"Uso irregular">
+				>
+				["at0030"] = <
+					text = <"Consumo">
+					description = <"Quantidade da substância consumida">
+				>
+				["at0033"] = <
+					text = <"Consumo médio semanal">
+					description = <"Número médio de cigarros ou charutos consumidor por semana.">
+				>
+				["at0034"] = <
+					text = <"Consumo máximo diário">
+					description = <"Número máximo de cigarros ou charutos consumidos por dia">
+				>
+				["at0035"] = <
+					text = <"Falha">
+					description = <"**">
+				>
+				["at0036"] = <
+					text = <"Sucesso">
+					description = <"**">
+				>
+				["at0037"] = <
+					text = <"Sucesso  com reincidência">
+					description = <"*">
+				>
+			>
+		>
+	>

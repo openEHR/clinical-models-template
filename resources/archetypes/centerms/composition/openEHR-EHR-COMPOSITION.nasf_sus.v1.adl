@@ -1,0 +1,60 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.nasf_sus.v1
+
+concept
+	[at0000]	-- Procedimentos do Nucleo de saúde da familia
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"registro das atividades realizadas pelo nucleo de saúde da familia. Inclui ações de avaliação e diagnóstico e procedimentos diagnósticos e terapêuticos">
+			use = <"registro das atividades realizadas pelo nucleo de saúde da familia. Inclui ações de avaliação e diagnóstico e procedimentos diagnósticos e terapêuticos">
+			misuse = <"não serve para registrar procedimentos cirúrgicos">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"63559ACEDE1354F2E5B862FA4385E627">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Procedimentos do Nucleo de saúde da familia
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		content cardinality matches {0..*; unordered} matches {
+			allow_archetype SECTION[at0004] occurrences matches {0..*} matches {	-- SECTION
+				include
+					archetype_id/value matches {/openEHR-EHR-SECTION\.soap(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype SECTION occurrences matches {0..*} matches {
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Procedimentos do Nucleo de saúde da familia">
+					description = <"seção para agrupar os procedimentos realizados pelo nucleo de saúde da familia. ">
+				>
+				["at0004"] = <
+					text = <"SECTION">
+					description = <"*">
+				>
+			>
+		>
+	>

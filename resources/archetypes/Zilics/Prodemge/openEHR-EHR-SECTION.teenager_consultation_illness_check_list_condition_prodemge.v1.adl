@@ -1,0 +1,163 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.teenager_consultation_illness_check_list_condition_prodemge.v1
+
+concept
+	[at0000]	-- Consulta Adolescente - Moléstia - História Familiar
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta do Adolescente">
+			use = <"">
+			misuse = <"*(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Consulta Adolescente - Moléstia - História Familiar
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0014] occurrences matches {0..1} matches {	-- Identificação do Acompanhante/ Cuidador
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|companion_identification_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0002] occurrences matches {0..1} matches {	-- Moléstia/ Condição Atual
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|illness_actual_condition_prodemge\.v1|past_medical_history_prodemge\.v1|prenatal_childbirth_puerperium_prodemge\.v1|disability_prodemge\.v1|orthesis_prosthesis_prodemge\.v1|allergy_prodemge\.v1|immunobiological_prodemge\.v1|feeding_prodemge\.v1|daily_activity_prodemge\.v1|physical_activity_leisure_prodemge\.v1|alcohol_use_prodemge\.v1|tobacco_use_prodemge\.v1|other_substance_use_prodemge\.v1|last_odontological_consultation_prodemge\.v1|little_ear_test_prodemge\.v1|medication_prodemge\.v1|complementary_exam_realized_prodemge\.v1|physical_exam_prodemge\.v1|mobility_prodemge\.v1|care_conduct_plan_prodemge\.v1|diagnostics_impression_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0003] occurrences matches {0..1} matches {	-- História Pregressa
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|past_medical_history_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0004] occurrences matches {0..1} matches {	-- Pré-Natal, Parto e Puerpério
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|prenatal_childbirth_puerperium_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0015] occurrences matches {0..1} matches {	-- Desenvolvimento Puberal
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|tanner_sexual_development_prodemge\.v1|puberal_development_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0016] occurrences matches {0..1} matches {	-- Saúde da Mulher
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|woman_health_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0007] occurrences matches {0..1} matches {	-- Sono e Outros Hábitos: Rastreamento de Distúrbios do Sono
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|sleep_other_habits_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0017] occurrences matches {0..1} matches {	-- Atividade Sexual
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|sexual_activity_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0008] occurrences matches {0..1} matches {	-- História Familiar e Social
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|check_list_condition_prodemge\.v1|giant_geriatrics_prodemge\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta Adolescente - Moléstia - História Familiar">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Moléstia/ Condição Atual">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"História Pregressa">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Pré-Natal, Parto e Puerpério">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Sono e Outros Hábitos: Rastreamento de Distúrbios do Sono">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"História Familiar e Social">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Identificação do Acompanhante/ Cuidador">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Desenvolvimento Puberal">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Saúde da Mulher">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Atividade Sexual">
+					description = <"*">
+				>
+			>
+		>
+	>

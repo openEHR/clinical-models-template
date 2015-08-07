@@ -1,0 +1,104 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.orthesis_prosthesis_prodemge.v1
+
+concept
+	[at0000]	-- Órteses e Próteses
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Órteses e Próteses
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..*} matches {	-- Uso de Órteses e Próteses
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {[ac0001]}		-- New constraint
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"MDDB99", ...>
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Órteses e Próteses">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Uso de Órteses e Próteses">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["MDDB99"] = <
+			items = <
+			>
+		>
+	>
+	constraint_binding = <
+		["MDDB99"] = <
+			items = <
+				["ac0001"] = <http://terminology.zilics.com.br?terminologyId=PROCEDURE&groupId=07>
+			>
+		>
+	>

@@ -1,0 +1,496 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_further_information.v2zl
+
+concept
+	[at0000]	-- Outras Informações
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Outras Informações
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Intoxicação Exógena
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Processos Alérgicos
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Período de Processos Alérgicos
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0021, 	-- < 24 horas
+													at0022]	-- > 24 horas
+												}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tentativa de Suicídio
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Acidentes com Animais Peçonhentos
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Púrpura ou Exantema Petequial
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0044] occurrences matches {0..1} matches {	-- Corpos Estranhos
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Corpos Estranhos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Classificação de Corpo Estranho
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0023, 	-- ORL
+															at0024, 	-- OFT
+															at0025]	-- Cirúrgico
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- Asma / Bronquite
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0032, 	-- Em Crise
+													at0033, 	-- Fora da Crise
+													at0034]	-- Ausente
+												}
+											}
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Enxaqueca
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0046, 	-- Com História Anterior 
+													at0047]	-- Sem História Anterior
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Cólica Renal
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0040] occurrences matches {0..1} matches {	-- Crise Convulsiva
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0035] occurrences matches {0..1} matches {	-- Período
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0036, 	-- No Momento ou Menos de 2 horas
+															at0037, 	-- Nas Últimas 24 horas
+															at0038]	-- Mais de 24 horas
+														}
+													}
+												}
+											}
+											ELEMENT[at0041] occurrences matches {0..1} matches {	-- Nível de Consciência
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0042, 	-- Sem Alteração de Consciência
+															at0043]	-- Com Alteração de Consciência
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Vítima de Abuso Sexual
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Imunodeprimido
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Outras Informações">
+					description = <"Outras Informações">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Processos Alérgicos">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Período de Processos Alérgicos">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Intoxicação Exógena">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Tentativa de Suicídio">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Acidentes com Animais Peçonhentos">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Púrpura ou Exantema Petequial">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Corpos Estranhos">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Classificação de Corpo Estranho">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Cólica Renal">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Vítima de Abuso Sexual">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Imunodeprimido">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"< 24 horas">
+					description = <"<24 horas">
+				>
+				["at0022"] = <
+					text = <"> 24 horas">
+					description = <"> 24 horas">
+				>
+				["at0023"] = <
+					text = <"ORL">
+					description = <"ORL">
+				>
+				["at0024"] = <
+					text = <"OFT">
+					description = <"OFT">
+				>
+				["at0025"] = <
+					text = <"Cirúrgico">
+					description = <"Cirúrgico">
+				>
+				["at0031"] = <
+					text = <"Asma / Bronquite">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Em Crise">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Fora da Crise">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"No Momento ou Menos de 2 horas">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Nas Últimas 24 horas">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Mais de 24 horas">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Crise Convulsiva">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Nível de Consciência">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Sem Alteração de Consciência">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Com Alteração de Consciência">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Corpos Estranhos">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Enxaqueca">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Com História Anterior ">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Sem História Anterior">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Outras Informações">
+					description = <"Outras Informações">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Processos Alérgicos">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Período de Processos Alérgicos">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Intoxicação Exógena">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Tentativa de Suicídio">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Acidentes com Animais Peçonhentos">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Púrpura ou Exantema Petequial">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Corpos Estranhos">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Classificação de Corpo Estranho">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Cólica Renal">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Vítima de Abuso Sexual">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Imunodeprimido">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"< 24 horas">
+					description = <"<24 horas">
+				>
+				["at0022"] = <
+					text = <"> 24 horas">
+					description = <"> 24 horas">
+				>
+				["at0023"] = <
+					text = <"ORL">
+					description = <"ORL">
+				>
+				["at0024"] = <
+					text = <"OFT">
+					description = <"OFT">
+				>
+				["at0025"] = <
+					text = <"Cirúrgico">
+					description = <"Cirúrgico">
+				>
+				["at0031"] = <
+					text = <"Asma / Bronquite">
+					description = <"**(pt)">
+				>
+				["at0032"] = <
+					text = <"Em Crise">
+					description = <"**(pt)">
+				>
+				["at0033"] = <
+					text = <"Fora da Crise">
+					description = <"**(pt)">
+				>
+				["at0034"] = <
+					text = <"Ausente">
+					description = <"**(pt)">
+				>
+				["at0035"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0036"] = <
+					text = <"No Momento ou Menos de 2 horas">
+					description = <"**(pt)">
+				>
+				["at0037"] = <
+					text = <"Nas últimas 24 horas">
+					description = <"**(pt)">
+				>
+				["at0038"] = <
+					text = <"Mais de 24 horas">
+					description = <"**(pt)">
+				>
+				["at0040"] = <
+					text = <"Crise Convulsiva">
+					description = <"**(pt)">
+				>
+				["at0041"] = <
+					text = <"Nível de Consciência">
+					description = <"**(pt)">
+				>
+				["at0042"] = <
+					text = <"Sem Alteração de Consciência">
+					description = <"**(pt)">
+				>
+				["at0043"] = <
+					text = <"Com Alteração de Consciência">
+					description = <"**(pt)">
+				>
+				["at0044"] = <
+					text = <"Corpos Estranhos">
+					description = <"**(pt)">
+				>
+				["at0045"] = <
+					text = <"Enxaqueca">
+					description = <"**(pt)">
+				>
+				["at0046"] = <
+					text = <"Com História Anterior">
+					description = <"**(pt)">
+				>
+				["at0047"] = <
+					text = <"Sem História Anterior">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

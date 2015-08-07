@@ -1,0 +1,319 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.health-promotion_medical_first_consultation.v1
+
+concept
+	[at0000]	-- Ficha de avaliação médica -SPA Saúde
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"EF66DF5DDAFA68229BBE44665D3C9C5F">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Ficha de avaliação médica -SPA Saúde
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0017] occurrences matches {0..1} matches {	-- Queixa Principal
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.placeholder_v2zl\.v1/}
+					}
+				}
+			}
+			SECTION[at0005] occurrences matches {0..1} matches {	-- Anamnese
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.placeholder_v2zl\.v1/}
+					}
+				}
+			}
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Antecedentes Pessoais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.check_list_condition_personal\.draftbrv1/}
+					}
+				}
+			}
+			SECTION[at0012] occurrences matches {0..1} matches {	-- Antecedentes Familiares
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.check_list_condition_third_party\.v2draftbr/}
+					}
+				}
+			}
+			SECTION[at0003] occurrences matches {0..1} matches {	-- Alergias / Reações Adversas
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.adverse\.v2draft/}
+					}
+				}
+			}
+			SECTION[at0007] occurrences matches {0..1} matches {	-- Cirurgias no passado
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.check_list-surgical_procedure\.v2draft/}
+					}
+				}
+			}
+			SECTION[at0009] occurrences matches {0..1} matches {	-- Fatores de Risco
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.substance_use_tobacco\.v3br|openEHR-EHR-OBSERVATION\.substance_use_alcohol\.v2br|openEHR-EHR-OBSERVATION\.substance_use\.v2br/}
+					}
+				}
+			}
+			SECTION[at0011] occurrences matches {0..1} matches {	-- Medicamentos em Uso
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.check_list-medication\.v2/}
+					}
+				}
+			}
+			SECTION[at0013] occurrences matches {0..1} matches {	-- Deficiências Funcionais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.functional_disabilities\.draftbrv1/}
+					}
+				}
+			}
+			SECTION[at0014] occurrences matches {0..1} matches {	-- Exame Físico
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0015] occurrences matches {0..1} matches {	-- Sinais Vitais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-OBSERVATION\.blood_pressure\.v2zl|openEHR-EHR-OBSERVATION\.body_weight\.v1br|openEHR-EHR-OBSERVATION\.heart_rate\.v2zl|openEHR-EHR-OBSERVATION\.body_mass_index\.draftbrv1|openEHR-EHR-OBSERVATION\.height\.v1|openEHR-EHR-OBSERVATION\.waist_hip\.draftbrv1/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0004] occurrences matches {0..1} matches {	-- Resultados de exames laboratoriais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype SECTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-SECTION\.exams_results_generic_spa2\.v1/}
+					}
+				}
+			}
+			SECTION[at0006] occurrences matches {0..1} matches {	-- Avaliação Inicial
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0020] occurrences matches {0..1} matches {	-- Diagnósticos
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype EVALUATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem-diagnosis_spa\.v1/}
+							}
+						}
+					}
+					SECTION[at0019] occurrences matches {0..1} matches {	-- Proposta de Classificação no Programa de Saúde
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype EVALUATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-EVALUATION\.health_promotion_program_classification_spa\.v1/}
+							}
+						}
+					}
+					SECTION[at0016] occurrences matches {0..1} matches {	-- Encaminhamentos
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.request_spa\.v1|openEHR-EHR-INSTRUCTION\.specialized_follow_up_request_spa\.v1|openEHR-EHR-INSTRUCTION\.medical_prescription_spa\.v1/}
+							}
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+								exclude
+									archetype_id/value matches {/openEHR-EHR-OBSERVATION\.placeholder_v2zl\.v1/}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triagem e Avaliação de Riscos">
+					description = <"Triagem e Avaliação de Riscos">
+				>
+				["at0001"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0003"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0004"] = <
+					text = <"Sinais Vitais e Glicemia">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Situação / Queixa">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Condições Físicas">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0009"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0011"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0012"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0013"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0014"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0015"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0016"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0017"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0019"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0020"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ficha de avaliação médica -SPA Saúde">
+					description = <"Triagem e Avaliação de Riscos">
+				>
+				["at0001"] = <
+					text = <"Antecedentes Pessoais">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Alergias / Reações Adversas">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Resultados de exames laboratoriais">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Anamnese">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Avaliação Inicial">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"Cirurgias no passado">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Fatores de Risco">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Medicamentos em Uso">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Antecedentes Familiares">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Deficiências Funcionais">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Exame Físico">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Sinais Vitais">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Encaminhamentos">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Queixa Principal">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Proposta de Classificação no Programa de Saúde">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Diagnósticos">
+					description = <"*">
+				>
+			>
+		>
+	>

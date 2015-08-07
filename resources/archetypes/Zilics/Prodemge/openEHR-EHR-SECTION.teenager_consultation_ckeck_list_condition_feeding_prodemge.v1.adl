@@ -1,0 +1,127 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.teenager_consultation_ckeck_list_condition_feeding_prodemge.v1
+
+concept
+	[at0000]	-- Consulta Adolescente - Órteses - Alimentação
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta do Adolescente">
+			use = <"">
+			misuse = <"*(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Consulta Adolescente - Órteses - Alimentação
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0014] occurrences matches {0..1} matches {	-- História Familiar e Social
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|check_list_condition_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0009] occurrences matches {0..1} matches {	-- Órteses e Próteses
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|orthesis_prosthesis_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0010] occurrences matches {0..1} matches {	-- Deficiências
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|disability_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0011] occurrences matches {0..1} matches {	-- Alergia
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/allergy_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0012] occurrences matches {0..1} matches {	-- Imunobiológicos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|immunobiological_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0013] occurrences matches {0..1} matches {	-- Alimentação
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+						exclude
+							archetype_id/value matches {/apgar\.v1|feeding_prodemge\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta Adolescente - Órteses - Alimentação">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Órteses e Próteses">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Deficiências">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Alergia">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Imunobiológicos">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Alimentação">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"História Familiar e Social">
+					description = <"*">
+				>
+			>
+		>
+	>

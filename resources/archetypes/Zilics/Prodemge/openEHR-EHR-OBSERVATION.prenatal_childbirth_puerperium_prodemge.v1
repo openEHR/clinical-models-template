@@ -1,0 +1,661 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.prenatal_childbirth_puerperium_prodemge.v1
+
+concept
+	[at0000]	-- Pré-Natal, Parto e Puerpério 
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pré-Natal, Parto e Puerpério 
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tipo
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- Vaginal
+													at0007, 	-- Cesáreo
+													at0008]	-- Ignorado
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Local
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0010, 	-- Domiciliar
+													at0011, 	-- Hospital
+													at0012, 	-- Outros estabelecimentos de saúde
+													at0013, 	-- Outros
+													at0014]	-- Ignorado
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Idade Gestacional
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"semana">
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Mês de Gestação da Primeira Consulta
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Janeiro
+													at0018, 	-- Fevereiro
+													at0019, 	-- Março
+													at0020, 	-- Abril
+													at0021, 	-- Maio
+													at0022, 	-- Junho
+													at0023, 	-- Julho
+													at0024, 	-- Agosto
+													at0025, 	-- Setembro
+													at0026, 	-- Outubro
+													at0027, 	-- Novembro
+													at0028]	-- Dezembro
+												}
+											}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Número Total de Consultas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Intercorrências no Pré-Natal
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0031, 	-- Hipertensão arterial prévia
+													at0032, 	-- Hipertensão arterial induzida pela gravidez
+													at0033, 	-- Cardiopatia
+													at0034, 	-- Nefropatia
+													at0035, 	-- Diabetes 
+													at0036, 	-- Hemorragia 2º e 3º trimestre
+													at0037, 	-- Infecção urinária
+													at0038, 	-- Isoimunização pelo fator Rh
+													at0039, 	-- Gravidez múltipla
+													at0040, 	-- Pré-eclampsia
+													at0041, 	-- Eclampsia
+													at0042, 	-- Parasitoses
+													at0043, 	-- Ameaça de parto pré-maturo
+													at0044, 	-- Outras
+													at0045]	-- Nenhuma
+												}
+											}
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Outras Intercorrências
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									CLUSTER[at0047] occurrences matches {0..1} matches {	-- Exames Alterados da Mãe
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0048] occurrences matches {0..1} matches {	-- VDRL
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0049, 	-- Reator
+															at0050]	-- Não reator
+														}
+													}
+												}
+											}
+											ELEMENT[at0051] occurrences matches {0..1} matches {	-- Toxoplasmose
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0052, 	-- IgM positivo
+															at0053]	-- IgM negativo
+														}
+													}
+												}
+											}
+											ELEMENT[at0054] occurrences matches {0..1} matches {	-- Anti HIV
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0055, 	-- Positivo
+															at0056]	-- Negativo
+														}
+													}
+												}
+											}
+											ELEMENT[at0057] occurrences matches {0..1} matches {	-- HbsAg
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0058, 	-- Positivo
+															at0059]	-- Negativo
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0060] occurrences matches {0..1} matches {	-- Nascimento
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0061] occurrences matches {0..1} matches {	-- Apgar de 1 minuto
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0062] occurrences matches {0..1} matches {	-- Apgar de 5 minutos
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0063] occurrences matches {0..1} matches {	-- Classificação RN
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0064, 	-- AIG (apropriado para idade gestacional) 
+															at0065, 	-- PIG (pequeno para idade gestacional)
+															at0066]	-- GIG (grande para a idade gestacional)
+														}
+													}
+												}
+											}
+											ELEMENT[at0067] occurrences matches {0..1} matches {	-- Peso
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::124]>
+														list = <
+															["1"] = <
+																units = <"kg">
+																magnitude = <|0.0..1000.0|>
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									CLUSTER[at0068] occurrences matches {0..1} matches {	-- Altura/ Estatura
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0069] occurrences matches {0..1} matches {	-- Posição
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0070, 	-- Ortostática
+															at0071]	-- Deitado
+														}
+													}
+												}
+											}
+											ELEMENT[at0072] occurrences matches {0..1} matches {	-- Valor Mensurado
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::122]>
+														list = <
+															["1"] = <
+																units = <"cm">
+																magnitude = <|0.0..1000.0|>
+																precision = <|1|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0073] occurrences matches {0..1} matches {	-- PC
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::122]>
+														list = <
+															["1"] = <
+																units = <"cm">
+																precision = <|2|>
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									CLUSTER[at0074] occurrences matches {0..1} matches {	-- Período Neonatal
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0075] occurrences matches {0..1} matches {	-- Intercorrências
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0076, 	-- Reanimação na sala de parto
+															at0077, 	-- Asfixia
+															at0078, 	-- Infecção (sepse/pnemonia)
+															at0079, 	-- Doença da membrana hialina
+															at0080, 	-- Doença pulmonar crônica
+															at0081, 	-- Retinopatia da prematuridade
+															at0082, 	-- Hemorragia periintraventricular II a IV grau 
+															at0083, 	-- Internação em UTI neonatal (duração em dias)
+															at0084, 	-- Outras
+															at0085]	-- Nenhuma
+														}
+													}
+												}
+											}
+											ELEMENT[at0086] occurrences matches {0..1} matches {	-- Outras Intercorrências
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0087] occurrences matches {0..1} matches {	-- Alta
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pré-Natal, Parto e Puerpério ">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Tipo">
+					description = <"Tipo de Parto">
+				>
+				["at0006"] = <
+					text = <"Vaginal">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Cesáreo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Local">
+					description = <"Local onde foi realizado o parto">
+				>
+				["at0010"] = <
+					text = <"Domiciliar">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Hospital">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Outros estabelecimentos de saúde">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Outros">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Idade Gestacional">
+					description = <"Idade gestacional em semanas no momento do parto. ">
+				>
+				["at0016"] = <
+					text = <"Mês de Gestação da Primeira Consulta">
+					description = <"Mês de gestação em que ocorreu a primeira consulta de pré-natal">
+				>
+				["at0017"] = <
+					text = <"Janeiro">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Fevereiro">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Março">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Abril">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Maio">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Junho">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Julho">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Agosto">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Setembro">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Outubro">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Novembro">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Dezembro">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Número Total de Consultas">
+					description = <"Número total de consultas realizadas no pré-natal.">
+				>
+				["at0030"] = <
+					text = <"Intercorrências no Pré-Natal">
+					description = <"Intercorrências ocorridas no pré-natal. ">
+				>
+				["at0031"] = <
+					text = <"Hipertensão arterial prévia">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Hipertensão arterial induzida pela gravidez">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Cardiopatia">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Nefropatia">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Diabetes ">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Hemorragia 2º e 3º trimestre">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Infecção urinária">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Isoimunização pelo fator Rh">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Gravidez múltipla">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Pré-eclampsia">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Eclampsia">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Parasitoses">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Ameaça de parto pré-maturo">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Outras">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Nenhuma">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Outras Intercorrências">
+					description = <"Outras Intercorrências">
+				>
+				["at0047"] = <
+					text = <"Exames Alterados da Mãe">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"VDRL">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Reator">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Não reator">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Toxoplasmose">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"IgM positivo">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"IgM negativo">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Anti HIV">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Positivo">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Negativo">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"HbsAg">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Positivo">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Negativo">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Nascimento">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Apgar de 1 minuto">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 1º minuto de vida.">
+				>
+				["at0062"] = <
+					text = <"Apgar de 5 minutos">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 5º minuto de vida.">
+				>
+				["at0063"] = <
+					text = <"Classificação RN">
+					description = <"Classificação do recém-nascido quanto ao peso ao nascer, idade gestacional, relação peso e idade gestacional e estado nutricional. ">
+				>
+				["at0064"] = <
+					text = <"AIG (apropriado para idade gestacional) ">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"PIG (pequeno para idade gestacional)">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"GIG (grande para a idade gestacional)">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Peso">
+					description = <"Peso do cidadão ao nascer. ">
+				>
+				["at0068"] = <
+					text = <"Altura/ Estatura">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Posição">
+					description = <"Posição utilizada para realizar a mensuração da altura/estatura do cidadão ao nascer.">
+				>
+				["at0070"] = <
+					text = <"Ortostática">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Deitado">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Valor Mensurado">
+					description = <"Valor do comprimento do corpo do cidadão do ápice da cabeça à sola do pé ao nascer.">
+				>
+				["at0073"] = <
+					text = <"PC">
+					description = <"Perímetro do crânio do cidadão ao nascer.">
+				>
+				["at0074"] = <
+					text = <"Período Neonatal">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Intercorrências">
+					description = <"Intercorrências ocorridas no período neonatal (0 a 27 dias de vida). ">
+				>
+				["at0076"] = <
+					text = <"Reanimação na sala de parto">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"Asfixia">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"Infecção (sepse/pnemonia)">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"Doença da membrana hialina">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"Doença pulmonar crônica">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Retinopatia da prematuridade">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"Hemorragia periintraventricular II a IV grau ">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Internação em UTI neonatal (duração em dias)">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Outras">
+					description = <"*">
+				>
+				["at0085"] = <
+					text = <"Nenhuma">
+					description = <"*">
+				>
+				["at0086"] = <
+					text = <"Outras Intercorrências">
+					description = <"Outras intercorrências.">
+				>
+				["at0087"] = <
+					text = <"Alta">
+					description = <"Informações relativas à alta após o nascimento.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,709 @@
+archetype
+    openEHR-EHR-OBSERVATION.pregnancy_risk_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"?">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["name"] = <"">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação. 
+">
+            use = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação. 
+">
+            misuse = <"*(pt)">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação. 
+">
+            use = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação. 
+">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0008] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            CLUSTER[at0024] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0015] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0026] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0027] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0028] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0029] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0030] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0031] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0032] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0033] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0034] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0035] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0036] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0037] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0038] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0039] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0040] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0041] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0042] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0044] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0043] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0045] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0046] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0009] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0010] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0012] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0013] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0014] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0025] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0016] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0017] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0018] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0020] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0019] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0021] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0022] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0023] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                        value matches {
+                                            1|[local::at0005],
+                                            2|[local::at0006],
+                                            3|[local::at0007]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt-br"] = <
+            items = <                
+                ["at0000"] = <
+                    text = <"Estratificação de Risco da Gestação Atual">
+                    description = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação.">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Estratificação de Risco da Gestação Atual">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Gestação de Risco Habitual">
+                    description = <"new ordinal">
+                >
+                ["at0006"] = <
+                    text = <"Gestação de Alto Risco que pode ser acompanhada na US  de atenção primária">
+                    description = <"Gestação de Alto Risco que pode ser Gestação de Alto Risco que pode ser acompanhada na US Alto risco, pode ser acompanhada na US de atenção primária">
+                >
+                ["at0007"] = <
+                    text = <"Gestação de Alto Risco que deve ser referenciada">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Estratificação de Risco da Gestação ">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Alto RIsco Atendimento UB">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Idade menor de 17 e maior de 35 anos">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Situação conjugal insegura">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Baixa escolaridade">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Condições ambientais desfavoráveis">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Altura menor que 1,45 m">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Peso menor que 45 kg ou maior que 75 kg">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Recém-nascido com crescimento retardado, pré-termo ou mal formado, em gestação anterior">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Intervalo interpartal menor que 2 anos">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Nuliparidade e multiparidade">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Síndrome hemorrágica ou hipertensiva, em gestação anterior">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Cirurgia uterina anterior">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Ganho ponderal inadequado">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Alto Risco Encaminhamento">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Dependência de drogas lícitas e ilícitas">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Morte perinatal anterior">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Abortamento habitual">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Esterilidade/ infertilidade">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Desvio quanto ao crescimento uterino, número de fetos e volume de líquido amniótico">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Trabalho de parto prematuro e gravidez prolongada;">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Pré-eclâmpsia e eclâmpsia">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Diabetes gestacional">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Amniorrexe prematura">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Hemorragias da gestação">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"Isoimunização">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Óbito fetal">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"Hipertensão arterial">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"Cardiopatias">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"Pneumopatias">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Nefropatias">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"Endocrinopatias">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Hemopatias">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Epilepsia">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"Doenças infecciosas">
+                    description = <"*">
+                >
+                ["at0045"] = <
+                    text = <"Doenças auto-imunes">
+                    description = <"*">
+                >
+                ["at0046"] = <
+                    text = <"Ginecopatias">
+                    description = <"*">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Estratificação de Risco da Gestação Atual">
+                    description = <"No caso de atendimento à gestante, deve-se avaliar o risco da gestação.">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Estratificação de Risco da Gestação Atual">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Gestação de Risco Habitual">
+                    description = <"new ordinal">
+                >
+                ["at0006"] = <
+                    text = <"Gestação de Alto Risco que pode ser acompanhada na US  de atenção primária">
+                    description = <"Gestação de Alto Risco que pode ser Gestação de Alto Risco que pode ser acompanhada na US Alto risco, pode ser acompanhada na US de atenção primária">
+                >
+                ["at0007"] = <
+                    text = <"Gestação de Alto Risco que deve ser referenciada">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Estratificação de Risco da Gestação ">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Alto RIsco Atendimento UB">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Idade menor de 17 e maior de 35 anos">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Situação conjugal insegura">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Baixa escolaridade">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Condições ambientais desfavoráveis">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Altura menor que 1,45 m">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Peso menor que 45 kg ou maior que 75 kg">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Recém-nascido com crescimento retardado, pré-termo ou mal formado, em gestação anterior">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Intervalo interpartal menor que 2 anos">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Nuliparidade e multiparidade">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Síndrome hemorrágica ou hipertensiva, em gestação anterior">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Cirurgia uterina anterior">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Ganho ponderal inadequado">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Alto Risco Encaminhamento">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Dependência de drogas lícitas e ilícitas">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Morte perinatal anterior">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Abortamento habitual">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Esterilidade/ infertilidade">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Desvio quanto ao crescimento uterino, número de fetos e volume de líquido amniótico">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Trabalho de parto prematuro e gravidez prolongada;">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Pré-eclâmpsia e eclâmpsia">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Diabetes gestacional">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Amniorrexe prematura">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Hemorragias da gestação">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"Isoimunização">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Óbito fetal">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"Hipertensão arterial">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"Cardiopatias">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"Pneumopatias">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Nefropatias">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"Endocrinopatias">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Hemopatias">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Epilepsia">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"Doenças infecciosas">
+                    description = <"*">
+                >
+                ["at0045"] = <
+                    text = <"Doenças auto-imunes">
+                    description = <"*">
+                >
+                ["at0046"] = <
+                    text = <"Ginecopatias">
+                    description = <"*">
+                >
+            >
+        >
+    >

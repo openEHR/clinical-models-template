@@ -1,0 +1,370 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.respiration.v2zl
+
+concept
+	[at0000]	-- Respiração
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Beatriz de Faria Leao">
+				["organisation"] = <"Zilics Health Information Systems">
+				["email"] = <"beatriz.leao@zilics.com.br">
+				["date"] = <"11/12/2007">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"28/06/2004">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"record respiratory rate, rhythm and character">
+			use = <"">
+			keywords = <"respirations", "breathing">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*record respiratory rate, rhythm and character">
+			use = <"">
+			keywords = <"respirations", "breathing">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Respiração
+		data matches {
+			HISTORY[at0001] matches {	-- history
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Qualquer evento 
+						data matches {
+							ITEM_TREE[at0003] matches {	-- List
+								items cardinality matches {0..*; ordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Freqüência
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"/min">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Ritmo Respiratório
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- Regular
+													at0007, 	-- Irregular
+													at0008, 	-- Ritmo de Cheyne-Stokes
+													at0013, 	-- Episódios de apnéia
+													at0021, 	-- Kussmaul
+													at0025, 	-- Dispnéia suspirosa
+													at0026, 	-- Ritmo de Cantani
+													at0027, 	-- Ritmo de Biot
+													at0028, 	-- Taquipnéia
+													at0029, 	-- Hiperpnéia
+													at0030]	-- Bradipnéia
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Tipo da Respiração
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Respiração superficial
+													at0018, 	-- Respiração normal
+													at0019]	-- Respiração profunda
+												}
+											}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Saturação de Oxigênio
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Dispnéia
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_LIST[at0022] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- *FiO2
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Respirations">
+					description = <"The rate and character of breathing">
+				>
+				["at0001"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Generic event">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Rate">
+					description = <"The rate of respirations">
+				>
+				["at0005"] = <
+					text = <"Rhythm">
+					description = <"The character of the respiration">
+				>
+				["at0006"] = <
+					text = <"regular">
+					description = <"regular respirations">
+				>
+				["at0007"] = <
+					text = <"irregular">
+					description = <"irregular respirations">
+				>
+				["at0008"] = <
+					text = <"Cheyne-Stokes">
+					description = <"gradual waxing and waning of respiration followed by a central apnoea or hypopnoea">
+				>
+				["at0013"] = <
+					text = <"Apnoeic episodes">
+					description = <"Periods of apnoea">
+				>
+				["at0016"] = <
+					text = <"Depth">
+					description = <"Depth of respiration">
+				>
+				["at0017"] = <
+					text = <"Shallow">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Deep">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"*Kussmaul">
+					description = <"*Ritmo respiratório  caracterizado pela alternância seqüencial de apnéias inspiratórias e expiratórias. ">
+				>
+				["at0022"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0023"] = <
+					text = <"FiO2">
+					description = <"Fraction of inspired oxygen">
+				>
+				["at0025"] = <
+					text = <"*Dispnéia suspirosa">
+					description = <"*na presença de inspirações profundas, esporádicas, em meio a um ritmo respiratório normal. Costuma aparecer em indivíduos com distúrbios psicológicos ou pela simples emoção. 
+">
+				>
+				["at0026"] = <
+					text = <"*Ritmo de Cantani">
+					description = <"*Caracteriza-se pelo aumento da amplitude dos movimentos respiratórios, de modo regular, secundariamente à presença de acidose metabólica, encontrada, por exemplo, na cetoacidose  diabética ou insuficiência renal. ">
+				>
+				["at0027"] = <
+					text = <"*Ritmo de Biot">
+					description = <"*Ritmo respiratório totalmente irregular, no tocante à ampli- 
+tude das incursões respiratórias e à freqüência. Aparece em pacientes com hipertensão intracraniana e lesões do sistema nervoso central. ">
+				>
+				["at0028"] = <
+					text = <"*Taquipnéia">
+					description = <"*RItmo respiratório que indica  o aumento do número de incursões respiratórias na unidade de tempo.Em condições fisiológicas de repouso, esse número, habitualmente, gira entre 12 e 20. A taquipnéia, normalmente, implica também na redução da amplitude das incursões  respiratórias (volume corrente). Diversas condições podem cursar com taquipnéia, tais como síndromes restritivas pulmonares (derrames pleurais, doenças intersticiais, edema pulmonar), febre, ansiedade, etc.">
+				>
+				["at0029"] = <
+					text = <"*Hiperpnéia">
+					description = <"*Termo geralmente usado para designar a elevação da ventilação alveolar secundária, não apenas ao aumento da freqüência respiratória, como, também, ao aumento da amplitude dos movimentos respiratórios. Pode estar presente em diferentes situações tais como acidose metabólica, febre, ansiedade, etc. 
+">
+				>
+				["at0030"] = <
+					text = <"*Bradipnéia">
+					description = <"*Designa a redução do número dos movimentos respiratórios, geralmente abaixo de oito incursões por minuto. Pode surgir em inúmeras situações, tais como presença de lesões neurológicas, depressão dos centros respiratórios por drogas (opióides, diazepínicos), precedendo a parada respiratória em casos de fadiga dos músculos respiratórios, etc.  ">
+				>
+				["at0043"] = <
+					text = <"*Saturação de Oxigênio">
+					description = <"**(en)">
+				>
+				["at0046"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Respiração">
+					description = <"Frequência e características da respiração do paciente">
+				>
+				["at0001"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento ">
+					description = <"Evento genérico">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Freqüência">
+					description = <"Número de incursões respiratórias">
+				>
+				["at0005"] = <
+					text = <"Ritmo Respiratório">
+					description = <"Características da respiração">
+				>
+				["at0006"] = <
+					text = <"Regular">
+					description = <"Respiração de ritmo regular">
+				>
+				["at0007"] = <
+					text = <"Irregular">
+					description = <"Respiração de ritmo irregular">
+				>
+				["at0008"] = <
+					text = <"Ritmo de Cheyne-Stokes">
+					description = <"Ritmo respiratório com alternância de períodos de apnéia, seguidos por hiperpnéia crescente e decrescente, até a instalação de nova apnéia, e, assim, sucessivamente">
+				>
+				["at0013"] = <
+					text = <"Episódios de apnéia">
+					description = <"́RItmo respiratório caracterizado pela  interrupção dos movimentos respiratórios por um período de tempo prolongado. por exemplo, pacientes com diagnóstico de sín- 
+drome da apnéia do sono podem permanecer sem res- 
+pirar durante minutos, cursando com hipoxemia acen- 
+tuada e significantes riscos do surgimento de arritmias 
+cardíacas e morte.respiratório totalmente irregular, no tocante à amplitude das incursões respiratórias e à freqüência. Aparece em pacientes com hipertensão intra-craniana e lesões do sistema nervoso central. ">
+				>
+				["at0016"] = <
+					text = <"Tipo da Respiração">
+					description = <"Profunidade da incursão respiratória">
+				>
+				["at0017"] = <
+					text = <"Respiração superficial">
+					description = <" ">
+				>
+				["at0018"] = <
+					text = <"Respiração normal">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Respiração profunda">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Kussmaul">
+					description = <"Ritmo respiratório  caracterizado pela alternância seqüencial de apnéias inspiratórias e expiratórias. ">
+				>
+				["at0022"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0023"] = <
+					text = <"*FiO2">
+					description = <"*Fraction of inspired oxygen">
+				>
+				["at0025"] = <
+					text = <"Dispnéia suspirosa">
+					description = <"na presença de inspirações profundas, esporádicas, em meio a um ritmo respiratório normal. Costuma aparecer em indivíduos com distúrbios psicológicos ou pela simples emoção. 
+">
+				>
+				["at0026"] = <
+					text = <"Ritmo de Cantani">
+					description = <"Caracteriza-se pelo aumento da amplitude dos movimentos respiratórios, de modo regular, secundariamente à presença de acidose metabólica, encontrada, por exemplo, na cetoacidose  diabética ou insuficiência renal. ">
+				>
+				["at0027"] = <
+					text = <"Ritmo de Biot">
+					description = <"Ritmo respiratório totalmente irregular, no tocante à ampli- 
+tude das incursões respiratórias e à freqüência. Aparece em pacientes com hipertensão intracraniana e lesões do sistema nervoso central. ">
+				>
+				["at0028"] = <
+					text = <"Taquipnéia">
+					description = <"RItmo respiratório que indica  o aumento do número de incursões respiratórias na unidade de tempo.Em condições fisiológicas de repouso, esse número, habitualmente, gira entre 12 e 20. A taquipnéia, normalmente, implica também na redução da amplitude das incursões  respiratórias (volume corrente). Diversas condições podem cursar com taquipnéia, tais como síndromes restritivas pulmonares (derrames pleurais, doenças intersticiais, edema pulmonar), febre, ansiedade, etc.">
+				>
+				["at0029"] = <
+					text = <"Hiperpnéia">
+					description = <"Termo geralmente usado para designar a elevação da ventilação alveolar secundária, não apenas ao aumento da freqüência respiratória, como, também, ao aumento da amplitude dos movimentos respiratórios. Pode estar presente em diferentes situações tais como acidose metabólica, febre, ansiedade, etc. 
+">
+				>
+				["at0030"] = <
+					text = <"Bradipnéia">
+					description = <"Designa a redução do número dos movimentos respiratórios, geralmente abaixo de oito incursões por minuto. Pode surgir em inúmeras situações, tais como presença de lesões neurológicas, depressão dos centros respiratórios por drogas (opióides, diazepínicos), precedendo a parada respiratória em casos de fadiga dos músculos respiratórios, etc.  ">
+				>
+				["at0043"] = <
+					text = <"Saturação de Oxigênio">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Dispnéia">
+					description = <"*">
+				>
+			>
+		>
+	>

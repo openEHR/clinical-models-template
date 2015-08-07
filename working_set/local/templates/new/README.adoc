@@ -1,0 +1,2 @@
+= Contents
+Models in this directory are new archetypes that have no parent from an existing repository (such as CKM)

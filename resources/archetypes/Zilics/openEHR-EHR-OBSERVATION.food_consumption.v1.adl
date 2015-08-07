@@ -1,0 +1,417 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.food_consumption.v1
+
+concept
+	[at0000]	-- *Inquérito Alimentar(pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Levantar informações sobre a alimentação.">
+			use = <"Levantar informações sobre a alimentação.">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Levantar informações sobre a alimentação.">
+			use = <"Levantar informações sobre a alimentação.">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"426AEC19088AE5D25212EE94C85D0FF3">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- *Inquérito Alimentar(pt)
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_LIST[at0003] matches {	-- *List(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ave: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {
+												value matches {|PT0M|}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Carne Bovina: Número de Porções
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {
+												value matches {|PT0M|}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Carne Suína: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Peixes e frutos de mar: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Frituras: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Verduras e Legumes: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Sementes: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Grãos: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Frutas: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Massas: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Pães: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Embutidos: Número de Porções Consumidas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_DURATION matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Inquérito Alimentar(pt)">
+					description = <"*Inquérito Alimentar(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Ave: Número de Porções">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"Carne Bovina: Número de Porções">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"Carne Suína: Número de Porções">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Peixes e frutos de mar: Número de Porções">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Frituras: Número de Porções">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Verduras e Legumes: Número de Porções">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Sementes: Número de Porções">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Grãos: Número de Porções">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Frutas: Número de Porções">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Massas: Número de Porções">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Pães: Número de Porções">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Embutidos: Número de Porções">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Período">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Inquérito Alimentar">
+					description = <"Inquérito Alimentar">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Ave: Número de Porções">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Carne Bovina: Número de Porções">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0012"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0015"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0016"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0022"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0024"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0025"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0026"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0027"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

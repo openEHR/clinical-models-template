@@ -1,0 +1,269 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.check_list-medication.v2
+specialize
+	openEHR-EHR-EVALUATION.check_list.v2
+
+concept
+	[at0000.1]	-- Medicação em Uso
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"unknown">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording information about use of medication during history taking">
+			use = <"For recording basic information about medication use. Current medications must be entered as a instructions and administrations as actions">
+			misuse = <"Not for recording medication orders">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro de informação sobre o uso de medicação durante a anamnese
+">
+			use = <"Registro de informação básica sobre o uso da medicação. Medicações atuais devem ser registradas como instruções e a administração como ação
+">
+			misuse = <"Não usar para registro de prescrição de medicamentos">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000.1] matches {	-- Medicação em Uso
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0002] occurrences matches {0..*} matches {	-- Medicação
+						items cardinality matches {1..2; unordered} matches {
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Nome do Medicamento
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.13] occurrences matches {0..1} matches {	-- Posologia
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.14] occurrences matches {0..1} matches {	-- Dose
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.7] occurrences matches {0..1} matches {	-- Uso
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0.10, 	-- Em uso
+											at0.11, 	-- Uso prévio
+											at0.12]	-- Nunca usou
+										}
+									}
+								}
+							}
+							ELEMENT[at0.15] occurrences matches {0..1} matches {	-- Frequência
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.8] occurrences matches {0..1} matches {	-- Duração
+								value matches {
+									DV_DURATION matches {*}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {	-- Observações
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comentários sobre a resposta
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.10"] = <
+					text = <"Currently using">
+					description = <"*">
+				>
+				["at0.11"] = <
+					text = <"Recently used">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"Never used">
+					description = <"*">
+				>
+				["at0.13"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.14"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.15"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.7"] = <
+					text = <"Use">
+					description = <"Information about the use of medication">
+				>
+				["at0.8"] = <
+					text = <"Duration of use">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Drug formulary">
+					description = <"A searchable drug formulary">
+				>
+				["at0000"] = <
+					text = <"A health oriented check list">
+					description = <"A generic archetype for recording questions and answers to allow structured recording. Actual findings are recorded in other structures">
+				>
+				["at0000.1"] = <
+					text = <"Check list for medication used now or previously">
+					description = <"For recording questions and answers about medication use. Actual medication orders or actions are recorded using different archetypes">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Medication">
+					description = <"The name of the cluster is the question">
+				>
+				["at0003"] = <
+					text = <"Medication">
+					description = <"The medication that are the answer(s) to the question">
+				>
+				["at0004"] = <
+					text = <"Current medications">
+					description = <"A grouping for questions and answers">
+				>
+				["at0005"] = <
+					text = <"A comment on the answer">
+					description = <"A comment on the question">
+				>
+				["at0006"] = <
+					text = <"Summary">
+					description = <"Summary of questions">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.10"] = <
+					text = <"Em uso">
+					description = <"*">
+				>
+				["at0.11"] = <
+					text = <"Uso prévio">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"Nunca usou">
+					description = <"*">
+				>
+				["at0.13"] = <
+					text = <"Posologia">
+					description = <"*">
+				>
+				["at0.14"] = <
+					text = <"Dose">
+					description = <"*">
+				>
+				["at0.15"] = <
+					text = <"Frequência">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Uso">
+					description = <"Informação sobre o uso da medicação">
+				>
+				["at0.8"] = <
+					text = <"Duração">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Vade Mecum">
+					description = <"Um manual de medicamentos">
+				>
+				["at0000"] = <
+					text = <"Revisão Clínica">
+					description = <"Arquétipo para registro de perguntas e respostas a fim de permitir o registro de dados estruturados. Dados atuais são registrados  outras estruturas.">
+				>
+				["at0000.1"] = <
+					text = <"Medicação em Uso">
+					description = <"Para registro de perguntas e respostas sobre uso de medicação. Solicitação e prescrições da medicação atual são registradas em outros arquétipos.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal@">
+				>
+				["at0002"] = <
+					text = <"Medicação">
+					description = <"O nome da medicação em questão">
+				>
+				["at0003"] = <
+					text = <"Nome do Medicamento">
+					description = <"Nome das medicações">
+				>
+				["at0004"] = <
+					text = <"Medicação Atual">
+					description = <"Conjunto de perguntas e respostas">
+				>
+				["at0005"] = <
+					text = <"Comentários sobre a resposta">
+					description = <"Comentários sobre a pergunta">
+				>
+				["at0006"] = <
+					text = <"Observações">
+					description = <"Sumário das questões">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"*New constraint(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,166 @@
+archetype
+    openEHR-EHR-OBSERVATION.waist_hip.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["date"] = <"12/10/2007">
+        ["name"] = <"Heather Leslie">
+        ["organisation"] = <"Ocean Informatics">
+    >
+    lifecycle_state = <"AuthorDraft">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the  waist (or girth) and hip circumference and waist/hip ratio">
+            keywords = <"waist","hip">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*To record the  waist (or girth) and hip circumference and waist/hip ratio">
+            keywords = <"waist","hip">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_LIST[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openEHR::122]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"cm">
+                                                        magnitude = <|>=0.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                    ["2"] = <
+                                                        units = <"in">
+                                                        magnitude = <|>=0.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                >
+                                            >
+                                        }
+                                    }
+                                    ELEMENT[at0005] occurrences matches {0..1} matches {
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openEHR::122]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"cm">
+                                                        magnitude = <|>=0.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                >
+                                            >
+                                        }
+                                    }
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_PROPORTION matches {
+                                                numerator matches {|>0.0|}
+                                                denominator matches {|>0.0|}
+                                                type matches {1}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Circunferência abdominal e do quadril">
+                    description = <"The waist (or girth) and hip circumference">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"Timing event">
+                >
+                ["at0003"] = <
+                    text = <"List">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Waist circumference">
+                    description = <"The waist circumference measured at or above the umbilicus">
+                >
+                ["at0005"] = <
+                    text = <"Hip circumference">
+                    description = <"Measurement of body circumference at the widest point of the buttocks">
+                >
+                ["at0006"] = <
+                    text = <"Waist:hip ratio">
+                    description = <"Ratio with unitary denominator">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Waist and hip circumference">
+                    description = <"*The waist (or girth) and hip circumference">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"*Timing event">
+                >
+                ["at0003"] = <
+                    text = <"List">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Circunferência abdominal">
+                    description = <"*The waist circumference measured at or above the umbilicus">
+                >
+                ["at0005"] = <
+                    text = <"Circunferência do quadril">
+                    description = <"*Measurement of body circumference at the widest point of the buttocks">
+                >
+                ["at0006"] = <
+                    text = <"*Relação circunferência abdominal-quadril (RCQ):">
+                    description = <" ">
+                >
+            >
+        >
+    >

@@ -1,0 +1,252 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.alcohol_use_prodemge.v2
+
+concept
+	[at0000]	-- Uso de Álcool
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"F97FB6EADCB6ACBB4CAB022B2DDEF37E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Uso de Álcool
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Uso de Álcool
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0027] occurrences matches {0..1} matches {	-- Uso de Alcool
+												value matches {
+													0|[local::at0028], 	-- Sim
+													1|[local::at0029], 	-- Não
+													2|[local::at0030]  	-- Não informado
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Idade de Início
+												value matches {
+													DV_DATE matches {*}
+													1|[local::at0014], 	-- Não Informado
+													2|[local::at0015]  	-- Não Relatado
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Informações sobre o Uso de Álcool
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											CLUSTER[at0016] occurrences matches {0..1} matches {	-- Triagem de CAGE
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0035] occurrences matches {0..1} matches {	-- Você já sentiu a necessidade de reduzir ou suspender o álcool (Cut down)?
+														value matches {
+															0|[local::at0045], 	-- Sim
+															1|[local::at0046], 	-- Não
+															2|[local::at0047]  	-- Não Informado
+														}
+													}
+													ELEMENT[at0034] occurrences matches {0..1} matches {	-- Alguém já o criticou pelo ato de beber (Any)?
+														value matches {
+															0|[local::at0036], 	-- Sim
+															1|[local::at0037], 	-- Não
+															2|[local::at0038]  	-- Não Informado
+														}
+													}
+													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Sente-se culpado (Guilty) por beber?
+														value matches {
+															0|[local::at0039], 	-- Sim
+															1|[local::at0040], 	-- Não
+															2|[local::at0041]  	-- Não Informado
+														}
+													}
+													ELEMENT[at0032] occurrences matches {0..1} matches {	-- Costuma beber logo pela manhã (Eye-opener)?
+														value matches {
+															0|[local::at0042], 	-- Sim
+															1|[local::at0043], 	-- Não 
+															2|[local::at0044]  	-- Não Informado
+														}
+													}
+													ELEMENT[at0021] occurrences matches {0..1} matches {	-- Escore
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0025, 	-- Positivo
+																	at0026]	-- Negativo
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Uso de Álcool">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Uso de Álcool">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Informações sobre o Uso de Álcool">
+					description = <"Informações sobre o uso de álcool.">
+				>
+				["at0013"] = <
+					text = <"Idade de Início">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Não Relatado">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Triagem de CAGE">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Escore">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Positivo">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Negativo">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Uso de Alcool">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Não informado">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Costuma beber logo pela manhã (Eye-opener)?">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Sente-se culpado (Guilty) por beber?">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Alguém já o criticou pelo ato de beber (Any)?">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Você já sentiu a necessidade de reduzir ou suspender o álcool (Cut down)?">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Não ">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+			>
+		>
+	>

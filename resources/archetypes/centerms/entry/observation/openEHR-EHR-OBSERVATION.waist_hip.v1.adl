@@ -1,0 +1,215 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.waist_hip.v1
+
+concept
+	[at0000]	-- Waist and hip circumference
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["ar-sy"] = <
+			language = <[ISO_639-1::ar-sy]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["date"] = <"12/10/2007">
+	>
+	details = <
+		["ar-sy"] = <
+			language = <[ISO_639-1::ar-sy]>
+			purpose = <"لتسجيل كِفاف الخصر (الحزام) و الورك و نسبة قياس الخصر إلى الورك">
+			use = <"">
+			keywords = <"الخصر", "الورك">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the  waist (or girth) and hip circumference and waist/hip ratio">
+			use = <"">
+			keywords = <"waist", "hip">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar a medida da cintura, a medida do quadril e a relação entre as medidas da cintura e do quadril.">
+			use = <"">
+			keywords = <"cintura", "quadril">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Heather Leslie, Ocean Informatics, Australia (Editor)", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"1F66138BC3BA784BD228BB96EC00C793">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Medida da cintura e quadril
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(en)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_LIST[at0003] matches {	-- *List(en)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Medida da cintura
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+													>
+													["2"] = <
+														units = <"in">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Medida do quadril
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+														magnitude = <|>=0.0|>
+														precision = <|1|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Relação cintura/quadril
+										value matches {
+											DV_PROPORTION matches {
+												type matches {1}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["ar-sy"] = <
+			items = <
+				["at0000"] = <
+					text = <"كفاف الوِرك و الخصر">
+					description = <"كفاف الخصر (الحزام) و الورك">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"إحدى الوقائع">
+					description = <"واقعة وقتية">
+				>
+				["at0003"] = <
+					text = <"*List(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"كِفاف الخصر">
+					description = <"كِفاف الخصر, يتم قياسه عند أو أعلى من السُّرة">
+				>
+				["at0005"] = <
+					text = <"كِفاف الوِرك">
+					description = <"قياس كِفاف الجسم عند أعرض نقطة من الألية">
+				>
+				["at0006"] = <
+					text = <"نسبة الخصر إلى الوِرك">
+					description = <"*Ratio with unitary denominator(en)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Waist and hip circumference">
+					description = <"The waist (or girth) and hip circumference">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Timing event">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Waist circumference">
+					description = <"The waist circumference measured at or above the umbilicus">
+				>
+				["at0005"] = <
+					text = <"Hip circumference">
+					description = <"Measurement of body circumference at the widest point of the buttocks">
+				>
+				["at0006"] = <
+					text = <"Waist:hip ratio">
+					description = <"Ratio with unitary denominator">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Medida da cintura e quadril">
+					description = <"A medida da cintura e quadril.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"Evento no tempo">
+				>
+				["at0003"] = <
+					text = <"*List(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Medida da cintura">
+					description = <"Medida da cintura, medida sobre ou acima do umbigo.">
+				>
+				["at0005"] = <
+					text = <"Medida do quadril">
+					description = <"Medida da circunferência do corpo no ponto mais largo das nádegas.">
+				>
+				["at0006"] = <
+					text = <"Relação cintura/quadril">
+					description = <"Relação entre a medida da cintura e medida do quadril.">
+				>
+			>
+		>
+	>

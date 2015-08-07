@@ -1,0 +1,144 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.emergency_triage.v2
+
+concept
+	[at0000]	-- Triagem e Avaliação de Riscos
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Triagem e Avaliação de Riscos
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0002] occurrences matches {0..1} matches {	-- Antropometria
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/body_weight\.v1|height\.v1/}
+					}
+				}
+			}
+			SECTION[at0004] occurrences matches {0..1} matches {	-- Sinais Vitais e Glicemia
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/blood_pressure\.v1|body_temperature\.v1|respiration\.v1|heart_rate\.v1|triage_glycemia\.v1ao/}
+					}
+				}
+			}
+			SECTION[at0005] occurrences matches {0..1} matches {	-- Situação / Queixa
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/triage_main_complaint\.v1ao|triage_neurologic_evaluation\.v1ao|triage_orthopedic_injury\.v1ao|triage_pain\.v1ao|triage_physical_condition\.v1ao|triage_pregnant\.v1ao|triage_signs\.v1ao|triage_trauma\.v1ao|triage_bleeding\.v1ao|triage_further_information\.v1ao|glasgow_coma\.v1draft|triage_previous_clinical_history\.v1ao/}
+					}
+				}
+			}
+			SECTION[at0006] occurrences matches {0..1} matches {	-- Condições Físicas
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|triage_physical_condition\.v1ao/}
+					}
+				}
+			}
+			SECTION[at0008] occurrences matches {0..1} matches {	-- Glasgow
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|glasgow_coma\.v1draft/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triagem e Avaliação de Riscos">
+					description = <"Triagem e Avaliação de Riscos">
+				>
+				["at0002"] = <
+					text = <"Antropometria">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Sinais Vitais e Glicemia">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Situação / Queixa">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Condições Físicas">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Glasgow">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triagem e Avaliação de Riscos">
+					description = <"Triagem e Avaliação de Riscos">
+				>
+				["at0002"] = <
+					text = <"Antropometria">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Sinais Vitais e Glicemia">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Situação / Queixa">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Condições Físicas">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"Glasgow">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

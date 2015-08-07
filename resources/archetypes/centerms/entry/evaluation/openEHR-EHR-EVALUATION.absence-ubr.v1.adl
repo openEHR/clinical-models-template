@@ -1,0 +1,127 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.absence-ubr.v1
+
+concept
+	[at0000]	-- Absence of Information
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2013-03-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To positively record statement/s about information that is not available within the health record at a specific point in time.">
+			use = <"Use to positively record statements about  information that is not available within the health record at a specific point in time - that neither the positive presence, nor the positive exclusion, of information about a clinicial finding or an evaluation or a previous activity is available.
+
+This archetype has been designed to be used within SLOTS in persistent COMPOSITIONS such as Medication List, Problem List, or Adverse Reaction List.
+
+Absence statements can only be considered to be current and accurate at the time of recording.
+
+This archetype has been designed specifically to avoid the need to use of flags to express negation about any item within the health record.">
+			keywords = <"absence", "information", "adverse", "reaction", "problem", "diagnosis", "medication", "procedure", "vaccination">
+			misuse = <"Not to be used to record the exclusion of adverse reactions, medication use, procedures, problems or diagnoses - use specific specialisations of the EVALUATION.exclusion archetype for this purpose.">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar afirmação(ões) relacionada(s) com informação não disponível no prontuário clínico num dado momento no tempo.">
+			use = <"Usar para registrar afirmação(ões) relacionada(s) com informação não disponível no prontuário clínico num dado momento no tempo. Ou seja, que não existe informação disponível nem sobre a presença, nem sobre a exclusão, de algum achado clínico ou avaliação ou atividade passada.
+
+Este arquétipo foi criado para ser utilizado em SLOTS de composições persistentes como, por exemplo, a de Lista de Medicamentos, a Lista de Problemas e a Lista de Reações Adversas.
+
+Informações relativamente a ausência de informação apenas podem ser consideradas atuais e válidas no momento do seu registro.
+
+Este arquétipo foi criado especificamente para evitar a necessidade de utilizar flags para expressar a negação relativamente a quaisquer items do prontuário clínico.">
+			keywords = <"ausência", "informação", "adversa", "reação", "problema", "diagnóstico", "medicamento", "procedimento", "imunização">
+			misuse = <"Não utilizar para registrar a exclusão de reações adversas, do uso de medicamentos, procedimentos, problemas ou diagnósticos - para esse propósito utilizar as especializações específicas do arquétipo EVALUATION.exclusion.">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"ED3FA20F802C7EB8E65214CF1448B1B8">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Ausência de informação
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Afirmação de ausência
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] matches {	-- Data de registro
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Absence of Information">
+					description = <"Positive statement/s about information that is not available within the health record at a specific point in time.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Absence Statement">
+					description = <"Positive statement that no information is available.">
+					comment = <"For example: \"No information available about adverse reactions\"; No information available about problems or diagnoses\"; \"No information available about previous procedures performed\"; or \"No information available about medications used\".">
+				>
+				["at0003"] = <
+					text = <"Registration date">
+					description = <"The date this statement was recorded.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ausência de informação">
+					description = <"Afirmação(ões) relacionada(s) com informação não disponível no prontuário clínico num dado momento no tempo.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Afirmação de ausência">
+					description = <"Afirmação sobre informação não disponível.">
+					comment = <"*For example: \"No information available about adverse reactions\"; No information available about problems or diagnoses\"; \"No information available about previous procedures performed\"; or \"No information available about medications used\".(en)">
+				>
+				["at0003"] = <
+					text = <"Data de registro">
+					description = <"Data na qual a afirmação foi registrada.">
+				>
+			>
+		>
+	>

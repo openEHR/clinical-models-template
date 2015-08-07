@@ -1,0 +1,220 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.vaccination_summary-sus.v1
+
+concept
+	[at0000]	-- Vaccination Summary
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2012-11-23">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a summary of the vaccination status for an identified infectious disease or agent.">
+			use = <"Use to record a summary statement by a clinician about the vaccination status for an identified infectious disease or agent.
+
+This archetype does not presume any particular schedule or protocol for vaccination.">
+			keywords = <"vaccination", "immunisation", "immunization", "summary", "primary", "course", "booster">
+			misuse = <"Not to be used to record a status of the subject's possible immune status. Immune status and need for ongoing vaccination or booster will be a clinical decision determined by a number of factors - clinical evidence of previous infection; vaccination status; vaccination history; serology results; contraindications; adverse reactions; and the clinical trigger eg a needle stab injury or exposure to an infectious disease/agent.">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar o sumário do estado de imunização do sujeito relativamente a uma determinada doença ou agente infeccioso.">
+			use = <"Usar para registrar o sumário do estado de imunização do sujeito relativamente a uma determinada doença ou agente infeccioso.
+
+Este arquétipo não assume a utilização de nenhum calendário ou protocolo de vacinação em particular.">
+			keywords = <"vacinação", "imunização", "sumário", "primária", "curso", "reforço">
+			misuse = <"Não usar para registrar um possível estado de imunização do sujeito. O estado de imunização e a necessidade da vacinação ou reforço será uma decisão clínica determinada por um conjunto de fatores - a evidência clínica de infecção anterior; o estado de vacinação; a história de vacinação; resultados serológicos; contraindicações; reações adversas; e alertas clínicos e.g. uma lesão com um objeto possivelmente contaminado ou a exposição a uma doença/agente infeccioso.">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <"Merrilyn Curtis, AnalyzeIT, Australia", "Sistine Barretto-Daniels, Ocean Informatics, Australia">
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"4CCB0C303E59A0568D9FA2B9CAA2B8ED">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Sumário do estado de imunização
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {1..*} matches {	-- Doença ou agente infeccioso
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Estado de imunização primária
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Data de conclusão do ciclo de imunização primária
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Data do último reforço
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Estado de imunização
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0017, 	-- Sim
+									at0018]	-- Não
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {	-- *Tree(en)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Próxima revisão em 
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0015] matches {	-- Última atualização
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vaccination Summary">
+					description = <"Summary of the vaccination status for an identified infectious disease or agent.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Infectious Disease or Agent">
+					description = <"Identification of the infectious disease or agent.">
+					comment = <"There may be multiple diseases or agents that are vaccinated together - for example: diptheria, tetanus and pertussis or measles, mumps and rubella.">
+				>
+				["at0003"] = <
+					text = <"Primary Course Status">
+					description = <"Status of the primary course of vaccinations.">
+				>
+				["at0008"] = <
+					text = <"Date Primary Course Completed">
+					description = <"The date on which the primary  (or catch-up) course of vaccines was completed.">
+				>
+				["at0009"] = <
+					text = <"Date of Last Booster">
+					description = <"The date of which the last vaccine booster was administered.">
+				>
+				["at0010"] = <
+					text = <"Vaccination Status">
+					description = <"An assertion about whether the vaccination course is up-to-date.">
+				>
+				["at0013"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Next Review Due">
+					description = <"The date at which the immunisation summary should be reviewed and possibly updated.">
+				>
+				["at0015"] = <
+					text = <"Last Updated">
+					description = <"The date on which the immunisation summary was last updated.">
+				>
+				["at0017"] = <
+					text = <"*Sim(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*Não(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sumário do estado de imunização">
+					description = <"Sumário do estado de imunização do sujeito relativamente a uma determinada doença ou agente infeccioso.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Doença ou agente infeccioso">
+					description = <"Identificação da doença ou agente infeccioso.">
+					comment = <"*There may be multiple diseases or agents that are vaccinated together - for example: diptheria, tetanus and pertussis or measles, mumps and rubella.(en)">
+				>
+				["at0003"] = <
+					text = <"Estado de imunização primária">
+					description = <"Estado relativamente ao primeiro ciclo de imunização.">
+				>
+				["at0008"] = <
+					text = <"Data de conclusão do ciclo de imunização primária">
+					description = <"Data na qual o ciclo de imunização primária (ou catch-up) foi concluído.">
+				>
+				["at0009"] = <
+					text = <"Data do último reforço">
+					description = <"Data na qual a última dose de reforço de vacinação foi administrada.">
+				>
+				["at0010"] = <
+					text = <"Estado de imunização">
+					description = <"Afirmação sobre o ciclo de imunização estar ou não em dia.">
+				>
+				["at0013"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0014"] = <
+					text = <"Próxima revisão em ">
+					description = <"Data na qual o sumário do estado de imunização deve ser revisto e possivelmente atualizado.">
+				>
+				["at0015"] = <
+					text = <"Última atualização">
+					description = <"Data na qual o sumário do estado de imunização foi atualizado pela última vez.">
+				>
+				["at0017"] = <
+					text = <"Sim">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Não">
+					description = <"*">
+				>
+			>
+		>
+	>

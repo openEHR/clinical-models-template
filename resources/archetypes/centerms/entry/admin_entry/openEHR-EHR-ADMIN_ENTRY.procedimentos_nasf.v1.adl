@@ -1,0 +1,85 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.procedimentos_nasf.v1
+
+concept
+	[at0000]	-- Procedimentos NASF
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"registro simples de atividades do NASF- Nucleo de apoio ã saude da familia">
+			use = <"para regitro de atividades">
+			keywords = <"nucleo de apoio à saude da familia", "procedimentos terapeuticos">
+			misuse = <"nao é para ser utilizado como entrada clínica">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"814D2B8C960BA7A2F0B5C2FA250B1172">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Procedimentos NASF
+		data matches {
+			ITEM_LIST[at0001] matches {	-- List
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Avaliaçao/diagnóstico
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Procedimento clínico/terapêutico
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Prescrição terapêutica
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Procedimentos NASF">
+					description = <"usados para registro de tipos de procedimentos realizados, com finalidades apenas informativas">
+				>
+				["at0001"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Avaliaçao/diagnóstico">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Procedimento clínico/terapêutico">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Prescrição terapêutica">
+					description = <"*">
+				>
+			>
+		>
+	>

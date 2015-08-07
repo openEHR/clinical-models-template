@@ -1,0 +1,309 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.venous_thromboembolism_score.v1
+
+concept
+	[at0000]	-- Venous thromboembolism score
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"4541D8E9182938427A9816FB08513E46">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Venous thromboembolism score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Idade
+										value matches {
+											0|[local::at0005], 	-- Abaixo de 40
+											1|[local::at0006], 	-- Entre 40-60
+											2|[local::at0007]  	-- Acima de 60
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Porte da cirurgia
+										value matches {
+											0|[local::at0009], 	-- Pequeno
+											1|[local::at0010], 	-- Médio
+											2|[local::at0011]  	-- Grande
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Contraindicação ao uso de quimioprofilaxia
+										value matches {
+											0|[local::at0022], 	-- Ausente
+											1|[local::at0023]  	-- Presente
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Contraindicação ao uso de métodos mecânicos
+										value matches {
+											0|[local::at0025], 	-- Ausente
+											1|[local::at0026]  	-- Presente
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Presença de fatores de risco
+										value matches {
+											0|[local::at0013], 	-- Ausente
+											1|[local::at0014]  	-- Presente
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Risco de TEV
+										value matches {
+											0|[local::at0018], 	-- Baixo
+											1|[local::at0019], 	-- Intermédio
+											2|[local::at0020]  	-- Alto
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Venous thromboembolism score">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Under 40">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Between 40-60">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Above 60">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Surgery Size">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"*Pequeno(en)">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"*Médio(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*Grande(en)">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"*Ausente(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*Presente(en)">
+					description = <"**(en)">
+				>
+				["at0017"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*Baixo(en)">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"*Intermédio(en)">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"*Alto(en)">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"*Ausente(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Presente(en)">
+					description = <"**(en)">
+				>
+				["at0024"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0025"] = <
+					text = <"*Ausente(en)">
+					description = <"**(en)">
+				>
+				["at0026"] = <
+					text = <"*Presente(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Venous thromboembolism score">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Idade">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Abaixo de 40">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Entre 40-60">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Acima de 60">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Porte da cirurgia">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Pequeno">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Médio">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Grande">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Presença de fatores de risco">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Ausente">
+					description = <"Ausente">
+				>
+				["at0014"] = <
+					text = <"Presente">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Risco de TEV">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Baixo">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Intermédio">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Alto">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Contraindicação ao uso de quimioprofilaxia">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Presente">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Contraindicação ao uso de métodos mecânicos">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Presente">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,70 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.significant_comorbidity.v1zl
+
+concept
+	[at0000]	-- Comorbidade Significante
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Comorbidade Significante
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Comorbidade Significante Presente
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Condição
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Comorbidade Significante">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Comorbidade Significante Presente">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Condição">
+					description = <"*">
+				>
+			>
+		>
+	>

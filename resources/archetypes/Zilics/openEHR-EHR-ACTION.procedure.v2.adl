@@ -1,0 +1,69 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ACTION.procedure.v2
+
+concept
+	[at0000]	-- Procedimento Realizado
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"unknown">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Procedure undertaken">
+			use = <"">
+			misuse = <"">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar o procedimento realizado.">
+			use = <"Durante um atendimento registrar o procedimento que foi realizado.">
+			misuse = <"---">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"F1B5747B66059916DA19AE2AD050D8F7">
+	>
+
+definition
+	ACTION[at0000] matches {	-- Procedimento Realizado
+		description matches {
+			allow_archetype ITEM_TREE occurrences matches {0..*} matches {
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Procedure Undertaken">
+					description = <"The description of a procedure that has been performed">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Procedimento Realizado">
+					description = <"Procedimento que foi realizado no atendimento">
+				>
+			>
+		>
+	>

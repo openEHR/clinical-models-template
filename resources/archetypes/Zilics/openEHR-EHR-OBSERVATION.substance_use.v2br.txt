@@ -1,0 +1,3 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0255]/items[at0006]/items[at0004]=summary
+/data[at0001]/events[at0002]/data[at0003]/items[at0255]/items[at0005]=summary
+/data[at0001]/events[at0002]/data[at0003]/items[at0255]/items[at0006]/items[at0030]/items[at0009]=summary

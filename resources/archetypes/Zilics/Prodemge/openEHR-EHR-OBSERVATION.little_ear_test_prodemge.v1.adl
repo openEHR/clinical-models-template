@@ -1,0 +1,101 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.little_ear_test_prodemge.v1
+
+concept
+	[at0000]	-- Teste da Orelinha
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Teste da Orelinha
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Teste da Orelinha
+										value matches {
+											1|[local::at0005], 	-- Sem alterações
+											2|[local::at0006], 	-- Alterado
+											3|[local::at0007]  	-- Não realizado
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Alterações do Teste da Orelhinha
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Teste da Orelinha">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Teste da Orelinha">
+					description = <"Teste de audição, anotar se há ou não alterações. ">
+				>
+				["at0005"] = <
+					text = <"Sem alterações">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Alterado">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Não realizado">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Alterações do Teste da Orelhinha">
+					description = <"*">
+				>
+			>
+		>
+	>

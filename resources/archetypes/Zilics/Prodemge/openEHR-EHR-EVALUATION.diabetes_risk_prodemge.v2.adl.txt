@@ -1,0 +1,131 @@
+archetype
+    openEHR-EHR-EVALUATION.diabetes_risk_prodemge.v2
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0003] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0005] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0006] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0004] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0007] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0008,
+                                    at0009,
+                                    at0010,
+                                    at0011]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"ESTRATIFICAÇÃO DE RISCO – RISCO NO PACIENTE COM DIABETES">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <" Risco do Paciente com Diabetes">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Sem tratamento medicamentoso">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Não usuário de insulina e sem hipertensão">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Não usuário de insulina e com hipertensão">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Usuários de insulina">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Estratificação de Risco do Paciente com Diabetes">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Sem tratamento medicamentoso">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Não usuário de insulina e com hipertensão">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Usuários de insulina">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Não usuários de insulina e sem hipertensão">
+                    description = <"*">
+                >
+            >
+        >
+    >

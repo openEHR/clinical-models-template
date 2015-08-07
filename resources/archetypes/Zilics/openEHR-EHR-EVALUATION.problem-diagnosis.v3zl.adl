@@ -1,0 +1,1099 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.problem-diagnosis.v3zl
+specialize
+	openEHR-EHR-EVALUATION.problem.v2draft
+
+concept
+	[at0000.1]	-- Hipótese Diagnóstica
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"23/04/2006">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording medical diagnoses with optional diagnostic criteria and staging. Requires coded entry of diagnosis. ">
+			use = <"Used for recording any diagnosis, present or past - so is used for recording past history as well as current diagnoses. Used with changed 'Subject of care' for recording diagnoses in relatives and so for family history.">
+			keywords = <"past", "history", "family", "history", "condition">
+			misuse = <"Use 'openEHR-EHR-EVALUATION.problem-diagnosis-histological' for histological diagnoses.">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registrar diagnósticos médicos com critérios de diagnósticos e estadiamentos opcionais . Requer codificação específica para diagnóstico
+">
+			use = <"Uso para registro de qualquer diagnóstico atual ou prévio. Pode ser usado para registrar patologias pregressas como também para diagnósticos atuais
+Pode ser usado em 'Sujeito à tratamento' para registrar diagnósticos em parentes e também na história familiar
+">
+			keywords = <"*past(en)", "*history(en)", "*family(en)", "*history(en)", "*condition(en)">
+			misuse = <"Usar 'openEHR-EHR-EVALUATION.problem-diagnosis-histological' para diagnóstico histológico">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000.1] matches {	-- Hipótese Diagnóstica
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Estrutura
+				items cardinality matches {0..*; ordered} matches {
+					CLUSTER[at0.62] occurrences matches {0..1} matches {	-- Diagnóstico Principal
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0002.1] occurrences matches {0..1} matches {	-- Diagnóstico
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[ac0.1]}		-- Qualquer termo que seja um diagnóstico
+									}
+								}
+							}
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Início da doença
+								value matches {
+									DV_DATE matches {
+										value matches {yyyy-??-??}
+									}
+								}
+							}
+							ELEMENT[at0.32] occurrences matches {0..1} matches {	-- Status
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0.33, 	-- Provisório
+											at0.60]	-- Confirmado
+										}
+									}
+								}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {	-- Idade no início da doença
+								value matches {
+									DV_DURATION matches {
+										value matches {PYMWD}
+									}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Severidade
+								value matches {
+									1|[local::at0006], 	-- Leve
+									4|[local::at0007], 	-- Moderada
+									7|[local::at0008]  	-- Grave
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {	-- Descrição Clínica
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0.63] occurrences matches {0..*} matches {	-- Outros Diagnósticos
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0.64] occurrences matches {0..1} matches {	-- Diagnóstico
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[ac0.2]}		-- Qualquer termo que seja um diagnóstico
+									}
+								}
+							}
+							ELEMENT[at0.65] occurrences matches {0..1} matches {	-- Início da doença
+								value matches {
+									DV_DATE matches {
+										value matches {yyyy-??-??}
+									}
+								}
+							}
+							ELEMENT[at0.66] occurrences matches {0..1} matches {	-- Status
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0.70, 	-- Provisório
+											at0.71]	-- Confirmado
+										}
+									}
+								}
+							}
+							ELEMENT[at0.67] occurrences matches {0..1} matches {	-- Idade da resolução
+								value matches {
+									DV_DURATION matches {
+										value matches {PYMWD}
+									}
+								}
+							}
+							ELEMENT[at0.68] occurrences matches {0..1} matches {	-- Severidade
+								value matches {
+									1|[local::at0.72], 	-- Leve
+									4|[local::at0.73], 	-- Moderada
+									7|[local::at0.74]  	-- Grave
+								}
+							}
+							ELEMENT[at0.69] occurrences matches {0..1} matches {	-- Descrição Clínica
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Data da detecção clinica
+						value matches {
+							DV_DATE matches {
+								value matches {yyyy-??-XX}
+							}
+						}
+					}
+					CLUSTER[at0011] occurrences matches {0..*} matches {	-- Localização
+						items cardinality matches {1..2; ordered} matches {
+							ELEMENT[at0012] occurrences matches {0..1} matches {	-- Orgão afetado
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {	-- Descrição do local
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0014] occurrences matches {0..1} matches {	-- Etiologia
+						items cardinality matches {1..2; unordered} matches {
+							ELEMENT[at0015] occurrences matches {0..*} matches {	-- Agente
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0016] occurrences matches {0..*} matches {	-- Complicação de
+								value matches {
+									DV_TEXT matches {*}
+									DV_URI matches {*}
+								}
+							}
+							ELEMENT[at0017] occurrences matches {0..1} matches {	-- Descrição
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0018] occurrences matches {0..1} matches {	-- Ocorrências ou exacerbações
+						items cardinality matches {0..*; ordered} matches {
+							ELEMENT[at0019] occurrences matches {0..1} matches {	-- Frequência da ocorrência
+								value matches {
+									C_DV_QUANTITY <
+									>
+								}
+							}
+							ELEMENT[at0020] occurrences matches {0..1} matches {	-- Data da última ocorrência
+								value matches {
+									DV_DATE matches {
+										value matches {yyyy-??-??}
+									}
+								}
+							}
+							CLUSTER[at0021] occurrences matches {0..*} matches {	-- Ocorrências e/ou exacerbações
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Descrição Clínica
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Resultado
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Data no início da doença
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-??-??}
+											}
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Data da resolução da ocorrência
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-??-??}
+											}
+										}
+									}
+								}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {	-- Numero de ocorrências
+								value matches {
+									DV_COUNT matches {
+										magnitude matches {|>=1|}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0026] occurrences matches {0..1} matches {	-- Problemas relacionados
+						name matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0037, 	-- Problemas relacionados
+									at0038]	-- Complicações
+								}
+							}
+						}
+						items cardinality matches {0..*; unordered} matches {
+							CLUSTER[at0027] occurrences matches {0..*} matches {	-- Problema relacionado
+								name matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0039, 	-- Problema relacionado
+											at0040]	-- Complicação
+										}
+									}
+								}
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Problema relacionado
+										name matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0041, 	-- Problema
+													at0042]	-- Complicação
+												}
+											}
+										}
+										value matches {
+											DV_TEXT matches {*}
+											DV_URI matches {*}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Descrição Clínica
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Data da resolução
+						value matches {
+							DV_DATE matches {
+								value matches {yyyy-??-??}
+							}
+						}
+					}
+					ELEMENT[at0031] occurrences matches {0..1} matches {	-- Idade da resolução
+						value matches {
+							DV_DURATION matches {
+								value matches {PYMWD}
+							}
+						}
+					}
+					CLUSTER[at0.35] occurrences matches {0..1} matches {	-- Critério diagnóstico
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0.36] occurrences matches {0..*} matches {	-- Critério
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					CLUSTER[at0.37] occurrences matches {0..1} matches {	-- Estadiamento
+						items cardinality matches {0..4; ordered} matches {
+							ELEMENT[at0.38] occurrences matches {0..1} matches {	-- Estágio
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.39] occurrences matches {0..1} matches {	-- Tumor
+								value matches {
+									-1|[local::at0.40], 	-- Tx - Tumor primário não identificado
+									0|[local::at0.41], 	-- T0 - Sem tumor primário
+									5|[local::at0.42], 	-- Tis - Carcinoma in situ
+									10|[local::at0.43], 	-- T1 -  Microinvasão
+									20|[local::at0.44], 	-- T2 - Tumor com invasão de 1 cm
+									30|[local::at0.45], 	-- T3 - Tumor com extensão total da estrutura
+									40|[local::at0.46]  	-- T5 - Tumor com invasão de estrutura adjacente
+								}
+							}
+							ELEMENT[at0.47] occurrences matches {0..1} matches {	-- Gânglios
+								value matches {
+									-1|[local::at0.48], 	-- Nx - Gânglios regionais não identificados
+									0|[local::at0.49], 	-- N0 - Gânglios regionais não envolvidos
+									10|[local::at0.50]  	-- N1 - Gânglios regionais envolvidos
+								}
+							}
+							ELEMENT[at0.51] occurrences matches {0..1} matches {	-- Metástases
+								value matches {
+									-1|[local::at0.52], 	-- Mx - Metástases não identificadas
+									0|[local::at0.53], 	-- M0 - Sem metástases à distância
+									10|[local::at0.54]  	-- M1 - Metástases à distância
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0032] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0033] occurrences matches {0..1} matches {	-- Referências
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0034] occurrences matches {0..*} matches {	-- Referências
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0035] occurrences matches {0..*} matches {	-- Web link
+								value matches {
+									DV_URI matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.32"] = <
+					text = <"Status">
+					description = <"Status do diagnóstico">
+				>
+				["at0.33"] = <
+					text = <"provisional">
+					description = <"Provisória">
+				>
+				["at0.34"] = <
+					text = <"working">
+					description = <"Em investigação">
+				>
+				["at0.35"] = <
+					text = <"Critério diagnóstico">
+					description = <"The criteria on which the diagnosis is based">
+				>
+				["at0.36"] = <
+					text = <"Critério">
+					description = <"A basis for the diagnosis">
+				>
+				["at0.37"] = <
+					text = <"Estagiamento">
+					description = <"The stage of the disease by clinical assessment">
+				>
+				["at0.38"] = <
+					text = <"Estágio">
+					description = <"The stage of the disease (not TNM staging)">
+				>
+				["at0.39"] = <
+					text = <"Tumor">
+					description = <"The extent of invasion of local tissue">
+				>
+				["at0.40"] = <
+					text = <"Tx - Tumor primário não identificado ">
+					description = <"No clinical assessment of the primary tumour made">
+				>
+				["at0.41"] = <
+					text = <"T0 - Sem tumor primário">
+					description = <"No primary tumour is evident clinically">
+				>
+				["at0.42"] = <
+					text = <"Tis - Carcinoma in situ">
+					description = <"The malignant cells are confined to their usual cellular region">
+				>
+				["at0.43"] = <
+					text = <"T1 -  Microinvasão">
+					description = <"Microscopic invasion of 5mm">
+				>
+				["at0.44"] = <
+					text = <"T2 - Tumor com invasão de 1 cm">
+					description = <"Tumour invading 1cm">
+				>
+				["at0.45"] = <
+					text = <"T3 - Tumor com extensão total da estrutura">
+					description = <"Tumour invading to full thickness (or border) of structure">
+				>
+				["at0.46"] = <
+					text = <"T5 - Tumor com invasão de estrutura adjacente">
+					description = <"Tumour has spread outside the structure in which it arose">
+				>
+				["at0.47"] = <
+					text = <"Gânglios">
+					description = <"Extent of involvement of regional nodes">
+				>
+				["at0.48"] = <
+					text = <"Nx - Gânglios regionais não identificado">
+					description = <"No clinical assessment of regional nodes made">
+				>
+				["at0.49"] = <
+					text = <"N0 - Gânglios regionais não envolvidos">
+					description = <"No clinical evidence of regional node involvement">
+				>
+				["at0.50"] = <
+					text = <"N1 - Gânglios regionais envolvidos">
+					description = <"Clinical assessment indicates that regional nodes are involved">
+				>
+				["at0.51"] = <
+					text = <"Metástases">
+					description = <"Extent of metastases">
+				>
+				["at0.52"] = <
+					text = <"Mx - Metástases não identificadas">
+					description = <"No clinical assessment of metastases">
+				>
+				["at0.53"] = <
+					text = <"M0 - Sem metástases à distância">
+					description = <"No clinical evidence of distanct metastases">
+				>
+				["at0.54"] = <
+					text = <"M1 - Metástases à distância">
+					description = <"Clinical evidence of distant metastases">
+				>
+				["at0.60"] = <
+					text = <"Confirmado">
+					description = <"confirmed">
+				>
+				["at0.61"] = <
+					text = <"Diagnóstico Principal">
+					description = <"*">
+				>
+				["at0.62"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0.63"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0.64"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.65"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.66"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.67"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.68"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.69"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.70"] = <
+					text = <"*Provisório(en)">
+					description = <"**(en)">
+				>
+				["at0.71"] = <
+					text = <"*Confirmado(en)">
+					description = <"**(en)">
+				>
+				["at0.72"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0.73"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0.74"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0000"] = <
+					text = <"Problema">
+					description = <"A problem, condition or issue defined by a clinician which is deemed summative of a range of symptoms or concerns of the person and a useful label of these.">
+				>
+				["at0000.1"] = <
+					text = <"Diagnóstico">
+					description = <"A diagnosis defined by a clinician which is coded in an accepted terminology and may include the stage of the condition and the diagnostic criteria">
+				>
+				["at0001"] = <
+					text = <"estrutura">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Problema">
+					description = <"The index problem, condition or issue described">
+				>
+				["at0002.1"] = <
+					text = <"Diagnóstico">
+					description = <"The index diagnosis">
+				>
+				["at0003"] = <
+					text = <"Início da doença">
+					description = <"The date that the problem began causing symptoms or signs">
+				>
+				["at0004"] = <
+					text = <"Idade no início da doença">
+					description = <"The age of the at the onset of the problem">
+				>
+				["at0005"] = <
+					text = <"Severidade">
+					description = <"The severity of the index problem">
+				>
+				["at0006"] = <
+					text = <"Leve">
+					description = <"The severity of the index problem is mild, not affecting life or longevity">
+				>
+				["at0007"] = <
+					text = <"Moderada">
+					description = <"The severity of the index problem is such as to cause significant morbidity">
+				>
+				["at0008"] = <
+					text = <"Grave">
+					description = <"The severity of the index problem has had a major effect on life and/or longevity">
+				>
+				["at0009"] = <
+					text = <"Descrição Clínica">
+					description = <"Description of the clinical aspects of the problem">
+				>
+				["at0010"] = <
+					text = <"Date clinically recognised">
+					description = <"Date the problem was recognised by clinicians">
+				>
+				["at0011"] = <
+					text = <"Location">
+					description = <"Location of the problem in terms of body site">
+				>
+				["at0012"] = <
+					text = <"Body site">
+					description = <"The body site affected">
+				>
+				["at0013"] = <
+					text = <"Location description">
+					description = <"A free text description of the location - may be in addition to a coded body site">
+				>
+				["at0014"] = <
+					text = <"Aetiology">
+					description = <"Agents or Factors known to have been of aetiological significance">
+				>
+				["at0015"] = <
+					text = <"Agent">
+					description = <"Microbial or other agent known to have caused this problem">
+				>
+				["at0016"] = <
+					text = <"Complication of">
+					description = <"A problem or link to a problem or injury described elsewhere in the EHR">
+				>
+				["at0017"] = <
+					text = <"Description">
+					description = <"Description of aetiological process">
+				>
+				["at0018"] = <
+					text = <"Occurrences or exacerbations">
+					description = <"Grouping of information about individual occurrences or exacerbations">
+				>
+				["at0019"] = <
+					text = <"Frequency of reccurrence">
+					description = <"The frequency of individual occurrences of the problem">
+				>
+				["at0020"] = <
+					text = <"Date of last occurrence">
+					description = <"The date of the last occurrence or exacerbation">
+				>
+				["at0021"] = <
+					text = <"Occurence/exacerbation">
+					description = <"Information about one occurrence or exacerbation">
+				>
+				["at0022"] = <
+					text = <"Clinical description">
+					description = <"A description of the exacerbation or occurrence">
+				>
+				["at0023"] = <
+					text = <"Outcome">
+					description = <"Outcome of the occurrence or exacerbation">
+				>
+				["at0024"] = <
+					text = <"Date of onset of occurrence">
+					description = <"Date of onset of occurrence or exacerbation">
+				>
+				["at0025"] = <
+					text = <"Number of occurrences">
+					description = <"Number of times this problem has occurred or been apparent">
+				>
+				["at0026"] = <
+					text = <"Related problems">
+					description = <"Complications that are attributed to this problem">
+				>
+				["at0027"] = <
+					text = <"Related problem">
+					description = <"A group of characteristics of the problem complicating the index condition in this archetype">
+				>
+				["at0028"] = <
+					text = <"Related problem">
+					description = <"Details of the problem as text or coded text or URI">
+				>
+				["at0029"] = <
+					text = <"Clinical description">
+					description = <"Decription of the complicating problem">
+				>
+				["at0030"] = <
+					text = <"Date of resolution">
+					description = <"The date that the problem resolved or went into remission">
+				>
+				["at0031"] = <
+					text = <"Age at resolution">
+					description = <"The age of the at the resolution of the problem">
+				>
+				["at0032"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0033"] = <
+					text = <"References">
+					description = <"Useful information about this condition">
+				>
+				["at0034"] = <
+					text = <"References">
+					description = <"Reference to material about this condition">
+				>
+				["at0035"] = <
+					text = <"Web link">
+					description = <"Useful information on the internet about this condition">
+				>
+				["at0036"] = <
+					text = <"Date of resolution of occurrence">
+					description = <"Date of the resolution of the occurrence">
+				>
+				["at0037"] = <
+					text = <"Related problems">
+					description = <"Problems that are closely related to this problem having a common aetiology or consequent aetiology">
+				>
+				["at0038"] = <
+					text = <"Complications">
+					description = <"Problems with consequent aetiology">
+				>
+				["at0039"] = <
+					text = <"Related problem">
+					description = <"Problem with common or consequent aetiology">
+				>
+				["at0040"] = <
+					text = <"Complication">
+					description = <"Problem with consequent aetiology">
+				>
+				["at0041"] = <
+					text = <"Problem">
+					description = <"A problem which is related to the index problem through common aetiology">
+				>
+				["at0042"] = <
+					text = <"Complication">
+					description = <"A problem that is a consequence of the index problem">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.32"] = <
+					text = <"Status">
+					description = <"Status do diagnóstico">
+				>
+				["at0.33"] = <
+					text = <"Provisório">
+					description = <"Condição provisória">
+				>
+				["at0.34"] = <
+					text = <"Em investigação">
+					description = <"Em investigação">
+				>
+				["at0.35"] = <
+					text = <"Critério diagnóstico">
+					description = <"O critério no qual o dignóstico é baseado">
+				>
+				["at0.36"] = <
+					text = <"Critério">
+					description = <"A base para o diagnóstico">
+				>
+				["at0.37"] = <
+					text = <"Estadiamento">
+					description = <"O estágio da doença pela avaliação clínica">
+				>
+				["at0.38"] = <
+					text = <"Estágio">
+					description = <"O estágio da doença (sem estadiamento TNM )">
+				>
+				["at0.39"] = <
+					text = <"Tumor">
+					description = <"A extensão do compromentimento no tecido lesado">
+				>
+				["at0.40"] = <
+					text = <"Tx - Tumor primário não identificado">
+					description = <"O tumor não foi indentificado no local">
+				>
+				["at0.41"] = <
+					text = <"T0 - Sem tumor primário">
+					description = <"O Tumor primário é evidente clinicamente">
+				>
+				["at0.42"] = <
+					text = <"Tis - Carcinoma in situ">
+					description = <"As células malignas estão confinadas à região comprometida">
+				>
+				["at0.43"] = <
+					text = <"T1 -  Microinvasão">
+					description = <"Invasão microscópica de 5mm
+">
+				>
+				["at0.44"] = <
+					text = <"T2 - Tumor com invasão de 1 cm">
+					description = <"Tumor com invasão de 1 cm">
+				>
+				["at0.45"] = <
+					text = <"T3 - Tumor com extensão total da estrutura">
+					description = <"Tumor com extensão total da estrutura">
+				>
+				["at0.46"] = <
+					text = <"T5 - Tumor com invasão de estrutura adjacente">
+					description = <"Tumor com invasão de estrutura adjacente">
+				>
+				["at0.47"] = <
+					text = <"Gânglios">
+					description = <"Comprometimento dos gânglios regionais">
+				>
+				["at0.48"] = <
+					text = <"Nx - Gânglios regionais não identificados">
+					description = <"Gânglios regionais não identificados">
+				>
+				["at0.49"] = <
+					text = <"N0 - Gânglios regionais não envolvidos">
+					description = <"Gânglios regionais não envolvidos">
+				>
+				["at0.50"] = <
+					text = <"N1 - Gânglios regionais envolvidos">
+					description = <"Gânglios regionais envolvidos">
+				>
+				["at0.51"] = <
+					text = <"Metástases">
+					description = <"Comprometimento metastático">
+				>
+				["at0.52"] = <
+					text = <"Mx - Metástases não identificadas">
+					description = <"Metástases não identificadas">
+				>
+				["at0.53"] = <
+					text = <"M0 - Sem metástases à distância">
+					description = <"Sem metástases à distância">
+				>
+				["at0.54"] = <
+					text = <"M1 - Metástases à distância">
+					description = <"Evidência clínica de metástases à distância">
+				>
+				["at0.60"] = <
+					text = <"Confirmado">
+					description = <"Confirmado">
+				>
+				["at0.61"] = <
+					text = <"Diagnóstico Principal">
+					description = <"*">
+				>
+				["at0.62"] = <
+					text = <"Diagnóstico Principal">
+					description = <"*">
+				>
+				["at0.63"] = <
+					text = <"Outros Diagnósticos">
+					description = <"*">
+				>
+				["at0.64"] = <
+					text = <"Diagnóstico">
+					description = <"*">
+				>
+				["at0.65"] = <
+					text = <"Início da doença">
+					description = <"*">
+				>
+				["at0.66"] = <
+					text = <"Status">
+					description = <"*">
+				>
+				["at0.67"] = <
+					text = <"Idade no início da doença">
+					description = <"*">
+				>
+				["at0.68"] = <
+					text = <"Severidade">
+					description = <"*">
+				>
+				["at0.69"] = <
+					text = <"Descrição Clínica">
+					description = <"*">
+				>
+				["at0.70"] = <
+					text = <"Provisório">
+					description = <"*">
+				>
+				["at0.71"] = <
+					text = <"Confirmado">
+					description = <"*">
+				>
+				["at0.72"] = <
+					text = <"Leve">
+					description = <"A severidade do problema referido é leve, sem risco de vida ou morbidade">
+				>
+				["at0.73"] = <
+					text = <"Moderada">
+					description = <"A severidade do problema referido é significativamente mórbida.">
+				>
+				["at0.74"] = <
+					text = <"Grave">
+					description = <"A severidade do problema referido é suficientemente mórbida e com risco de vida">
+				>
+				["at0000"] = <
+					text = <"Problema">
+					description = <"Um problema, uma condição ou uma questão definida pelo clínico, considerando a avaliação dos sintomas ou de preocupações sobre o estado de saúde do indivíduo com posterior classificação desses dados.">
+				>
+				["at0000.1"] = <
+					text = <"Hipótese Diagnóstica">
+					description = <"Um diagnóstico definido pelo clínico, codificado em uma terminologia padrão, podendo incluir o estágio e o critério diagnóstico da condição clínica
+">
+				>
+				["at0001"] = <
+					text = <"Estrutura">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Problema">
+					description = <"A indicação do problema, a condição ou a questão">
+				>
+				["at0002.1"] = <
+					text = <"Diagnóstico">
+					description = <"A indicação do diagnóstico">
+				>
+				["at0003"] = <
+					text = <"Início da doença">
+					description = <"A data em que o problema começou a apresentar sintomatologia">
+				>
+				["at0004"] = <
+					text = <"Idade no início da doença">
+					description = <"A idade da pessoa no início dos problemas">
+				>
+				["at0005"] = <
+					text = <"Severidade">
+					description = <"A severidade do problema referido">
+				>
+				["at0006"] = <
+					text = <"Leve">
+					description = <"A severidade do problema referido é leve, sem risco de vida ou morbidade">
+				>
+				["at0007"] = <
+					text = <"Moderada">
+					description = <"A severidade do problema referido é significativamente mórbida.">
+				>
+				["at0008"] = <
+					text = <"Grave">
+					description = <"A severidade do problema referido é suficientemente mórbida e com risco de vida">
+				>
+				["at0009"] = <
+					text = <"Descrição Clínica">
+					description = <"Descrição dos aspectos clínicos do problema.">
+				>
+				["at0010"] = <
+					text = <"Data da detecção clinica">
+					description = <"Data em que o problema foi detectado pelo clínico">
+				>
+				["at0011"] = <
+					text = <"Localização">
+					description = <"Localização do problema no órgão ou estrutura afetados">
+				>
+				["at0012"] = <
+					text = <"Orgão afetado">
+					description = <"Órgão e/ou estrutura afetadas">
+				>
+				["at0013"] = <
+					text = <"Descrição do local">
+					description = <"Uma descrição livre da localização do tumor. Pode ser complementado com uma codificação do orgão">
+				>
+				["at0014"] = <
+					text = <"Etiologia">
+					description = <"Agentes ou fatores conhecidos que tenham uma significância etiológica">
+				>
+				["at0015"] = <
+					text = <"Agente">
+					description = <"Micróbios ou qualquer outro agente conhecido que podem ser a causa deste problema">
+				>
+				["at0016"] = <
+					text = <"Complicação de">
+					description = <"Um problema ou uma referência para este problema ou lesão descrita em algum lugar neste sistema.
+">
+				>
+				["at0017"] = <
+					text = <"Descrição">
+					description = <"Descrição do processo etiológico">
+				>
+				["at0018"] = <
+					text = <"Ocorrências ou exacerbações">
+					description = <"Listagem das informações sobre exacerbações e ocorrências individuais da doença
+">
+				>
+				["at0019"] = <
+					text = <"Frequência da ocorrência">
+					description = <"A frequência de ocorrências individuais deste problema">
+				>
+				["at0020"] = <
+					text = <"Data da última ocorrência">
+					description = <"Data da última ocorrência ou exacerbação deste problema">
+				>
+				["at0021"] = <
+					text = <"Ocorrências e/ou exacerbações">
+					description = <"Informação sobre ocorrências e/ou exacerbações deste problema">
+				>
+				["at0022"] = <
+					text = <"Descrição Clínica">
+					description = <"Descrição sobre ocorrências e/ou exacerbações deste problema">
+				>
+				["at0023"] = <
+					text = <"Resultado">
+					description = <"Resultados das ocorrências e/ou exacerbações deste problema">
+				>
+				["at0024"] = <
+					text = <"Data no início da doença">
+					description = <"Data do início das ocorrências e/ou exacerbações deste problema">
+				>
+				["at0025"] = <
+					text = <"Numero de ocorrências">
+					description = <"Número de ocorrências que este problema  aconteceu real ou aparentemente">
+				>
+				["at0026"] = <
+					text = <"Problemas relacionados">
+					description = <"Complicações relacionadas à este problema">
+				>
+				["at0027"] = <
+					text = <"Problema relacionado">
+					description = <"Relação de características deste problema que complicam a indicação do diagnóstico neste arquétipo">
+				>
+				["at0028"] = <
+					text = <"Problema relacionado">
+					description = <"Detalhes do problema relacionado em texto, em texto codificado ou URI">
+				>
+				["at0029"] = <
+					text = <"Descrição Clínica">
+					description = <"Descrição clínica do problema e sua complicação">
+				>
+				["at0030"] = <
+					text = <"Data da resolução">
+					description = <"Data da resolução ou remissão espontânea do problema">
+				>
+				["at0031"] = <
+					text = <"Idade da resolução">
+					description = <"Idade na ocasião da resolução do problema">
+				>
+				["at0032"] = <
+					text = <"Tree">
+					description = <"*@ internal @(en)">
+				>
+				["at0033"] = <
+					text = <"Referências">
+					description = <"Referências úteis sobre o problema">
+				>
+				["at0034"] = <
+					text = <"Referências">
+					description = <"Referências úteis sobre o problema">
+				>
+				["at0035"] = <
+					text = <"Web link">
+					description = <"Referências úteis sobre o problema na Internet">
+				>
+				["at0036"] = <
+					text = <"Data da resolução da ocorrência">
+					description = <"Data da resolução da ocorrência do problema">
+				>
+				["at0037"] = <
+					text = <"Problemas relacionados">
+					description = <"Problemas relacionados à esta doença com etiologia definida e/ou dela decorrente">
+				>
+				["at0038"] = <
+					text = <"Complicações">
+					description = <"Problemas relacionados à complicações do diagnóstico">
+				>
+				["at0039"] = <
+					text = <"Problema relacionado">
+					description = <"Problemas relacionados à esta doença com etiologia definida e/ou dela decorrente">
+				>
+				["at0040"] = <
+					text = <"Complicação">
+					description = <"Problema relacionado à complicação do diagnóstico">
+				>
+				["at0041"] = <
+					text = <"Problema">
+					description = <"Problema relacionado ao diagnóstico com etiologia definida">
+				>
+				["at0042"] = <
+					text = <"Complicação">
+					description = <"Problema que é consequência da doença">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"Any term that 'is_a' diagnosis">
+					description = <"Any term that is a diagnosis in an accepted terminology">
+				>
+				["ac0.2"] = <
+					text = <"*New constraint(pt)">
+					description = <"**(pt)">
+				>
+				["ac0000"] = <
+					text = <"Any term that describes a body site">
+					description = <"An anatomical structure with qualifiers">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"Qualquer termo que seja um diagnóstico">
+					description = <"Qualquer termo que é um diagnóstico em terminologia padrão">
+				>
+				["ac0.2"] = <
+					text = <"Qualquer termo que seja um diagnóstico">
+					description = <"Qualquer termo que é um diagnóstico em terminologia padrão">
+				>
+				["ac0000"] = <
+					text = <"Qualquer termo que defina o orgão ou estrutura afetada">
+					description = <"Uma estrutura anatômica com qualificadores">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["ICD10_1998"] = <
+			items = <
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0.1"] = <http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=ALL>
+				["ac0.2"] = <http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=ALL>
+			>
+		>
+	>

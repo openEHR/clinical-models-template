@@ -1,0 +1,526 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.heart_rate.v2zl
+
+concept
+	[at0000]	-- Freqüência cardíaca
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["organisation"] = <"University of Heidelberg, Central Queensland University">
+				["name"] = <"Jasmin Buck, Sebastian Garde">
+			>
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Edelia del Pilar Neira Huerta">
+				["organisation"] = <"Zilics">
+				["email"] = <"zilics@zilics.com.br">
+				["date"] = <"26/05/2008">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"26/03/2006">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Zur Dokumentation der Frequenz und des Rhythmus des Herzens.">
+			use = <"Zur allgemeinen Dokumentation der Herzfrequenz, besonders der elektrischen Frequenz.">
+			keywords = <"Frequenz", "Herzfrequenz", "Rhythmus">
+			misuse = <"Zur Dokumentation der mechanischen Frequenz Puls benutzen (OSBSERVATION.heart_reate-pulse.v1).">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Para registrar a freqüência e o ritmo cardíacos">
+			use = <" Para registro da freqüência cardíaca, a elétrica em particular">
+			keywords = <"*rate(en)", "*heart rate(en)", "*rhythm(en)">
+			misuse = <"Para registrar a freqüência cardíaca mecânica, utilize o pulso (artéria radial). (OSBSERVATION.heart_reate-pulse.v1)(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the rate and rhythm of the heart">
+			use = <"For generic recording of heart rate, particularly electrical rate.">
+			keywords = <"rate", "heart rate", "rhythm">
+			misuse = <"Use pulse to record the mechanical rate of the heart (OSBSERVATION.heart_reate-pulse.v1)">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Freqüência cardíaca
+		data matches {
+			HISTORY[at0002] matches {	-- Histórico
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0003] occurrences matches {0..*} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0001] matches {	-- Estrutura
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Freqüência
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"/min">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Atual
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Ritmo
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- Regular
+													at0007, 	-- Irregular
+													at1011, 	-- Sinusal
+													at1012, 	-- Bigeminismo
+													at1013, 	-- Extrassístoles ( > 2 p/ min)
+													at1014, 	-- Extrassístoles ocasionais ( < 2 p/ min)
+													at1015]	-- Trigeminismo
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Observações
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									CLUSTER[at1007] occurrences matches {0..1} matches {	-- Valores normais
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at1004] occurrences matches {0..1} matches {	-- Valores normais
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at1008, 	-- Ritmo sinusal normal
+															at1009, 	-- Freqüência e ritmo normais
+															at1010]	-- Normal
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_LIST[at0012] matches {	-- Lista
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Posição
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at1000, 	-- Decúbito
+													at1001, 	-- Sentado
+													at1002, 	-- Reclinado
+													at1003; 	-- Em pé
+													at1001]	-- assumed value
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_LIST[at0010] matches {	-- Lista
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Aparelho
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNOMED-CT", ...>
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Herzfrequenz">
+					description = <"Die Frequenz, mit der das Herz schlägt - mechanisch oder elektrisch">
+				>
+				["at0001"] = <
+					text = <"Structure">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Frequenz">
+					description = <"Die Herzfrequenz">
+				>
+				["at0005"] = <
+					text = <"Rhythmus">
+					description = <"Der Rhythmus des Herzschlags">
+				>
+				["at0006"] = <
+					text = <"Regulär">
+					description = <"Regulärer Herzschlag">
+				>
+				["at0007"] = <
+					text = <"Unregulär">
+					description = <"Unregulärer Herzschlag">
+				>
+				["at0009"] = <
+					text = <"Beschreibung">
+					description = <"Die Beschreibung der Frequenz und des Rhythmus des Herzens">
+				>
+				["at0010"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Gerät">
+					description = <"Das zur Messung der Herzfrequenz benutzte Gerät">
+				>
+				["at0012"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Position">
+					description = <"Die Position des Patienten während der Messung der Herzfrequenz">
+				>
+				["at1000"] = <
+					text = <"Liegend">
+					description = <"Gestrecktes Liegen">
+				>
+				["at1001"] = <
+					text = <"Sitzend">
+					description = <"Auf dem Bett oder einem Stuhl sitzend">
+				>
+				["at1002"] = <
+					text = <"Liegesitz">
+					description = <"Person sitzt im 45° Winkel mit erhöhten Beinen">
+				>
+				["at1003"] = <
+					text = <"Stehend">
+					description = <"Aufrecht stehend">
+				>
+				["at1004"] = <
+					text = <"Normalaussagen">
+					description = <"Die Herzfrequenz ist normal">
+				>
+				["at1005"] = <
+					text = <"Existiert">
+					description = <"Pulsfrequenz existiert (angenommen falls Frequenz > 0)">
+				>
+				["at1007"] = <
+					text = <"Normalaussagen">
+					description = <"Normalaussagen über die Herzfrequenz">
+				>
+				["at1008"] = <
+					text = <"Normaler Sinusrhythmus">
+					description = <"Das Herz schlägt auf normale Art und Weise">
+				>
+				["at1009"] = <
+					text = <"Normale Frequenz und Rhythmus">
+					description = <"Das Herz schlägt normal">
+				>
+				["at1010"] = <
+					text = <"Normal">
+					description = <"Die Herzfrequenz ist normal">
+				>
+				["at1011"] = <
+					text = <"*Sinusal(en)">
+					description = <"**(en)">
+				>
+				["at1012"] = <
+					text = <"*Bigeminismo(en)">
+					description = <"**(en)">
+				>
+				["at1013"] = <
+					text = <"*Extrassístoles ( > 2 p/ min)(en)">
+					description = <"**(en)">
+				>
+				["at1014"] = <
+					text = <"*Extrassístoles ocasionais ( < 2 p/ min)(en)">
+					description = <"**(en)">
+				>
+				["at1015"] = <
+					text = <"*Trigeminismo(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Freqüência cardíaca">
+					description = <"Freqüência cardíaca atual, seja mecânica ou eletricamente">
+				>
+				["at0001"] = <
+					text = <"Estrutura">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Histórico">
+					description = <"*@ internal @(en)">
+				>
+				["at0003"] = <
+					text = <"Qualquer evento">
+					description = <"**(en)">
+				>
+				["at0004"] = <
+					text = <"Freqüência">
+					description = <"Freqüência cardíaca em batimentos por minuto">
+				>
+				["at0005"] = <
+					text = <"Ritmo">
+					description = <"Ritmo dos batimentos cardíacos">
+				>
+				["at0006"] = <
+					text = <"Regular">
+					description = <"Batimentos cardíacos regulares">
+				>
+				["at0007"] = <
+					text = <"Irregular">
+					description = <"Batimentos cardíacos irregulares">
+				>
+				["at0009"] = <
+					text = <"Observações">
+					description = <"Descrição da freqüência e do ritmo">
+				>
+				["at0010"] = <
+					text = <"Lista">
+					description = <"*@ internal @(en)">
+				>
+				["at0011"] = <
+					text = <"Aparelho">
+					description = <"Aparelho mediante o qual a freqüência cardíaca foi aferida">
+				>
+				["at0012"] = <
+					text = <"Lista">
+					description = <"*@ internal @(en)">
+				>
+				["at0013"] = <
+					text = <"Posição">
+					description = <"Posição do paciente no momento em que a freqüência cardíaca foi verificada">
+				>
+				["at1000"] = <
+					text = <"Decúbito">
+					description = <"Decúbito prono">
+				>
+				["at1001"] = <
+					text = <"Sentado">
+					description = <"Sentado na cama ou em uma cadeira">
+				>
+				["at1002"] = <
+					text = <"Reclinado">
+					description = <"Com a pessoa reclinada a 45 graus com as pernas elevadas (Fowler)">
+				>
+				["at1003"] = <
+					text = <"Em pé">
+					description = <"Ereto em pé">
+				>
+				["at1004"] = <
+					text = <"Valores normais">
+					description = <"Freqüência cardíaca normal">
+				>
+				["at1005"] = <
+					text = <"Atual">
+					description = <"Pulso presente (Freqüência > 0)">
+				>
+				["at1007"] = <
+					text = <"Valores normais">
+					description = <"Valores normais do ritmo cardíaco">
+				>
+				["at1008"] = <
+					text = <"Ritmo sinusal normal">
+					description = <"Batimentos cardíacos normais">
+				>
+				["at1009"] = <
+					text = <"Freqüência e ritmo normais">
+					description = <"Batimentos cardíacos normais">
+				>
+				["at1010"] = <
+					text = <"Normal">
+					description = <"Freqüêcia cardíaca normal">
+				>
+				["at1011"] = <
+					text = <"Sinusal">
+					description = <"*">
+				>
+				["at1012"] = <
+					text = <"Bigeminismo">
+					description = <"*">
+				>
+				["at1013"] = <
+					text = <"Extrassístoles ( > 2 p/ min)">
+					description = <"*">
+				>
+				["at1014"] = <
+					text = <"Extrassístoles ocasionais ( < 2 p/ min)">
+					description = <"*">
+				>
+				["at1015"] = <
+					text = <"Trigeminismo">
+					description = <"*">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Heart rate">
+					description = <"The rate the heart is beating - either mechanically or electrically">
+				>
+				["at0001"] = <
+					text = <"structure">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Rate">
+					description = <"The rate of the heart as beats per minute">
+				>
+				["at0005"] = <
+					text = <"Rhythm">
+					description = <"The rhythm of the heart beat">
+				>
+				["at0006"] = <
+					text = <"Regular">
+					description = <"Regular heart beat">
+				>
+				["at0007"] = <
+					text = <"Irregular">
+					description = <"The heart is irregular">
+				>
+				["at0009"] = <
+					text = <"Description">
+					description = <"The description of the rate and rythm">
+				>
+				["at0010"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Device">
+					description = <"Device by which the heart rate was measured">
+				>
+				["at0012"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Position">
+					description = <"The position of the patient when the heart rate was measured">
+				>
+				["at1000"] = <
+					text = <"Lying">
+					description = <"Lying prone">
+				>
+				["at1001"] = <
+					text = <"Sitting">
+					description = <"Sitting on bed or chair">
+				>
+				["at1002"] = <
+					text = <"Reclining">
+					description = <"Person reclining at 45 degrees with legs raised">
+				>
+				["at1003"] = <
+					text = <"Standing">
+					description = <"Standing upright">
+				>
+				["at1004"] = <
+					text = <"Normal statements ">
+					description = <"The heart rate is normal">
+				>
+				["at1005"] = <
+					text = <"Present">
+					description = <"The pulse rate is present (implied true if rate > 0)">
+				>
+				["at1007"] = <
+					text = <"Normal statements">
+					description = <"Normal statements about the heart rate">
+				>
+				["at1008"] = <
+					text = <"Normal sinus rhythm">
+					description = <"The heart is beating in a normal manner">
+				>
+				["at1009"] = <
+					text = <"Normal rate and rhythm">
+					description = <"The heart is beating normally">
+				>
+				["at1010"] = <
+					text = <"Normal">
+					description = <"The heart rate is normal">
+				>
+				["at1011"] = <
+					text = <"*Sinusal(en)">
+					description = <"**(en)">
+				>
+				["at1012"] = <
+					text = <"*Bigeminismo(en)">
+					description = <"**(en)">
+				>
+				["at1013"] = <
+					text = <"*Extrassístoles ( > 2 p/ min)(en)">
+					description = <"**(en)">
+				>
+				["at1014"] = <
+					text = <"*Extrassístoles ocasionais ( < 2 p/ min)(en)">
+					description = <"**(en)">
+				>
+				["at1015"] = <
+					text = <"*Trigeminismo(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["SNOMED-CT"] = <
+			items = <
+				["at0000"] = <[SNOMED-CT::364075005]>
+			>
+		>
+	>

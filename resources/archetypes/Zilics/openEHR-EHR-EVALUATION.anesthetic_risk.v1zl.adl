@@ -1,0 +1,183 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.anesthetic_risk.v1zl
+
+concept
+	[at0000]	-- Informações de Risco Anestésico
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Informações de Risco Anestésico
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Tipo de Anestesia
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::]}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Riscos Relevantes
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::]}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Justificativa
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Problema Comportamental
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Apnéia Noturna Obstrutiva
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Alergia Relevante à Medicamentos
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Alergia a Látex
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Infecção Recente
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					allow_archetype CLUSTER occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype CLUSTER occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- BMI > 35
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Booked for Major Surgery
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {	-- Cálculo do Risco
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informações de Risco Anestésico">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Tipo de Anestesia">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Riscos Relevantes">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Justificativa">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Problema Comportamental">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Apnéia Noturna Obstrutiva">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Alergia Relevante à Medicamentos">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Alergia a Látex">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Infecção Recente">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"BMI > 35">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Booked for Major Surgery">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Cálculo do Risco">
+					description = <"*">
+				>
+			>
+		>
+	>

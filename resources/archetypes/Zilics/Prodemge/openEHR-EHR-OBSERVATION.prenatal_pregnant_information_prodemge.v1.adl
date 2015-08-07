@@ -1,0 +1,155 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.prenatal_pregnant_information_prodemge.v1
+
+concept
+	[at0000]	-- unknown
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Relatar infromações sobre a previsão de onde será realizado o pré-natal">
+			use = <"Relatar infromações sobre a previsão de onde será realizado o pré-natal">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"xx">
+			use = <"xx">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"87F7F38417D736EF00ADF6A9BB7C074B">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- unknown
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- *New cluster(pt)
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- *New element(pt)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- *New element(pt)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- *New element(pt)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Relatar infromações sobre a previsão de onde será realizado o pré-natal">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Relatar infromações sobre a previsão de onde será realizado o pré-natal">
+				>
+				["at0005"] = <
+					text = <"Marcação de grupos de gestantes">
+					description = <"Agendar a cidadão nos grupos de gestantes. 
+">
+				>
+				["at0006"] = <
+					text = <"Vinculação à maternidade de referência">
+					description = <"Relatar qual a maternidade de referência. 
+">
+				>
+				["at0007"] = <
+					text = <"Local onde será realizado o pré-natal">
+					description = <"Relatar onde o pré-natal será realizado. 
+">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"unknown">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,256 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.height.v1
+
+concept
+	[at0000]	-- Altura
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			author = <
+				["organisation"] = <"University of Heidelberg, Central Queensland University">
+				["name"] = <"Jasmin Buck, Sebastian Garde">
+			>
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Edelia del Pilar Neira Huerta">
+				["organisation"] = <"Zilics">
+				["email"] = <"zilics@zilics.com.br">
+				["date"] = <"26/05/2008">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"9/03/2006">
+	>
+	details = <
+		["de"] = <
+			language = <[ISO_639-1::de]>
+			purpose = <"Zur Dokumentation der Körpergröße in einer gestreckten Position, von Scheitel bis Sohle">
+			use = <"">
+			keywords = <"Größe", "Länge">
+			misuse = <"Nicht zur Dokumentation anderer Größen und Längen (siehe OBSERVATION.dimensions.v1)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro do comprimento do corpo desde o topo da cabeça até a planta do pé.">
+			use = <"*()">
+			keywords = <"*height(en)", "*length(en)">
+			misuse = <"Não utilizar para mensurar qualquer outro comprimento (see OBSERVATION.dimensions.v1)(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Recording the length of the whole body from crown of head to sole of foot.">
+			keywords = <"height", "length">
+			misuse = <"Not to be used for any other length (see OBSERVATION.dimensions.v1)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Altura
+		data matches {
+			HISTORY[at0001] matches {	-- Histórico
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {1..*} matches {	-- Qualquer evento
+						data matches {
+							ITEM_SINGLE[at0003] matches {	-- Simples
+								item matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Altura
+										name matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Estatura
+													at0006]	-- Comprimento
+												}
+											}
+										}
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+														magnitude = <|0.0..1000.0|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+					INTERVAL_EVENT[at0009] occurrences matches {0..1} matches {	-- Crescimento
+						math_function matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[openehr::147]}
+							}
+						}
+						data matches {
+							use_node ITEM_SINGLE /data[at0001]/events[at0002]/data[at0003]
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_LIST[at0007] matches {	-- Lista
+				items cardinality matches {0..*; ordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Antropômetro
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["de"] = <
+			items = <
+				["at0000"] = <
+					text = <"Körpergröße">
+					description = <"Körpergröße in einer gestreckten Position, von Scheitel bis Sohle">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Jede zu einem Zeitpunkt gemessene Körpergröße">
+				>
+				["at0003"] = <
+					text = <"Simple">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Länge">
+					description = <"Körperlänge">
+				>
+				["at0005"] = <
+					text = <"Größe">
+					description = <"Körpergröße in stehender Position">
+				>
+				["at0006"] = <
+					text = <"Länge">
+					description = <"Länge der Körperrückseite">
+				>
+				["at0007"] = <
+					text = <"List">
+					description = <"@ internal ">
+				>
+				["at0008"] = <
+					text = <"Gerät">
+					description = <"Das zum Messen der Größe benutzte Gerät">
+				>
+				["at0009"] = <
+					text = <"Wachstum">
+					description = <"Die Änderung in der Größe">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Altura">
+					description = <"Comprimento do corpo, em posição estendida, desde o topo da cabeça até planta do pé">
+				>
+				["at0001"] = <
+					text = <"Histórico">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"Medicões anteriores de estatura">
+				>
+				["at0003"] = <
+					text = <"Simples">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Altura">
+					description = <"Comprimento do corpo">
+				>
+				["at0005"] = <
+					text = <"Estatura">
+					description = <"Comprimento do corpo em posição estendida">
+				>
+				["at0006"] = <
+					text = <"Comprimento">
+					description = <"Comprimento do corpo em posição supina">
+				>
+				["at0007"] = <
+					text = <"Lista">
+					description = <"*@ internal @(en)">
+				>
+				["at0008"] = <
+					text = <"Antropômetro">
+					description = <"Equipamento para medir estatura">
+				>
+				["at0009"] = <
+					text = <"Crescimento">
+					description = <"Mudanças de estatura">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Height">
+					description = <"Length of the body, in an extended position, from crown of head to sole of foot">
+				>
+				["at0001"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any timed measurement of height">
+				>
+				["at0003"] = <
+					text = <"Simple">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Height">
+					description = <"The length of the body">
+				>
+				["at0005"] = <
+					text = <"Height">
+					description = <"Length of body in standing position">
+				>
+				["at0006"] = <
+					text = <"Length">
+					description = <"The length of the body supine">
+				>
+				["at0007"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Device">
+					description = <"The device used to measure the height">
+				>
+				["at0009"] = <
+					text = <"Growth">
+					description = <"The change in height">
+				>
+			>
+		>
+	>

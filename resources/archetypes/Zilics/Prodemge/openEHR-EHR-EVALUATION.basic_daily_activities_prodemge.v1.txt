@@ -1,0 +1,1 @@
+/data[at0001]/items[at0012]=guiRule:GLOBAL_EVALUATION

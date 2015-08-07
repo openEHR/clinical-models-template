@@ -1,0 +1,312 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.check_list-surgical_procedure.v2draft
+specialize
+	openEHR-EHR-EVALUATION.check_list.v2
+
+concept
+	[at0000.1]	-- História Patológica Pregressa
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"unknown">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a systematic review about surgical procedures that have been done on the patient">
+			use = <"">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro da revisão sistemática sobre procedimentos cirúrgicos que foram realizados no paciente.
+">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000.1] matches {	-- História Patológica Pregressa
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0002] occurrences matches {0..*} matches {	-- Cirurgias no Passado
+						items cardinality matches {1..2; unordered} matches {
+							ELEMENT[at0.14] occurrences matches {0..1} matches {	-- Procedimento Realizado
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.16] occurrences matches {0..1} matches {	-- Data
+								value matches {
+									DV_DATE matches {
+										value matches {yyyy-??-XX}
+									}
+								}
+							}
+							ELEMENT[at0.15] occurrences matches {0..1} matches {	-- Local
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Observações
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sumário
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0.17] occurrences matches {0..*} matches {	-- Outras Informações
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0.18] occurrences matches {0..1} matches {	-- Descrição
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0.19] occurrences matches {0..1} matches {	-- Data
+								value matches {
+									DV_DATE matches {
+										value matches {yyyy-??-XX}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.10"] = <
+					text = <"Presence">
+					description = <"Has the person had this procedure">
+				>
+				["at0.11"] = <
+					text = <"Not asked">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"Negative history">
+					description = <"*">
+				>
+				["at0.13"] = <
+					text = <"Positive history">
+					description = <"*">
+				>
+				["at0.14"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.15"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.16"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.17"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0.18"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.19"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.2"] = <
+					text = <"Surgical history">
+					description = <"Name of surgical procedure">
+				>
+				["at0.3"] = <
+					text = <"Cholecystectomy - open">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"Laparotomy">
+					description = <"*">
+				>
+				["at0.5"] = <
+					text = <"Laparoscopy">
+					description = <"*">
+				>
+				["at0.6"] = <
+					text = <"Laparascopic Appendicectomy">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Laparascopic Cholecystectomy">
+					description = <"*">
+				>
+				["at0.8"] = <
+					text = <"Hernia repair">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Appendicectomy - open">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"A health oriented check list">
+					description = <"A generic archetype for recording questions and answers to allow structured recording. Actual findings are recorded in other structures">
+				>
+				["at0000.1"] = <
+					text = <"A check list about surgical procedures">
+					description = <"A generic archetype for recording questions and answers to allow structured questioning and recording about surgical procedures. Actual findings are recorded in other structures">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Procedure">
+					description = <"The name of the cluster is the question">
+				>
+				["at0003"] = <
+					text = <"Surgical history">
+					description = <"Name of surgical procedure">
+				>
+				["at0004"] = <
+					text = <"Past surgical history">
+					description = <"A grouping for questions and answers">
+				>
+				["at0006"] = <
+					text = <"Summary">
+					description = <"Summary of questions">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.10"] = <
+					text = <"Presença">
+					description = <"O paciente realizou este procedimento">
+				>
+				["at0.11"] = <
+					text = <"Não perguntado">
+					description = <"*">
+				>
+				["at0.12"] = <
+					text = <"História negativa">
+					description = <"*">
+				>
+				["at0.13"] = <
+					text = <"História Positiva">
+					description = <"*">
+				>
+				["at0.14"] = <
+					text = <"Procedimento Realizado">
+					description = <"*">
+				>
+				["at0.15"] = <
+					text = <"Local">
+					description = <"*">
+				>
+				["at0.16"] = <
+					text = <"Data">
+					description = <"*">
+				>
+				["at0.17"] = <
+					text = <"Outras Informações">
+					description = <"*">
+				>
+				["at0.18"] = <
+					text = <"Descrição">
+					description = <"*">
+				>
+				["at0.19"] = <
+					text = <"Data">
+					description = <"*">
+				>
+				["at0.2"] = <
+					text = <"Histórico de Cirurgias">
+					description = <"Nome do prodedimento cirúrgico">
+				>
+				["at0.3"] = <
+					text = <"Colecistectomia aberta">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"Laparotomia">
+					description = <"*">
+				>
+				["at0.5"] = <
+					text = <"Laparoscopia">
+					description = <"*">
+				>
+				["at0.6"] = <
+					text = <"Apendicectomia laparoscópica">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Colecistectomia laparoscópica">
+					description = <"*">
+				>
+				["at0.8"] = <
+					text = <"Correção de hérnia">
+					description = <"*">
+				>
+				["at0.9"] = <
+					text = <"Apendicectomia aberta">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"Revisão das condições de saúde">
+					description = <"Arquétipo para registro de perguntas e respostas a fim de permitir o registro de dados estruturados. Dados atuais são registrados em outras estruturas.
+">
+				>
+				["at0000.1"] = <
+					text = <"História Patológica Pregressa">
+					description = <"Arquétipo genérico para registro de perguntas e respostas a fim de permitir o registro de dados estruturados sobre procedimentos cirúrgicos. Dados atuais são registrados em outras estruturas.
+">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Cirurgias no Passado">
+					description = <"Nome do procedimento">
+				>
+				["at0003"] = <
+					text = <"Observações">
+					description = <"Observações a respeito da cirurgia">
+				>
+				["at0004"] = <
+					text = <"Histórico de cirurgias pregressas">
+					description = <"Resumo de perguntas e respostas">
+				>
+				["at0006"] = <
+					text = <"Sumário">
+					description = <"Sumário da pergunta">
+				>
+			>
+		>
+	>

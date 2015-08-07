@@ -1,0 +1,110 @@
+archetype
+    openEHR-EHR-OBSERVATION.first_prenatal_visit.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openEHR::124]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"kg">
+                                                        magnitude = <|>=0.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                >
+                                            >
+                                        }
+                                    }
+                                    ELEMENT[at0005] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_DATE matches {
+                                                value matches {yyyy-??-??}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0007] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_DATE_TIME matches {
+                                                value matches {yyyy-??-??T??:??:??}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Unknown">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"LMP ">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"LMP">
+                    description = <"Last menstrual period - will be used to caculcated the gestational age
+">
+                >
+                ["at0006"] = <
+                    text = <"Weight">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"PDD">
+                    description = <"Pregnancy Due date - calculated by the system - ricardo please copy the calculus from the prodemge data prevista do parto.
+
+Formula: LMP + 9 months + 7 days. If the LMP came with just month and year we should assum for the PDD that the day was 15 and this should be informed in the screen.
+">
+                >
+            >
+        >
+    >

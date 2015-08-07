@@ -1,0 +1,129 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.elderly_consultation_diagnostics_nursing_prodemge.v1
+
+concept
+	[at0000]	-- Impressão Disgnóstica
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta do Idoso">
+			use = <"">
+			misuse = <"*(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Impressão Disgnóstica
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0023] occurrences matches {0..1} matches {	-- Avaliação Funcional Global
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|basic_daily_activities_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0022] occurrences matches {0..1} matches {	-- Mobilidade
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|mobility_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0017] occurrences matches {0..1} matches {	-- Avaliação dos Gigantes da Geriatria
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0018] occurrences matches {0..1} matches {	-- Impressão Disgnóstica
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0019] occurrences matches {0..1} matches {	-- Estratificação de Risco
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0020] occurrences matches {0..1} matches {	-- Conduta/ Plano de cuidado
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0021] occurrences matches {0..1} matches {	-- Sistematização da prática de enfermagem
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Impressão Disgnóstica">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Avaliação dos Gigantes da Geriatria">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Impressão Disgnóstica">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Estratificação de Risco">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Conduta/ Plano de cuidado">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Sistematização da prática de enfermagem">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Mobilidade">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Avaliação Funcional Global">
+					description = <"*">
+				>
+			>
+		>
+	>

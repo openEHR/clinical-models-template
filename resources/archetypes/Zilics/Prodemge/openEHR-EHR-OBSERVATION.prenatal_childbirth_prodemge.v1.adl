@@ -1,0 +1,483 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.prenatal_childbirth_prodemge.v1
+
+concept
+	[at0000]	-- Parto
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*x(pt)">
+			use = <"*x(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"A828404832C1D33E81FD60DBEF8C6554">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Parto
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0092] occurrences matches {0..1} matches {	-- Parto
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tipo
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0006, 	-- Vaginal
+															at0007, 	-- Cesáreo
+															at0008]	-- Ignorado
+														}
+													}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Local
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0010, 	-- Domiciliar
+															at0011, 	-- Hospital
+															at0012, 	-- Outros estabelecimentos de saúde
+															at0013, 	-- Outros
+															at0014]	-- Ignorado
+														}
+													}
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Idade Gestacional
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::128]>
+														list = <
+															["1"] = <
+																units = <"wk">
+																precision = <|0|>
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									CLUSTER[at0060] occurrences matches {0..1} matches {	-- Nascimento
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0088] occurrences matches {0..1} matches {	-- VDRL
+												value matches {
+													1|[local::at0089], 	-- Reator
+													2|[local::at0090]  	-- Não Reator
+												}
+											}
+											ELEMENT[at0061] occurrences matches {0..1} matches {	-- Apgar de 1 minuto
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0062] occurrences matches {0..1} matches {	-- Apgar de 5 minutos
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0067] occurrences matches {0..1} matches {	-- Peso ao Nascer
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::124]>
+														list = <
+															["1"] = <
+																units = <"kg">
+																magnitude = <|0.0..1000.0|>
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									CLUSTER[at0068] occurrences matches {0..1} matches {	-- Altura/ Estatura
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0069] occurrences matches {0..1} matches {	-- Posição
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0070, 	-- Ortostática
+															at0071]	-- Deitado
+														}
+													}
+												}
+											}
+											ELEMENT[at0072] occurrences matches {0..1} matches {	-- Valor Mensurado
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::122]>
+														list = <
+															["1"] = <
+																units = <"cm">
+																magnitude = <|0.0..1000.0|>
+																precision = <|1|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0073] occurrences matches {0..1} matches {	-- PC
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::122]>
+														list = <
+															["1"] = <
+																units = <"cm">
+																precision = <|2|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0063] occurrences matches {0..1} matches {	-- Classificação RN
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0064, 	-- AIG (apropriado para idade gestacional) 
+															at0065, 	-- PIG (pequeno para idade gestacional)
+															at0066]	-- GIG (grande para a idade gestacional)
+														}
+													}
+												}
+											}
+											ELEMENT[at0075] occurrences matches {0..1} matches {	-- Observação
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Parto">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Tipo">
+					description = <"Tipo de Parto">
+				>
+				["at0006"] = <
+					text = <"Vaginal">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Cesáreo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Local">
+					description = <"Local onde foi realizado o parto">
+				>
+				["at0010"] = <
+					text = <"Domiciliar">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Hospital">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Outros estabelecimentos de saúde">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Outros">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Idade Gestacional">
+					description = <"Idade gestacional em semanas no momento do parto. ">
+				>
+				["at0060"] = <
+					text = <"Nascimento">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Apgar de 1 minuto">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 1º minuto de vida.">
+				>
+				["at0062"] = <
+					text = <"Apgar de 5 minutos">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 5º minuto de vida.">
+				>
+				["at0063"] = <
+					text = <"Classificação RN">
+					description = <"Classificação do recém-nascido quanto ao peso ao nascer, idade gestacional, relação peso e idade gestacional e estado nutricional. ">
+				>
+				["at0064"] = <
+					text = <"AIG (apropriado para idade gestacional) ">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"PIG (pequeno para idade gestacional)">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"GIG (grande para a idade gestacional)">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Peso ao Nascer">
+					description = <"Peso do cidadão ao nascer. ">
+				>
+				["at0068"] = <
+					text = <"Altura/ Estatura">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Posição">
+					description = <"Posição utilizada para realizar a mensuração da altura/estatura do cidadão ao nascer.">
+				>
+				["at0070"] = <
+					text = <"Ortostática">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Deitado">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Valor Mensurado">
+					description = <"Valor do comprimento do corpo do cidadão do ápice da cabeça à sola do pé ao nascer.">
+				>
+				["at0073"] = <
+					text = <"PC">
+					description = <"Perímetro do crânio do cidadão ao nascer.">
+				>
+				["at0075"] = <
+					text = <"Observação">
+					description = <"Observações">
+				>
+				["at0088"] = <
+					text = <"VDRL">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Reator">
+					description = <"Reator">
+				>
+				["at0090"] = <
+					text = <"Não Reator">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Parto">
+					description = <"Informações sobre o Parto">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Parto">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Tipo">
+					description = <"Tipo de Parto">
+				>
+				["at0006"] = <
+					text = <"Vaginal">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Cesáreo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Local">
+					description = <"Local onde foi realizado o parto">
+				>
+				["at0010"] = <
+					text = <"Domiciliar">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Hospital">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Outros estabelecimentos de saúde">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Outros">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Ignorado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Idade Gestacional">
+					description = <"Idade gestacional em semanas no momento do parto. ">
+				>
+				["at0060"] = <
+					text = <"Nascimento">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Apgar de 1 minuto">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 1º minuto de vida.">
+				>
+				["at0062"] = <
+					text = <"Apgar de 5 minutos">
+					description = <"Resultado do teste realizado para quantificar a vitalidade do recém nascido no 5º minuto de vida.">
+				>
+				["at0063"] = <
+					text = <"Classificação RN">
+					description = <"Classificação do recém-nascido quanto ao peso ao nascer, idade gestacional, relação peso e idade gestacional e estado nutricional. ">
+				>
+				["at0064"] = <
+					text = <"AIG (apropriado para idade gestacional) ">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"PIG (pequeno para idade gestacional)">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"GIG (grande para a idade gestacional)">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Peso">
+					description = <"Peso do cidadão ao nascer. ">
+				>
+				["at0068"] = <
+					text = <"Altura/ Estatura">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Posição">
+					description = <"Posição utilizada para realizar a mensuração da altura/estatura do cidadão ao nascer.">
+				>
+				["at0070"] = <
+					text = <"Ortostática">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Deitado">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Valor Mensurado">
+					description = <"Valor do comprimento do corpo do cidadão do ápice da cabeça à sola do pé ao nascer.">
+				>
+				["at0073"] = <
+					text = <"PC">
+					description = <"Perímetro do crânio do cidadão ao nascer.">
+				>
+				["at0075"] = <
+					text = <"Intercorrências">
+					description = <"Intercorrências ocorridas no período neonatal (0 a 27 dias de vida). ">
+				>
+				["at0088"] = <
+					text = <"VDRL">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Reator">
+					description = <"Reator">
+				>
+				["at0090"] = <
+					text = <"Não Reator">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

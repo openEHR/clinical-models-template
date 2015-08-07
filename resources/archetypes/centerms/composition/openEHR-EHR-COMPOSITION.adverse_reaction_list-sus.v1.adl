@@ -1,0 +1,136 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.adverse_reaction_list-sus.v1
+
+concept
+	[at0000]	-- Adverse Reaction List
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2013-03-14">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a persistent and managed list of all known adverse reactions experienced by the subject, or statements about positive exclusion or actual absence of information about adverse reactions, that may influence clinical decision-making and care provision.">
+			use = <"Use to record a persistent and managed list of all known adverse reactions (including allergies, hypersensitivities, side effects or intolerances) experienced by the subject, or statements about positive exclusion or actual absence of information about adverse reactions, that may influence clinical decision-making and care provision. 
+
+This list can be utilised as a source of up-to-date adverse reaction data for exchange or as the basis for decision support. 
+
+This list can be comprised of three types of archetype:
+- statements about the positive use of medications are recorded using the EVALUATION.adverse_reaction archetype; OR
+- a statement about the positive exclusion of medication use can be recorded using the specific EVALUATION.exclusion-adverse_reaction archetype - for example: \"No known adverse reactions\"; OR
+- a statement about no information being available - neither a positive and known presence of an adverse reaction nor a positive exclusion - can be recorded using the EVALUATION.absence archetype.
+
+In order for this list to be accurate and safe to use as the basis for decision support activities and for exchange, this list should ideally be curated by a clinician responsible for the health record, rather than managed automatically by the clinical system through business rules alone.">
+			keywords = <"adverse", "reaction", "allergy", "intolerance", "effect", "hypersensitivity", "list", "side">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar uma lista de informação persistente e gerenciada de todas as reações adversas conhecidas que foram experenciadas pelo sujeito, ou afirmações sobre a sua exclusão ou a declarar a ausência de informação sobre o assunto, que possam influenciar a decisão clínica e a prestação de cuidados.">
+			use = <"Usar para registrar uma lista de informação persistente e gerenciada de todas as reações adversas (incluindo alergias, hipersensibilidades, efeitos secundários ou intolerâncias) conhecidas que foram experenciadas pelo sujeito, ou afirmações sobre a sua exclusão ou a declarar a ausência de informação sobre o assunto, que possam influenciar a decisão clínica e a prestação de cuidados.
+
+Esta lista pode ser utilizada como uma fonte para a obtenção de informação atualizada sobre reações adversas, quer para a troca de informação, quer como uma base para o suporte à decisão.
+
+Esta lista pode incluir três diferentes tipos de arquétipos:
+- afirmações relativas à presença de reações adversas, registradas utilizando os arquétipos EVALUATION.adverse_reaction; OU
+- afirmações sobre a exclusão de reações adversas, registradas utilizando os arquétipos EVALUATION.exclusion-adverse_reaction; OU
+- afirmações sobre o fato de não exisitir informação disponível - nem relativamente à ocorrência de uma reação adversa, nem relativamente à sua exclusão - registradas utilizando o arquétipo EVALUATION.absence.
+
+Para que esta lista contenha informação fidedigna e possa ser utilizada com segurança no suporte à decisão, assim como na troca de informação, ela idealmente deverá ser gerenciada por um clínico responsável pelo prontuário, em vez de ser gerenciada de uma forma automática pelo sistema de acordo com regras de negócio pré-definidas.">
+			keywords = <"adversa", "reação", "alergia", "intolerância", "efeito", "hipersensibilidade", "lista", "secundário">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <"Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Sam Heard, Ocean Informatics, Australia", "Sistine Barretto-Daniels, Ocean Informatics, Australia">
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"67E548EAA6B7C32B5B723987400C65AE">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Lista de Reações adversas
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION[at0002] occurrences matches {0..*} matches {	-- Reações adversas
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.adverse_reaction-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0003] occurrences matches {0..*} matches {	-- Afirmação de exclusão
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.exclusion-adverse-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0004] occurrences matches {0..*} matches {	-- Ausência de informação
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Adverse Reaction List">
+					description = <"A persistent and managed list of adverse reactions experienced by the subject that may influence clinical decision-making and care provision.">
+				>
+				["at0002"] = <
+					text = <"Adverse Reactions">
+					description = <"Details about known adverse reactions.">
+				>
+				["at0003"] = <
+					text = <"Exclusion Statement">
+					description = <"Positive statement about exclusion of known adverse reactions.">
+					comment = <"For example: \"No known adverse reactions\".">
+				>
+				["at0004"] = <
+					text = <"Absent Information">
+					description = <"Positive statement that no information is available about adverse reactions.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lista de Reações adversas">
+					description = <"Uma lista de informação persistente e gerenciada sobre reações adversas experenciadas pelo sujeito que possam influenciar a decisão clínica e a prestação de cuidados.">
+				>
+				["at0002"] = <
+					text = <"Reações adversas">
+					description = <"Detalhes sobre reações adversas conhecidas.">
+				>
+				["at0003"] = <
+					text = <"Afirmação de exclusão">
+					description = <"Afirmação sobre a exclusão de reações adversas conhecidas.">
+					comment = <"*For example: \"No known adverse reactions\".(en)">
+				>
+				["at0004"] = <
+					text = <"Ausência de informação">
+					description = <"Afirmação sobre a ausência de informação disponível relativamente a reações adversas.">
+				>
+			>
+		>
+	>

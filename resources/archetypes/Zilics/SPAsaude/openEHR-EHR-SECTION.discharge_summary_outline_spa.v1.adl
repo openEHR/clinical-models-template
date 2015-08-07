@@ -1,0 +1,178 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.discharge_summary_outline_spa.v1
+
+concept
+	[at0000]	-- Ficha de saída do Programa de Saúde
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"John Doe">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Beatriz de Faria Leao">
+		["email"] = <"bfleao@gmail.com">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"__unknown__">
+			copyright = <"copyright (c) 2010 openEHR foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*__unknown__">
+			use = <"">
+			misuse = <"">
+			copyright = <"copyright (c) 2010 openEHR foundation">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"0705AA23F3B84987639673CDA0E5305C">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Ficha de saída do Programa de Saúde
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Detalhes do Programa
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.health_promotion_program_classification_spa\.v1/}
+					}
+					SECTION[at0015] occurrences matches {0..1} matches {	-- Diagnósticos do paciente
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype EVALUATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem-diagnosis_spa\.v1/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0020] occurrences matches {0..1} matches {	-- Evolução Clínica
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.placeholder_v2zl\.v1/}
+					}
+				}
+			}
+			SECTION[at0007] occurrences matches {0..1} matches {	-- Resultados de exames relevantes
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype SECTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-SECTION\.exams_results_generic_spa2\.v1/}
+					}
+				}
+			}
+			SECTION[at0008] occurrences matches {0..1} matches {	-- Detalhes da saída do programa
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-EVALUATION\.discharge_details_spa\.v1/}
+					}
+				}
+			}
+			SECTION[at0006] occurrences matches {0..1} matches {	--  Conclusão / Recomendações
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-OBSERVATION\.placeholder_v2zl\.v1/}
+					}
+				}
+			}
+			SECTION[at0033] occurrences matches {0..1} matches {	-- Encaminhamentos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.specialized_follow_up_request_spa\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Discharge Summary Outline">
+					description = <"Outline of Discharge Summary ">
+				>
+				["at0001"] = <
+					text = <"Admission Details">
+					description = <"admission details">
+				>
+				["at0006"] = <
+					text = <"Conclusions">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Relevant Results">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Discharge Details">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+				["at0020"] = <
+					text = <"Clinical Findings">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"*New section">
+					description = <"**">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ficha de saída do Programa de Saúde">
+					description = <"  ">
+				>
+				["at0001"] = <
+					text = <"Detalhes do Programa">
+					description = <"*admission details">
+				>
+				["at0006"] = <
+					text = <" Conclusão / Recomendações">
+					description = <"**">
+				>
+				["at0007"] = <
+					text = <"Resultados de exames relevantes">
+					description = <"**">
+				>
+				["at0008"] = <
+					text = <"Detalhes da saída do programa">
+					description = <"**">
+				>
+				["at0015"] = <
+					text = <"Diagnósticos do paciente">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Evolução Clínica">
+					description = <"**">
+				>
+				["at0033"] = <
+					text = <"Encaminhamentos">
+					description = <"*">
+				>
+			>
+		>
+	>

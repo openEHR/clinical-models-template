@@ -1,0 +1,935 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.family_register_prodemge.v1
+
+concept
+	[at0000]	-- Dados da Moradia
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"__unknown__">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"8CE3DB05FA9318CBEDCC455196562998">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Dados da Moradia
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0081] occurrences matches {0..1} matches {	-- Cadastro da Família
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0082] occurrences matches {0..1} matches {	-- Número da pessoa no domicílio
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..20|}
+													}
+												}
+											}
+											ELEMENT[at0083] occurrences matches {0..1} matches {	-- Nome do Cidadão
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0084] occurrences matches {0..1} matches {	-- Sexo
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0085, 	-- masculino
+															at0086]	-- feminino
+														}
+													}
+												}
+											}
+											ELEMENT[at0087] occurrences matches {0..1} matches {	-- Data de Nascimento
+												value matches {
+													DV_DATE matches {
+														value matches {yyyy-??-XX}
+													}
+												}
+											}
+											ELEMENT[at0089] occurrences matches {0..1} matches {	-- Idade
+												value matches {
+													C_DV_QUANTITY <
+													>
+												}
+											}
+											ELEMENT[at0090] occurrences matches {0..1} matches {	-- Município de Nascimento
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0091] occurrences matches {0..1} matches {	-- Escolaridade/Alfabetizado
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0032, 	-- Sim
+															at0033]	-- Não
+														}
+													}
+												}
+											}
+											ELEMENT[at0093] occurrences matches {0..1} matches {	-- Ocupação (CBO)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0092] occurrences matches {0..1} matches {	-- Freqüenta Escola?
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0032, 	-- Sim
+															at0033]	-- Não
+														}
+													}
+												}
+											}
+											ELEMENT[at0094] occurrences matches {0..1} matches {	-- Nome da Mãe?
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0095] occurrences matches {0..1} matches {	-- Chefe da família?
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0032, 	-- Sim
+															at0033]	-- Não
+														}
+													}
+												}
+											}
+											ELEMENT[at0097] occurrences matches {0..1} matches {	-- Renda Declarada
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+											ELEMENT[at0098] occurrences matches {0..1} matches {	-- Doença ou condição referida
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0099, 	-- ALC
+															at0100, 	-- CHA
+															at0101, 	-- DEF
+															at0102, 	-- DIA
+															at0103, 	-- EPI
+															at0104, 	-- GES
+															at0105, 	-- HA
+															at0106, 	-- TB
+															at0107, 	-- HAN
+															at0108]	-- MAL
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0051] occurrences matches {0..1} matches {	-- Situação da Moradia e Saneamento/Domicílio
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Tipo de Moradia
+												value matches {
+													1|[local::at0023], 	-- Tijolo/Alvenaria
+													2|[local::at0024], 	-- Adobe
+													3|[local::at0025], 	-- Taipa revestida
+													4|[local::at0026], 	-- Taipa não revestida
+													5|[local::at0027], 	-- Madeira
+													6|[local::at0028], 	-- Material aproveitado
+													7|[local::at0029]  	-- Outros
+												}
+											}
+											ELEMENT[at0031] occurrences matches {0..1} matches {	-- Energia Elétrica
+												value matches {
+													1|[local::at0032], 	-- Sim
+													2|[local::at0033]  	-- Não
+												}
+											}
+											ELEMENT[at0054] occurrences matches {0..1} matches {	-- Número de Cômodos ou Peças do Domícilio
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|1..30|}
+													}
+												}
+											}
+											ELEMENT[at0034] occurrences matches {0..1} matches {	-- Destino do Lixo
+												value matches {
+													1|[local::at0035], 	-- Coletado
+													2|[local::at0036], 	-- Queimado ou Enterrado
+													3|[local::at0037]  	-- Jogado a céu aberto
+												}
+											}
+											ELEMENT[at0038] occurrences matches {0..1} matches {	-- Tratamento de Água
+												value matches {
+													1|[local::at0039], 	-- Filtração
+													2|[local::at0040], 	-- Fervura
+													3|[local::at0041], 	-- Cloração
+													4|[local::at0042]  	-- Sem tratamento
+												}
+											}
+											ELEMENT[at0043] occurrences matches {0..1} matches {	-- Abastecimento de Água
+												value matches {
+													1|[local::at0044], 	-- Rede Pública
+													2|[local::at0045], 	-- Poço ou Nascente
+													3|[local::at0046]  	-- Outros
+												}
+											}
+											ELEMENT[at0047] occurrences matches {0..1} matches {	-- Destino de Fezes e Urina/ Esgotamento Sanitário
+												value matches {
+													1|[local::at0048], 	-- Rede Pública
+													2|[local::at0049], 	-- Fossa
+													3|[local::at0050]  	-- Céu Aberto
+												}
+											}
+										}
+									}
+									CLUSTER[at0052] occurrences matches {0..1} matches {	-- Outras Informações
+										items cardinality matches {0..*; unordered} matches {
+											CLUSTER[at0113] occurrences matches {0..1} matches {	-- Plano de Saúde
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0056] occurrences matches {0..1} matches {	-- Alguém da Família possui Plano de Saúde?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0032, 	-- Sim
+																	at0033]	-- Não
+																}
+															}
+														}
+													}
+													ELEMENT[at0059] occurrences matches {0..1} matches {	-- Nome do Plano de Saúde
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0058] occurrences matches {0..1} matches {	-- Número de Pessoas Cobertas pelo Plano de Saúde
+														value matches {
+															DV_COUNT matches {
+																magnitude matches {|0..22|}
+															}
+														}
+													}
+												}
+											}
+											CLUSTER[at0114] occurrences matches {0..1} matches {	-- Em caso de saúde procura
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0060] occurrences matches {0..1} matches {	-- Em caso de doença procura?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0062, 	-- Hospital
+																	at0063, 	-- Unidade de Saúde
+																	at0064, 	-- Benzedeira
+																	at0065]	-- Farmácia
+																}
+															}
+														}
+													}
+													ELEMENT[at0061] occurrences matches {0..1} matches {	-- “Outros” locais que procura em caso de doença?
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0115] occurrences matches {0..1} matches {	-- Meios de Comunicação
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0066] occurrences matches {0..1} matches {	-- Meios de Comunicação que Mais Utiliza?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0067, 	-- Rádio
+																	at0068]	-- Televisão
+																}
+															}
+														}
+													}
+													ELEMENT[at0069] occurrences matches {0..1} matches {	-- Outros meios de comunicação que mais utiliza?
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0116] occurrences matches {0..1} matches {	-- Grupos Comunitários
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0070] occurrences matches {0..1} matches {	-- Participa de grupos comunitários?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0071, 	-- Cooperativa
+																	at0072, 	-- Grupo Religioso
+																	at0073]	-- Associações
+																}
+															}
+														}
+													}
+													ELEMENT[at0074] occurrences matches {0..1} matches {	-- Outros Grupos Comunitários que Participa?
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0117] occurrences matches {0..1} matches {	-- Meios de Transporte
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0075] occurrences matches {0..1} matches {	-- Meios de transporte que utiliza
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0076, 	-- Onibus
+																	at0077, 	-- Caminhão
+																	at0078, 	-- Carro
+																	at0079]	-- Carroça
+																}
+															}
+														}
+													}
+													ELEMENT[at0080] occurrences matches {0..1} matches {	-- Outros Meios de Transporte que Utiliza?
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0118] occurrences matches {0..1} matches {	-- Atividades Produtivas Domiciliares
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0122] occurrences matches {0..1} matches {	-- Descrição da atividade produtiva: O que produz/faz?
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0119] occurrences matches {0..1} matches {	-- Qual o local da residência onde ocorre a atividade?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0120, 	-- Dentro da Residência
+																	at0121]	-- Fora da Residência
+																}
+															}
+														}
+													}
+													ELEMENT[at0123] occurrences matches {0..1} matches {	-- Quantas pessoas estão trabalhando na atividade domiciliar?
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													CLUSTER[at0126] occurrences matches {0..1} matches {	-- Exposição a produtos químicos
+														items cardinality matches {0..*; unordered} matches {
+															ELEMENT[at0124] occurrences matches {0..1} matches {	-- Há exposição a produtos químicos?
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0032, 	-- Sim
+																			at0033]	-- Não
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0125] occurrences matches {0..1} matches {	-- Quais?
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													ELEMENT[at0127] occurrences matches {0..1} matches {	-- A atividade gera ruído?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0032, 	-- Sim
+																	at0033]	-- Não
+																}
+															}
+														}
+													}
+													ELEMENT[at0128] occurrences matches {0..1} matches {	-- Os trabalhadores carregam e ou transportam peso?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0032, 	-- Sim
+																	at0033]	-- Não
+																}
+															}
+														}
+													}
+													ELEMENT[at0129] occurrences matches {0..1} matches {	-- Existe risco de acidentes?
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0032, 	-- Sim
+																	at0033]	-- Não
+																}
+															}
+														}
+													}
+													CLUSTER[at0130] occurrences matches {0..1} matches {	-- Exposição a risco biológico?
+														items cardinality matches {0..*; unordered} matches {
+															ELEMENT[at0131] occurrences matches {0..1} matches {	-- Existe exposição a risco biológico?
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0032, 	-- Sim
+																			at0033]	-- Não
+																		}
+																	}
+																}
+															}
+															ELEMENT[at0132] occurrences matches {0..1} matches {	-- Quais?
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													ELEMENT[at0133] occurrences matches {0..1} matches {	-- Observações
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {[local::]}
+															}
+														}
+													}
+												}
+											}
+											ELEMENT[at0053] occurrences matches {0..1} matches {	-- Acesso individual à escova de dentes e pasta?
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0109] occurrences matches {0..1} matches {	-- Informações do Cadastrador
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0111] occurrences matches {0..1} matches {	-- Número do Cadastrador
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0110] occurrences matches {0..1} matches {	-- Nome do Cadastrador
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0112] occurrences matches {0..1} matches {	-- Número da ficha domiciliar
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {[local::]}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dados da Moradia">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0022"] = <
+					text = <"Tipo de Moradia">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Tijolo/Alvenaria">
+					description = <"parede construída com tijolo
+(cimento, cerâmica, etc.)">
+				>
+				["at0024"] = <
+					text = <"Adobe">
+					description = <"parede construída com adobe (bloco
+semelhante ao tijolo, preparado com argila crua, seca ao
+sol) adobão e semelhantes">
+				>
+				["at0025"] = <
+					text = <"Taipa revestida">
+					description = <"parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)">
+				>
+				["at0026"] = <
+					text = <"Taipa não revestida">
+					description = <"parede de taipa sem revestimento">
+				>
+				["at0027"] = <
+					text = <"Madeira">
+					description = <"parede de madeira">
+				>
+				["at0028"] = <
+					text = <"Material aproveitado">
+					description = <"materiais impróprios para
+construção, como papelão, plástico, lona, palha, flandres,
+etc">
+				>
+				["at0029"] = <
+					text = <"Outros">
+					description = <"Materiais apropriados para construção, como
+pedra, concreto, etc">
+				>
+				["at0031"] = <
+					text = <"Energia Elétrica">
+					description = <"Energia Elétrica do Domicílio
+">
+				>
+				["at0032"] = <
+					text = <"Sim">
+					description = <"mesmo
+que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina,
+“gato”, “gambiarra”)">
+				>
+				["at0033"] = <
+					text = <"Não">
+					description = <"não possui energia elétrica">
+				>
+				["at0034"] = <
+					text = <"Destino do Lixo">
+					description = <"Destino dado ao lixo do
+domicílio.">
+				>
+				["at0035"] = <
+					text = <"Coletado">
+					description = <"por serviço, empresa pública ou particular">
+				>
+				["at0036"] = <
+					text = <"Queimado ou Enterrado">
+					description = <"Lixo é queimado ou enterrado">
+				>
+				["at0037"] = <
+					text = <"Jogado a céu aberto">
+					description = <"Jogado a céu aberto">
+				>
+				["at0038"] = <
+					text = <"Tratamento de Água">
+					description = <"Tratamento da água feito continuamente no domicílio.
+Não considerar o tratamento da água realizado pela
+empresa fornecedora.">
+				>
+				["at0039"] = <
+					text = <"Filtração">
+					description = <"Água fervida ">
+				>
+				["at0040"] = <
+					text = <"Fervura">
+					description = <"Água fervida">
+				>
+				["at0041"] = <
+					text = <"Cloração">
+					description = <"Utilizado cloro na água">
+				>
+				["at0042"] = <
+					text = <"Sem tratamento">
+					description = <"assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores">
+				>
+				["at0043"] = <
+					text = <"Abastecimento de Água">
+					description = <"Registrar a origem da água utilizada no domicílio, de acordo com a classificação do IBGE (BRASIL, 1994).">
+				>
+				["at0044"] = <
+					text = <"Rede Pública">
+					description = <"água proveniente
+de uma rede geral de abastecimento, no domicílio ou no peridomicílio">
+				>
+				["at0045"] = <
+					text = <"Poço ou Nascente">
+					description = <"água proveniente de poço ou nascente próprios">
+				>
+				["at0046"] = <
+					text = <"Outros">
+					description = <"água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio">
+				>
+				["at0047"] = <
+					text = <"Destino de Fezes e Urina/ Esgotamento Sanitário">
+					description = <"Destino de fezes e urina/ Esgotamento sanitário">
+				>
+				["at0048"] = <
+					text = <"Rede Pública">
+					description = <"fezes e urina são canalizadas para o
+sistema de esgoto do município">
+				>
+				["at0049"] = <
+					text = <"Fossa">
+					description = <"qualquer tipo de fossa">
+				>
+				["at0050"] = <
+					text = <"Céu Aberto">
+					description = <"fezes e urina são despejadas no quintal, na rua, em um riacho">
+				>
+				["at0051"] = <
+					text = <"Situação da Moradia e Saneamento/Domicílio">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Outras Informações">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Acesso individual à escova de dentes e pasta?">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Número de Cômodos ou Peças do Domícilio">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Alguém da Família possui Plano de Saúde?">
+					description = <"Escreva sim ou não de acordo com a resposta.
+Considere como plano de saúde qualquer seguro para assistência médica privativa de qualquer tipo (hospitalizações, consultas, exames laboratoriais etc.), pago pela família ou por outro (empregador de algum membro da família, parentes etc.).
+">
+				>
+				["at0058"] = <
+					text = <"Número de Pessoas Cobertas pelo Plano de Saúde">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Nome do Plano de Saúde">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Em caso de doença procura?">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"“Outros” locais que procura em caso de doença?">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Hospital">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Unidade de Saúde">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Benzedeira">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Farmácia">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Meios de Comunicação que Mais Utiliza?">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Rádio">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"Televisão">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Outros meios de comunicação que mais utiliza?">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Participa de grupos comunitários?">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Cooperativa">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Grupo Religioso">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Associações">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Outros Grupos Comunitários que Participa?">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Meios de transporte que utiliza">
+					description = <"*">
+				>
+				["at0076"] = <
+					text = <"Onibus">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"Caminhão">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"Carro">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"Carroça">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"Outros Meios de Transporte que Utiliza?">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Cadastro da Família">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"Número da pessoa no domicílio">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Nome do Cidadão">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Sexo">
+					description = <"*">
+				>
+				["at0085"] = <
+					text = <"masculino">
+					description = <"*">
+				>
+				["at0086"] = <
+					text = <"feminino">
+					description = <"*">
+				>
+				["at0087"] = <
+					text = <"Data de Nascimento">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Idade">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"Município de Nascimento">
+					description = <"Deveria ser o código IBGE mas se não der deixa texto livre..">
+				>
+				["at0091"] = <
+					text = <"Escolaridade/Alfabetizado">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Freqüenta Escola?">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"Ocupação (CBO)">
+					description = <"*CBO ">
+				>
+				["at0094"] = <
+					text = <"Nome da Mãe?">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Chefe da família?">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Renda Declarada">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Doença ou condição referida">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"ALC">
+					description = <"alcoolismo
+">
+				>
+				["at0100"] = <
+					text = <"CHA">
+					description = <"Chagas">
+				>
+				["at0101"] = <
+					text = <"DEF">
+					description = <"Deficiência">
+				>
+				["at0102"] = <
+					text = <"DIA">
+					description = <"Diabetes">
+				>
+				["at0103"] = <
+					text = <"EPI">
+					description = <"Epilepsia">
+				>
+				["at0104"] = <
+					text = <"GES">
+					description = <"Gestação">
+				>
+				["at0105"] = <
+					text = <"HA">
+					description = <"Hipertensão Aterial">
+				>
+				["at0106"] = <
+					text = <"TB">
+					description = <"Tuberculose">
+				>
+				["at0107"] = <
+					text = <"HAN">
+					description = <"Hanseníase">
+				>
+				["at0108"] = <
+					text = <"MAL">
+					description = <"Malária">
+				>
+				["at0109"] = <
+					text = <"Informações do Cadastrador">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"Nome do Cadastrador">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Número do Cadastrador">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"Número da ficha domiciliar">
+					description = <"*">
+				>
+				["at0113"] = <
+					text = <"Plano de Saúde">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"Em caso de saúde procura">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"Meios de Comunicação">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Grupos Comunitários">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Meios de Transporte">
+					description = <"*">
+				>
+				["at0118"] = <
+					text = <"Atividades Produtivas Domiciliares">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Qual o local da residência onde ocorre a atividade?">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"Dentro da Residência">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Fora da Residência">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Descrição da atividade produtiva: O que produz/faz?">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Quantas pessoas estão trabalhando na atividade domiciliar?">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"Há exposição a produtos químicos?">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Quais?">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Exposição a produtos químicos">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"A atividade gera ruído?">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Os trabalhadores carregam e ou transportam peso?">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Existe risco de acidentes?">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Exposição a risco biológico?">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"Existe exposição a risco biológico?">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Quais?">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Observações">
+					description = <"Descreva as características do ambiente (aceitação do usuário para
+realização do cadastro; se existe alguma situação que salta aos olhos; se a atividade é por
+encomenda, por empreitada, por período específico do ano, picos de produção).">
+				>
+			>
+		>
+	>

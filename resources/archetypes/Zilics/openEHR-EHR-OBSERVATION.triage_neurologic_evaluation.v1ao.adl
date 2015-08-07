@@ -1,0 +1,435 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_neurologic_evaluation.v1ao
+
+concept
+	[at0000]	-- Avaliação Neurológica
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Avaliação Neurológica
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_LIST[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Nível de Consciência
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- Diminuído
+													at0013]	-- Normal
+												}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Parestesias / Plegias / Paresias
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0014, 	-- < 24 horas
+													at0015]	-- > 24 horas
+												}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Alterações do Campo Visual
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- < 24 horas
+													at0018]	-- > 24 horas 
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Dislalia
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0020, 	-- < 24 horas
+													at0021]	-- > 24 horas
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Afasia
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023, 	-- < 24 horas
+													at0024]	-- > 24 horas
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Agitação
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0026, 	-- < 24 horas
+													at0027]	-- > 24 horas
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Letargia
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Período
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0029, 	-- < 24 horas
+													at0030]	-- > 24 horas
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Avaliação Neurológica">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Nível de Consciência">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Parestesias / Plegias / Paresias">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Alterações do Campo Visual">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Afasia">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Dislalia">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Letargia">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Agitação">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Diminuído">
+					description = <"Diminuído">
+				>
+				["at0013"] = <
+					text = <"Normal">
+					description = <"Normal">
+				>
+				["at0014"] = <
+					text = <"< 24 horas">
+					description = <"<24 horas">
+				>
+				["at0015"] = <
+					text = <"> 24 horas">
+					description = <"> 24 horas">
+				>
+				["at0016"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"< 24 horas">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"> 24 horas ">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"< 24 horas">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"> 24 horas">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"< 24 horas">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"> 24 horas">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"< 24 horas">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"> 24 horas">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"< 24 horas">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"> 24 horas">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Avaliação Neurológica">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Nível de Consciência">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Parestesias / Plegias / Paresias">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Período">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Alterações do Campo Visual">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Afasia">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Dislalia">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Letargia">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Agitação">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Orientado">
+					description = <"Orientado">
+				>
+				["at0013"] = <
+					text = <"Desorientado">
+					description = <"Desorientado">
+				>
+				["at0014"] = <
+					text = <"< 24 horas">
+					description = <"<24 horas">
+				>
+				["at0015"] = <
+					text = <"> 24 horas">
+					description = <"> 24 horas (Mínima)">
+				>
+				["at0016"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"< 24 horas">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"> 24 horas">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"< 24 horas">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"> 24 horas">
+					description = <"**(pt)">
+				>
+				["at0022"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"< 24 horas">
+					description = <"**(pt)">
+				>
+				["at0024"] = <
+					text = <"> 24 horas">
+					description = <"**(pt)">
+				>
+				["at0025"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0026"] = <
+					text = <"< 24 horas">
+					description = <"**(pt)">
+				>
+				["at0027"] = <
+					text = <"> 24 horas">
+					description = <"**(pt)">
+				>
+				["at0028"] = <
+					text = <"Período">
+					description = <"**(pt)">
+				>
+				["at0029"] = <
+					text = <"< 24 horas">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"> 24 horas">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

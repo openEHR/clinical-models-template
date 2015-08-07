@@ -1,0 +1,252 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.prenatal_occurrences_prodemge.v1
+
+concept
+	[at0000]	-- Intercorrências no pré-natal
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registro das intercorrências no pré-natal">
+			use = <"Registro das intercorrências no pré-natal">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"1812C14865A7D938EFFD97BC8704EA31">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Intercorrências no pré-natal
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Intercorrências no Pré-Natal
+										value matches {
+											1|[local::at0007], 	-- Hipertensão arterial prévia
+											2|[local::at0008], 	-- Hipertensão arterial induzida pela gravidez
+											3|[local::at0009], 	-- Cardiopatia
+											4|[local::at0011], 	-- Nefropatia
+											5|[local::at0012], 	-- Diabetes
+											6|[local::at0013], 	-- Hemorragia 2 e 3º trimestre
+											7|[local::at0014], 	-- Infecção urinária
+											8|[local::at0015], 	-- Isoimunização pelo fator Rh
+											9|[local::at0016], 	-- Gravidez múltipla
+											10|[local::at0017], 	-- Pré-eclampsia
+											11|[local::at0018], 	-- Eclampsia
+											12|[local::at0019], 	-- Parasitoses
+											13|[local::at0020], 	-- Ameaça de parto pré-maturo
+											14|[local::at0021], 	-- Outras
+											15|[local::at0022]  	-- Nenhuma
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Intercorrências no pré-natal">
+					description = <"Intercorrências no pré-natal">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Intercorrências no Pré-Natal">
+					description = <"Intercorrências ocorridas no pré-natal. 
+">
+				>
+				["at0007"] = <
+					text = <"Hipertensão arterial prévia">
+					description = <"Hipertensão arterial prévia">
+				>
+				["at0008"] = <
+					text = <"Hipertensão arterial induzida pela gravidez">
+					description = <"Hipertensão arterial induzida pela gravidez">
+				>
+				["at0009"] = <
+					text = <"Cardiopatia">
+					description = <"Cardiopatia">
+				>
+				["at0011"] = <
+					text = <"Nefropatia">
+					description = <"Nefropatia">
+				>
+				["at0012"] = <
+					text = <"Diabetes">
+					description = <"Diabetes">
+				>
+				["at0013"] = <
+					text = <"Hemorragia 2 e 3º trimestre">
+					description = <"Hemorragia 2 e 3º trimestre">
+				>
+				["at0014"] = <
+					text = <"Infecção urinária">
+					description = <"Infecção urinária">
+				>
+				["at0015"] = <
+					text = <"Isoimunização pelo fator Rh">
+					description = <"Isoimunização pelo fator Rh">
+				>
+				["at0016"] = <
+					text = <"Gravidez múltipla">
+					description = <"Gravidez múltipla">
+				>
+				["at0017"] = <
+					text = <"Pré-eclampsia">
+					description = <"Pré-eclampsia">
+				>
+				["at0018"] = <
+					text = <"Eclampsia">
+					description = <"Eclampsia">
+				>
+				["at0019"] = <
+					text = <"Parasitoses">
+					description = <"Parasitoses">
+				>
+				["at0020"] = <
+					text = <"Ameaça de parto pré-maturo">
+					description = <"Ameaça de parto pré-maturo">
+				>
+				["at0021"] = <
+					text = <"Outras">
+					description = <"Outras">
+				>
+				["at0022"] = <
+					text = <"Nenhuma">
+					description = <"Nenhuma">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"unknown">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0005"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*1.          Hipertensão arterial prévia
+1.          Hipertensão arterial prévia
+ Hipertensão arterial prévia
+(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Nefropatia(pt)">
+					description = <"**(pt)">
+				>
+				["at0012"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0015"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0016"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0022"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

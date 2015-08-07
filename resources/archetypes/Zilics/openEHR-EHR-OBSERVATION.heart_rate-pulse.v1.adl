@@ -1,0 +1,836 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.heart_rate-pulse.v1
+specialize
+	openEHR-EHR-OBSERVATION.heart_rate.v1
+
+concept
+	[at0000.1]	-- Pulso
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Beatriz de Faria Leão">
+				["organisation"] = <"Zilics Health Information Systems">
+				["email"] = <"beatriz.leao@zilics.com.br">
+				["date"] = <"11/12/2007">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"26/03/2006">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the mechanical rate, rhythm and character of the pulse as evidence of 'out-put' heart rate.">
+			use = <"For recording mechanical rate of the heart as determined by palpation or suitable device.">
+			keywords = <"rate", "rhythm", "character", "pulse">
+			misuse = <"Not for recording peripheral pulses.">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*To record the mechanical rate, rhythm and character of the pulse as evidence of 'out-put' heart rate.">
+			use = <"*For recording mechanical rate of the heart as determined by palpation or suitable device.">
+			keywords = <"rate", "rhythm", "character", "pulse">
+			misuse = <"*Not for recording peripheral pulses.">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000.1] matches {	-- Pulso
+		data matches {
+			HISTORY[at0002] matches {	-- history
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0003] occurrences matches {0..*} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0001] matches {	-- structure
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at1007] occurrences matches {0..1} matches {	-- Descrições coração normal
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at1004] occurrences matches {0..1} matches {	-- Padrões de normalidade / anormalidade
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at1008, 	-- Ritmo sinusal 
+															at1009, 	-- *Normal rate and rhythm
+															at1010]	-- *Normal
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..*} matches {	-- Ritmo
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0.23, 	-- Ritmo Sinusal
+													at0006, 	-- Regular
+													at0007, 	-- Irregular
+													at0.7, 	-- Bigeminismo
+													at0.8, 	-- Trigeminismo
+													at0.9, 	-- Extrassístoles ocasionais (< 2 p/min)
+													at0.10, 	-- Extrassístoles ( > 2 p/min) 
+													at0008]	-- Irregular de forma caótica
+												}
+											}
+										}
+									}
+									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Presente
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0.47] occurrences matches {0..1} matches {	-- Frequência
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Frequência
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::382]>
+														list = <
+															["1"] = <
+																units = <"/min">
+																magnitude = <|>=0.0|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0.42] occurrences matches {0..1} matches {	-- Descrição
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0.43, 	-- Ritmo Sinusal
+															at0.44, 	-- Taquicardia
+															at0.45, 	-- Bradicardia
+															at0.46]	-- Síndrome taqui-bradi
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0.36] occurrences matches {0..1} matches {	-- *Volume
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0.37, 	-- *Large/full
+													at0.38, 	-- *Normal
+													at0.39, 	-- *Low/small
+													at0.40, 	-- *Half
+													at0.41]	-- *Quarter
+												}
+											}
+										}
+									}
+									ELEMENT[at0.11] occurrences matches {0..1} matches {	-- Número de extrassistoles por minuto
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									CLUSTER[at0.24] occurrences matches {0..1} matches {	-- Diferença de pulso
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0.13] occurrences matches {0..1} matches {	-- Deficit
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0.25] occurrences matches {0..2} matches {	-- Locais
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0.15, 	-- artéria ulnar
+															at0.17, 	-- artéria braquial
+															at0.20, 	-- Pediosa dorsal
+															at0.21, 	-- Tibial Posterior
+															at0.3, 	-- *Radial artery
+															at0.4, 	-- *Apex of heart
+															at0.5, 	-- Artéria carótida
+															at0.6, 	-- Artéria Femural
+															at0.19]	-- poplítea
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0.27] occurrences matches {0..1} matches {	-- Características do Pulso
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0.28, 	-- *Bounding
+													at0.29, 	-- *Thready
+													at0.30, 	-- *Normal
+													at0.31, 	-- *Slow-rising
+													at0.32, 	-- *Water-hammer
+													at0.33, 	-- *Collapsing
+													at0.34, 	-- *Bisferiens
+													at0.35]	-- *Paradoxical
+												}
+											}
+										}
+									}
+									CLUSTER[at0.12] occurrences matches {0..1} matches {	-- Achados
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Descrição
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_LIST[at0010] matches {	-- List
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Instrumento
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0.2] occurrences matches {0..1} matches {	-- Local da medida
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0.3, 	-- *Radial artery
+									at0.4, 	-- *Apex of heart
+									at0.5, 	-- Artéria carótida
+									at0.6, 	-- Artéria Femural
+									at0.15, 	-- artéria ulnar
+									at0.17, 	-- artéria braquial
+									at0.19, 	-- poplítea
+									at0.20, 	-- Pediosa dorsal
+									at0.21, 	-- Tibial Posterior
+									at0.22]	-- Temporal
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNOMED-CT", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.1"] = <
+					text = <"Description">
+					description = <"Description of character of the pulse on palpation">
+				>
+				["at0.10"] = <
+					text = <"Frequent missed beats">
+					description = <"Missed beats of greater than 2 per minute">
+				>
+				["at0.11"] = <
+					text = <"Number of missed beats per minute">
+					description = <"The number of missed beats per minute">
+				>
+				["at0.12"] = <
+					text = <"Findings">
+					description = <"*">
+				>
+				["at0.13"] = <
+					text = <"Deficit">
+					description = <"Difference between the rates">
+				>
+				["at0.14"] = <
+					text = <"radial">
+					description = <"*">
+				>
+				["at0.15"] = <
+					text = <"Ulnar artery">
+					description = <"The ulnar artery">
+				>
+				["at0.16"] = <
+					text = <"carotid">
+					description = <"*">
+				>
+				["at0.17"] = <
+					text = <"Brachial artery">
+					description = <"The brachial artery">
+				>
+				["at0.18"] = <
+					text = <"femoral">
+					description = <"*">
+				>
+				["at0.19"] = <
+					text = <"Popliteal">
+					description = <"The popliteal artery">
+				>
+				["at0.2"] = <
+					text = <"Location of measurement">
+					description = <"The body site where the pulse was measured">
+				>
+				["at0.20"] = <
+					text = <"Dorsalis Pedis">
+					description = <"The dorsalis pedis artery">
+				>
+				["at0.21"] = <
+					text = <"Tibialis Posterior">
+					description = <"The tibialis posterior artery">
+				>
+				["at0.22"] = <
+					text = <"temporal">
+					description = <"*">
+				>
+				["at0.23"] = <
+					text = <"Sinus rhythm">
+					description = <"*">
+				>
+				["at0.24"] = <
+					text = <"Pulse deficit">
+					description = <"Difference between the rate at the heart apex and a peripheral pulse ">
+				>
+				["at0.25"] = <
+					text = <"Sites">
+					description = <"Sites where deficit is measured">
+				>
+				["at0.26"] = <
+					text = <"Character">
+					description = <"*">
+				>
+				["at0.27"] = <
+					text = <"Characteristics">
+					description = <"Shape of the pulse wave on palpation">
+				>
+				["at0.28"] = <
+					text = <"Bounding">
+					description = <"*">
+				>
+				["at0.29"] = <
+					text = <"Thready">
+					description = <"*">
+				>
+				["at0.3"] = <
+					text = <"Radial artery">
+					description = <"The radial artery">
+				>
+				["at0.30"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0.31"] = <
+					text = <"Slow-rising">
+					description = <"*">
+				>
+				["at0.32"] = <
+					text = <"Water-hammer">
+					description = <"*">
+				>
+				["at0.33"] = <
+					text = <"Collapsing">
+					description = <"*">
+				>
+				["at0.34"] = <
+					text = <"Bisferiens">
+					description = <"*">
+				>
+				["at0.35"] = <
+					text = <"Paradoxical">
+					description = <"*">
+				>
+				["at0.36"] = <
+					text = <"Volume">
+					description = <"Volume of pulse">
+				>
+				["at0.37"] = <
+					text = <"Large/full">
+					description = <"*">
+				>
+				["at0.38"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0.39"] = <
+					text = <"Low/small">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"Apex of heart">
+					description = <"The apex beat of the heart (left 5th intercostal space, mid-clavicular line)">
+				>
+				["at0.40"] = <
+					text = <"Half">
+					description = <"*">
+				>
+				["at0.41"] = <
+					text = <"Quarter">
+					description = <"*">
+				>
+				["at0.42"] = <
+					text = <"Description">
+					description = <"Description of pulse rate">
+				>
+				["at0.43"] = <
+					text = <"Sinus rhythm">
+					description = <"*">
+				>
+				["at0.44"] = <
+					text = <"Tachycardia">
+					description = <"*">
+				>
+				["at0.45"] = <
+					text = <"Bradycardia">
+					description = <"*">
+				>
+				["at0.46"] = <
+					text = <"Mixed tachycardia and bradycardia">
+					description = <"Tachy-brady syndrome">
+				>
+				["at0.47"] = <
+					text = <"Rate">
+					description = <"The rate of the heart on palpation">
+				>
+				["at0.5"] = <
+					text = <"Carotid artery">
+					description = <"The carotid artery in the neck">
+				>
+				["at0.6"] = <
+					text = <"Femoral artery">
+					description = <"The femoral artery">
+				>
+				["at0.7"] = <
+					text = <"Bigeminy">
+					description = <"Double beats with intervening gap">
+				>
+				["at0.8"] = <
+					text = <"Trigeminy">
+					description = <"Triple beat with intervening gap">
+				>
+				["at0.9"] = <
+					text = <"Occasional missed beats">
+					description = <"Missed beats less than 2 per minute">
+				>
+				["at0000"] = <
+					text = <"Heart rate">
+					description = <"The rate the heart is beating - either mechanically or electrically">
+				>
+				["at0000.1"] = <
+					text = <"Pulse">
+					description = <"The mechanical heart rate  - usually measured by palpation">
+				>
+				["at0001"] = <
+					text = <"structure">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Rate">
+					description = <"The rate of the heart as beats per minute">
+				>
+				["at0005"] = <
+					text = <"Rhythm">
+					description = <"The rhythm of the heart beat">
+				>
+				["at0006"] = <
+					text = <"Regular">
+					description = <"Regular heart beat">
+				>
+				["at0007"] = <
+					text = <"Irregular">
+					description = <"The heart is irregular">
+				>
+				["at0008"] = <
+					text = <"Irregularly irregular">
+					description = <"Irregular in a chaotic manner">
+				>
+				["at0009"] = <
+					text = <"Description">
+					description = <"The description of the rate and rythm">
+				>
+				["at0010"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Device">
+					description = <"Device by which the heart rate was measured">
+				>
+				["at0012"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Position">
+					description = <"The position of the patient when the heart rate was measured">
+				>
+				["at1000"] = <
+					text = <"Lying">
+					description = <"Lying prone">
+				>
+				["at1001"] = <
+					text = <"Sitting">
+					description = <"Sitting on bed or chair">
+				>
+				["at1002"] = <
+					text = <"Reclining">
+					description = <"Person reclining at 45 degrees with legs raised">
+				>
+				["at1003"] = <
+					text = <"Standing">
+					description = <"Standing upright">
+				>
+				["at1004"] = <
+					text = <"Normal statements ">
+					description = <"The heart rate is abnormal">
+				>
+				["at1005"] = <
+					text = <"Present">
+					description = <"The pulse rate is present (implied true if rate > 0)">
+				>
+				["at1007"] = <
+					text = <"Normal statements">
+					description = <"Normal statements about the heart rate">
+				>
+				["at1008"] = <
+					text = <"Normal sinus rhythm">
+					description = <"The heart is beating in the expected manner responding to the atrial sinus">
+				>
+				["at1009"] = <
+					text = <"Normal rate and rhythm">
+					description = <"The heart is beating normally">
+				>
+				["at1010"] = <
+					text = <"Normal">
+					description = <"The heart rate is normal">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.1"] = <
+					text = <"Descrição">
+					description = <"Descrição das características do pulso à palpação">
+				>
+				["at0.10"] = <
+					text = <"Extrassístoles ( > 2 p/min) ">
+					description = <"EXtrassístoles ( > 2 p/min) ">
+				>
+				["at0.11"] = <
+					text = <"Número de extrassistoles por minuto">
+					description = <"Número de extrassistoles por minuto">
+				>
+				["at0.12"] = <
+					text = <"Achados">
+					description = <"**">
+				>
+				["at0.13"] = <
+					text = <"Deficit">
+					description = <"Diferença entre as frequências">
+				>
+				["at0.14"] = <
+					text = <"radial">
+					description = <"**">
+				>
+				["at0.15"] = <
+					text = <"artéria ulnar">
+					description = <"artéria ulnar">
+				>
+				["at0.16"] = <
+					text = <"carótida">
+					description = <"**">
+				>
+				["at0.17"] = <
+					text = <"artéria braquial">
+					description = <"artéria braquial">
+				>
+				["at0.18"] = <
+					text = <"femural">
+					description = <"**">
+				>
+				["at0.19"] = <
+					text = <"poplítea">
+					description = <"artéria poplítea">
+				>
+				["at0.2"] = <
+					text = <"Local da medida">
+					description = <"local onde a frequência cardíaca  foi medida">
+				>
+				["at0.20"] = <
+					text = <"Pediosa dorsal">
+					description = <"Artéria dorsal pediosa">
+				>
+				["at0.21"] = <
+					text = <"Tibial Posterior">
+					description = <"Artéria tibial posterior">
+				>
+				["at0.22"] = <
+					text = <"Temporal">
+					description = <"**">
+				>
+				["at0.23"] = <
+					text = <"Ritmo Sinusal">
+					description = <"**">
+				>
+				["at0.24"] = <
+					text = <"Diferença de pulso">
+					description = <"Diferença da frequência cardíaca entre o apéx e pulsos periféricos ">
+				>
+				["at0.25"] = <
+					text = <"Locais">
+					description = <"*Sites where deficit is measured">
+				>
+				["at0.26"] = <
+					text = <"Características do Pulso">
+					description = <"**">
+				>
+				["at0.27"] = <
+					text = <"Características do Pulso">
+					description = <"*Shape of the pulse wave on palpation">
+				>
+				["at0.28"] = <
+					text = <"*Bounding">
+					description = <"**">
+				>
+				["at0.29"] = <
+					text = <"*Thready">
+					description = <"**">
+				>
+				["at0.3"] = <
+					text = <"*Radial artery">
+					description = <"*The radial artery">
+				>
+				["at0.30"] = <
+					text = <"*Normal">
+					description = <"**">
+				>
+				["at0.31"] = <
+					text = <"*Slow-rising">
+					description = <"**">
+				>
+				["at0.32"] = <
+					text = <"*Water-hammer">
+					description = <"**">
+				>
+				["at0.33"] = <
+					text = <"*Collapsing">
+					description = <"**">
+				>
+				["at0.34"] = <
+					text = <"*Bisferiens">
+					description = <"**">
+				>
+				["at0.35"] = <
+					text = <"*Paradoxical">
+					description = <"**">
+				>
+				["at0.36"] = <
+					text = <"*Volume">
+					description = <"*Volume of pulse">
+				>
+				["at0.37"] = <
+					text = <"*Large/full">
+					description = <"**">
+				>
+				["at0.38"] = <
+					text = <"*Normal">
+					description = <"**">
+				>
+				["at0.39"] = <
+					text = <"*Low/small">
+					description = <"**">
+				>
+				["at0.4"] = <
+					text = <"*Apex of heart">
+					description = <"*The apex beat of the heart (left 5th intercostal space, mid-clavicular line)">
+				>
+				["at0.40"] = <
+					text = <"*Half">
+					description = <"**">
+				>
+				["at0.41"] = <
+					text = <"*Quarter">
+					description = <"**">
+				>
+				["at0.42"] = <
+					text = <"Descrição">
+					description = <"*Description of pulse rate">
+				>
+				["at0.43"] = <
+					text = <"Ritmo Sinusal">
+					description = <"**">
+				>
+				["at0.44"] = <
+					text = <"Taquicardia">
+					description = <"**">
+				>
+				["at0.45"] = <
+					text = <"Bradicardia">
+					description = <"**">
+				>
+				["at0.46"] = <
+					text = <"Síndrome taqui-bradi">
+					description = <"Síndrome taqui-bradi">
+				>
+				["at0.47"] = <
+					text = <"Frequência">
+					description = <"Frequência cardíaca">
+				>
+				["at0.5"] = <
+					text = <"Artéria carótida">
+					description = <"Artéria carótida">
+				>
+				["at0.6"] = <
+					text = <"Artéria Femural">
+					description = <"Artéria Femural">
+				>
+				["at0.7"] = <
+					text = <"Bigeminismo">
+					description = <"Bigeminismo">
+				>
+				["at0.8"] = <
+					text = <"Trigeminismo">
+					description = <"Trigeminismo (galope)">
+				>
+				["at0.9"] = <
+					text = <"Extrassístoles ocasionais (< 2 p/min)">
+					description = <"Extrassístoles ocasionais (< 2 p/min)">
+				>
+				["at0000"] = <
+					text = <"Frequência cardíaca">
+					description = <"Frequência cardíaca mecânica ou elétrica">
+				>
+				["at0000.1"] = <
+					text = <"Pulso">
+					description = <"Pulso -usualmente medido por palpação.   ">
+				>
+				["at0001"] = <
+					text = <"structure">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"history">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Qualquer evento">
+					description = <"**">
+				>
+				["at0004"] = <
+					text = <"Frequência">
+					description = <"Frequência cardiáca por minuto">
+				>
+				["at0005"] = <
+					text = <"Ritmo">
+					description = <"Ritmo cardíaco">
+				>
+				["at0006"] = <
+					text = <"Regular">
+					description = <"RItmo cardíaco regular">
+				>
+				["at0007"] = <
+					text = <"Irregular">
+					description = <"Ritmo cardíaco irregular">
+				>
+				["at0008"] = <
+					text = <"Irregular de forma caótica">
+					description = <"Irregular de forma caótica">
+				>
+				["at0009"] = <
+					text = <"Descrição">
+					description = <"Descrição da frequência e ritmo  ">
+				>
+				["at0010"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Instrumento">
+					description = <"Instrumento de medida da frequência cardíaca">
+				>
+				["at0012"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Posição">
+					description = <"Posição do paciente quando a frequência cardíaca foi medida ">
+				>
+				["at1000"] = <
+					text = <"Deitado">
+					description = <"Deitado">
+				>
+				["at1001"] = <
+					text = <"Sentado">
+					description = <"Sentado na cama ou cadeira">
+				>
+				["at1002"] = <
+					text = <"Reclinado">
+					description = <"Reclinado a 45 graus com pernas elevadas">
+				>
+				["at1003"] = <
+					text = <"Em pé">
+					description = <"E'm pé">
+				>
+				["at1004"] = <
+					text = <"Padrões de normalidade / anormalidade">
+					description = <"FC anormal">
+				>
+				["at1005"] = <
+					text = <"Presente">
+					description = <"Pulso cardíaco presente ( > 0)">
+				>
+				["at1007"] = <
+					text = <"Descrições coração normal">
+					description = <"Irregular de forma caótica">
+				>
+				["at1008"] = <
+					text = <"Ritmo sinusal ">
+					description = <"Rtimo sinusal">
+				>
+				["at1009"] = <
+					text = <"*Normal rate and rhythm">
+					description = <"*The heart is beating normally">
+				>
+				["at1010"] = <
+					text = <"*Normal">
+					description = <"*The heart rate is normal">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["SNOMED-CT"] = <
+			items = <
+				["at0000"] = <[SNOMED-CT::364075005]>
+			>
+		>
+	>

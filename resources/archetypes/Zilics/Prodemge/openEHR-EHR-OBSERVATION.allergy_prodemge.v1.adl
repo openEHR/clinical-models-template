@@ -1,0 +1,171 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.allergy_prodemge.v1
+
+concept
+	[at0000]	-- Alergia
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"__unknown__">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Alergia
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Alergia
+										value matches {
+											1|[local::at0005], 	-- Alergia a alimentos
+											2|[local::at0006], 	-- Alergia a animais
+											3|[local::at0007], 	-- Alergia a cosméticos
+											4|[local::at0008], 	-- Alergia a detergentes
+											5|[local::at0009], 	-- Alergia a fármacos
+											6|[local::at0010], 	-- Alergia a fungos
+											7|[local::at0011], 	-- Alergia a materiais diversos
+											8|[local::at0012], 	-- Alergia a perfumes
+											9|[local::at0013], 	-- Alergia a plantas
+											10|[local::at0014], 	-- Alergia a pó
+											11|[local::at0015], 	-- Alergia a produtos de combustão
+											12|[local::at0016], 	-- Alergia a produtos derivados da atividade laboral
+											13|[local::at0017], 	-- Alergia a produtos químicos
+											14|[local::at0018], 	-- Alergia a fatores ambientais
+											15|[local::at0019], 	-- Alergia originada em ambientes humanos
+											16|[local::at0020], 	-- Outras alergias
+											17|[local::at0021]  	-- Não são conhecidas alergias
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Descrição da Alergia
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alergia">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Alergia a alimentos">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Alergia a animais">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Alergia a cosméticos">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Alergia a detergentes">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Alergia a fármacos">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Alergia a fungos">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Alergia a materiais diversos">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Alergia a perfumes">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Alergia a plantas">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Alergia a pó">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Alergia a produtos de combustão">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Alergia a produtos derivados da atividade laboral">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Alergia a produtos químicos">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Alergia a fatores ambientais">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Alergia originada em ambientes humanos">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Outras alergias">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Não são conhecidas alergias">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Descrição da Alergia">
+					description = <"Especifica-se cada categoria de alergia que o cidadão apresenta, conforme marcação no campo anterior.">
+				>
+				["at0023"] = <
+					text = <"Alergia">
+					description = <"*Conhecimento da existência de alergias a alimentos, medicamentos ou outras substancias. ">
+				>
+			>
+		>
+	>

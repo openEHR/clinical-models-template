@@ -1,0 +1,93 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.problem_diagnosis.v4zl
+
+concept
+	[at0000]	-- Patologias Identificadas
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Patologias Identificadas
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0002] occurrences matches {0..1} matches {	-- Diagnóstico
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Diagnóstico
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[ac0001]}		-- Qualquer termo que seja um diagnóstico
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patologias Identificadas">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Diagnóstico">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Diagnóstico">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"Qualquer termo que seja um diagnóstico">
+					description = <"ICD10, 1998">
+				>
+			>
+		>
+	>
+	term_binding = <
+		["ICD10_1998"] = <
+			items = <
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0001"] = <http://openEHR.org/http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=ALL>
+			>
+		>
+	>

@@ -1,0 +1,205 @@
+archetype
+    openEHR-EHR-OBSERVATION.sleep_other_habits_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+
+description
+    original_author = <
+        ["email"] = <"xxx">
+        ["name"] = <"Zilics">
+        ["organisation"] = <"xxx">
+        ["date"] = <"xxx">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"x">
+            use = <"x">
+            misuse = <"x">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0005] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0004] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0006] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0007] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0009] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0010] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0011] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0012] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0013,
+                                                            at0014,
+                                                            at0015]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0016] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0017] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0018] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0019] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Sono e Outros Hábitos">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Você está insatisfeito (a) com o seu sono?">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Rastreamento de Distúrbios do Sono">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Apresenta sono ou fadiga durante as atividades diárias?">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"O parceiro ou outros observadores queixam de comportamento não usual durante o sono, tais como ronco, pausa na respiração ou movimento de pernas, e/ou sonolência e fadiga diurnas?">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Duração da sintomatologia superior a 3 meses.">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Atividade Física">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Atividade Física">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Frequência">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Regular">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Ocasional">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Rara">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Tipo">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Orientada por Profissional">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Direção Veicular">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Direção Veicular">
+                    description = <"*">
+                >
+            >
+        >
+    >

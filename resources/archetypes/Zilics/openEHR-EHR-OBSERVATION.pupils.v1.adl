@@ -1,0 +1,303 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pupils.v1
+
+concept
+	[at0000]	-- Exame das pupilas
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Beatriz de Faria Leão">
+				["organisation"] = <"Zilics Health Information Systems">
+				["email"] = <"beatriz.leao@zilics.com.br">
+				["date"] = <"16 dec 2007">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"12/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record detailed information about examination of both pupils">
+			use = <"To be used in emergency assessment/triage and as part of a more complete examination of the eyes">
+			keywords = <"eye", "pupil", "examination">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*To record detailed information about examination of both pupils">
+			use = <"*To be used in emergency assessment/triage and as part of a more complete examination of the eyes">
+			keywords = <"eye", "pupil", "examination">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Exame das pupilas
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TABLE[at0003] matches {	-- Table
+								rotated matches {True}
+								rows cardinality matches {0..1; unordered} matches {
+									CLUSTER[at0013] occurrences matches {0..3} matches {	-- row
+										items cardinality matches {8; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- *row_head
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0004, 	-- Direita
+															at0006, 	-- Esquerda
+															at0012]	-- Inspecção da pupila
+														}
+													}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- *Pinpoint and unresponsive
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Reflexo fotomotor direto
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Reflexo fotomotor consensual
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Tamanho
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::122]>
+														list = <
+															["1"] = <
+																units = <"mm">
+																magnitude = <|>=0.0|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Forma da pupila
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Acomodação pupilar
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Velociadade da Acomodação Pupilar
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0016, 	-- *Sluggish/Slow
+															at0017, 	-- *Normal
+															at0018]	-- *Brisk
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pupils">
+					description = <"Examination of the pupils of the eye">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Table">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Right">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"row_head">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Left">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Pinpoint and unresponsive">
+					description = <"Pupil is pinpoint and unresponsive">
+				>
+				["at0008"] = <
+					text = <"Direct pupillary light reflex">
+					description = <"Pupil constricts with light shone into that eye">
+				>
+				["at0009"] = <
+					text = <"Consensual pupillary light reflex">
+					description = <"Pupil constricts with light shone into the other eye">
+				>
+				["at0010"] = <
+					text = <"Size">
+					description = <"Size of pupil">
+				>
+				["at0011"] = <
+					text = <"Shape">
+					description = <"Shape of pupil">
+				>
+				["at0012"] = <
+					text = <"*Inspecção da pupila">
+					description = <"**">
+				>
+				["at0013"] = <
+					text = <"row">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Pupillary accommodation reflex">
+					description = <"Pupil constricts in response to an object coming close to the eye">
+				>
+				["at0015"] = <
+					text = <"Speed of pupillary response">
+					description = <"Speed of pupillary response">
+				>
+				["at0016"] = <
+					text = <"Sluggish/Slow">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Brisk">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exame das pupilas">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Table">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Direita">
+					description = <"**">
+				>
+				["at0005"] = <
+					text = <"*row_head">
+					description = <"**">
+				>
+				["at0006"] = <
+					text = <"Esquerda">
+					description = <"**">
+				>
+				["at0007"] = <
+					text = <"*Pinpoint and unresponsive">
+					description = <"*Pupil is pinpoint and unresponsive">
+				>
+				["at0008"] = <
+					text = <"Reflexo fotomotor direto">
+					description = <"Pupila contrai ao se incidir a luz sobre o olho  ">
+				>
+				["at0009"] = <
+					text = <"Reflexo fotomotor consensual">
+					description = <"Pupila do olho contralateral não estimulado contraí com a mesma amplitude do olho exposto à luz.">
+				>
+				["at0010"] = <
+					text = <"Tamanho">
+					description = <"Tamanho da pupila">
+				>
+				["at0011"] = <
+					text = <"Forma da pupila">
+					description = <"Forma da pupila">
+				>
+				["at0012"] = <
+					text = <"Inspecção da pupila">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"row">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Acomodação pupilar">
+					description = <"*Pupil constricts in response to an object coming close to the eye">
+				>
+				["at0015"] = <
+					text = <"Velociadade da Acomodação Pupilar">
+					description = <"*Speed of pupillary response">
+				>
+				["at0016"] = <
+					text = <"*Sluggish/Slow">
+					description = <"**">
+				>
+				["at0017"] = <
+					text = <"*Normal">
+					description = <"**">
+				>
+				["at0018"] = <
+					text = <"*Brisk">
+					description = <"**">
+				>
+			>
+		>
+	>

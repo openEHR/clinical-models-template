@@ -1,0 +1,194 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.oedema_prodemge.v1
+
+concept
+	[at0000]	-- *Edema(pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"139215761AF33886C6CDC01F31D8CDED">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- *Edema(pt)
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Presença de Edema
+										value matches {
+											1|[local::at0005], 	-- Sim
+											2|[local::at0006]  	-- Não
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Descrição do Edema
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Útero
+										value matches {
+											1|[local::at0009], 	-- Palpável
+											2|[local::at0010]  	-- Não Palpável
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- UF
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Edema(pt)">
+					description = <"*unknown(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Presença de Edema">
+					description = <"Registrar a presença de edema">
+				>
+				["at0005"] = <
+					text = <"Sim">
+					description = <"Sim">
+				>
+				["at0006"] = <
+					text = <"Não">
+					description = <"Não">
+				>
+				["at0007"] = <
+					text = <"Descrição do Edema">
+					description = <"Descrever o Edema">
+				>
+				["at0008"] = <
+					text = <"Útero">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Palpável">
+					description = <"Palpável">
+				>
+				["at0010"] = <
+					text = <"Não Palpável">
+					description = <"Não Palpável">
+				>
+				["at0011"] = <
+					text = <"UF">
+					description = <"Medida da altura uterina">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Edema">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Presença de Edema">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

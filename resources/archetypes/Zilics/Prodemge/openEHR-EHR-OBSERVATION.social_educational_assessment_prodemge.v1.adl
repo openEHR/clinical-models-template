@@ -1,0 +1,102 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.social_educational_assessment_prodemge.v1
+
+concept
+	[at0000]	-- Medidas Sócio-Educativas
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"A09F4C141AE4246BD2B16798E74CFF19">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Medidas Sócio-Educativas
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Cumprimento de Medidas Socioeducativas Atualmente
+										value matches {
+											1|[local::at0005], 	-- Internação
+											2|[local::at0006], 	-- Internação provisória
+											3|[local::at0008]  	-- Não cumpre medida sócio-educativa atualmente
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Consideraçãoes Sobre Medida Socio-educativa
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Medidas Sócio-Educativas">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Cumprimento de Medidas Socioeducativas Atualmente">
+					description = <"Anotar se o cidadão cumpre atualmente alguma medida socioeducativa. ">
+				>
+				["at0005"] = <
+					text = <"Internação">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Internação provisória">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Consideraçãoes Sobre Medida Socio-educativa">
+					description = <"Informações sobre o cumprimento de medidas socioeducativas.">
+				>
+				["at0008"] = <
+					text = <"Não cumpre medida sócio-educativa atualmente">
+					description = <"*">
+				>
+			>
+		>
+	>

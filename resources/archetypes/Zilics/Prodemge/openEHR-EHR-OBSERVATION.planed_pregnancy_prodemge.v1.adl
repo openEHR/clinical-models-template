@@ -1,0 +1,137 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.planed_pregnancy_prodemge.v1
+
+concept
+	[at0000]	-- *Gravidez Planejada(pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Selecionar se a gravidez foi planejada ou não. 
+">
+			use = <"Selecionar se a gravidez foi planejada ou não. 
+">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"EE168894658BE921C09EFC59DA5934A7">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- *Gravidez Planejada(pt)
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- teste
+										value matches {
+											1|[local::at0005], 	-- *new ordinal(pt)
+											2|[local::at0006]  	-- *new ordinal(pt)
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gravidez Planejada">
+					description = <"Selecionar se a gravidez foi planejada ou não. 
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Gravidez Planejada">
+					description = <"Selecionar se a gravidez foi planejada ou não. 
+">
+				>
+				["at0005"] = <
+					text = <"Sim">
+					description = <"Sim">
+				>
+				["at0006"] = <
+					text = <"Não">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gravidez Planejada">
+					description = <"Selecionar se a gravidez foi planejada ou não. 
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Gravidez Planejada">
+					description = <"Selecionar se a gravidez foi planejada ou não. 
+">
+				>
+				["at0005"] = <
+					text = <"Sim">
+					description = <"Sim">
+				>
+				["at0006"] = <
+					text = <"Não">
+					description = <"*">
+				>
+			>
+		>
+	>

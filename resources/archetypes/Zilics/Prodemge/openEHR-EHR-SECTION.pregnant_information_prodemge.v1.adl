@@ -1,0 +1,81 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.pregnant_information_prodemge.v1
+
+concept
+	[at0000]	-- Definir Junto à Gestante
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Definir Junto à Gestante">
+			use = <"Definir Junto à Gestante">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Definir Junto à Gestante">
+			use = <"Definir Junto à Gestante">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"C5AC00A3AC2891979862D459DCB0A797">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Definir Junto à Gestante
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0003] occurrences matches {0..1} matches {	-- *testeSection(pt)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Definir Junto à Gestante">
+				>
+				["at0003"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Definir Junto à Gestante">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Definir Junto à Gestante">
+				>
+				["at0003"] = <
+					text = <"Definir Junto à Gestante">
+					description = <"Definir Junto à Gestante">
+				>
+			>
+		>
+	>

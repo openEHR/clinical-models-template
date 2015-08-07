@@ -1,0 +1,9 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=chestPain30min:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0033]/items[at0005]=chestPain:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0034]/items[at0006]=abdominalPain:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0034]/items[at0017]=abdominalPainLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0035]/items[at0016]=headacheIntensity:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0035]/items[at0007]=headacheIntensityLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0035]/items[at0018]=headacheLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0033]/items[at0010]=chestPainLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0036]=lumbago:true

@@ -1,0 +1,55 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.simplecomposition.v1
+
+concept
+	[at0000]	-- simplecomposition
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Tony Lampada">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"simplecomposition">
+			use = <"simplecomposition">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- simplecomposition
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {0..*; unordered} matches {
+			allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+				include
+					archetype_id/value matches {/.*/}
+			}
+			allow_archetype OBSERVATION occurrences matches {0..1} matches {
+				include
+					archetype_id/value matches {/.*/}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"simplecomposition">
+					description = <"*">
+				>
+			>
+		>
+	>

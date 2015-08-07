@@ -1,0 +1,736 @@
+archetype
+    openEHR-EHR-EVALUATION.functional_disabilities.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"bfleao@terra.com.br">
+        ["date"] = <"OCtober 9,2009">
+        ["name"] = <"Beatriz de Faria Leão">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+            keywords = <"Disability","ICF CLassification">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+            keywords = <"Disability","ICF CLassification">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            CLUSTER[at0005] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0029] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0033,
+                                                    at0034,
+                                                    at0035,
+                                                    at0036]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0031] occurrences matches {0..1} matches {
+                                        value matches {
+                                            1|[local::at0019],
+                                            2|[local::at0018],
+                                            4|[local::at0028]
+                                        }
+                                    }
+                                    ELEMENT[at0037] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0038,
+                                                    at0039,
+                                                    at0040,
+                                                    at0041,
+                                                    at0042,
+                                                    at0043,
+                                                    at0044]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0004] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0047] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0048,
+                                                    at0049,
+                                                    at0050,
+                                                    at0051]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0052] occurrences matches {0..1} matches {
+                                        value matches {
+                                            1|[local::at0019],
+                                            2|[local::at0015],
+                                            3|[local::at0028]
+                                        }
+                                    }
+                                    ELEMENT[at0053] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0038,
+                                                    at0039,
+                                                    at0042,
+                                                    at0043,
+                                                    at0046,
+                                                    at0044,
+                                                    at0041]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0006] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0058] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0059,
+                                                    at0060,
+                                                    at0061]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0003] occurrences matches {0..*} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0008] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0021,
+                                                    at0022,
+                                                    at0023,
+                                                    at0024,
+                                                    at0025,
+                                                    at0026,
+                                                    at0027]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0032] occurrences matches {0..1} matches {
+                                        value matches {
+                                            1|[local::at0019],
+                                            2|[local::at0018],
+                                            3|[local::at0020],
+                                            4|[local::at0028]
+                                        }
+                                    }
+                                    ELEMENT[at0045] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0038,
+                                                    at0039,
+                                                    at0041,
+                                                    at0042,
+                                                    at0043,
+                                                    at0046,
+                                                    at0044]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0054] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0055] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0056,
+                                                    at0057]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0063] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Functional Disabilities">
+                    description = <"Assesses the patient functional disabilities using the concepts of the ICF Classification from WHO (International Classification of Functioning, Disability and Health)">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Functioning and Disabilities ">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Motor Disabilities">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Visual Disabilities">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Auditory Disabilities">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Cognitive Disabilities">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"New cluster">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Type of disability">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"inferior limbs">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"superior limbs">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"left">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"right">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"total loss of function superior limbs">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"right">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"left">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"both">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"partial loss of function of superior limbs">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"partial loss of function of inferior limb">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"total loss of function of inferior limbs">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"partial loss of function of superior and inferior limbs at the same side (hemiparesis)">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"total loss of function of superior and inferior limbs at the same side (hemiplegia)">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"total loss of function of superior and inferior limbs (quadriplegia, tetraplegia)">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"partial loss of function of superior and inferior limbs">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"not applicable">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Type of disability">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Lateralidade">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"partial loss of hearing of one ear">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"total loss of hearing in one ear">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"total loss of hearing both ears">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"partial loss of hearing both ears">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"Disability origin">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"accident">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"congenital">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"unknown">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"disease caused">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"hereditary">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"post-surgery">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"other">
+                    description = <"*">
+                >
+                ["at0045"] = <
+                    text = <"Disability origin ">
+                    description = <"*">
+                >
+                ["at0046"] = <
+                    text = <"unknown">
+                    description = <"*">
+                >
+                ["at0047"] = <
+                    text = <"Type of disability">
+                    description = <"*">
+                >
+                ["at0048"] = <
+                    text = <"total loss of vision of one eye">
+                    description = <"*">
+                >
+                ["at0049"] = <
+                    text = <"partial loss of vision of one eye">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"partial loss of vision of both eyes">
+                    description = <"*">
+                >
+                ["at0051"] = <
+                    text = <"partial loss of vision of both eyes">
+                    description = <"*">
+                >
+                ["at0052"] = <
+                    text = <"Laterality">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Disability origin">
+                    description = <"*">
+                >
+                ["at0054"] = <
+                    text = <"Cerebral Palsy">
+                    description = <"*">
+                >
+                ["at0055"] = <
+                    text = <"Disability">
+                    description = <"*">
+                >
+                ["at0056"] = <
+                    text = <"total loss of any function due to cerebral palsy">
+                    description = <"*">
+                >
+                ["at0057"] = <
+                    text = <"partial loss of any function due to cerebral palsy">
+                    description = <"*">
+                >
+                ["at0058"] = <
+                    text = <"Type of disability">
+                    description = <"*">
+                >
+                ["at0059"] = <
+                    text = <"Impairment of cognitive functions due to Down Syndrome">
+                    description = <"*">
+                >
+                ["at0060"] = <
+                    text = <"Light to moderate cognitive disability due to other disease">
+                    description = <"*">
+                >
+                ["at0061"] = <
+                    text = <"Severe cognitive disability due to other disease">
+                    description = <"*">
+                >
+                ["at0062"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0063"] = <
+                    text = <"Multiple functional disabilities">
+                    description = <"*">
+                >
+                ["at0064"] = <
+                    text = <"*hereditária">
+                    description = <"*">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Desabilidades Funcionais">
+                    description = <"Avalia as disfuncionalidades do paciente utilizando conceitos da CIF WHO (International Classification of Functioning, Disability and Health)">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Funcionalidades e Desabilidades">
+                    description = <"**">
+                >
+                ["at0003"] = <
+                    text = <"Desabilidades motoras">
+                    description = <"**">
+                >
+                ["at0004"] = <
+                    text = <"Desabilidades visuais">
+                    description = <"**">
+                >
+                ["at0005"] = <
+                    text = <"Desabilidades Auditivas">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"Desabilidades Cognitivas">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"*New cluster">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"Tipo de desabilidade ">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0011"] = <
+                    text = <"membros inferiores">
+                    description = <"**">
+                >
+                ["at0012"] = <
+                    text = <"membros superiores">
+                    description = <"**">
+                >
+                ["at0013"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0014"] = <
+                    text = <"esquerdo(a)">
+                    description = <"**">
+                >
+                ["at0015"] = <
+                    text = <"direito">
+                    description = <"**">
+                >
+                ["at0016"] = <
+                    text = <"perda total da função dos membros superiores">
+                    description = <"**">
+                >
+                ["at0017"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0018"] = <
+                    text = <"direito">
+                    description = <"**">
+                >
+                ["at0019"] = <
+                    text = <"esquerdo">
+                    description = <"**">
+                >
+                ["at0020"] = <
+                    text = <"ambos">
+                    description = <"**">
+                >
+                ["at0021"] = <
+                    text = <"perda parcial da funcionalidade de membro(s) superior(es)">
+                    description = <"**">
+                >
+                ["at0022"] = <
+                    text = <"perda parcial da funcionalidade de membro(s) inferior(es)">
+                    description = <"**">
+                >
+                ["at0023"] = <
+                    text = <"perda total da função de membros inferiores">
+                    description = <"**">
+                >
+                ["at0024"] = <
+                    text = <"perda parcial da função dos membros superior e inferior do mesmo lado (hemiparesia)">
+                    description = <"">
+                >
+                ["at0025"] = <
+                    text = <"perda total da função dos membros superior e inferior do mesmo lado ( hemiplegia)">
+                    description = <"**">
+                >
+                ["at0026"] = <
+                    text = <"perda total da função dos membros superiores e inferiores (tetraplegia)">
+                    description = <"quadriplegia">
+                >
+                ["at0027"] = <
+                    text = <"perda parcial da funcionalidade dos membros superiores e inferiores">
+                    description = <"**">
+                >
+                ["at0028"] = <
+                    text = <"não se aplica">
+                    description = <"**">
+                >
+                ["at0029"] = <
+                    text = <"Tipo de desabilidade">
+                    description = <"**">
+                >
+                ["at0030"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0031"] = <
+                    text = <"Lateralidade">
+                    description = <"**">
+                >
+                ["at0032"] = <
+                    text = <"Lateralidade">
+                    description = <"**">
+                >
+                ["at0033"] = <
+                    text = <"perda parcial da audição num ouvido">
+                    description = <"**">
+                >
+                ["at0034"] = <
+                    text = <"perda total da audição num ouvido">
+                    description = <"**">
+                >
+                ["at0035"] = <
+                    text = <"perda total da audição">
+                    description = <"**">
+                >
+                ["at0036"] = <
+                    text = <"perda parcial da audição em ambos ouvidos">
+                    description = <"**">
+                >
+                ["at0037"] = <
+                    text = <"Origem da Lesão">
+                    description = <"**">
+                >
+                ["at0038"] = <
+                    text = <"acidental">
+                    description = <"**">
+                >
+                ["at0039"] = <
+                    text = <"congênita">
+                    description = <"**">
+                >
+                ["at0040"] = <
+                    text = <"*unknown">
+                    description = <"**">
+                >
+                ["at0041"] = <
+                    text = <"Relacionada à doença prévia">
+                    description = <"**">
+                >
+                ["at0042"] = <
+                    text = <"hereditária">
+                    description = <"**">
+                >
+                ["at0043"] = <
+                    text = <"pós-cirúrgica">
+                    description = <"**">
+                >
+                ["at0044"] = <
+                    text = <"outra">
+                    description = <"**">
+                >
+                ["at0045"] = <
+                    text = <"Origem da lesão">
+                    description = <"**">
+                >
+                ["at0046"] = <
+                    text = <"desconhecida">
+                    description = <"**">
+                >
+                ["at0047"] = <
+                    text = <"Tipo de desabilidade">
+                    description = <"**">
+                >
+                ["at0048"] = <
+                    text = <"perda total da visão de um olho">
+                    description = <"**">
+                >
+                ["at0049"] = <
+                    text = <"perda parcial da visão de um olho">
+                    description = <"**">
+                >
+                ["at0050"] = <
+                    text = <"perda total da visão de ambos os olhos">
+                    description = <"**">
+                >
+                ["at0051"] = <
+                    text = <"perda parcial da visão de ambos os olhos">
+                    description = <"**">
+                >
+                ["at0052"] = <
+                    text = <"Lateralidade">
+                    description = <"**">
+                >
+                ["at0053"] = <
+                    text = <"Origem da lesão">
+                    description = <"**">
+                >
+                ["at0054"] = <
+                    text = <"Paralisia cerebral">
+                    description = <"**">
+                >
+                ["at0055"] = <
+                    text = <"Tipo de desabilidade">
+                    description = <"**">
+                >
+                ["at0056"] = <
+                    text = <"perda total das funções">
+                    description = <"**">
+                >
+                ["at0057"] = <
+                    text = <"perda parcial das funções">
+                    description = <"**">
+                >
+                ["at0058"] = <
+                    text = <"Tipo de desabilidade">
+                    description = <"**">
+                >
+                ["at0059"] = <
+                    text = <"Perda de função intelectual devida à Síndrome de Down">
+                    description = <" ">
+                >
+                ["at0060"] = <
+                    text = <"Perda de função intelectual leve/moderada devida a outras patologias">
+                    description = <"*">
+                >
+                ["at0061"] = <
+                    text = <"Perda de função intelectual grave/profunda devida a outras patologias">
+                    description = <"**">
+                >
+                ["at0062"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0063"] = <
+                    text = <"Deficiência funcional múltipla (perda de várias funções) ">
+                    description = <"**">
+                >
+                ["at0064"] = <
+                    text = <"hereditária">
+                    description = <"">
+                >
+            >
+        >
+    >

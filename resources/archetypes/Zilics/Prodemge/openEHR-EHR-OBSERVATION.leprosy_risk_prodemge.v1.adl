@@ -1,0 +1,128 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.leprosy_risk_prodemge.v1
+
+concept
+	[at0000]	-- Estratificação Risco na Hanseníase
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Estratificação Risco na Hanseníase
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Risco na Hanseníase
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Surtos reacionais repetitivos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Relato de reações adversas aos medicamentos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Presença de sequelas nos olhos, nariz, mãos e pés
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Extratificação de Risco
+										value matches {
+											1|[local::at0009], 	-- Alto Risco
+											2|[local::at0010]  	-- Baixo Risco
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Estratificação Risco na Hanseníase">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Risco na Hanseníase">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Surtos reacionais repetitivos">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Relato de reações adversas aos medicamentos">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Presença de sequelas nos olhos, nariz, mãos e pés">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Extratificação de Risco">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Alto Risco">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Baixo Risco">
+					description = <"*">
+				>
+			>
+		>
+	>

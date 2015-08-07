@@ -1,0 +1,154 @@
+archetype
+    openEHR-EHR-INSTRUCTION.pecialized_follow_up_request_spa.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["email"] = <"bfleao@gmail.com">
+        ["name"] = <"Beatriz de Faria Leao">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+            use = <"To inform that the patient needs specializaed consultations">
+        >
+    >
+
+definition
+    INSTRUCTION[at0000] matches {
+        activities cardinality matches {0..1; unordered} matches {
+            ACTIVITY[at0001] occurrences matches {0..1} matches {
+                action_archetype_id matches {/.*/}
+                description matches {
+                    ITEM_TREE[at0002] matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            CLUSTER[at0003] occurrences matches {0..*} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_INTERVAL matches {
+                                                lower matches {
+                                                    DV_DATE matches {
+                                                        value matches {yyyy-??-??}
+                                                    }
+                                                }
+                                                upper matches {
+                                                    DV_DATE matches {
+                                                        value matches {yyyy-??-??}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0007] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_INTERVAL matches {
+                                                lower matches {
+                                                    DV_QUANTITY matches {*}
+                                                }
+                                                upper matches {
+                                                    DV_QUANTITY matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0008] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0011,
+                                                    at0012,
+                                                    at0013]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Specialized Follow up request">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"An instruction activity">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"Solicitação Consultas Especializadas">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Especialidade médica">
+                    description = <"*CBOS-S   deve ser o vocabulário aqui.">
+                >
+                ["at0005"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Agendar para">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Número máximo de semanas para o agendamento">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Prioridade">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Rotina">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Urgência">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Baixa (pode ser encaminhado de rotina)">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Média ( necessita encaminhamento em até duas semanas)">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Alta (encaminhamento imediato)">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+            >
+        >
+    >

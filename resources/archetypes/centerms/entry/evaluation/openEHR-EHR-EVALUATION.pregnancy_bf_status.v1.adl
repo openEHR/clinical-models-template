@@ -1,0 +1,160 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.pregnancy_bf_status.v1
+
+concept
+	[at0000]	-- Pregnancy/Breast Feeding Status
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2012-12-02">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record that a woman is currently pregnant or is currently breast feeding only.">
+			use = <"Use to flag the positive, currently pregnant, and/or currently breast feeding state, within a clinical system.
+
+If the woman is no longer pregnant and/or breast feeding, then this flag should be removed.
+
+This archetype has been designed to trigger decision support and therapeutic precautions in clinical systems, without necessarily having knowledge of details about the pregnancy or breast feeding.">
+			keywords = <"pregnant", "pregnancy", "breast feeding">
+			misuse = <"Not to be used to record the positive exclusion of pregnancy or breast feeding - use specific EVALUATION.exclusion archetypes for this purpose.
+
+Not to be used to record details about a specific pregnancy - use EVALUATION.pregnancy for this purpose.">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar que uma mulher atualmente está grávida ou a amamentar.">
+			use = <"Utilizar para indicar no prontuário clínico uma gravidez em curso, ou um estado atual de amamentação.
+
+Se a mulher não estiver mais grávida ou a amamentar essa flag deverá ser removida.
+
+Este arquétipo foi criado para fornecer informação aos sistemas clínicos para suporte à decisão e precauções terapêuticas, não precisando necessariamente de ter mais detalhes sobre esse estado de gravidez ou de amamentação.">
+			keywords = <"grávida", "gravidez", "amamentação">
+			misuse = <"Não utilizar para registrar a exclusão de um estado de gravidez ou amamentação - para isso utilizar o arquétipos específicos para o efeito: EVALUATION.exclusion.
+
+Não utilizar para registrar detalhes sobre uma gravidez específica: para esse propósito usar o arquétipo EVALUATION.pregnancy.">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", ...>
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"8DD5B28C50A8634E1F526922D21ABF4D">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Estado relativamente a gravidez/amamentação
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Gravidez
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Amamentação
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Última atualização
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pregnancy/Breast Feeding Status">
+					description = <"Record of the positive state of pregnancy or breast feeding.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Pregnant">
+					description = <"The woman is pregnant.">
+					comment = <"Record as True if there is clinical opinion or confirmation by diagnostic test of a positive pregnancy state. ">
+				>
+				["at0003"] = <
+					text = <"Breast Feeding">
+					description = <"The woman is breast feeding.">
+					comment = <"Record as True if there is knowledge that the woman is currently breastfeeding.">
+				>
+				["at0004"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Last Updated">
+					description = <"Date and optional time when the pregnancy and /or breast feeding statement was last updated.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Estado relativamente a gravidez/amamentação">
+					description = <"Registrar o estado relativamente a gravidez ou amamentação.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Gravidez">
+					description = <"A mulher está grávida.">
+					comment = <"*Record as True if there is clinical opinion or confirmation by diagnostic test of a positive pregnancy state. (en)">
+				>
+				["at0003"] = <
+					text = <"Amamentação">
+					description = <"A mulher está a amamentar.">
+					comment = <"*Record as True if there is knowledge that the woman is currently breastfeeding.(en)">
+				>
+				["at0004"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"Última atualização">
+					description = <"Data e hora (opcional) na qual a informação sobre estado relativamente a gravidez e amamentação foi atualizado pela última vez.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,187 @@
+archetype
+    openEHR-EHR-OBSERVATION.exercise_activities.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"bfleao@terra.com.br">
+        ["date"] = <"October 9,2009">
+        ["name"] = <"Beatriz F Leao">
+        ["organisation"] = <"Zilics">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+            keywords = <"exercise ","physical activities">
+            use = <"In patient history">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+            keywords = <"exercise ","physical activities">
+            use = <"*In patient history">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0004] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0008] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0009] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TIME matches {
+                                                        value matches {HH:??:XX}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DURATION matches {
+                                                        value matches {PT0S}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0006] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Excercise activities">
+                    description = <"Describes if the patient does exercise activities">
+                >
+                ["at0001"] = <
+                    text = <"*history">
+                    description = <"*@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"**">
+                >
+                ["at0003"] = <
+                    text = <"*ITEM_TREE">
+                    description = <"*@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Physical Exercises">
+                    description = <"**">
+                >
+                ["at0005"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"Does not practice any physical exercise">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"Frequency of doing physical exercises">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"Period">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"Mean duration of the exercise session">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Exercícios Físicos">
+                    description = <"Descreve a regularidade com que o paciente faz exercícios físicos">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Atividade Física">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Exercício Físicos">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Não realiza atividades físicas">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Frequencia de atividade físicas">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Número de vezes que faz atividades físicas">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"por">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Duração média de cada sessão de exercício">
+                    description = <"*">
+                >
+            >
+        >
+    >

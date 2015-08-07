@@ -1,0 +1,186 @@
+archetype
+    openEHR-EHR-SECTION.exams_results_generic_spa2.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"NotSet">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+            use = <"Resultado de exames não estruturado - texto livre">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+            use = <"*Non-structured, free text  description of exames resuslt">
+        >
+    >
+
+definition
+    SECTION[at0000] matches {
+        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+            SECTION[at0006] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/laboratory-lipids_spa\.v1/}
+                            domain_concept matches {/laboratory_uric_acid_spa\.drafbrv1/}
+                            domain_concept matches {/laboratory-glucoseSpa\.v1/}
+                            domain_concept matches {/laboratory-hba1c_spa\.draftv1/}
+                            domain_concept matches {/laboratory_creatinine_spa\.drafbrv1/}
+                    }
+                }
+            }
+            SECTION[at0005] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/laboratory-spa\.v1/}
+                    }
+                }
+            }
+            SECTION[at0008] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/imaging-spa\.v1/}
+                    }
+                }
+            }
+            SECTION[at0009] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/non_invasive_exams-spa\.v1/}
+                    }
+                }
+            }
+            SECTION[at0010] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                        exclude
+                            domain_concept matches {/placeholder_exams_spa\.v1/}
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Exames Result - Text">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"*Section(en)">
+                    description = <"**(en)">
+                >
+                ["at0002"] = <
+                    text = <"*Section(en)">
+                    description = <"**(en)">
+                >
+                ["at0003"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0004"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0005"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Resultado de exames">
+                    description = <"**">
+                >
+                ["at0001"] = <
+                    text = <"Section">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"Section">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Section 3">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Section teste">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Outros exames laboratoriais">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Exames de rotina">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"New section">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Imagens médicas">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Métodos gráficos">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Outros exames">
+                    description = <"*">
+                >
+            >
+        >
+    >

@@ -1,0 +1,77 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.family_history-ubr.v1
+
+concept
+	[at0000]	-- História familiar
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"CSW">
+		["organisation"] = <"Critical Software">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registrar uma lista persistente e gerenciada contendo informação sobre a história clínica familiar do paciente.
+">
+			use = <"Usar para registrar uma lista persistente e gerenciada contendo informação sobre a história clínica familiar do paciente.
+">
+			keywords = <"história", "familiar">
+			misuse = <"">
+			copyright = <"CSW">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"F93480BFBE045E50090F697534C1D7BE">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- História familiar
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION[at0001] occurrences matches {0..*} matches {	-- História familiar
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.family_history-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0002] occurrences matches {0..*} matches {	-- Exclusão de história familiar
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.exclusion-family_history-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0003] occurrences matches {0..*} matches {	-- Ausência de informação
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"História familiar">
+					description = <"Uma lista persistente e gerenciada com informação sobre a história clínica familiar do paciente.">
+				>
+				["at0001"] = <
+					text = <"História familiar">
+					description = <"Informação sobre a história clínica familiar do paciente.">
+				>
+				["at0002"] = <
+					text = <"Exclusão de história familiar">
+					description = <"Exclusão de história familiar.">
+				>
+				["at0003"] = <
+					text = <"Ausência de informação">
+					description = <"Registrar a ausência de informação.">
+				>
+			>
+		>
+	>

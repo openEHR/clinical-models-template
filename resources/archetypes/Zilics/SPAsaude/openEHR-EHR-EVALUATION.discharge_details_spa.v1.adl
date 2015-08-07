@@ -1,0 +1,135 @@
+archetype
+    openEHR-EHR-EVALUATION.discharge_details_spa.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["email"] = <"bfleao@gmail.com">
+        ["name"] = <"Beatriz de Faria Leao">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0003] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0004,
+                                            at0005,
+                                            at0006,
+                                            at0007,
+                                            at0014]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0008] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0009,
+                                            at0010,
+                                            at0011,
+                                            at0012]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0013] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Discharge details ">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Motivo de saída do Programa de Saúde SPA">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tipo de saída">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Alta">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Óbito">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"A pedido">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Administrativa">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Condições de saída">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Melhorado">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Curado">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Estável">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Pior em relação à entrada no Programa">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Observações">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Não aderência ao programa">
+                    description = <"*">
+                >
+            >
+        >
+    >

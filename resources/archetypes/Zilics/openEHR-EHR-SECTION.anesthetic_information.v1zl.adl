@@ -1,0 +1,78 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.anesthetic_information.v1zl
+
+concept
+	[at0000]	-- Template Informações Anestésicas
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Template Informações Anestésicas
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Avaliação Anestésica
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|risk-anaesthetic\.v1/}
+					}
+				}
+			}
+			SECTION[at0002] occurrences matches {0..1} matches {	-- Relatos Anestésicos Trans-Cirúrgicos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|blood_pressure\.v1|heart_rate\.v1|medication_agente_use\.v1zl|anesthesia_type\.v1zl|material\.v1zl/}
+					}
+				}
+			}
+			SECTION[at0003] occurrences matches {0..1} matches {	-- Atendimento na Recuperação Pós-Anestésica (RPA)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/blood_pressure\.v1|body_temperature\.v1|heart_rate\.v1|apgar\.v1|respiration\.v3zl|aldrete_kroulik\.v1zl|balance\.v1zl/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Template Informações Anestésicas">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Avaliação Anestésica">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Relatos Anestésicos Trans-Cirúrgicos">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Atendimento na Recuperação Pós-Anestésica (RPA)">
+					description = <"*">
+				>
+			>
+		>
+	>

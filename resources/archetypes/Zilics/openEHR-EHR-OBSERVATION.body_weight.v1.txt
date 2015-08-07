@@ -1,0 +1,2 @@
+/data[at0002]/events[at0003]/data[at0001]/item[at0004]=summary
+/data[at0002]/events[at0003]/data[at0001]/item[at0004]=weight:true

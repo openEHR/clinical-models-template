@@ -1,0 +1,89 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.exposure.v1
+
+concept
+	[at0000]	-- Exposure
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2013-03-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record summary details of exposure of the subject to a chemical, physical or biological agent within their environment that has caused, or may possibly cause in the future, a negative impact on health.">
+			use = <"Use to record summary details of exposure of the subject to a chemical, physical or biological agent within their environment that has caused, or may possibly cause in the future, a negative impact on health.
+
+This archetype has been designed to capture a simple amount of details about exposure, fitting current requirements for NT Hearing Health exposure to passive smoking, campfire smoke and noise. However additional research should be conducted to enahnce this archetype to cater for occupation exposure summaries etc.">
+			keywords = <"substance", "chemical", "smoke", "passive", "noise", "pollution", "chemical">
+			misuse = <"">
+			copyright = <"© National E-Health Transition Authority">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"BCE7A6109844305EF76564CC5AE5EE90">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Exposure
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Agent
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ongoing Exposure
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Exposure">
+					description = <"Exposure of the subject to a chemical, physical or biological agent within their environment that has caused, or may possibly cause in the future, a negative impact on health.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Agent">
+					description = <"Identification of the chemical, physical or biological agent to which the subject was exposed.">
+					comment = <"For example: passive smoking or industrial noise.">
+				>
+				["at0003"] = <
+					text = <"Description">
+					description = <"Description of the exposure to the identified substance.">
+				>
+				["at0004"] = <
+					text = <"Ongoing Exposure">
+					description = <"Does the subject remain exposed to the substance to a degree that could be regarded as a potential risk to health?">
+				>
+			>
+		>
+	>

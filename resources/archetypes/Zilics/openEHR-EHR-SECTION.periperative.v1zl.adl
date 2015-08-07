@@ -1,0 +1,98 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.periperative.v1zl
+
+concept
+	[at0000]	-- Template Periperatório
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Template Periperatório
+		items cardinality matches {0..1; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Atendimento Trans-Operatório
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0006] occurrences matches {0..1} matches {	-- Sinais Vitais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/apgar\.v1|blood_pressure\.v1|heart_rate\.v1|body_temperature\.v1|respiration\.v2zl|respiration\.v1|respiration\.v3zl/}
+							}
+							allow_archetype EVALUATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/adverse\.v1|problem-diagnosis\.v3zl/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0004] occurrences matches {0..1} matches {	-- Atendimento Pré-Operatório
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|periperative_preoperative\.v1zl/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|periperative_procedure\.v1zl|problem-diagnosis\.v3zl/}
+					}
+				}
+			}
+			SECTION[at0005] occurrences matches {0..1} matches {	-- Atendimento Pós-Operatório
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/aldrete_kroulik\.v1zl|apgar\.v1|material\.v1zl|apgar(-[a-zA-Z0-9_]+)*\.v1|periperative_postoperative\.v1zl/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|periperative_procedure\.v1zl/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Template Periperatório">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Atendimento Trans-Operatório">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Atendimento Pré-Operatório">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Atendimento Pós-Operatório">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Sinais Vitais">
+					description = <"*">
+				>
+			>
+		>
+	>

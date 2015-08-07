@@ -1,0 +1,3 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=disability:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0006]=impossibleToWalk
+/data[at0001]/events[at0002]/data[at0003]/items[at0007]=returnedInLessThan24hoursWithNoImprovementInTheCondition

@@ -1,0 +1,294 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.glasgow_coma.v2zl
+
+concept
+	[at0000]	-- Escala de Coma de Glasgow
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Edelia del Pilar Neira Huerta">
+				["organisation"] = <"Zilics">
+				["email"] = <"zilics@zilics.com.br">
+				["date"] = <"26/05/2008">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"13/03/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Used to collect clinical observations regarding the level of consciousness">
+			use = <"">
+			keywords = <"response", "motor", "verbal", "eye", "stimulus">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Utilizada para colher dados clínicos a respeito do nível de consciência">
+			use = <"">
+			keywords = <"response", "motor", "verbal", "eye", "stimulus">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Escala de Coma de Glasgow
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Abertura dos olhos
+										value matches {
+											1|[local::at0010], 	-- Ausente
+											2|[local::at0011], 	-- A dor
+											3|[local::at0012], 	-- Ao Comando Verbal
+											4|[local::at0013]  	-- Espontânea
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Resposta motora
+										value matches {
+											1|[local::at0019], 	-- Sem resposta
+											2|[local::at0020], 	-- Extensão hipertônica
+											3|[local::at0021], 	-- Flexão hipertônica
+											4|[local::at0022], 	-- Flexão inespecífica (retirada)
+											5|[local::at0023], 	-- Localização à dor
+											6|[local::at0024]  	-- Obedece comandos
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Resposta verbal
+										value matches {
+											1|[local::at0014], 	-- Sem resposta
+											2|[local::at0015], 	-- Sons incompreensíveis
+											3|[local::at0016], 	-- Palavras inapropriadas
+											4|[local::at0017], 	-- Desorientado e conversando
+											5|[local::at0018]  	-- Orientado e conversando
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Pontuação
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Glasgow Coma Scale">
+					description = <"To assess the level of consciousness in response to a stimulus">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Best verbal response">
+					description = <"Best verbal response to stimulus">
+				>
+				["at0008"] = <
+					text = <"Best motor response">
+					description = <"Best motor response to stimusl">
+				>
+				["at0009"] = <
+					text = <"Best eye response">
+					description = <"Best eye response to stimulus">
+				>
+				["at0010"] = <
+					text = <"No eye opening">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Eye opening in response to pain">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Eye opening to speech">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Eyes opening spontaneously">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Incomprehensible sounds">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Inappropriate words">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Confused">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Oriented">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No motor response">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Extension to pain">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Flexion in response to pain">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Withdraws from pain">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Localizes to pain">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Obeys commands">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Score">
+					description = <"The final score">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Escala de Coma de Glasgow">
+					description = <"Para avaliar o nível de consciência como resposta a estímulos">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Resposta verbal">
+					description = <"Melhor resposta verbal a estímulos">
+				>
+				["at0008"] = <
+					text = <"Resposta motora">
+					description = <"Melhor resposta motora a estímulos">
+				>
+				["at0009"] = <
+					text = <"Abertura dos olhos">
+					description = <"Melhor resposta ocular a estímulos">
+				>
+				["at0010"] = <
+					text = <"Ausente">
+					description = <"**">
+				>
+				["at0011"] = <
+					text = <"A dor">
+					description = <"**">
+				>
+				["at0012"] = <
+					text = <"Ao Comando Verbal">
+					description = <"**">
+				>
+				["at0013"] = <
+					text = <"Espontânea">
+					description = <"**">
+				>
+				["at0014"] = <
+					text = <"Sem resposta">
+					description = <"**">
+				>
+				["at0015"] = <
+					text = <"Sons incompreensíveis">
+					description = <"**">
+				>
+				["at0016"] = <
+					text = <"Palavras inapropriadas">
+					description = <"**">
+				>
+				["at0017"] = <
+					text = <"Desorientado e conversando">
+					description = <"**">
+				>
+				["at0018"] = <
+					text = <"Orientado e conversando">
+					description = <"**">
+				>
+				["at0019"] = <
+					text = <"Sem resposta">
+					description = <"**">
+				>
+				["at0020"] = <
+					text = <"Extensão hipertônica">
+					description = <"**">
+				>
+				["at0021"] = <
+					text = <"Flexão hipertônica">
+					description = <"**">
+				>
+				["at0022"] = <
+					text = <"Flexão inespecífica (retirada)">
+					description = <"**">
+				>
+				["at0023"] = <
+					text = <"Localização à dor">
+					description = <"**">
+				>
+				["at0024"] = <
+					text = <"Obedece comandos">
+					description = <"**">
+				>
+				["at0026"] = <
+					text = <"Pontuação">
+					description = <"Pontuação final">
+				>
+			>
+		>
+	>

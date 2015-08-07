@@ -1,0 +1,158 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_glycemia_spa.v1
+
+concept
+	[at0000]	-- Glicemia
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"2B62CA67F7391AC6F594C605584748BA">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Glicemia
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Single(pt)
+								items cardinality matches {1; unordered} matches {
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Data da Coleta/Recebimento 
+										value matches {
+											DV_DATE_TIME matches {
+												value matches {yyyy-mm-ddTHH:MM:SS}
+											}
+										}
+									}
+									ELEMENT[at0004] matches {	-- Glicemia
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Jejum
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Pós Prandial
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Glicemia">
+					description = <"Glicemia">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*Single(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Glicemia">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"Jejum">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Pós Prandial">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Data da Coleta/Recebimento ">
+					description = <"Data da coleta do exame">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Glicemia">
+					description = <"Glicemia">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*Single(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Glicemia">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,113 @@
+archetype
+    openEHR-EHR-INSTRUCTION.other_prescriptions_spa.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"bfleao@gmail.com">
+        ["name"] = <"Beatriz de Faria Leao">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+        >
+    >
+
+definition
+    INSTRUCTION[at0000] matches {
+        activities cardinality matches {0..1; unordered} matches {
+            ACTIVITY[at0001] occurrences matches {0..1} matches {
+                action_archetype_id matches {/.*/}
+                description matches {
+                    ITEM_TREE[at0002] matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            CLUSTER[at0003] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"non medical prescriptions">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"An instruction activity">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"New cluster">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*non medical prescriptions">
+                    description = <"**">
+                >
+                ["at0001"] = <
+                    text = <"*An instruction activity">
+                    description = <"**">
+                >
+                ["at0002"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"Prescrição (texto)">
+                    description = <"**">
+                >
+                ["at0004"] = <
+                    text = <"Descrição">
+                    description = <"*">
+                >
+            >
+        >
+    >

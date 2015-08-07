@@ -1,0 +1,130 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.balance.v1zl
+
+concept
+	[at0000]	-- Balanço
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Balanço
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Hídrico
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0009, 	-- Ganho
+													at0010]	-- Perda
+												}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Quantidade
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Sangue
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0011, 	-- Ganho
+													at0012]	-- Perda
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Quantidade
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Balanço">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Hídrico">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Quantidade">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Sangue">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Quantidade">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Ganho">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Perda">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Ganho">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Perda">
+					description = <"*">
+				>
+			>
+		>
+	>

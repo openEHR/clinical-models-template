@@ -1,0 +1,69 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.teenager_man_consultation_physical_exam_prodemge.v1
+
+concept
+	[at0000]	-- Consulta Adolescente - homem
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta do Adolescente - homem">
+			use = <"">
+			misuse = <"*(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Consulta Adolescente - homem
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0018] occurrences matches {0..1} matches {	-- Exame Físico
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|physical_exam_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0019] occurrences matches {0..1} matches {	-- Desenvolvimento Puberal: Classificação de Tanner
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|tanner_sexual_development_prodemge\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta Adolescente - homem">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Exame Físico">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Desenvolvimento Puberal: Classificação de Tanner">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,449 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-INSTRUCTION.request-imaging_exam-sus.v1
+specialise
+	openEHR-EHR-INSTRUCTION.request.v1
+
+concept
+	[at0000.1]	-- Imaging Examination Request
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"2009-12-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To request an imaging examination to be performed and convey supporting clinical details.">
+			use = <"Use in most requests for an imaging examination to be performed on a patient.
+
+If there are more details about the examination required, include this information in more detailed CLUSTER archetypes appropriate for the purpose in the 'Specific details' SLOT.">
+			keywords = <"request", "refer", "order", "service", "provide", "imaging", "service", "radiology">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Solicitar um exame de imagem e transmitir detalhes clínicos de suporte.">
+			use = <"Usar para a maior parte das solicitações de exames de imagem a ser realizados a um paciente.
+
+Se houver mais detalhes sobre a examinação solicitada, incluir essa informação em arquétipos do tipo CLUSTER mais detalhados, e apropriados para esse fim, no SLOT \"Detalhes específicos\".">
+			keywords = <"solicitação", "referência", "pedido", "serviço", "prestar", "imagem", "radiologia">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <"Heather Leslie, Ocean Informatics, Australia", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"2FFCD75F632AA052145F5F8D079486C3">
+	>
+
+definition
+	INSTRUCTION[at0000.1] matches {	-- Imaging Examination Request
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {1..*} matches {	-- Request
+				description matches {
+					ITEM_TREE[at0009] matches {	-- Tree
+						items cardinality matches {2..*; unordered} matches {
+							ELEMENT[at0121.1] matches {	-- Examination requested
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0135.1] occurrences matches {0..1} matches {	-- Description of examination
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0132.1] occurrences matches {0..*} matches {	-- Specific details
+								include
+									archetype_id/value matches {/.*/}
+								exclude
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.imaging-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[at0062] occurrences matches {0..1} matches {	-- Reason for request
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0064] occurrences matches {0..1} matches {	-- Reason description
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0065] occurrences matches {0..1} matches {	-- Intent
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0068.1] occurrences matches {0..1} matches {	-- Urgency
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0040] occurrences matches {0..1} matches {	-- Date &/or time service required
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0144] occurrences matches {0..1} matches {	-- Latest date service required
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0076] occurrences matches {0..1} matches {	-- Supplementary information to follow
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {True}
+									}
+								}
+							}
+							ELEMENT[at0078.1] occurrences matches {0..1} matches {	-- *! - Informação suplementar esperada(en)
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0116] occurrences matches {0..*} matches {	-- Patient requirements
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0.2] matches {	-- Order date
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {	-- Tree
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Requestor Identifier
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0141] occurrences matches {0..*} matches {	-- Requestor
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Receiver Identifier
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0142] occurrences matches {0..*} matches {	-- Receiver
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0127] occurrences matches {0..1} matches {	-- Request status
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0128] occurrences matches {0..*} matches {	-- Distribution list for response
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.distribution\.v1/}
+					}
+					allow_archetype CLUSTER[at0112] occurrences matches {0..*} matches {	-- Localisation
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.2"] = <
+					text = <"Order date">
+					description = <"The date and time the order was created.">
+				>
+				["at0000"] = <
+					text = <"Healthcare service request">
+					description = <"Request for a range of different healthcare services, for example, a referral, lab request, equipment request.">
+				>
+				["at0000.1"] = <
+					text = <"Imaging Examination Request">
+					description = <"Generic request for an imaging examination request.">
+				>
+				["at0001"] = <
+					text = <"Request">
+					description = <"Current Activity">
+				>
+				["at0008"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Requestor Identifier">
+					description = <"The local ID assigned to the order by the healthcare provider or organisation requesting the service. This is also referred to as Placer Order Identifier.">
+				>
+				["at0011"] = <
+					text = <"Receiver Identifier">
+					description = <"The ID assigned to the order by the healthcare provider or organisation receiving the request for service. This is also referred to as Filler Order Identifier.">
+				>
+				["at0040"] = <
+					text = <"Date &/or time service required">
+					description = <"The date and time that the service should be performed or completed.">
+				>
+				["at0062"] = <
+					text = <"Reason for request">
+					description = <"A short description of the reason for the request.  This is often coded with an external terminology.">
+				>
+				["at0064"] = <
+					text = <"Reason description">
+					description = <"A narrative description explaining the reason for request.">
+				>
+				["at0065"] = <
+					text = <"Intent">
+					description = <"Stated intent of the request by the referrer.">
+				>
+				["at0068"] = <
+					text = <"Urgency">
+					description = <"Urgency of the request.">
+				>
+				["at0068.1"] = <
+					text = <"Urgency">
+					description = <"Urgency of the request.">
+				>
+				["at0076"] = <
+					text = <"Supplementary information to follow">
+					description = <"True indicates that additional information has been identified and will be forwarded when available eg incomplete pathology test results.">
+				>
+				["at0078"] = <
+					text = <"Supplementary information expected">
+					description = <"Details of the nature of supplementary information that is to follow e.g name of laboratory results.">
+				>
+				["at0078.1"] = <
+					text = <"*! - Informação suplementar esperada(en)">
+					description = <"*Detalhes da natureza da informação suplementar que será encaminhada e.g nome dos resultados de laboratório.(en)">
+				>
+				["at0112"] = <
+					text = <"Localisation">
+					description = <"Local detailed information such as billing requirements.">
+				>
+				["at0116"] = <
+					text = <"Patient requirements">
+					description = <"Language, transport or other personal requirements to support the patient's attendance or participation in provision of the service.">
+				>
+				["at0121"] = <
+					text = <"Service requested">
+					description = <"Identification of the service requested. This is often coded with an external terminology.">
+				>
+				["at0121.1"] = <
+					text = <"Examination requested">
+					description = <"Identification of the examination requested. This is often coded with an external terminology.">
+				>
+				["at0127"] = <
+					text = <"Request status">
+					description = <"The status of the request for service as indicated by the requester. 
+Status is used to denote whether this is the initial request, or a follow-up request to change or provide supplementary information.">
+				>
+				["at0128"] = <
+					text = <"Distribution list for response">
+					description = <"A list of person's or organisation who should receive copies of any communication.">
+				>
+				["at0132"] = <
+					text = <"Specific details">
+					description = <"Structured detail defining the service requested.">
+				>
+				["at0132.1"] = <
+					text = <"Specific details">
+					description = <"Structured detail defining the service requested.">
+				>
+				["at0135"] = <
+					text = <"Description of service">
+					description = <"A detailed narrative description of the service requested.">
+				>
+				["at0135.1"] = <
+					text = <"Description of examination">
+					description = <"A detailed narrative description of the examination requested.">
+				>
+				["at0136"] = <
+					text = <"Emergency">
+					description = <"The request is an emergency.">
+				>
+				["at0137"] = <
+					text = <"Urgent">
+					description = <"The request is urgent.">
+				>
+				["at0138"] = <
+					text = <"Routine">
+					description = <"The request is routine.">
+				>
+				["at0141"] = <
+					text = <"Requestor">
+					description = <"Details about the healthcare provider or organisation requesting the service.">
+				>
+				["at0142"] = <
+					text = <"Receiver">
+					description = <"Details about the healthcare provider or organisation receiving the request for service.">
+				>
+				["at0144"] = <
+					text = <"Latest date service required">
+					description = <"The latest date that is acceptable for the service to be completed.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0.2"] = <
+					text = <"Data da solicitação">
+					description = <"A data e hora na qual a solicitação foi realizada.">
+				>
+				["at0000"] = <
+					text = <"Solicitação de serviços de saúde">
+					description = <"Solicitação de um conjunto de serviços de saúde diferentes, por exemplo, uma referência, um exame de laboratório, um equipamento.">
+				>
+				["at0000.1"] = <
+					text = <"Solicitação de exame de imagem">
+					description = <"Solicitação genérica para uma solicitação de um exame de imagem.">
+				>
+				["at0001"] = <
+					text = <"Solicitação">
+					description = <"Atividade atual.">
+				>
+				["at0008"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0009"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0010"] = <
+					text = <"Identificador do prescritor">
+					description = <"O ID local atribuído à solicitação pelo prestador de cuidados de saúde ou organização que solicita o serviço.">
+				>
+				["at0011"] = <
+					text = <"Identificador do executor">
+					description = <"O ID local atribuído à solicitação pelo prestador de cuidados de saúde ou organização que recebe essa solicitação.">
+				>
+				["at0040"] = <
+					text = <"Data e/ou hora solicitada para o serviço">
+					description = <"A data e/ou hora na qual o serviço deverá ser realizado ou deverá estar concluído.">
+				>
+				["at0062"] = <
+					text = <"Motivo para a solicitação">
+					description = <"Uma descrição curta do motivo que levou à solicitação. Este é normalmente codificado com recurso a uma terminologia externa.">
+				>
+				["at0064"] = <
+					text = <"Descrição do motivo">
+					description = <"Uma descrição narrativa explicando o motivo da solicitação.">
+				>
+				["at0065"] = <
+					text = <"Objetivo">
+					description = <"Objetivo da solicitação, tal como declarado pelo prescritor.">
+				>
+				["at0068"] = <
+					text = <"Urgência">
+					description = <"Urgência da solicitação.">
+				>
+				["at0068.1"] = <
+					text = <"Urgência">
+					description = <"Urgência da solicitação.">
+				>
+				["at0076"] = <
+					text = <"Informação suplementar encaminhada">
+					description = <"Verdadeiro indica que foi identificada informação adicional que será encaminhada quando disponível eg resultados incompletos de testes de patologia.">
+				>
+				["at0078"] = <
+					text = <"Informação suplementar">
+					description = <"Detalhes da natureza da informação suplementar que será encaminhada e.g nome dos resultados de laboratório.">
+				>
+				["at0078.1"] = <
+					text = <"Informação suplementar">
+					description = <"Detalhes da natureza da informação suplementar que será encaminhada e.g nome dos resultados de laboratório.">
+				>
+				["at0112"] = <
+					text = <"Informação local">
+					description = <"Informação local detalhada, tal como requisitos de faturamento.">
+				>
+				["at0116"] = <
+					text = <"Requisitos do paciente">
+					description = <"Língua, transporte ou outros requisitos pessoais que suportem a comparência ou a participação do paciente na prestação do serviço.">
+				>
+				["at0121"] = <
+					text = <"Serviço solicitado">
+					description = <"Identificação do serviço solicitado. Este é normalmente codificado com recurso a uma terminologia externa.">
+				>
+				["at0121.1"] = <
+					text = <"Examinação solicitada">
+					description = <"Identificação da examinação solicitada. Esta é normalmente codificada com recurso a uma terminologia externa.">
+				>
+				["at0127"] = <
+					text = <"Estado da solicitação">
+					description = <"O estado da solicitação do serviço tal como indicado pelo prescritor. O estado é usado para denotar se esta é uma solicitação inicial, ou um follow-up de uma solicitação anterior (para fazer alguma alteração ou providenciar informação adicional).">
+				>
+				["at0128"] = <
+					text = <"Lista de distribuição para a resposta">
+					description = <"A lista de indivíduos e/ou organizações que devem receber cópias de qualquer comunicação.">
+				>
+				["at0132"] = <
+					text = <"Detalhes específicos">
+					description = <"Detalhes estruturados que definem o serviço solicitado.">
+				>
+				["at0132.1"] = <
+					text = <"Detalhes específicos">
+					description = <"Detalhes estruturados que definem o serviço solicitado.">
+				>
+				["at0135"] = <
+					text = <"Descrição do serviço">
+					description = <"Uma descrição narrativa do serviço solicitado.">
+				>
+				["at0135.1"] = <
+					text = <"Descrição da examinação">
+					description = <"Uma descrição narrativa da examinação solicitada.">
+				>
+				["at0136"] = <
+					text = <"Emergente">
+					description = <"A solicitação é emergente.">
+				>
+				["at0137"] = <
+					text = <"Urgente">
+					description = <"A solicitação é urgente.">
+				>
+				["at0138"] = <
+					text = <"Rotina">
+					description = <"A solicitação é de rotina.">
+				>
+				["at0141"] = <
+					text = <"Prescritor">
+					description = <"Detalhes sobre o prestador de serviços de saúde ou organização que solicita o serviço.">
+				>
+				["at0142"] = <
+					text = <"Executor">
+					description = <"Detalhes sobre o prestador de serviços de saúde ou organização que recebe a solicitação do serviço.">
+				>
+				["at0144"] = <
+					text = <"Data máxima solicitada para o serviço">
+					description = <"A data máxima aceitável para que o serviço seja concluído.">
+				>
+			>
+		>
+	>

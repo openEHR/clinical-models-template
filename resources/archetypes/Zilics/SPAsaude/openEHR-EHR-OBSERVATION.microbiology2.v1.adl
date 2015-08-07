@@ -1,0 +1,435 @@
+?archetype
+    openEHR-EHR-OBSERVATION.microbiology2.v1
+
+concept
+    [at0000]    -- Microbiology laboratory observations
+language
+    original_language = <[ISO_639-1::en]>
+description
+    original_author = <
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["date"] = <"2004-05-18">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"microbiology observations for a single specimen. Multiple specimens should use multiple entries.">
+            use = <"For reporting the objective findings of a sample submitted for microbiological assessment">
+            keywords = <"microbiology", "culture", "organism">
+            misuse = <"This does not form the complete microbiology report, a composition - which may require evaluations such as diagnosis, recommendations and referrals.">
+            copyright = <"copyright (c) 2010 openEHR foundation">
+        >
+    >
+    lifecycle_state = <"AuthorDraft">
+    other_contributors = <>
+    other_details = <
+        ["references"] = <"">
+        ["MD5-CAM-1.0.1"] = <"EBA1BC657A30F3077009EF89113A93D6">
+    >
+
+definition
+    OBSERVATION[at0000] matches {    -- Microbiology laboratory observations
+        data matches {
+            HISTORY[at0002] matches {    -- history
+                events cardinality matches {1..*; unordered} matches {
+                    EVENT[at0003] occurrences matches {1..*} matches {    -- specimen collection time
+                        data matches {
+                            ITEM_TREE[at0001] matches {    -- structure
+                                items cardinality matches {0..1; ordered} matches {
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {    -- Result label
+                                        name matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {[ac0000]}        -- =label, battery name
+                                            }
+                                        }
+                                        value matches {
+                                            DV_TEXT matches {*}
+                                        }
+                                    }
+                                    CLUSTER[at0005] occurrences matches {0..1} matches {    -- Specimen
+                                        items cardinality matches {0..1; ordered} matches {
+                                            ELEMENT[at0006] occurrences matches {0..1} matches {    -- Sample description
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0007] occurrences matches {0..1} matches {    -- Site
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0008] occurrences matches {0..1} matches {    -- Sampling method
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0036] occurrences matches {0..1} matches {    -- Sterile field
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {True, False}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0009] occurrences matches {0..1} matches {    -- Macroscopic findings
+                                        items cardinality matches {0..1; ordered} matches {
+                                            ELEMENT[at0010] occurrences matches {0..1} matches {    -- Colony count
+                                                value matches {
+                                                    DV_COUNT matches {
+                                                        magnitude matches {|>=0|}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0011] occurrences matches {0..1} matches {    -- Description
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0012] occurrences matches {0..1} matches {    -- Microscopic findings
+                                        items cardinality matches {0..1; ordered} matches {
+                                            ELEMENT[at0013] occurrences matches {0..1} matches {    -- Microscopy field
+                                                name matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {[ac0001]}        -- Any term that 'is_a' microscopy field
+                                                    }
+                                                }
+                                                value matches {
+                                                    DV_COUNT matches {
+                                                        magnitude matches {|>=0|}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0014] occurrences matches {0..1} matches {    -- Description
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0015] occurrences matches {0..*} matches {    -- Culture
+                                        items cardinality matches {0..1; ordered} matches {
+                                            CLUSTER[at0018] occurrences matches {0..*} matches {    -- Micro-organism identified
+                                                name matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {[ac0002]}        -- Any term that 'is_a' micro-organism
+                                                    }
+                                                }
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    CLUSTER[at0019] occurrences matches {0..1} matches {    -- Therapeutic susceptibilities
+                                                        items cardinality matches {0..*; unordered} matches {
+                                                            CLUSTER[at0021] occurrences matches {0..*} matches {    -- Antimicrobial agent
+                                                                name matches {
+                                                                    DV_CODED_TEXT matches {
+                                                                        defining_code matches {[ac0003]}        -- Any term that 'is_a' antimicrobial therapy
+                                                                    }
+                                                                }
+                                                                items cardinality matches {0..*; unordered} matches {
+                                                                    ELEMENT[at0022] occurrences matches {0..1} matches {    -- Sensitivity
+                                                                        value matches {
+                                                                            0|[local::at0023],     -- Not sensitive
+                                                                            5|[local::at0024],     -- Borderline sensitivity
+                                                                            10|[local::at0025]      -- Sensitive
+                                                                        }
+                                                                    }
+                                                                    ELEMENT[at0026] occurrences matches {0..1} matches {    -- Quantified sensitivity
+                                                                        value matches {
+                                                                            C_DV_QUANTITY <
+                                                                                property = <[openehr::119]>
+                                                                                list = <
+                                                                                    ["1"] = <
+                                                                                        units = <"%">
+                                                                                        magnitude = <|0.0..100.0|>
+                                                                                    >
+                                                                                >
+                                                                            >
+                                                                        }
+                                                                    }
+                                                                    ELEMENT[at0027] occurrences matches {0..1} matches {    -- Method of sensitivity
+                                                                        value matches {
+                                                                            DV_CODED_TEXT matches {
+                                                                                defining_code matches {[local::]}
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0020] occurrences matches {0..1} matches {    -- Culture method
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {[local::]}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0028] occurrences matches {0..1} matches {    -- Findings
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0029] occurrences matches {0..1} matches {    -- Overall comment
+                                        value matches {
+                                            DV_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0037] occurrences matches {0..1} matches {    -- Multimedia representation
+                                        value matches {
+                                            DV_MULTIMEDIA matches {
+                                                media_type matches {
+                                                    [openEHR::
+                                                    425, 
+                                                    426, 
+                                                    427, 
+                                                    428, 
+                                                    429]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol existence matches {0..1} matches {
+            ITEM_LIST[at0030] matches {    -- protocol structure
+                items cardinality matches {0..1; ordered} matches {
+                    ELEMENT[at0031] occurrences matches {0..*} matches {    -- Microscope type
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0032] occurrences matches {0..1} matches {    -- Stain
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[local::]}
+                            }
+                        }
+                    }
+                    ELEMENT[at0033] occurrences matches {0..1} matches {    -- Laboratory identifier
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0034] occurrences matches {0..*} matches {    -- Adjustments
+                        name matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[ac0004]}        -- Any valid adjustment label
+                            }
+                        }
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0035] occurrences matches {0..*} matches {    -- Methods
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    terminologies_available = <"AIR93", ...>
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Microbiology laboratory observations">
+                    description = <"The observations made in the microbiology laboratory based on a single specimen. This archetype can be repeated in one full microbiology report">
+                >
+                ["at0001"] = <
+                    text = <"structure">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"specimen collection time">
+                    description = <"Event of reporting - only used for serial measurements">
+                >
+                ["at0004"] = <
+                    text = <"Result label">
+                    description = <"The label applied to this result by the laboratory">
+                >
+                ["at0005"] = <
+                    text = <"Specimen">
+                    description = <"Details about the specimen received">
+                >
+                ["at0006"] = <
+                    text = <"Sample description">
+                    description = <"Description of the sample">
+                >
+                ["at0007"] = <
+                    text = <"Site">
+                    description = <"The site of sampling">
+                >
+                ["at0008"] = <
+                    text = <"Sampling method">
+                    description = <"The method used for sampling">
+                >
+                ["at0009"] = <
+                    text = <"Macroscopic findings">
+                    description = <"Observations without microscopy">
+                >
+                ["at0010"] = <
+                    text = <"Colony count">
+                    description = <"The count of colonies">
+                >
+                ["at0011"] = <
+                    text = <"Description">
+                    description = <"Description of macroscopic findings">
+                >
+                ["at0012"] = <
+                    text = <"Microscopic findings">
+                    description = <"Findings under microscopy">
+                >
+                ["at0013"] = <
+                    text = <"Microscopy field">
+                    description = <"Microscopy field counts">
+                >
+                ["at0014"] = <
+                    text = <"Description">
+                    description = <"Description of the microscopic findings">
+                >
+                ["at0015"] = <
+                    text = <"Culture">
+                    description = <"Group of findings related to microbiological culture">
+                >
+                ["at0018"] = <
+                    text = <"Micro-organism identified">
+                    description = <"The name of the micro-organism identified">
+                >
+                ["at0019"] = <
+                    text = <"Therapeutic susceptibilities">
+                    description = <"A cluster containing the therapeutic susceptibilities for the named organisem">
+                >
+                ["at0020"] = <
+                    text = <"Culture method">
+                    description = <"The method of culturing">
+                >
+                ["at0021"] = <
+                    text = <"Antimicrobial agent">
+                    description = <"The antibiotic or other anti-microbiological agent tested">
+                >
+                ["at0022"] = <
+                    text = <"Sensitivity">
+                    description = <"Sensitivity of the identified microorganism to the therapeutic agennt">
+                >
+                ["at0023"] = <
+                    text = <"Not sensitive">
+                    description = <"Assessed as not sensitive to this agent">
+                >
+                ["at0024"] = <
+                    text = <"Borderline sensitivity">
+                    description = <"Assessed as being an intermediate state">
+                >
+                ["at0025"] = <
+                    text = <"Sensitive">
+                    description = <"Assessed as sensitive to this agent">
+                >
+                ["at0026"] = <
+                    text = <"Quantified sensitivity">
+                    description = <"A measure of the sensitivity based on a quantifiable method">
+                >
+                ["at0027"] = <
+                    text = <"Method of sensitivity">
+                    description = <"The method used to determine sensitivity">
+                >
+                ["at0028"] = <
+                    text = <"Findings">
+                    description = <"Any information specific to the culture">
+                >
+                ["at0029"] = <
+                    text = <"Overall comment">
+                    description = <"Any overall comment">
+                >
+                ["at0030"] = <
+                    text = <"protocol structure">
+                    description = <"@ internal @">
+                >
+                ["at0031"] = <
+                    text = <"Microscope type">
+                    description = <"The type of microscope used for microscopy">
+                >
+                ["at0032"] = <
+                    text = <"Stain">
+                    description = <"Type of stain used in the microscopy">
+                >
+                ["at0033"] = <
+                    text = <"Laboratory identifier">
+                    description = <"The identifier used in the laboratory for this test">
+                >
+                ["at0034"] = <
+                    text = <"Adjustments">
+                    description = <"Any adjustments made">
+                >
+                ["at0035"] = <
+                    text = <"Methods">
+                    description = <"Any methods used">
+                >
+                ["at0036"] = <
+                    text = <"Sterile field">
+                    description = <"Was the sample taken from a sterile field">
+                >
+                ["at0037"] = <
+                    text = <"Multimedia representation">
+                    description = <"An image representing the findings">
+                >
+            >
+        >
+    >
+    constraint_definitions = <
+        ["en"] = <
+            items = <
+                ["ac0000"] = <
+                    text = <"=label, battery name">
+                    description = <"The name or label given to the result - determined by the laboratory">
+                >
+                ["ac0001"] = <
+                    text = <"Any term that 'is_a' microscopy field">
+                    description = <"A microscopy field e.g. low power field, high power field etc">
+                >
+                ["ac0002"] = <
+                    text = <"Any term that 'is_a' micro-organism">
+                    description = <"Any micro-organism that will be reported in a laboratory">
+                >
+                ["ac0003"] = <
+                    text = <"Any term that 'is_a' antimicrobial therapy">
+                    description = <"Any antimicrobial agent for which sensitivity testing is (or could be) undertaken">
+                >
+                ["ac0004"] = <
+                    text = <"Any valid adjustment label">
+                    description = <"A label for the adjustment made in the result">
+                >
+            >
+        >
+    >
+    term_bindings = <
+        ["AIR93"] = <
+            items = <
+            >
+        >
+    >
+    constraint_bindings = <
+        ["AIR93"] = <
+            items = <
+                ["ac0000"] = <http://openEHR.org/test>
+            >
+        >
+    >

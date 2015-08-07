@@ -1,0 +1,2 @@
+= Contents
+Models in this directory are specialisations of archetypes published in an external repository.

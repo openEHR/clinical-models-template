@@ -1,0 +1,149 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.previous_anesthetic.v1zl
+
+concept
+	[at0000]	-- Informações Anestésicas Prévias
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Informações Anestésicas Prévias
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Dificuldade de Entubação
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Dificuldade de Ventilação
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Náusea e Vômito Fortes Pós-Procedimento
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hipertermia Malígna
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Pseudocolinesterase Anormal
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Life Threatening Intra-operative
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Dificuldades no Gerenciamento da Dor
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Dificuldade no Acesso Venoso
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Previous Awareness
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informações Anestésicas Prévias">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Dificuldade de Entubação">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Dificuldade de Ventilação">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Náusea e Vômito Fortes Pós-Procedimento">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Hipertermia Malígna">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Pseudocolinesterase Anormal">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Life Threatening Intra-operative">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Dificuldades no Gerenciamento da Dor">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Dificuldade no Acesso Venoso">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Previous Awareness">
+					description = <"*">
+				>
+			>
+		>
+	>

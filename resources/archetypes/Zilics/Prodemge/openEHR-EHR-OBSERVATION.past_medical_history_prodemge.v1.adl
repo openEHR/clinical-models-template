@@ -1,0 +1,299 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.past_medical_history_prodemge.v1
+
+concept
+	[at0000]	-- História Pregressa
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*Registro onde são descritos episódios passados de Doenças, Cirurgias e Internações do paciente.(pt)">
+			use = <"*Usado para registrar Doenças, Cirurgias e Internações do paciente.(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro onde são descritos episódios passados de Doenças, Cirurgias e Internações do paciente.">
+			use = <"Usado para registrar Doenças, Cirurgias e Internações do paciente.">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"8062F09831A1BAA75C5C860D41143276">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- História Pregressa
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0008] occurrences matches {0..*} matches {	-- Doenças
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Doença
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Doença
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {[ac0001]}		-- Cid
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Data de Diagnóstico
+												value matches {
+													DV_DATE matches {*}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Data de inicio de tratamento
+												value matches {
+													DV_DATE matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0012] occurrences matches {0..*} matches {	-- Internações anteriores
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Data da internação
+												value matches {
+													DV_DATE matches {*}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Motivo da internação
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0015] occurrences matches {0..*} matches {	-- Cirurgias no Passado
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Procedimento Realizado
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Data
+												value matches {
+													DV_DATE_TIME matches {*}
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Local
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"História Pregressa">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Doença">
+					description = <"**">
+				>
+				["at0008"] = <
+					text = <"Doenças">
+					description = <"Doenças: Apresentar/listar as doenças que o cidadão apresenta, mas que já existiam antes da doença atual que o levou a procurar assistência medica ou que já apresentou.  Anotar as datas de diagnóstico e início de tratamento.">
+				>
+				["at0009"] = <
+					text = <"Doença(CID10)">
+					description = <"Campo com terminologia para o CID. Diagnóstico da doença relatada.">
+				>
+				["at0010"] = <
+					text = <"Data de Diagnóstico">
+					description = <"Mês e ano aproximado do diagnóstico">
+				>
+				["at0011"] = <
+					text = <"Data de inicio de tratamento">
+					description = <"Mes e ano aproximado do inicio do tratamento">
+				>
+				["at0012"] = <
+					text = <"Internações anteriores">
+					description = <"Internações anteriores são anotadas referindo-se o motivo que as determinou.
+">
+				>
+				["at0013"] = <
+					text = <"Data da internação">
+					description = <"Data aproximada de internação. ">
+				>
+				["at0014"] = <
+					text = <"Motivo da internação">
+					description = <"Motivo que originou a internação.">
+				>
+				["at0015"] = <
+					text = <"Cirurgias no Passado">
+					description = <"Nome do procedimento realizado">
+				>
+				["at0016"] = <
+					text = <"Procedimento Realizado">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Data">
+					description = <"Data aproximada do procedimento.">
+				>
+				["at0018"] = <
+					text = <"Observações">
+					description = <"Observações do procedimento.">
+				>
+				["at0019"] = <
+					text = <"Local">
+					description = <"Local do procedimento">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"História Pregressa">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Doença anterior (texto)">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Doenças Anteriores">
+					description = <"Doenças: Apresentar/listar as doenças que o cidadão apresenta, mas que já existiam antes da doença atual que o levou a procurar assistência medica ou que já apresentou.  Anotar as datas de diagnóstico e início de tratamento.">
+				>
+				["at0009"] = <
+					text = <"Doença anterior (CID-10)">
+					description = <"Campo com terminologia para o CID. Diagnóstico da doença relatada.">
+				>
+				["at0010"] = <
+					text = <"Data de Diagnóstico">
+					description = <"Mês e ano aproximado do diagnóstico">
+				>
+				["at0011"] = <
+					text = <"Data de inicio de tratamento">
+					description = <"Mes e ano aproximado do inicio do tratamento">
+				>
+				["at0012"] = <
+					text = <"Internações anteriores">
+					description = <"Internações anteriores são anotadas referindo-se o motivo que as determinou.
+">
+				>
+				["at0013"] = <
+					text = <"Data da internação">
+					description = <"Data aproximada de internação. ">
+				>
+				["at0014"] = <
+					text = <"Motivo da internação">
+					description = <"Motivo que originou a internação.">
+				>
+				["at0015"] = <
+					text = <"Cirurgias no Passado">
+					description = <"Nome do procedimento realizado">
+				>
+				["at0016"] = <
+					text = <"Procedimento Realizado">
+					description = <"Internações anteriores são anotadas referindo-se o motivo que as determinou.">
+				>
+				["at0017"] = <
+					text = <" Data da Realização da Cirurgia">
+					description = <"Data aproximada do procedimento.">
+				>
+				["at0018"] = <
+					text = <"Observações">
+					description = <"Observações do procedimento.">
+				>
+				["at0019"] = <
+					text = <"Local de Realização da Cirurgia">
+					description = <"Local do procedimento">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt-br"] = <
+			items = <
+				["ac0001"] = <
+					text = <"Cid">
+					description = <"Pesquisa no CID-10">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0001"] = <http://openEHR.org/http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=ALL>
+			>
+		>
+	>

@@ -1,0 +1,14 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=allergicProcesses:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0005]=allergicProcessesPeriod:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0007]=suicideAttempt:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0008]=accidentWithVenomousAnimals:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0009]=purpleOrRashPetenquial:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0044]/items[at0011]=foreignBodyClassification:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0031]=ashmaBronchitis:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0015]=renalColic:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0016]=sexualAbuse:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0017]=immunosuppressed:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0040]/items[at0035]=consulsiveCrisisPeriod:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0040]/items[at0041]=consulsiveCrisisConsciousnessLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0045]=migraines:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0006]=exogenousIntoxication:true

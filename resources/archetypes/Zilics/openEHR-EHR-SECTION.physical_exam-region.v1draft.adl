@@ -1,0 +1,240 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.physical_exam-region.v1draft
+specialize
+	openEHR-EHR-SECTION.physical_exam.v1draft
+
+concept
+	[at0000.1]	-- Exame físico por região do corpo
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"8/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide a root heading for physical examination allowing organisation of the findings by region">
+			use = <"Provides the root section for physical examinations preserving quick searches to recover all records of physical examination">
+			keywords = <"on examination", "examination", "physical", "region">
+			misuse = <"Renamed to mean a subset of physical examination unless it is the only examination performed">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Fornece um guia de orientação para exame físico a fim de permitir uma organização dos dados em regiões examinadas
+
+
+">
+			use = <"Fornece um guia de orientação para exame físico preservando forma de recuperação dos dados do exame físico
+
+
+">
+			keywords = <"*on examination(en)", "*examination(en)", "*physical(en)", "*region(en)">
+			misuse = <"Renomeado para refletir um subgrupo do exame físico, desde que seja o único exame físico realizado
+
+
+">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Exame físico
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0.1] occurrences matches {0..1} matches {	-- Aspectos Gerais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.2] occurrences matches {0..1} matches {	-- Ouvido, Nariz e garganta
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.3] occurrences matches {0..1} matches {	-- Olhos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.4] occurrences matches {0..1} matches {	-- Cabeça e pescoço
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.5] occurrences matches {0..1} matches {	-- Tórax
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.6] occurrences matches {0..1} matches {	-- Abdomen
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.7] occurrences matches {0..1} matches {	-- Genitais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.8] occurrences matches {0..1} matches {	-- Membros superiores
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0.10] occurrences matches {0..1} matches {	-- Membros inferiores
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.1"] = <
+					text = <"General">
+					description = <"General findings pertaining to the whole body or findings covering more than one region">
+				>
+				["at0.10"] = <
+					text = <"*?(en)">
+					description = <"**(en)">
+				>
+				["at0.2"] = <
+					text = <"Ears, nose and throat">
+					description = <"Findings related to the ears, nose and throat">
+				>
+				["at0.3"] = <
+					text = <"Eyes">
+					description = <"Findings related to the eyes">
+				>
+				["at0.4"] = <
+					text = <"Head and neck">
+					description = <"Other findings of the head and neck">
+				>
+				["at0.5"] = <
+					text = <"Chest">
+					description = <"Findings on examination of the thorax">
+				>
+				["at0.6"] = <
+					text = <"Abdomen">
+					description = <"Findings on examination of the abdomen">
+				>
+				["at0.7"] = <
+					text = <"Genital">
+					description = <"Findings related to the genitals and other reproductive organs">
+				>
+				["at0.8"] = <
+					text = <"Periphery">
+					description = <"Findings related to the limbs or parts thereof">
+				>
+				["at0.9"] = <
+					text = <"*?(en)">
+					description = <"**(en)">
+				>
+				["at0000"] = <
+					text = <"Physical examination">
+					description = <"An open section for recording physical examination findings">
+				>
+				["at0000.1"] = <
+					text = <"Physical examination by region">
+					description = <"A section for recording physical examination findings by region of the body">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.1"] = <
+					text = <"Aspectos Gerais">
+					description = <"Achados clínicos pertinentes ao corpo em geral ou a regiões específicas">
+				>
+				["at0.10"] = <
+					text = <"Membros inferiores">
+					description = <"*">
+				>
+				["at0.2"] = <
+					text = <"Ouvido, Nariz e garganta">
+					description = <"Achados clínicos pertinentes aos ouvidos, ao nariz e à garganta">
+				>
+				["at0.3"] = <
+					text = <"Olhos">
+					description = <"Achados clínicos pertinentes aos olhos">
+				>
+				["at0.4"] = <
+					text = <"Cabeça e pescoço">
+					description = <"Achados clínicos pertinentes a cabeça e ao pescoço">
+				>
+				["at0.5"] = <
+					text = <"Tórax">
+					description = <"Achados clínicos pertinentes ao tárax">
+				>
+				["at0.6"] = <
+					text = <"Abdomen">
+					description = <"Achados clínicos pertinentes ao abdomen">
+				>
+				["at0.7"] = <
+					text = <"Genitais">
+					description = <"Achados clínicos pertinentes aos genitais">
+				>
+				["at0.8"] = <
+					text = <"Membros superiores">
+					description = <"Achados clínicos pertinentes aos membros periféricos superiores e inferiores">
+				>
+				["at0.9"] = <
+					text = <"?">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"Exame físico">
+					description = <"Uma seção aberta para o registro dos dados clíncos do exame físico">
+				>
+				["at0000.1"] = <
+					text = <"Exame físico por região do corpo">
+					description = <"Uma seção para o registro dos dados clíncos do exame físico por região">
+				>
+			>
+		>
+	>

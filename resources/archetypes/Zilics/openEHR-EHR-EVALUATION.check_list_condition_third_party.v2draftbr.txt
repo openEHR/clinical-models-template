@@ -1,0 +1,2 @@
+/data[at0001]/items[at0004]/items[at0003]=summary
+/data[at0001]/items[at0004]/items[at0.0.30]=summary

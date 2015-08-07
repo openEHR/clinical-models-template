@@ -1,0 +1,234 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.aldrete_kroulik.v1zl
+
+concept
+	[at0000]	-- Índice de Aldrete e Kroulik
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Índice de Aldrete e Kroulik
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Atividade Motora
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Capacidade para movimentar 4 membros espontaneamente ou a pedido (2)
+													at0006, 	-- Capacidade para movimentar 2 membros espontaneamente ou a pedido (1)
+													at0007]	-- Sem capacidade para movimentar membros espontaneamente ou a pedidos (0)
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Respiração
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0009, 	-- Capacidade para respirar fundo e tossir (2)
+													at0010, 	-- Dispnéia ou respiração limitada (1)
+													at0011]	-- Apnéia (0)
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Circulação
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0013, 	-- PA + ou - 20% do nível pré anestésico (2)
+													at0014, 	-- PA + ou - 20% a 50% (1)
+													at0015]	-- PA + ou - 50% (0)
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Consciência
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Totalmente acordado (2)
+													at0018, 	-- Dormindo mas despertável quando estimulado (1)
+													at0019]	-- Dormindo não despertável quando estimulado (0)
+												}
+											}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Coloração
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0021, 	-- Rosado (2)
+													at0022, 	-- Pálido, escuro, letério, outros (1)
+													at0023]	-- Cianótico (0)
+												}
+											}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Saturação
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0025, 	-- SaO2 > 92%, respirando ar ambiente (2)
+													at0026, 	-- Suplementação de O2 para manter SaO2 > 90% (1)
+													at0027]	-- SaO2 < 90% mesmo com O2 suplementar (0)
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Índice de Aldrete e Kroulik">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Atividade Motora">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Capacidade para movimentar 4 membros espontaneamente ou a pedido (2)">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Capacidade para movimentar 2 membros espontaneamente ou a pedido (1)">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Sem capacidade para movimentar membros espontaneamente ou a pedidos (0)">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Respiração">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Capacidade para respirar fundo e tossir (2)">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Dispnéia ou respiração limitada (1)">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Apnéia (0)">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Circulação">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"PA + ou - 20% do nível pré anestésico (2)">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"PA + ou - 20% a 50% (1)">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"PA + ou - 50% (0)">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Consciência">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Totalmente acordado (2)">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Dormindo mas despertável quando estimulado (1)">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Dormindo não despertável quando estimulado (0)">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Coloração">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Rosado (2)">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Pálido, escuro, letério, outros (1)">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Cianótico (0)">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Saturação">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"SaO2 > 92%, respirando ar ambiente (2)">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Suplementação de O2 para manter SaO2 > 90% (1)">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"SaO2 < 90% mesmo com O2 suplementar (0)">
+					description = <"*">
+				>
+			>
+		>
+	>

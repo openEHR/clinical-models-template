@@ -1,0 +1,180 @@
+archetype
+    openEHR-EHR-OBSERVATION.obstetrical_antecedents_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"?">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["name"] = <"">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"Registro dos antecedentes obstétricos(Gestações, partos, etc)  do paciente">
+            use = <"Registro dos antecedentes obstétricos">
+            misuse = <"*(pt)">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"Registro dos antecedentes obstétricos(Gestações, partos, etc)  do paciente">
+            use = <"Registro dos antecedentes obstétricos">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0005] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_COUNT matches {
+                                                magnitude matches {|0|}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_COUNT matches {
+                                                magnitude matches {|0|}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0007] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_COUNT matches {
+                                                magnitude matches {|0..20|}
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0008] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0009] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Registro dos antecedentes obstétricos">
+                    description = <"Registro dos antecedentes obstétricos">
+                >
+                ["at0001"] = <
+                    text = <"*Event Series(pt)">
+                    description = <"*@ internal @(pt)">
+                >
+                ["at0002"] = <
+                    text = <"*Any event(pt)">
+                    description = <"**(pt)">
+                >
+                ["at0003"] = <
+                    text = <"*Tree(pt)">
+                    description = <"*@ internal @(pt)">
+                >
+                ["at0005"] = <
+                    text = <"Número de Gestações">
+                    description = <"Quantidade de gestações anteriores">
+                >
+                ["at0006"] = <
+                    text = <"Número de Abortos">
+                    description = <"Quantidade de abortos anteriores">
+                >
+                ["at0007"] = <
+                    text = <"Número de Partos">
+                    description = <"Quantidade de partos anteriores">
+                >
+                ["at0008"] = <
+                    text = <"Tipos de Partos">
+                    description = <"Detalhamento dos partos anteriores">
+                >
+                ["at0009"] = <
+                    text = <"Cesáreo">
+                    description = <"Quantidade de partos cesáreos">
+                >
+                ["at0010"] = <
+                    text = <"Vaginal">
+                    description = <"Quantidade de partos vaginais">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Registro dos antecedentes obstétricos">
+                    description = <"unknown">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0005"] = <
+                    text = <"Número de Gestações">
+                    description = <"Quantidade de gestações anteriores">
+                >
+                ["at0006"] = <
+                    text = <"Número de Abortos">
+                    description = <"Quantidade de abortos ocorridos">
+                >
+                ["at0007"] = <
+                    text = <"Número de Partos">
+                    description = <"Quantidade de partos anteriores ocorridos">
+                >
+                ["at0008"] = <
+                    text = <"Tipos de Partos">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Cesáriano">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Vaginal">
+                    description = <"*">
+                >
+            >
+        >
+    >

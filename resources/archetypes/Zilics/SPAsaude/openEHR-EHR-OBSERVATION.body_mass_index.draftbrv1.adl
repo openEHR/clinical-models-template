@@ -1,0 +1,222 @@
+archetype
+    openEHR-EHR-OBSERVATION.body_mass_index.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.com">
+        ["date"] = <"22/03/2006">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+    >
+    lifecycle_state = <"Initial">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the Body Mass Index (BMI) of a person.
+Body Mass Index is a calculated ratio describing how an individual's body weight relates to the weight that is regarded as normal, or desirable, for the individual's height. ">
+            keywords = <"obesity","index","body mass","BMI","anorexia","Quetelet","malnutrition","failure to thrive","bulimia">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"Use to record the Body Mass Index of both adults and children.  
+Use to enter the Body Mass Index either manually (ie calculated and directly entered by the clinician), or automatically (ie calculation and entry is done automatically by a software application, based on separate height and weight measurements).
+Formulas: Body Mass Index is commonly calculated as weight (kg) / [height (m) squared]. This is the assumed formula unless otherwise specified in the Formula element within Protocol. Alternatively estimate Body Mass Index using pounds and inches: weight (lb) / [height (in) squared] x 703 (with ounces (oz) and fractions changed to decimal values).
+In some situations the Body Mass Index formula is corrected eg for use in amputees - this specific formula can be recorded as part of the protocol.  Alternatively the common Body Mass Index calculation can be used with amputees and similar injuries or disabilities if using adjusted height and/or adjusted weight, as appropriate, rather than actual height and weight.   See openEHR-EHR-OBSERVATION.height-adjusted and openEHR-EHR-OBSERVATION.body_weight-adjusted.
+See WHO reference re adjusting height/length for Body Mass Index in paediatrics. 
+In children and teens, BMI needs to be assessed using age-related reference charts. 
+">
+            misuse = <"Not intended to record information regarding Body Mass Index percentiles - these will be recorded in separate archetypes.">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*To record the Body Mass Index (BMI) of a person.
+Body Mass Index is a calculated ratio describing how an individual's body weight relates to the weight that is regarded as normal, or desirable, for the individual's height. ">
+            keywords = <"obesity","index","body mass","BMI","anorexia","Quetelet","malnutrition","failure to thrive","bulimia">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"*Use to record the Body Mass Index of both adults and children.  
+Use to enter the Body Mass Index either manually (ie calculated and directly entered by the clinician), or automatically (ie calculation and entry is done automatically by a software application, based on separate height and weight measurements).
+Formulas: Body Mass Index is commonly calculated as weight (kg) / [height (m) squared]. This is the assumed formula unless otherwise specified in the Formula element within Protocol. Alternatively estimate Body Mass Index using pounds and inches: weight (lb) / [height (in) squared] x 703 (with ounces (oz) and fractions changed to decimal values).
+In some situations the Body Mass Index formula is corrected eg for use in amputees - this specific formula can be recorded as part of the protocol.  Alternatively the common Body Mass Index calculation can be used with amputees and similar injuries or disabilities if using adjusted height and/or adjusted weight, as appropriate, rather than actual height and weight.   See openEHR-EHR-OBSERVATION.height-adjusted and openEHR-EHR-OBSERVATION.body_weight-adjusted.
+See WHO reference re adjusting height/length for Body Mass Index in paediatrics. 
+In children and teens, BMI needs to be assessed using age-related reference charts. 
+">
+            misuse = <"*Not intended to record information regarding Body Mass Index percentiles - these will be recorded in separate archetypes.">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {1..*} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                                    ELEMENT[at0004] occurrences matches {1..1} matches {
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openEHR::349]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"kg/m2">
+                                                        magnitude = <|0.0..1000.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                    ["2"] = <
+                                                        units = <"lb/in2">
+                                                        magnitude = <|0.0..1000.0|>
+                                                        precision = <|-1|>
+                                                    >
+                                                >
+                                            >
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_LIST[at0005] matches {
+                items existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0007,
+                                    at0008]
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0010] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0011] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Body mass index">
+                    description = <"Calculated measurement which compares a person's weight and height.">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"Any timed recording of Body Mass Index.">
+                >
+                ["at0003"] = <
+                    text = <"Single">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Body Mass Index">
+                    description = <"Index describing ratio of weight to height.">
+                >
+                ["at0005"] = <
+                    text = <"List">
+                    description = <"@ internal @">
+                >
+                ["at0006"] = <
+                    text = <"Method">
+                    description = <"The method of entering the Body Mass Index.">
+                >
+                ["at0007"] = <
+                    text = <"Automatic entry">
+                    description = <"Body Mass Index calculated and entered automatically without user intervention.">
+                >
+                ["at0008"] = <
+                    text = <"Direct entry">
+                    description = <"Body Mass Index calculated and entered directly by user.">
+                >
+                ["at0010"] = <
+                    text = <"Formula">
+                    description = <"Formula used to derive the Body Mass Index.">
+                >
+                ["at0011"] = <
+                    text = <"Comment">
+                    description = <"Comment about the Body Mass Index measurement eg noting that the measurements used were adjusted weight/height.">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Body mass index">
+                    description = <"*Calculated measurement which compares a person's weight and height.">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"*Any timed recording of Body Mass Index.">
+                >
+                ["at0003"] = <
+                    text = <"Single">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Índice de Massa Corporal">
+                    description = <"Índice que descreve a relação entre o peso e a altura">
+                >
+                ["at0005"] = <
+                    text = <"List">
+                    description = <"@ internal @">
+                >
+                ["at0006"] = <
+                    text = <"Método">
+                    description = <"*The method of entering the Body Mass Index.">
+                >
+                ["at0007"] = <
+                    text = <"Entrada auntomática">
+                    description = <"IMC calculado a partir de informação calculada sem a intervenção do usuário.">
+                >
+                ["at0008"] = <
+                    text = <"Entrada manual">
+                    description = <"IMC calculado a partir de dados fornecidos pelo usuário">
+                >
+                ["at0010"] = <
+                    text = <"Fórmula">
+                    description = <"Fórmula para calcular IMC
+ peso em kg / ( altura 2 em m2)">
+                >
+                ["at0011"] = <
+                    text = <"Comentários">
+                    description = <"Comentários sobre a fórmula de cálculo do IMC">
+                >
+            >
+        >
+    >

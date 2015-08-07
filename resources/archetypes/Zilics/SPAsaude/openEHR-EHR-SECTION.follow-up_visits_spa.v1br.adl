@@ -1,0 +1,342 @@
+archetype
+    openEHR-EHR-SECTION.follow-up_visits_spa.v1br
+specialize
+    openEHR-EHR-SECTION.follow.v1br
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            author = <
+                ["name"] = <"?">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"12/03/2007">
+    >
+    lifecycle_state = <"Initial">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"For organising the information recorded at an emergency presentation">
+            keywords = <"emergency">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"Controle da informa??o registrada em uma avalia??o.
+
+
+">
+            keywords = <"*emergency(en)">
+            use = <"*
+
+
+">
+            misuse = <"*
+
+
+">
+        >
+    >
+
+definition
+    SECTION[at0000] matches {
+        items existence matches {0..1} cardinality matches {0..1; ordered} matches {
+            SECTION[at0005] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/adverse\.v2draft/}
+                            domain_concept matches {/check_list-surgical_procedure\.v2draft/}
+                            domain_concept matches {/problem-diagnosis_spa\.v1/}
+                            domain_concept matches {/check_list_condition_personal\.draftbrv1/}
+                    }
+                }
+            }
+            SECTION[at0014] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/health_promotion_program_classification_spa\.v1/}
+                    }
+                }
+            }
+            SECTION[at0001] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                        exclude
+                            domain_concept matches {/placeholder_v2zl\.v1/}
+                    }
+                }
+            }
+            SECTION[at0002] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    SECTION[at0017] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                            allow_archetype SECTION occurrences matches {0..*} matches {
+                                include
+                                    domain_concept matches {/.*/}
+                                exclude
+                                    domain_concept matches {/vital_signs\.v1/}
+                            }
+                        }
+                    }
+                    SECTION[at0006] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/placeholder_v2zl\.v1/}
+                            }
+                        }
+                    }
+                }
+            }
+            SECTION[at0013] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype SECTION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                        exclude
+                            domain_concept matches {/exams_results_generic_spa2\.v1/}
+                    }
+                }
+            }
+            SECTION[at0003] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                        exclude
+                            domain_concept matches {/problem-diagnosis_spa\.v1/}
+                    }
+                    SECTION[at0010] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/placeholder_v2zl\.v1/}
+                            }
+                        }
+                    }
+                }
+            }
+            SECTION[at0004] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/check_list-medication\.v2/}
+                    }
+                    allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                        exclude
+                            domain_concept matches {/other_prescriptions_spa\.v1/}
+                    }
+                }
+            }
+            SECTION[at0007] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                    SECTION[at0008] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/request_spa\.v1/}
+                            }
+                        }
+                    }
+                    SECTION[at0009] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/specialized_follow_up_request_spa\.v1/}
+                            }
+                        }
+                    }
+                    SECTION[at0018] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..1; unordered} matches {
+                            allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/placeholder_v2zl\.v1/}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Emergency template">
+                    description = <"A section to contain the key information collected when a patient presents with an emergency or major injury">
+                >
+                ["at0001"] = <
+                    text = <"History">
+                    description = <"A heading to collect the information about the presenting event">
+                >
+                ["at0002"] = <
+                    text = <"Examination">
+                    description = <"Examination findings">
+                >
+                ["at0003"] = <
+                    text = <"Evaluations">
+                    description = <"Evaluations and assessments">
+                >
+                ["at0004"] = <
+                    text = <"Clinical Management Plan and Actions">
+                    description = <"Any orders or things that have been done">
+                >
+                ["at0011"] = <
+                    text = <"Management">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Investigations">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Other investigations">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"*?(en)">
+                    description = <"**(en)">
+                >
+                ["at0005"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0012"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0014"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0015"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+                ["at0018"] = <
+                    text = <"*New section">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Ficha de evolu‹o mŽdica do Programa de Saœde">
+                    description = <"Uma se??o que cont?m as informa??es coletadas quando um paciente apresenta uma emergncia ou um trauma
+">
+                >
+                ["at0001"] = <
+                    text = <"Anamnese">
+                    description = <"Anamnese - Coleta de informa??es sobre o problema m?dica atual">
+                >
+                ["at0002"] = <
+                    text = <"Exame F?sico">
+                    description = <"Achados no exame f?sico">
+                >
+                ["at0003"] = <
+                    text = <"Avalia??o">
+                    description = <"Avalia??es e controles">
+                >
+                ["at0004"] = <
+                    text = <"Prescri??o M?dica">
+                    description = <"Qualquer ordem, solicita??o ou procedimentos j? realizados">
+                >
+                ["at0011"] = <
+                    text = <"Procedimentos solicitados">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Resultados de exames">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Outras investiga??es">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Sinais Vitais">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Dados cl?nicos relevantes">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Outros achados do exame f?sico">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Ecaminhamentos">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Procedimentos solicitados">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Consultas Especializadas">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Observa??es/Coment?rios">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"New section">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Classifica??o no Programa de Sa?de">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"New section">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Observa??es para o Programa de Sa?de">
+                    description = <"*">
+                >
+            >
+        >
+    >

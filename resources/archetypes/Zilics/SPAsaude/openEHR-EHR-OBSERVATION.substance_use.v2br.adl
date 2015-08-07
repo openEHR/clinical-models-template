@@ -1,0 +1,672 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.substance_use.v2br
+
+concept
+	[at0000]	-- Substâncias psicoativas
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"Beatriz de Faria Leão">
+				["organisation"] = <"Zilics Health Information Systems">
+				["email"] = <"beatriz.leao@zilics.com.br">
+				["date"] = <"16 dec 2007">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"9/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record substance use based on information reported by the person.">
+			use = <"">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*To record substance use based on information reported by the person.">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Substâncias psicoativas
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0255] occurrences matches {0..*} matches {	-- Substâncias psicoativas
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Uso de substâncias psicoativas
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0025, 	-- Nunca utilizou
+															at0026, 	-- Usou no passado
+															at0027]	-- Em uso atualmente
+														}
+													}
+												}
+											}
+											CLUSTER[at0006] occurrences matches {0..1} matches {	-- Detalhes sobre o uso da substância psicoativa
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0007] occurrences matches {0..1} matches {	-- Categoria ou tipo da substância psicoativa
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0250, 	-- Depressores da Atividade do SNC (álcool, benzodiazepínicos, barbituricos, opiáceos e solventes).
+																	at0251, 	-- Estimulantes da Atividade do SNC (cocaína, anfetaminas, nicotina e cafeína)
+																	at0252]	-- Perturbadores da Atividade do SNC (cannabis e derivados, LSD25, ecstasy e anticolinérgicos)
+																}
+															}
+														}
+													}
+													ELEMENT[at0004] occurrences matches {0..1} matches {	-- Substância psicoativa
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {[ac0001]}		-- CID-10
+															}
+														}
+													}
+													ELEMENT[at0238] occurrences matches {0..1} matches {	-- Administração
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0239, 	-- Fumo
+																	at0240, 	-- Ingestão
+																	at0241, 	-- Endovenoso
+																	at0242, 	-- Oral
+																	at0243, 	-- Inalação
+																	at0244, 	-- Absorção
+																	at0248, 	-- Intramuscular
+																	at0249]	-- Subcutâneo
+																}
+															}
+														}
+													}
+													ELEMENT[at0008] occurrences matches {0..1} matches {	-- Regularidade do uso
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0028, 	-- regular
+																	at0029]	-- ocasional
+																}
+															}
+														}
+													}
+													ELEMENT[at0246] occurrences matches {0..1} matches {	-- Consumo da substância desde
+														value matches {
+															DV_DURATION matches {*}
+														}
+													}
+													ELEMENT[at0247] occurrences matches {0..1} matches {	-- Interrupção
+														value matches {
+															DV_DATE matches {
+																value matches {yyyy-??-??}
+															}
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													CLUSTER[at0030] occurrences matches {0..1} matches {	-- Consumo
+														items cardinality matches {0..*; unordered} matches {
+															ELEMENT[at0254] occurrences matches {0..1} matches {	-- Consumo médio
+																value matches {
+																	C_DV_QUANTITY <
+																		property = <[openehr::128]>
+																		list = <
+																			["1"] = <
+																				units = <"Diário">
+																			>
+																			["2"] = <
+																				units = <"Semanal">
+																			>
+																			["3"] = <
+																				units = <"Mensal">
+																			>
+																			["4"] = <
+																				units = <"Anual">
+																			>
+																		>
+																	>
+																}
+															}
+															ELEMENT[at0033] occurrences matches {0..1} matches {	-- Consumo médio semanal
+																name matches {
+																	DV_TEXT matches {*}
+																}
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0009] occurrences matches {0..1} matches {	-- Consumo médio diário
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0034] occurrences matches {0..1} matches {	-- Consumo máximo diário
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0245] occurrences matches {0..1} matches {	-- Frequência
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+														}
+													}
+													ELEMENT[at0014] occurrences matches {0..1} matches {	-- Observações
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+												}
+											}
+											CLUSTER[at0016] occurrences matches {0..1} matches {	-- Tentativas anteriores de interrupção do uso da droga
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0017] occurrences matches {0..1} matches {	-- Local da Terapia de Remissão
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0019] occurrences matches {0..1} matches {	-- Data da tentativa
+														value matches {
+															DV_DATE matches {
+																value matches {yyyy-??-??}
+															}
+														}
+													}
+													ELEMENT[at0020] occurrences matches {0..1} matches {	-- Descrição da tentativa de remissão
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													CLUSTER[at0018] occurrences matches {0..1} matches {	-- Intervenção terapêutica
+														items cardinality matches {0..*; unordered} matches {
+															ELEMENT[at0022] occurrences matches {0..1} matches {	-- Droga
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0023] occurrences matches {0..1} matches {	-- Uso Adequado
+																value matches {
+																	DV_BOOLEAN matches {
+																		value matches {True, False}
+																	}
+																}
+															}
+															ELEMENT[at0024] occurrences matches {0..1} matches {	-- Observações
+																value matches {
+																	DV_TEXT matches {*}
+																}
+															}
+															ELEMENT[at0021] occurrences matches {0..1} matches {	-- Resultado
+																value matches {
+																	DV_CODED_TEXT matches {
+																		defining_code matches {
+																			[local::
+																			at0035, 	-- Insucesso
+																			at0036, 	-- Remissão do uso
+																			at0037]	-- Recidiva após remissão
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"ICD10_1998", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Substance use">
+					description = <"For recording substances used by the person">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Substance name">
+					description = <"Name of substance being used by person">
+				>
+				["at0005"] = <
+					text = <"Status">
+					description = <"The person's status as a substance user">
+				>
+				["at0006"] = <
+					text = <"Details of use">
+					description = <"Details about the use of the substance">
+				>
+				["at0007"] = <
+					text = <"Form">
+					description = <"Form or type of substance">
+				>
+				["at0008"] = <
+					text = <"Regularity of use">
+					description = <"Regularity of use">
+				>
+				["at0009"] = <
+					text = <"Average daily consumption">
+					description = <"Average amount of substance used in a day">
+				>
+				["at0014"] = <
+					text = <"Comment">
+					description = <"Other information on substance use">
+				>
+				["at0016"] = <
+					text = <"Previous attempts to cease use">
+					description = <"Details about previous attempts to cease using substance">
+				>
+				["at0017"] = <
+					text = <"Location">
+					description = <"Place where attempt to cease use occurred eg home or name of institution">
+				>
+				["at0018"] = <
+					text = <"Therapeutic intervention">
+					description = <"Use of therapeutic agent to assist in ceasing use of substance">
+				>
+				["at0019"] = <
+					text = <"Date of attempt">
+					description = <"Date of attempt">
+				>
+				["at0020"] = <
+					text = <"Description of attempt">
+					description = <"Description of details of attempt">
+				>
+				["at0021"] = <
+					text = <"Outcome">
+					description = <"Outcome of attempt to cease use">
+				>
+				["at0022"] = <
+					text = <"Agent">
+					description = <"Name of agent used">
+				>
+				["at0023"] = <
+					text = <"Used optimally">
+					description = <"Was the agent used optimally?">
+				>
+				["at0024"] = <
+					text = <"Comment">
+					description = <"Comment about the effect of the agent on the attempt">
+				>
+				["at0025"] = <
+					text = <"Never used">
+					description = <"Person has never used the substance">
+				>
+				["at0026"] = <
+					text = <"Ex-user">
+					description = <"Person has used substance in the past but is currently not using it">
+				>
+				["at0027"] = <
+					text = <"Current user">
+					description = <"Person is currently using substance">
+				>
+				["at0028"] = <
+					text = <"Regular">
+					description = <"Regular use">
+				>
+				["at0029"] = <
+					text = <"Occasional">
+					description = <"Occasional use">
+				>
+				["at0030"] = <
+					text = <"Consumption">
+					description = <"Amount of substance">
+				>
+				["at0033"] = <
+					text = <"Average weekly consumption">
+					description = <"Average amount of substance used in a week">
+				>
+				["at0034"] = <
+					text = <"Maximal daily consumption">
+					description = <"Maximal amount of substance used in a day">
+				>
+				["at0035"] = <
+					text = <"Failed">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Successful ">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Successful but relapsed">
+					description = <"*">
+				>
+				["at0238"] = <
+					text = <"Administration">
+					description = <"The method of administration of the substance.">
+				>
+				["at0239"] = <
+					text = <"Smoke">
+					description = <"*">
+				>
+				["at0240"] = <
+					text = <"Injest">
+					description = <"*">
+				>
+				["at0241"] = <
+					text = <"Inject">
+					description = <"*">
+				>
+				["at0242"] = <
+					text = <"Buccal">
+					description = <"*">
+				>
+				["at0243"] = <
+					text = <"Inhale">
+					description = <"*">
+				>
+				["at0244"] = <
+					text = <"Absorb">
+					description = <"*">
+				>
+				["at0245"] = <
+					text = <"Frequencia">
+					description = <"*">
+				>
+				["at0246"] = <
+					text = <"Consumo da substância desde">
+					description = <"**(en)">
+				>
+				["at0247"] = <
+					text = <"Interrupção">
+					description = <"**(en)">
+				>
+				["at0248"] = <
+					text = <"*Intramuscular(en)">
+					description = <"**(en)">
+				>
+				["at0249"] = <
+					text = <"*Subcutâneo(en)">
+					description = <"**(en)">
+				>
+				["at0250"] = <
+					text = <"*Depressores da Atividade do SNC (álcool, benzodiazepínicos, barbituricos, opiáceos e solventes).(en)">
+					description = <"**(en)">
+				>
+				["at0251"] = <
+					text = <"*Estimulantes da Atividade do SNC (cocaína, anfetaminas, nicotina e cafeína)(en)">
+					description = <"**(en)">
+				>
+				["at0252"] = <
+					text = <"*Perturbadores da Atividade do SNC (cannabis e derivados, LSD25, ecstasy e anticolinérgicos)(en)">
+					description = <"**(en)">
+				>
+				["at0254"] = <
+					text = <"Consumo médio">
+					description = <"**(en)">
+				>
+				["at0255"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Substâncias psicoativas">
+					description = <"*For recording substances used by the person">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Substância psicoativa">
+					description = <"Nome da substância psicoativa">
+				>
+				["at0005"] = <
+					text = <"Uso de substâncias psicoativas">
+					description = <"Uso da substância psicoativa">
+				>
+				["at0006"] = <
+					text = <"Detalhes sobre o uso da substância psicoativa">
+					description = <"Detalhes sobre o uso da substância psicoativa">
+				>
+				["at0007"] = <
+					text = <"Categoria ou tipo da substância psicoativa">
+					description = <"Forma ou tipo da substância psicoativa">
+				>
+				["at0008"] = <
+					text = <"Regularidade do uso">
+					description = <"Regularidade do uso">
+				>
+				["at0009"] = <
+					text = <"Consumo médio diário">
+					description = <"Consumo médio diário da substância psicoativa">
+				>
+				["at0014"] = <
+					text = <"Observações">
+					description = <"Outras informações relevantes sobre o uso da substância psicoativa">
+				>
+				["at0016"] = <
+					text = <"Tentativas anteriores de interrupção do uso da droga">
+					description = <"Tentativas anteriores de interrupção do uso da droga">
+				>
+				["at0017"] = <
+					text = <"Local da Terapia de Remissão">
+					description = <"Localização onde foi feita a tentativa de remissão de uso da substância psicoativa">
+				>
+				["at0018"] = <
+					text = <"Intervenção terapêutica">
+					description = <"Uso de agente terapêuticos na remissão de uso da substância psicoativa">
+				>
+				["at0019"] = <
+					text = <"Data da tentativa">
+					description = <"Data da tentativa">
+				>
+				["at0020"] = <
+					text = <"Descrição da tentativa de remissão">
+					description = <"Descrição da tentativa de remissão">
+				>
+				["at0021"] = <
+					text = <"Resultado">
+					description = <"Resutado da tentativa de remissão">
+				>
+				["at0022"] = <
+					text = <"Droga">
+					description = <"Nome do agente terapêutico utilizado">
+				>
+				["at0023"] = <
+					text = <"Uso Adequado">
+					description = <"Uso adequado">
+				>
+				["at0024"] = <
+					text = <"Observações">
+					description = <"Comentário sobre o agente terapeutico na remissão">
+				>
+				["at0025"] = <
+					text = <"Nunca utilizou">
+					description = <"Pessoa nunca utilizou a substância">
+				>
+				["at0026"] = <
+					text = <"Usou no passado">
+					description = <"Utilizou a substância psicoativa no passado mas não utiliza mais">
+				>
+				["at0027"] = <
+					text = <"Em uso atualmente">
+					description = <"Pessoa usa atualmente a substância psicoativa">
+				>
+				["at0028"] = <
+					text = <"regular">
+					description = <"Uso regular">
+				>
+				["at0029"] = <
+					text = <"ocasional">
+					description = <"Uso ocasional">
+				>
+				["at0030"] = <
+					text = <"Consumo">
+					description = <"Quantidade consumida">
+				>
+				["at0033"] = <
+					text = <"Consumo médio semanal">
+					description = <"Consumo médio semanal">
+				>
+				["at0034"] = <
+					text = <"Consumo máximo diário">
+					description = <"Consumo máximo diário">
+				>
+				["at0035"] = <
+					text = <"Insucesso">
+					description = <"**">
+				>
+				["at0036"] = <
+					text = <"Remissão do uso">
+					description = <"**">
+				>
+				["at0037"] = <
+					text = <"Recidiva após remissão">
+					description = <"**">
+				>
+				["at0238"] = <
+					text = <"Administração">
+					description = <"Método de administração da substância psicoativa">
+				>
+				["at0239"] = <
+					text = <"Fumo">
+					description = <"**">
+				>
+				["at0240"] = <
+					text = <"Ingestão">
+					description = <"**">
+				>
+				["at0241"] = <
+					text = <"Endovenoso">
+					description = <"**">
+				>
+				["at0242"] = <
+					text = <"Oral">
+					description = <"**">
+				>
+				["at0243"] = <
+					text = <"Inalação">
+					description = <"**">
+				>
+				["at0244"] = <
+					text = <"Absorção">
+					description = <"**">
+				>
+				["at0245"] = <
+					text = <"Frequência">
+					description = <"**">
+				>
+				["at0246"] = <
+					text = <"Consumo da substância desde">
+					description = <"*">
+				>
+				["at0247"] = <
+					text = <"Interrupção">
+					description = <"*">
+				>
+				["at0248"] = <
+					text = <"Intramuscular">
+					description = <"*">
+				>
+				["at0249"] = <
+					text = <"Subcutâneo">
+					description = <"*">
+				>
+				["at0250"] = <
+					text = <"Depressores da Atividade do SNC (álcool, benzodiazepínicos, barbituricos, opiáceos e solventes).">
+					description = <"*">
+				>
+				["at0251"] = <
+					text = <"Estimulantes da Atividade do SNC (cocaína, anfetaminas, nicotina e cafeína)">
+					description = <"*">
+				>
+				["at0252"] = <
+					text = <"Perturbadores da Atividade do SNC (cannabis e derivados, LSD25, ecstasy e anticolinérgicos)">
+					description = <"*">
+				>
+				["at0254"] = <
+					text = <"Consumo médio">
+					description = <"*">
+				>
+				["at0255"] = <
+					text = <"Substâncias psicoativas">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0001"] = <
+					text = <"*New constraint(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["ac0001"] = <
+					text = <"CID-10">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_binding = <
+		["ICD10_1998"] = <
+			items = <
+				["ac0001"] = <http://terminology.zilics.com.br?terminologyId=ICD10_1998&groupId=F11_F19-F17>
+			>
+		>
+	>

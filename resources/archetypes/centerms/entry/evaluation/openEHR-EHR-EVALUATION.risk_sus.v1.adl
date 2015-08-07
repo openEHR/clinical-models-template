@@ -1,0 +1,215 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.risk_sus.v1
+
+concept
+	[at0000]	-- Evaluation of risk of condition
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"23/04/2006">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording the risk of a condition arising in the future">
+			use = <"">
+			keywords = <"assessment", ...>
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Para registrar os fatores de risco que o paciente apresenta de desenvolver uma condiçao clínica no futuro">
+			use = <"na avaliacao dos reiscos para prevençao e reduçao de dados">
+			keywords = <"avaliaçao", "risco", "fatores", "determinantes">
+			misuse = <"nao dev ser usado para avaliar estilos de vida">
+			copyright = <"*© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"0E3023C5B44DA58334D2D9D111D8DCE6">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Avaliaçao de fatores de risco
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *structure(en)
+				items cardinality matches {1..*; ordered} matches {
+					CLUSTER[at0012] occurrences matches {0..1} matches {	-- Avaliação de risco
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0013] occurrences matches {0..1} matches {	-- Condiçao
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0014] occurrences matches {0..1} matches {	-- Terminologia de estratificação de risco
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Justificativa da avaliaçao
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Relevancia do risco
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006, 	-- Insignificante
+									at0007, 	-- Muito baixo
+									at0008, 	-- Significante
+									at0009]	-- Alto
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_LIST[at0010] matches {	-- *List(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Cálculo do risco
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Evaluation of risk of condition">
+					description = <"Evaluation to indicate that there is, or is not, a significant risk of this subject of care having, now or in the future, a condition.">
+				>
+				["at0001"] = <
+					text = <"structure">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Significance of risk">
+					description = <"The likelihood that this person will develop this condition or suffer in this way in the future">
+				>
+				["at0004"] = <
+					text = <"Rationale">
+					description = <"Justification for this risk assessment">
+				>
+				["at0006"] = <
+					text = <"Not significant">
+					description = <"The person is not assessed at being at higher risk than the general population">
+				>
+				["at0007"] = <
+					text = <"Minimal significance">
+					description = <"The person may be of somewhat greater risk of developing the condition ">
+				>
+				["at0008"] = <
+					text = <"Significant">
+					description = <"The person is considered to be more likely to develop the condition than the general population">
+				>
+				["at0009"] = <
+					text = <"Highly significant">
+					description = <"The person is considered to be likely to develop the condition">
+				>
+				["at0010"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Risk calculation">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Avaliaçao de fatores de risco">
+					description = <"Avaliaçao da presença de riscos para o paciente ter ou apresentar um agravo ou doença no futuro.">
+				>
+				["at0001"] = <
+					text = <"*structure(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0003"] = <
+					text = <"Relevancia do risco">
+					description = <"probabilidade dessa pessoa desenvolver essa condiçao no futuro">
+				>
+				["at0004"] = <
+					text = <"Justificativa da avaliaçao">
+					description = <"Justificativa avaliaçao desse risco">
+				>
+				["at0006"] = <
+					text = <"Insignificante">
+					description = <"*The person is not assessed at being at higher risk than the general population(en)">
+				>
+				["at0007"] = <
+					text = <"Muito baixo">
+					description = <"*The person may be of somewhat greater risk of developing the condition (en)">
+				>
+				["at0008"] = <
+					text = <"Significante">
+					description = <"*The person is considered to be more likely to develop the condition than the general population(en)">
+				>
+				["at0009"] = <
+					text = <"Alto">
+					description = <"*The person is considered to be likely to develop the condition(en)">
+				>
+				["at0010"] = <
+					text = <"*List(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0011"] = <
+					text = <"Cálculo do risco">
+					description = <"Metrica utilizada">
+				>
+				["at0012"] = <
+					text = <"Avaliação de risco">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Condiçao">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Terminologia de estratificação de risco">
+					description = <"OID">
+				>
+			>
+		>
+	>

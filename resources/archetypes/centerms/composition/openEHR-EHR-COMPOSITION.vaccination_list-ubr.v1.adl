@@ -1,0 +1,134 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.vaccination_list-ubr.v1
+
+concept
+	[at0000]	-- Vaccination List
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2013-03-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a persistent a list of vaccinations that have been administered to the subject over time and to enable sharing of a vaccination list to other healthcare providers.">
+			use = <"Use to record a persistent list of all vaccinations administered to the subject.
+
+In local systems it is possible to generate a list of vaccinations by querying the database for all ACTION.medication archetypes that have been used to record vaccinations. However this list is useful to support exchange of a local vaccination list with other healthcare providers.">
+			keywords = <"vaccination", "immunisation", "list">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar uma lista persistente de vacinações que foram administradas ao sujeito ao longo do tempo, possibilitando o compartilhamento da lista de vacinação com outros prestadores de cuidados.">
+			use = <"Usr para registrar uma lista persistente de vacinações que foram administradas ao sujeito ao longo do tempo.
+
+Em sistemas locais é possível gerar a lista de vacinações através de uma consulta ao banco de dados de todos os arquétipos do tipo ACTION.medication que foram usados para registar vacinações. No entanto, esta lista é útil para suportar o compartilhamento de uma lista local de vacinações com outros prestadores de cuidados.">
+			keywords = <"vacinação", "imunização", "lista">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <"Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Sam Heard, Ocean Informatics, Australia", "Sistine Barretto-Daniels, Ocean Informatics, Australia">
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"8683E70325815E9B31FB0AB9F2CAD28F">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Lista de vacinação
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype ACTION[at0001] occurrences matches {0..*} matches {	-- Vacinas administradas
+				include
+					archetype_id/value matches {/openEHR-EHR-ACTION\.medication-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0002] occurrences matches {0..*} matches {	-- Vacinas excluídas
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.exclusion-medication-vaccine-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0003] occurrences matches {0..*} matches {	-- Ausência de informação
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0004] occurrences matches {0..*} matches {	-- Sumário do estado de imunização
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.vaccination_summary-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Vaccination List">
+					description = <"A persistent a list of vaccinations that have been administered to the subject over time, that may influence clinical decision-making and care provision.">
+				>
+				["at0001"] = <
+					text = <"Vaccinations Administered">
+					description = <"Details about vaccinations that have been administered to the subject.">
+				>
+				["at0002"] = <
+					text = <"Exclusion Statement">
+					description = <"Positive statement about the known exclusion of vaccination administration.">
+					comment = <"For example: \"No vaccinations have been administered\".">
+				>
+				["at0003"] = <
+					text = <"Absent Information">
+					description = <"Positive statement that no information is available about vaccine administration.">
+				>
+				["at0004"] = <
+					text = <"Vaccination summary">
+					description = <"Summary about immunization status concerning a given agent.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lista de vacinação">
+					description = <"Uma lista persistente de vacinações que foram administradas ao sujeito ao longo do tempo, a qual pode influenciar a tomada de decisões clínicas ou a prestação de cuidados.">
+				>
+				["at0001"] = <
+					text = <"Vacinas administradas">
+					description = <"Detalhes sobre vacinas que foram administradas ao sujeito.">
+				>
+				["at0002"] = <
+					text = <"Vacinas excluídas">
+					description = <"Afirmação que indica a exclusão da administração de determinadas vacinas.">
+					comment = <"*For example: \"No vaccinations have been administered\".(en)">
+				>
+				["at0003"] = <
+					text = <"Ausência de informação">
+					description = <"Afirmação que indica não haver informação disponível sobre a administração de vacinas.">
+				>
+				["at0004"] = <
+					text = <"Sumário do estado de imunização">
+					description = <"Sumário sobre o estado de imunização do sujeito relativamente a um determinado agente infeccioso.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,359 @@
+archetype
+    openEHR-EHR-OBSERVATION.household_conditions_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+
+description
+    original_author = <
+        ["email"] = <"xxx">
+        ["name"] = <"Zilics">
+        ["organisation"] = <"xxx">
+        ["date"] = <"xxx">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"__unknown__">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0051] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0022] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0023],
+                                                    2|[local::at0024],
+                                                    3|[local::at0025],
+                                                    4|[local::at0026],
+                                                    5|[local::at0027],
+                                                    6|[local::at0028],
+                                                    7|[local::at0029]
+                                                }
+                                            }
+                                            ELEMENT[at0031] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0032],
+                                                    2|[local::at0033]
+                                                }
+                                            }
+                                            ELEMENT[at0054] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_COUNT matches {
+                                                        magnitude matches {|1..30|}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0034] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0035],
+                                                    2|[local::at0036],
+                                                    3|[local::at0037]
+                                                }
+                                            }
+                                            ELEMENT[at0038] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0039],
+                                                    2|[local::at0040],
+                                                    3|[local::at0041],
+                                                    4|[local::at0042]
+                                                }
+                                            }
+                                            ELEMENT[at0043] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0044],
+                                                    2|[local::at0045],
+                                                    3|[local::at0046]
+                                                }
+                                            }
+                                            ELEMENT[at0047] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    1|[local::at0048],
+                                                    2|[local::at0049],
+                                                    3|[local::at0050]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0052] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0053] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Dados da Moradia">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Tipo de moradia">
+                    description = <"Descreve a moradia da familia">
+                >
+                ["at0005"] = <
+                    text = <"Aleitamento Materno">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Aleitamento Materno">
+                    description = <"Alimentação por leite materno. ">
+                >
+                ["at0007"] = <
+                    text = <"Exclusivo">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Misto">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Não amamenta">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Considerações Sobre Aleitamento Materno">
+                    description = <"Informações relativas ao aleitamento materno.">
+                >
+                ["at0011"] = <
+                    text = <"Desmame">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Idade de Início (Anos)">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Idade de Início (Meses)">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Introdução de Outros Alimentos">
+                    description = <"Informações relativas a introdução de outros alimentos.">
+                >
+                ["at0015"] = <
+                    text = <"Item de Conclusão da Alimentação">
+                    description = <"Conclusão sobre a alimentação.">
+                >
+                ["at0016"] = <
+                    text = <"Adequada ">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Hipoprotéica">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Hiperprotéica">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Hipocalórica ">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Hipercalórica ">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Hipovitamínica">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Tipo de Moradia">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Tijolo/Alvenaria">
+                    description = <"parede construída com tijolo
+(cimento, cerâmica, etc.)">
+                >
+                ["at0024"] = <
+                    text = <"Adobe">
+                    description = <"parede construída com adobe (bloco
+semelhante ao tijolo, preparado com argila crua, seca ao
+sol) adobão e semelhantes">
+                >
+                ["at0025"] = <
+                    text = <"Taipa revestida">
+                    description = <"parede de taipa (confeccionada com terra úmida ou molhada) com o interior do domicílio completamente revestido por reboco ou emboço (primeira camada de argamassa)">
+                >
+                ["at0026"] = <
+                    text = <"Taipa não revestida">
+                    description = <"parede de taipa sem revestimento">
+                >
+                ["at0027"] = <
+                    text = <"Madeira">
+                    description = <"parede de madeira">
+                >
+                ["at0028"] = <
+                    text = <"Material aproveitado">
+                    description = <"materiais impróprios para
+construção, como papelão, plástico, lona, palha, flandres,
+etc">
+                >
+                ["at0029"] = <
+                    text = <"Outros">
+                    description = <"Materiais apropriados para construção, como
+pedra, concreto, etc">
+                >
+                ["at0030"] = <
+                    text = <"Número de Cômodos ou Peças do Domicílio">
+                    description = <"Cômodos ou
+peças são “todos os compartimentos integrantes do
+domicílio, inclusive banheiro e cozinha, separados por
+paredes, e os existentes na parte externa do prédio,
+desde que constituam parte integrante do domicílio, com
+exceção de corredores, alpendres, varandas abertas e
+outros compartimentos utilizados para fins não
+residenciais como garagens, depósitos etc.” (BRASIL,
+1994).">
+                >
+                ["at0031"] = <
+                    text = <"Energia Elétrica">
+                    description = <"Energia Elétrica do Domicílio
+">
+                >
+                ["at0032"] = <
+                    text = <"Sim">
+                    description = <"mesmo
+que o fornecimento não seja contínuo, ou que a instalação não seja regularizada (ligação clandestina,
+“gato”, “gambiarra”)">
+                >
+                ["at0033"] = <
+                    text = <"Não">
+                    description = <"não possui energia elétrica">
+                >
+                ["at0034"] = <
+                    text = <"Destino do Lixo">
+                    description = <"Destino dado ao lixo do
+domicílio.">
+                >
+                ["at0035"] = <
+                    text = <"Coletado">
+                    description = <"por serviço, empresa pública ou particular">
+                >
+                ["at0036"] = <
+                    text = <"Queimado ou Enterrado">
+                    description = <"Lixo é queimado ou enterrado">
+                >
+                ["at0037"] = <
+                    text = <"Jogado a céu aberto">
+                    description = <"Jogado a céu aberto">
+                >
+                ["at0038"] = <
+                    text = <"Tratamento de Água">
+                    description = <"Tratamento da água feito continuamente no domicílio.
+Não considerar o tratamento da água realizado pela
+empresa fornecedora.">
+                >
+                ["at0039"] = <
+                    text = <"Filtração">
+                    description = <"Água fervida ">
+                >
+                ["at0040"] = <
+                    text = <"Fervura">
+                    description = <"Água fervida">
+                >
+                ["at0041"] = <
+                    text = <"Cloração">
+                    description = <"Utilizado cloro na água">
+                >
+                ["at0042"] = <
+                    text = <"Sem tratamento">
+                    description = <"assinalar essa opção quando não for escolhida nenhuma das alternativas anteriores">
+                >
+                ["at0043"] = <
+                    text = <"Abastecimento de Água">
+                    description = <"Registrar a origem da água utilizada no domicílio, de acordo com a classificação do IBGE (BRASIL, 1994).">
+                >
+                ["at0044"] = <
+                    text = <"Rede Pública">
+                    description = <"água proveniente
+de uma rede geral de abastecimento, no domicílio ou no peridomicílio">
+                >
+                ["at0045"] = <
+                    text = <"Poço ou Nascente">
+                    description = <"água proveniente de poço ou nascente próprios">
+                >
+                ["at0046"] = <
+                    text = <"Outros">
+                    description = <"água de chuva, carro-pipa, ou apanhada em fonte pública, poço ou bica, fora do domicílio ou peridomicílio">
+                >
+                ["at0047"] = <
+                    text = <"Destino de Fezes e Urina/ Esgotamento Sanitário">
+                    description = <"Destino de fezes e urina/ Esgotamento sanitário">
+                >
+                ["at0048"] = <
+                    text = <"Rede Pública">
+                    description = <"fezes e urina são canalizadas para o
+sistema de esgoto do município">
+                >
+                ["at0049"] = <
+                    text = <"Fossa">
+                    description = <"qualquer tipo de fossa">
+                >
+                ["at0050"] = <
+                    text = <"Céu Aberto">
+                    description = <"fezes e urina são despejadas no quintal, na rua, em um riacho">
+                >
+                ["at0051"] = <
+                    text = <"Situação da Moradia e Saneamento/Domicílio">
+                    description = <"*">
+                >
+                ["at0052"] = <
+                    text = <"Outras Informações">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Acesso individual à escova de dentes e pasta?">
+                    description = <"*">
+                >
+                ["at0054"] = <
+                    text = <"Número de Cômodos ou Peças do Domícilio">
+                    description = <"*">
+                >
+            >
+        >
+    >

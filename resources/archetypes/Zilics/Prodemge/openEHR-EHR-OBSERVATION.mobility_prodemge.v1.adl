@@ -1,0 +1,157 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.mobility_prodemge.v1
+
+concept
+	[at0000]	-- Mobilidade
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Mobilidade
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Quedas no Último Ano
+										value matches {
+											1|[local::at0005], 	-- Não
+											2|[local::at0006]  	-- Número de Quedas
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Número de Quedas
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Motivo da Queda
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									CLUSTER[at0009] occurrences matches {0..1} matches {	-- Repercussão da Queda
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Comprometimento na Mobilidade Após a Queda
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Fraturas
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Limitação
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Incapacidade
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Mobilidade">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Quedas no Último Ano">
+					description = <"Anotar se houve quedas no último ano. ">
+				>
+				["at0005"] = <
+					text = <"Não">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Número de Quedas">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Número de Quedas">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Motivo da Queda">
+					description = <"Motivo da queda.">
+				>
+				["at0009"] = <
+					text = <"Repercussão da Queda">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Fraturas">
+					description = <"Anotar se ocorreu fraturas nas quedas. ">
+				>
+				["at0012"] = <
+					text = <"Limitação">
+					description = <"Anotar se ocorreu limitação após as quedas. ">
+				>
+				["at0013"] = <
+					text = <"Incapacidade">
+					description = <"Anotar se ocorreu incapacidade após as quedas.">
+				>
+				["at0014"] = <
+					text = <"Comprometimento na Mobilidade Após a Queda">
+					description = <"Anotar se houve comprometimento na mobilidade após a queda. ">
+				>
+			>
+		>
+	>

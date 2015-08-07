@@ -1,0 +1,160 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_previous_clinical_history.v1ao
+
+concept
+	[at0000]	-- História Pregressa
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- História Pregressa
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_LIST[at0003] matches {	-- *List(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Uso de drogas
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Problemas Respiratórios
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Cardiovascular
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Diabetes
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"História Pregressa">
+					description = <"**(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0011"] = <
+					text = <"Uso de drogas">
+					description = <"**(pt)">
+				>
+				["at0012"] = <
+					text = <"Cardiovascular">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"Problemas Respiratórios">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"Diabetes">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"História Pregressa">
+					description = <"**(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0011"] = <
+					text = <"Uso de drogas">
+					description = <"**(pt)">
+				>
+				["at0012"] = <
+					text = <"Cardiovascular">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"Problemas Respiratórios">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"Diabetes">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

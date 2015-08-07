@@ -1,0 +1,329 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_trauma.v1ao
+
+concept
+	[at0000]	-- Traumas
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Traumas
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Atropelamento
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Queda de Altura
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Agressões
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Afogamento
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Choque
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comprometimento da Coluna Vertebral
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Perfuração no Peito, Abdômen e Cabeça
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Traumatismo Crânio-encefálico
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Politrauma
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- FAF - Ferimento Por Arma de Fogo
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- FAB - Ferimento Por Arma Branca
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Queimadura
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Queimadura
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Área afetada
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::507]>
+														list = <
+															["1"] = <
+																units = <"%">
+																magnitude = <|0.0..100.0|>
+																precision = <|0|>
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Com Comprometimento da Face
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Traumas">
+					description = <"Traumas">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Politrauma">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Traumatismo Crânio-encefálico">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"FAB - Ferimento Por Arma Branca">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"FAF - Ferimento Por Arma de Fogo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Atropelamento">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Agressões">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Afogamento">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Choque">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Comprometimento da Coluna Vertebral">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Queda de Altura">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Área afetada">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Perfuração no Peito, Abdômen e Cabeça">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Queimadura">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Queimadura">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Com Comprometimento da Face">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Traumas">
+					description = <"Traumas">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Politrauma">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Traumatismo Crânio-encefálico">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"FAB (Ferimento Por Arma Branca)">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"FAF (Ferimento Por Arma de Fogo)">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Atropelamento">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Agressões">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Afogamento">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Choque">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Comprometimento da Coluna Vertebral">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Queda de Altura">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Área afetada">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Perfuração no Peito, Abdômen e Cabeça">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"Queimadura">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"Queimadura">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"Com Comprometimento da Face">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

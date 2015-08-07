@@ -1,0 +1,3 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0012]=cardiovascular
+/data[at0001]/events[at0002]/data[at0003]/items[at0013]=respiratoryProblems
+/data[at0001]/events[at0002]/data[at0003]/items[at0014]=diabetes

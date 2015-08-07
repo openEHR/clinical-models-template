@@ -1,0 +1,160 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.personal_history-ubr.v1
+
+concept
+	[at0000]	-- Personal history
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Fátima Almeida">
+		["organisation"] = <"Critical Software">
+		["email"] = <"fatima.c.almeida@criticalsoftware.com">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar uma lista de informação persistente sobre a história clínica pessoal de um paciente.">
+			use = <"Usar para registrar uma lista de informação persistente sobre a história clínica pessoal de um paciente.">
+			keywords = <"história", ...>
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Record a persistent list of information concerning the patient's personal clinical history.">
+			use = <"Use for recording a persistent list of information concerning the patient's personal clinical history.">
+			keywords = <"history", ...>
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"9C09136AF0E1080833CA82B40E22811B">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- História pessoal
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype OBSERVATION[at0001] occurrences matches {0..*} matches {	-- História médica e cirúrgica
+				include
+					archetype_id/value matches {/openEHR-EHR-OBSERVATION\.reported_medical_history(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0002] occurrences matches {0..*} matches {	-- Problemas passados
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem_diagnosis-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0003] occurrences matches {0..*} matches {	-- Exclusão de problemas passados
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.exclusion-problem_diagnosis-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0004] occurrences matches {0..*} matches {	-- História ginecológica e obstétrica - Sumário obstétrico
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.obstetric_summary(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0005] occurrences matches {0..*} matches {	-- História ginecológica e obstétrica - Gravidez
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.pregnancy-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0006] occurrences matches {0..*} matches {	-- História social
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.social_summary-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0007] occurrences matches {0..*} matches {	-- Ausência de informação
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"História pessoal">
+					description = <"Uma lista de informação persistente e gerenciado relacionada com a história clínica pessoal de um paciente.">
+				>
+				["at0001"] = <
+					text = <"História médica e cirúrgica">
+					description = <"A história médica e cirúrgica.">
+				>
+				["at0002"] = <
+					text = <"Problemas passados">
+					description = <"Registro estruturado de problemas passados.">
+				>
+				["at0003"] = <
+					text = <"Exclusão de problemas passados">
+					description = <"Exlusão de um problema passado.">
+				>
+				["at0004"] = <
+					text = <"História ginecológica e obstétrica - Sumário obstétrico">
+					description = <"Sumário obstétrico.">
+				>
+				["at0005"] = <
+					text = <"História ginecológica e obstétrica - Gravidez">
+					description = <"Gravidez.">
+				>
+				["at0006"] = <
+					text = <"História social">
+					description = <"História social.">
+				>
+				["at0007"] = <
+					text = <"Ausência de informação">
+					description = <"Registro da ausência de informação.">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Personal history">
+					description = <"A persistent and managed list of information concerning the patient's personal clinical history.">
+				>
+				["at0001"] = <
+					text = <"Medical and surgical history">
+					description = <"Medical ad surgical history of the patient">
+				>
+				["at0002"] = <
+					text = <"Past problems">
+					description = <"Structured recording of past problems.">
+				>
+				["at0003"] = <
+					text = <"Exclusion of past problem">
+					description = <"Exclusion of a past problem.">
+				>
+				["at0004"] = <
+					text = <"Gynecologic and obstetric history - Obstetric summary">
+					description = <"Obstetric summary">
+				>
+				["at0005"] = <
+					text = <"Gynecologic and obstetric history ">
+					description = <"Pregnancy">
+				>
+				["at0006"] = <
+					text = <"Social history">
+					description = <"Social history">
+				>
+				["at0007"] = <
+					text = <"Absence of information">
+					description = <"Recording absence of information">
+				>
+			>
+		>
+	>

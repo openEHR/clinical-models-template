@@ -1,0 +1,918 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.admission_hsl.v1
+
+concept
+	[at0000]	-- Sprejem pacienta
+language
+	original_language = <[ISO_639-1::sl]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"John Doe">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Uroš Rajkovič">
+		["organisation"] = <"Faculty of organizational sciences, University of Maribor, Slovenia">
+		["email"] = <"uros.rajkovic@fov.uni-mb.si">
+		["date"] = <"19.10.2010">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To document elements of patient admittance as documented in nursing care">
+			use = <"In nursing care">
+			keywords = <"admittance", "nursing care">
+			misuse = <"- For financial pourposes (administative patient admittance)
+- For medical pourposes (physician's document on patient admittance)
+- For documenting patient's health status">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*Za beleženje elementov sprejema pacienta na klinični oddelek za potrebe zdravstvene nege">
+			use = <"*V zdravstveni negi">
+			keywords = <"sprejem pacienta", "sprejem", "zdravstvena bega">
+			misuse = <"*- za finančne potrebe
+- za medicinske namene
+- za dokumentiranje stanja pacienta">
+		>
+		["sl"] = <
+			language = <[ISO_639-1::sl]>
+			purpose = <"Za beleženje elementov sprejema pacienta na klinični oddelek za potrebe zdravstvene nege">
+			use = <"V zdravstveni negi">
+			keywords = <"sprejem pacienta", "sprejem", "zdravstvena bega">
+			misuse = <"- za finančne potrebe
+- za medicinske namene
+- za dokumentiranje stanja pacienta">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"8964B6950CD151A3461FD49304FE854D">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Sprejem pacienta
+		data matches {
+			ITEM_TREE[at0003] matches {	-- *Tree(sl)
+				items cardinality matches {5..*; unordered} matches {
+					ELEMENT[at0005] matches {	-- Tip sprejema
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006, 	-- Urgenten
+									at0007]	-- Planiran
+								}
+							}
+						}
+					}
+					ELEMENT[at0037] occurrences matches {0..1} matches {	-- Datum in čas 
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0065] matches {	-- *New element(sl)
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0066, 	-- *Residência(sl)
+									at0067, 	-- *Ponto Atendimento(sl)
+									at0068, 	-- *Consultório(sl)
+									at0069, 	-- *Centro de Diagnóstico por Imagem(sl)
+									at0070, 	-- *Centro de Oncologia(sl)
+									at0071, 	-- *Transferência entre Hospitais(sl)
+									at0072, 	-- *Transferência entre clinícas(sl)
+									at0073, 	-- *Outros Serviços Externos(sl)
+									at0074]	-- *Outros Serviços Internos(sl)
+								}
+							}
+						}
+					}
+					ELEMENT[at0001] matches {	-- *New element *(en)
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0002, 	-- *Radiologia
+									at0004, 	-- *Tomografia
+									at0008, 	-- *Ressonância Magnética
+									at0029, 	-- *Ultrassonografia
+									at0030, 	-- *Endoscopia / Colonoscopia
+									at0031, 	-- *Laboratório
+									at0032, 	-- *Medicina Nuclear
+									at0033]	-- *CIGI - Centro de Intervenção Guiado por Imagens
+								}
+							}
+						}
+					}
+					ELEMENT[at0039] occurrences matches {0..1} matches {	-- Institucija
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {	-- Prevoz
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0017, 	-- Peš
+									at0018, 	-- Invalidski voziček
+									at0019, 	-- Nosila)
+									at0020, 	-- Otroški sedež
+									at0021, 	-- Reševalni avto
+									at0022, 	-- Helikopter
+									at0023]	-- Letalo
+								}
+							}
+						}
+					}
+					ELEMENT[at0051] occurrences matches {0..1} matches {	-- *New element(sl)
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0052, 	-- *Stretcher(sl)
+									at0053, 	-- *Wheelchair(sl)
+									at0054, 	-- *Ambulating (sl)
+									at0055, 	-- *Bedridden(sl)
+									at0057, 	-- *Crutch(sl)
+									at0058, 	-- *Walker(sl)
+									at0059]	-- *Someone else's help(sl)
+								}
+							}
+						}
+					}
+					ELEMENT[at0060] matches {	-- *New element(sl)
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0062, 	-- *Lives with others(sl)
+									at0063, 	-- *Lives alone(sl)
+									at0064]	-- *Lives in a "rest house"(sl)
+								}
+							}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {	-- Opombe
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0075] matches {	-- *New element(sl)
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0077] occurrences matches {0..1} matches {	-- *New element(sl)
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					CLUSTER[at0043] occurrences matches {0..1} matches {	-- *New cluster(sl)
+						items cardinality matches {2..*; unordered} matches {
+							ELEMENT[at0044] matches {	-- *New element(sl)
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0050, 	-- *Patient(sl)
+											at0049]	-- *Accompanying(sl)
+										}
+									}
+								}
+							}
+							ELEMENT[at0045] matches {	-- *New element(sl)
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0046, 	-- *Satisfactory: Communicates and understands the addressed content(sl)
+											at0047, 	-- *Limited by cultural, social, language or psycho-emotional.(sl)
+											at0048]	-- *Not applicable.(sl)
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Admittance of a patient, nursing care">
+					description = <"For use in documenting process of nursing care when patient is admitted to a hospital ward.">
+				>
+				["at0001"] = <
+					text = <"*New element *(en)">
+					description = <"**">
+				>
+				["at0002"] = <
+					text = <"*Radiologia">
+					description = <"*Paciente veio da Radiologia">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"*Tomografia">
+					description = <"*Paciente veio da Tomografia">
+				>
+				["at0005"] = <
+					text = <"Admission type">
+					description = <"Type of admittance (urgency).">
+				>
+				["at0006"] = <
+					text = <"Unplanned">
+					description = <"Urgent, emergency">
+				>
+				["at0007"] = <
+					text = <"Planned">
+					description = <"Planned admittance">
+				>
+				["at0008"] = <
+					text = <"*Ressonância Magnética">
+					description = <"*Paciente veio da Ressonância Magnética">
+				>
+				["at0016"] = <
+					text = <"Transportation">
+					description = <"Type of transportation.">
+				>
+				["at0017"] = <
+					text = <"On foot">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Wheelchair">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Stretcher">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Car seat">
+					description = <"car seat or a carrycot (with a handle to carry a baby)">
+				>
+				["at0021"] = <
+					text = <"Rescue van">
+					description = <"Emergency transportation - Ambulance">
+				>
+				["at0022"] = <
+					text = <"Rescue helicopter">
+					description = <"Emergency transportation - Helicopter">
+				>
+				["at0023"] = <
+					text = <"Emergency flight">
+					description = <"Emergency transportation - Airplane">
+				>
+				["at0027"] = <
+					text = <"Comments">
+					description = <"Comments.">
+				>
+				["at0029"] = <
+					text = <"*Ultrassonografia">
+					description = <"*Paciente veio da Ultrassonografia">
+				>
+				["at0030"] = <
+					text = <"*Endoscopia / Colonoscopia">
+					description = <"**">
+				>
+				["at0031"] = <
+					text = <"*Laboratório">
+					description = <"**">
+				>
+				["at0032"] = <
+					text = <"*Medicina Nuclear">
+					description = <"**">
+				>
+				["at0033"] = <
+					text = <"*CIGI - Centro de Intervenção Guiado por Imagens">
+					description = <"**">
+				>
+				["at0037"] = <
+					text = <"Datetime of admission">
+					description = <"The date and time of admission.">
+				>
+				["at0039"] = <
+					text = <"Institution">
+					description = <"Institution from where the patient is being transferred.">
+				>
+				["at0043"] = <
+					text = <"Informer">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Informer Person">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Comprehension degree">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Satisfactory: Communicates and understands the addressed content">
+					description = <"Communicates and understands the addressed content">
+				>
+				["at0047"] = <
+					text = <"Limited by cultural, social, language or psycho-emotional.">
+					description = <"Limited by cultural, social, language or psycho-emotional.">
+				>
+				["at0048"] = <
+					text = <"Not applicable.">
+					description = <"Not applicable.">
+				>
+				["at0049"] = <
+					text = <"Accompanying">
+					description = <"Accompanying">
+				>
+				["at0050"] = <
+					text = <"Patient">
+					description = <"Patient">
+				>
+				["at0051"] = <
+					text = <"Locomotion">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Stretcher">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Wheelchair">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Ambulating ">
+					description = <"Does not have difficulty walking and needs no support">
+				>
+				["at0055"] = <
+					text = <"Bedridden">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Crutch">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Walker">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Someone else's help">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Habitation">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Lives with others">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Lives alone">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Lives in a \"rest house\"">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Origin">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Residência">
+					description = <"Residência">
+				>
+				["at0067"] = <
+					text = <"Ponto Atendimento">
+					description = <"Ponto Atendimento">
+				>
+				["at0068"] = <
+					text = <"Consultório">
+					description = <"Consultório">
+				>
+				["at0069"] = <
+					text = <"Centro de Diagnóstico por Imagem">
+					description = <"Centro de Diagnóstico por Imagem">
+				>
+				["at0070"] = <
+					text = <"Centro de Oncologia">
+					description = <"Centro de Oncologia">
+				>
+				["at0071"] = <
+					text = <"Transferência entre Hospitais">
+					description = <"Transferência entre Hospitais">
+				>
+				["at0072"] = <
+					text = <"Transferência entre clinícas">
+					description = <"Transferência entre clinícas">
+				>
+				["at0073"] = <
+					text = <"Outros Serviços Externos">
+					description = <"Outros Serviços Externos">
+				>
+				["at0074"] = <
+					text = <"Outros Serviços Internos">
+					description = <"Outros Serviços Internos">
+				>
+				["at0075"] = <
+					text = <"Acompanied">
+					description = <"Persons accompanying the patient.">
+				>
+				["at0077"] = <
+					text = <"Accompanied by">
+					description = <"Persons accompanying the patient.">
+				>
+			>
+		>
+		["sl"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sprejem pacienta">
+					description = <"Sprejem pacienta na hospitalni oddelek">
+				>
+				["at0001"] = <
+					text = <"*New element *(en)">
+					description = <"**">
+				>
+				["at0002"] = <
+					text = <"*Radiologia">
+					description = <"*Paciente veio da Radiologia">
+				>
+				["at0003"] = <
+					text = <"*Tree(sl)">
+					description = <"*@ internal @(sl)">
+				>
+				["at0004"] = <
+					text = <"*Tomografia">
+					description = <"*Paciente veio da Tomografia">
+				>
+				["at0005"] = <
+					text = <"Tip sprejema">
+					description = <"Tip sperejema">
+				>
+				["at0006"] = <
+					text = <"Urgenten">
+					description = <"Urgenten">
+				>
+				["at0007"] = <
+					text = <"Planiran">
+					description = <"Planirana premestitev pacienta">
+				>
+				["at0008"] = <
+					text = <"*Ressonância Magnética">
+					description = <"*Paciente veio da Ressonância Magnética">
+				>
+				["at0016"] = <
+					text = <"Prevoz">
+					description = <"Tip prevoza">
+				>
+				["at0017"] = <
+					text = <"Peš">
+					description = <"Pacient je prišel peš">
+				>
+				["at0018"] = <
+					text = <"Invalidski voziček">
+					description = <"Pacient je pripeljan z invalidskim vozičkom">
+				>
+				["at0019"] = <
+					text = <"Nosila)">
+					description = <"Pacient je prinešen z nosili">
+				>
+				["at0020"] = <
+					text = <"Otroški sedež">
+					description = <"Pacient je pripeljan z otroškim sedežkom ali lupinico">
+				>
+				["at0021"] = <
+					text = <"Reševalni avto">
+					description = <"Pacient je pripeljan z reševalcem">
+				>
+				["at0022"] = <
+					text = <"Helikopter">
+					description = <"Pacient je pripeljan s helikopterjem">
+				>
+				["at0023"] = <
+					text = <"Letalo">
+					description = <"Pacient je pripeljan z letalom">
+				>
+				["at0027"] = <
+					text = <"Opombe">
+					description = <"Morebitni dodatni podatki">
+				>
+				["at0029"] = <
+					text = <"*Ultrassonografia">
+					description = <"*Paciente veio da Ultrassonografia">
+				>
+				["at0030"] = <
+					text = <"*Endoscopia / Colonoscopia">
+					description = <"**">
+				>
+				["at0031"] = <
+					text = <"*Laboratório">
+					description = <"**">
+				>
+				["at0032"] = <
+					text = <"*Medicina Nuclear">
+					description = <"**">
+				>
+				["at0033"] = <
+					text = <"*CIGI - Centro de Intervenção Guiado por Imagens">
+					description = <"**">
+				>
+				["at0037"] = <
+					text = <"Datum in čas ">
+					description = <"Datum in čas sprejema">
+				>
+				["at0039"] = <
+					text = <"Institucija">
+					description = <"**(sl)">
+				>
+				["at0043"] = <
+					text = <"*New cluster(sl)">
+					description = <"**(sl)">
+				>
+				["at0044"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0045"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0046"] = <
+					text = <"*Satisfactory: Communicates and understands the addressed content(sl)">
+					description = <"*Communicates and understands the addressed content(sl)">
+				>
+				["at0047"] = <
+					text = <"*Limited by cultural, social, language or psycho-emotional.(sl)">
+					description = <"*Limited by cultural, social, language or psycho-emotional.(sl)">
+				>
+				["at0048"] = <
+					text = <"*Not applicable.(sl)">
+					description = <"*Not applicable.(sl)">
+				>
+				["at0049"] = <
+					text = <"*Accompanying(sl)">
+					description = <"*Accompanying(sl)">
+				>
+				["at0050"] = <
+					text = <"*Patient(sl)">
+					description = <"*Patient(sl)">
+				>
+				["at0051"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0052"] = <
+					text = <"*Stretcher(sl)">
+					description = <"**(sl)">
+				>
+				["at0053"] = <
+					text = <"*Wheelchair(sl)">
+					description = <"**(sl)">
+				>
+				["at0054"] = <
+					text = <"*Ambulating (sl)">
+					description = <"*Does not have difficulty walking and needs no support(sl)">
+				>
+				["at0055"] = <
+					text = <"*Bedridden(sl)">
+					description = <"**(sl)">
+				>
+				["at0057"] = <
+					text = <"*Crutch(sl)">
+					description = <"**(sl)">
+				>
+				["at0058"] = <
+					text = <"*Walker(sl)">
+					description = <"**(sl)">
+				>
+				["at0059"] = <
+					text = <"*Someone else's help(sl)">
+					description = <"**(sl)">
+				>
+				["at0060"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0062"] = <
+					text = <"*Lives with others(sl)">
+					description = <"**(sl)">
+				>
+				["at0063"] = <
+					text = <"*Lives alone(sl)">
+					description = <"**(sl)">
+				>
+				["at0064"] = <
+					text = <"*Lives in a \"rest house\"(sl)">
+					description = <"**(sl)">
+				>
+				["at0065"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0066"] = <
+					text = <"*Residência(sl)">
+					description = <"*Residência(sl)">
+				>
+				["at0067"] = <
+					text = <"*Ponto Atendimento(sl)">
+					description = <"*Ponto Atendimento(sl)">
+				>
+				["at0068"] = <
+					text = <"*Consultório(sl)">
+					description = <"*Consultório(sl)">
+				>
+				["at0069"] = <
+					text = <"*Centro de Diagnóstico por Imagem(sl)">
+					description = <"*Centro de Diagnóstico por Imagem(sl)">
+				>
+				["at0070"] = <
+					text = <"*Centro de Oncologia(sl)">
+					description = <"*Centro de Oncologia(sl)">
+				>
+				["at0071"] = <
+					text = <"*Transferência entre Hospitais(sl)">
+					description = <"*Transferência entre Hospitais(sl)">
+				>
+				["at0072"] = <
+					text = <"*Transferência entre clinícas(sl)">
+					description = <"*Transferência entre clinícas(sl)">
+				>
+				["at0073"] = <
+					text = <"*Outros Serviços Externos(sl)">
+					description = <"*Outros Serviços Externos(sl)">
+				>
+				["at0074"] = <
+					text = <"*Outros Serviços Internos(sl)">
+					description = <"*Outros Serviços Internos(sl)">
+				>
+				["at0075"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+				["at0077"] = <
+					text = <"*New element(sl)">
+					description = <"**(sl)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Admissão do Paciente pela enfermagem">
+					description = <"Para documentar o processo de admissão do paciente pela enfermagem">
+				>
+				["at0001"] = <
+					text = <"Procedência Centro Diagnóstico">
+					description = <"Só deve ser preenchido se paciente oriundo do Centro de Diagnósticos
+">
+				>
+				["at0002"] = <
+					text = <"Radiologia">
+					description = <"Paciente veio da Radiologia">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tomografia">
+					description = <"Paciente veio da Tomografia">
+				>
+				["at0005"] = <
+					text = <"Tipo de Admissão ">
+					description = <"Informa o tipo de admissão ">
+				>
+				["at0006"] = <
+					text = <"Urgência/Emergência">
+					description = <"Urgência / Emergência">
+				>
+				["at0007"] = <
+					text = <"Eletiva">
+					description = <"Eletiva">
+				>
+				["at0008"] = <
+					text = <"Ressonância Magnética">
+					description = <"Paciente veio da Ressonância Magnética">
+				>
+				["at0016"] = <
+					text = <"Meio de Transporte">
+					description = <"*Type of transportation.">
+				>
+				["at0017"] = <
+					text = <"Deambulando">
+					description = <"Paciente chega deambulando">
+				>
+				["at0018"] = <
+					text = <"Cadeira de Rodas">
+					description = <"Paciente chega de cadeira de rodas">
+				>
+				["at0019"] = <
+					text = <"Maca">
+					description = <"Paciente chega de maca">
+				>
+				["at0020"] = <
+					text = <"Carro">
+					description = <"Paciente chegou de carro">
+				>
+				["at0021"] = <
+					text = <"Ambulância">
+					description = <"Paciente chegou de Ambulancia">
+				>
+				["at0022"] = <
+					text = <"Helicóptero">
+					description = <"paciente chegou de helicóptero">
+				>
+				["at0023"] = <
+					text = <"Vôo de emergência">
+					description = <"Paciente chegou em vôo de emergência">
+				>
+				["at0027"] = <
+					text = <"Observações">
+					description = <"observações relevantes ">
+				>
+				["at0029"] = <
+					text = <"Ultrassonografia">
+					description = <"Paciente veio da Ultrassonografia">
+				>
+				["at0030"] = <
+					text = <"Endoscopia / Colonoscopia">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Laboratório">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Medicina Nuclear">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"CIGI - Centro de Intervenção Guiado por Imagens">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Data e hora da admissão">
+					description = <"*The date and time of admission.">
+				>
+				["at0039"] = <
+					text = <"Nome da Instituição de procedência ">
+					description = <"Só deve ser preenchido se paciente oriundo de outros serviços externos">
+				>
+				["at0043"] = <
+					text = <"Informante">
+					description = <"**">
+				>
+				["at0044"] = <
+					text = <"Pessoa que informou?">
+					description = <"**">
+				>
+				["at0045"] = <
+					text = <"Nível de compreensão">
+					description = <"**">
+				>
+				["at0046"] = <
+					text = <"Satisfatória: Comunica-se e compreende o conteúdo abordado.">
+					description = <"Comunica-se e compreende o conteúdo">
+				>
+				["at0047"] = <
+					text = <"Limitada por barreiras culturais, sociais, de idioma ou psico-emocional.">
+					description = <"Limitada por barreiras culturais, sociais, de idioma ou psico-emocional.">
+				>
+				["at0048"] = <
+					text = <"Não se aplica">
+					description = <"*Not applicable.">
+				>
+				["at0049"] = <
+					text = <"Acompanhante">
+					description = <"Acompanhante">
+				>
+				["at0050"] = <
+					text = <"Paciente">
+					description = <"Paciente">
+				>
+				["at0051"] = <
+					text = <"Locomoção">
+					description = <"**">
+				>
+				["at0052"] = <
+					text = <"Maca">
+					description = <"**">
+				>
+				["at0053"] = <
+					text = <"Cadeira de Rodas">
+					description = <"**">
+				>
+				["at0054"] = <
+					text = <"Deambulando ">
+					description = <"Não tem dificuldade em caminhar e não precisa de suporte">
+				>
+				["at0055"] = <
+					text = <"Acamado">
+					description = <"**">
+				>
+				["at0057"] = <
+					text = <"Muleta">
+					description = <"Necessita de muletas">
+				>
+				["at0058"] = <
+					text = <"Andador">
+					description = <"**">
+				>
+				["at0059"] = <
+					text = <"Ajuda de outra pessoa">
+					description = <"**">
+				>
+				["at0060"] = <
+					text = <"Condições de habitação">
+					description = <"**">
+				>
+				["at0062"] = <
+					text = <"Mora com outras pessoas">
+					description = <"**">
+				>
+				["at0063"] = <
+					text = <"Mora sozinho">
+					description = <"**">
+				>
+				["at0064"] = <
+					text = <"Mora em casa de repouso">
+					description = <"**">
+				>
+				["at0065"] = <
+					text = <"Procedência">
+					description = <"Descreve a procedência do paciente">
+				>
+				["at0066"] = <
+					text = <"Residência">
+					description = <"Residência">
+				>
+				["at0067"] = <
+					text = <"Pronto Atendimento">
+					description = <"Pronto Atendimento">
+				>
+				["at0068"] = <
+					text = <"Consultório">
+					description = <"Consultório">
+				>
+				["at0069"] = <
+					text = <"Centro de Diagnóstico">
+					description = <"Centro de Diagnóstico">
+				>
+				["at0070"] = <
+					text = <"Centro de Oncologia">
+					description = <"Centro de Oncologia">
+				>
+				["at0071"] = <
+					text = <"Transferência entre Hospitais">
+					description = <"Transferência entre Hospitais">
+				>
+				["at0072"] = <
+					text = <"Transferência entre clinícas">
+					description = <"Transferência entre clinícas">
+				>
+				["at0073"] = <
+					text = <"Outros Serviços Externos">
+					description = <"Outros Serviços Externos">
+				>
+				["at0074"] = <
+					text = <"Outros Serviços Internos">
+					description = <"Outros Serviços Internos">
+				>
+				["at0075"] = <
+					text = <"Acompanhado?">
+					description = <"*Persons accompanying the patient.">
+				>
+				["at0077"] = <
+					text = <"Nome do acompanhante / Relação com paciente">
+					description = <"*Persons accompanying the patient.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,805 @@
+archetype (adl_version=1.4)
+    openEHR-EHR-OBSERVATION.body_temperature.v2zl
+
+concept
+    [at0000]    -- Temperatura
+language
+    original_language = <[ISO_639-1::en]>
+    translations = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            author = <
+                ["name"] = <"?">
+            >
+        >
+    >
+description
+    original_author = <
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["date"] = <"2004-05-18">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"Recording core body temperature measurement or a suitable surrogate.">
+            use = <"Used for measuring the core body temperature of a person or body">
+            keywords = <"temperature", "body", "core">
+            misuse = <"Do not use for recording any temperature that not seen as a suitable surrogate for core body temperature">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"Registro da temperatura central corpórea ou por um substituto adequado
+
+">
+            use = <"Usado para medir a temperatura central corpórea de uma pessoa
+
+">
+            keywords = <"*temperature(en)", "*body(en)", "*core(en)">
+            misuse = <"Não usar para registrar qualquer temperatura que não seja por um substituto adequado para a temperatura central corpórea
+
+">
+        >
+    >
+    lifecycle_state = <"AuthorDraft">
+    other_contributors = <>
+    other_details = <
+        ["references"] = <"">
+    >
+
+definition
+    OBSERVATION[at0000] matches {    -- Temperatura
+        data matches {
+            HISTORY[at0002] matches {    -- History
+                events cardinality matches {1..*; unordered} matches {
+                    EVENT[at0003] occurrences matches {0..*} matches {    -- Qualquer evento
+                        data matches {
+                            ITEM_TREE[at0001] matches {    -- Único
+                                items cardinality matches {1; unordered} matches {
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {    -- Temperatura
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openehr::127]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"°C">
+                                                    >
+                                                    ["2"] = <
+                                                        units = <"°F">
+                                                    >
+                                                >
+                                            >
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        state matches {
+                            ITEM_LIST[at0029] matches {    -- Condição
+                                items cardinality matches {0..1; ordered} matches {
+                                    ELEMENT[at0030] occurrences matches {0..1} matches {    -- Estado Térmico
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0031,     -- Vestuário normal em ambiente fechado
+                                                    at0032,     -- Vestuário reduzido em ambiente fechado
+                                                    at0033,     -- Vestuário em excesso em ambiente fechado
+                                                    at0034,     -- Vestuário normal em ambiente aberto
+                                                    at0035,     -- Vestuário reduzido em ambiente aberto
+                                                    at0036,     -- Vestuário em excesso em ambiente aberto
+                                                    at0037,     -- Choque hipotérmico
+                                                    at0038,     -- Choque hipertérmico
+                                                    at0040,     -- Incubadora Pediátrica
+                                                    at0042;     -- Despido
+                                                    at0031]    -- assumed value
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0039] occurrences matches {0..1} matches {    -- Temperatura Ambiente
+                                        value matches {
+                                            C_DV_QUANTITY <
+                                                property = <[openehr::127]>
+                                                list = <
+                                                    ["1"] = <
+                                                        units = <"°C">
+                                                    >
+                                                    ["2"] = <
+                                                        units = <"°F">
+                                                    >
+                                                >
+                                                assumed_value = <
+                                                    precision = <-1>
+                                                    magnitude = <0.0>
+                                                    units = <"°C">
+                                                >
+                                            >
+                                        }
+                                    }
+                                    ELEMENT[at0041] occurrences matches {0..1} matches {    -- Choque Térmico
+                                        value matches {
+                                            DV_TEXT matches {*}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    INTERVAL_EVENT[at0005] occurrences matches {0..*} matches {    -- 1 hora média
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::146]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT1H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0006] occurrences matches {0..*} matches {    -- 1 hora máxima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::144]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT1H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0007] occurrences matches {0..*} matches {    -- 1 hora mínima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::145]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT1H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0008] occurrences matches {0..*} matches {    -- 8 horas média
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::146]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT8H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0009] occurrences matches {0..*} matches {    -- 8 horas máxima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::144]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT8H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0010] occurrences matches {0..*} matches {    -- 8 horas mínima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::145]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT8H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0011] occurrences matches {0..*} matches {    -- 10 horas média
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::146]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT10H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0012] occurrences matches {0..*} matches {    -- 10 horas máxima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::144]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT10H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0013] occurrences matches {0..*} matches {    -- 10 horas mínima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::145]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT10H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0014] occurrences matches {0..*} matches {    -- 12 horas média
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::146]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT12H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0015] occurrences matches {0..*} matches {    -- 12 horas máxima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::144]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT12H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0016] occurrences matches {0..*} matches {    -- 12 horas mínima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::145]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT12H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0017] occurrences matches {0..*} matches {    -- 24 horas média
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::146]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT24H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0018] occurrences matches {0..*} matches {    -- 24 horas máxima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::144]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT24H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                    INTERVAL_EVENT[at0019] occurrences matches {0..*} matches {    -- 24 horas mínima
+                        math_function matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {[openehr::145]}
+                            }
+                        }
+                        width matches {
+                            DV_DURATION matches {
+                                value matches {|PT24H|}
+                            }
+                        }
+                        data matches {
+                            use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]
+                        }
+                        state matches {
+                            use_node ITEM_LIST /data[at0002]/events[at0003]/state[at0029]
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_LIST[at0020] matches {    -- Protocolo
+                items cardinality matches {0..1; ordered} matches {
+                    ELEMENT[at0021] occurrences matches {0..1} matches {    -- Local da medição
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0022,     -- Oral
+                                    at0023,     -- Aural
+                                    at0024,     -- Axilar
+                                    at0025,     -- Retal
+                                    at0026,     -- Corpórea
+                                    at0027,     -- Intravesical
+                                    at0028,     -- Intravascular
+                                    at0043]    -- Temporal
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    terminologies_available = <"LNC205", ...>
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Body temperature">
+                    description = <"An estimate of the core temperature of the body">
+                >
+                ["at0001"] = <
+                    text = <"Single">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"History">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"Any event">
+                    description = <"Any event">
+                >
+                ["at0004"] = <
+                    text = <"Temperature">
+                    description = <"The core body temperature">
+                >
+                ["at0005"] = <
+                    text = <"1 hour average">
+                    description = <"Average temperature over 1 hour">
+                >
+                ["at0006"] = <
+                    text = <"1 hour maximum">
+                    description = <"Maximum temperature over 1 hour">
+                >
+                ["at0007"] = <
+                    text = <"1 hour minimum">
+                    description = <"Minimum temperature over 1 hour">
+                >
+                ["at0008"] = <
+                    text = <"8 hour average">
+                    description = <"Average temperature over 8 hours">
+                >
+                ["at0009"] = <
+                    text = <"8 hour maximum">
+                    description = <"Maximum temperature over 8 hours">
+                >
+                ["at0010"] = <
+                    text = <"8 hour minimum">
+                    description = <"Minimum temperature over 8 hour">
+                >
+                ["at0011"] = <
+                    text = <"10 hour average">
+                    description = <"Average temperature over 10 hours">
+                >
+                ["at0012"] = <
+                    text = <"10 hour maximum">
+                    description = <"Maximum temperature over 10 hours">
+                >
+                ["at0013"] = <
+                    text = <"10 hour minimum">
+                    description = <"Minimum temperature over 1 hour">
+                >
+                ["at0014"] = <
+                    text = <"12 hour average">
+                    description = <"Average temperature over 12 hours">
+                >
+                ["at0015"] = <
+                    text = <"12 hour maximum">
+                    description = <"Maximum temperature over 12 hours">
+                >
+                ["at0016"] = <
+                    text = <"12 hour minimum">
+                    description = <"Minimum temperature over 1 hour">
+                >
+                ["at0017"] = <
+                    text = <"24 hour average">
+                    description = <"Average temperature over 24 hours">
+                >
+                ["at0018"] = <
+                    text = <"24 hour maximum">
+                    description = <"Maximum temperature over 24 hours">
+                >
+                ["at0019"] = <
+                    text = <"24 hour minimum">
+                    description = <"Minimum temperature over 1 hour">
+                >
+                ["at0020"] = <
+                    text = <"Protocol">
+                    description = <"@ internal @">
+                >
+                ["at0021"] = <
+                    text = <"Site of measurement">
+                    description = <"The site of measurement of the temperature">
+                >
+                ["at0022"] = <
+                    text = <"Oral">
+                    description = <"Measured in the mouth">
+                >
+                ["at0023"] = <
+                    text = <"Aural">
+                    description = <"Measured in the ear">
+                >
+                ["at0024"] = <
+                    text = <"Axilla">
+                    description = <"Measured in the arm-pit">
+                >
+                ["at0025"] = <
+                    text = <"Rectal">
+                    description = <"Measured in the rectum">
+                >
+                ["at0026"] = <
+                    text = <"Core">
+                    description = <"Measured internally in the body; includes bladder, rectum and intravascular">
+                >
+                ["at0027"] = <
+                    text = <"Urinary bladder">
+                    description = <"Measured in the urinary bladder">
+                >
+                ["at0028"] = <
+                    text = <"Intravascular">
+                    description = <"Measured within the vascular system">
+                >
+                ["at0029"] = <
+                    text = <"State">
+                    description = <"State information about the patient">
+                >
+                ["at0030"] = <
+                    text = <"Thermal situation">
+                    description = <"The thermal situation of the person who is having the temperature taken">
+                >
+                ["at0031"] = <
+                    text = <"Indoor - normal clothing or bedding">
+                    description = <"Patient is indoors and is wearing a normal amount of clothing or has bedding one would expect for the conditions">
+                >
+                ["at0032"] = <
+                    text = <"Indoor - reduced clothing or bedding">
+                    description = <"The patient is indoors and is wearing less than ideal clothing or using less bedding than ideal for the environment">
+                >
+                ["at0033"] = <
+                    text = <"Indoor - increased clothing or bedding">
+                    description = <"The patient is indoors and is wearing more clothing or using more bedding than usual for the environment">
+                >
+                ["at0034"] = <
+                    text = <"Outdoors - normal clothing">
+                    description = <"The patient is or has been outdoors and wearing normal clothing for the conditions">
+                >
+                ["at0035"] = <
+                    text = <"Outdoors - reduced clothing">
+                    description = <"The patient is or has been outdoors with less clothing than is ideal for the conditions">
+                >
+                ["at0036"] = <
+                    text = <"Outdoors - increased clothing">
+                    description = <"The patient has been outdoors with more clothing than is required for the conditions">
+                >
+                ["at0037"] = <
+                    text = <"Thermal stress - downward">
+                    description = <"The patient has been exposed to conditions to reduce temperature">
+                >
+                ["at0038"] = <
+                    text = <"Thermal stress - upward">
+                    description = <"The person has been exposed to conditions to raise their temperature">
+                >
+                ["at0039"] = <
+                    text = <"Ambient temperature">
+                    description = <"The temperature to which the person has been exposed">
+                >
+                ["at0040"] = <
+                    text = <"Paediatric incubator">
+                    description = <"The patient is in a paediatric incubator">
+                >
+                ["at0041"] = <
+                    text = <"Description of thermal stress">
+                    description = <"Description of the conditions applied to the patient to change temperature">
+                >
+                ["at0042"] = <
+                    text = <"Naked">
+                    description = <"The patient is naked">
+                >
+                ["at0043"] = <
+                    text = <"Temporal">
+                    description = <"*">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Temperatura">
+                    description = <"Uma estimativa da temperatura central corpórea">
+                >
+                ["at0001"] = <
+                    text = <"Único">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"Temperatura">
+                    description = <"Temperatura">
+                >
+                ["at0003"] = <
+                    text = <"Qualquer evento">
+                    description = <"Ocorrência distinta e isolada">
+                >
+                ["at0004"] = <
+                    text = <"Temperatura">
+                    description = <"A temperatura central corpórea">
+                >
+                ["at0005"] = <
+                    text = <"1 hora média">
+                    description = <"Temperatura média em 1 hora">
+                >
+                ["at0006"] = <
+                    text = <"1 hora máxima">
+                    description = <"Temperatura máxima em 1 hora">
+                >
+                ["at0007"] = <
+                    text = <"1 hora mínima">
+                    description = <"Temperatura mínima em 1 hora">
+                >
+                ["at0008"] = <
+                    text = <"8 horas média">
+                    description = <"Temperatura média em 8 horas">
+                >
+                ["at0009"] = <
+                    text = <"8 horas máxima">
+                    description = <"Temperatura máxima em 8 horas">
+                >
+                ["at0010"] = <
+                    text = <"8 horas mínima">
+                    description = <"Temperatura mínima em 8 horas">
+                >
+                ["at0011"] = <
+                    text = <"10 horas média">
+                    description = <"Temperatura média em 10 horas">
+                >
+                ["at0012"] = <
+                    text = <"10 horas máxima">
+                    description = <"Temperatura máxima em 10 horas">
+                >
+                ["at0013"] = <
+                    text = <"10 horas mínima">
+                    description = <"Temperatura mínima em 10 horas">
+                >
+                ["at0014"] = <
+                    text = <"12 horas média">
+                    description = <"Temperatura média em 12 horas">
+                >
+                ["at0015"] = <
+                    text = <"12 horas máxima">
+                    description = <"Temperatura máxima em 12 horas">
+                >
+                ["at0016"] = <
+                    text = <"12 horas mínima">
+                    description = <"Temperatura mínima em 12 horas">
+                >
+                ["at0017"] = <
+                    text = <"24 horas média">
+                    description = <"Temperatura média em 24 horas">
+                >
+                ["at0018"] = <
+                    text = <"24 horas máxima">
+                    description = <"Temperatura máxima em 24 horas">
+                >
+                ["at0019"] = <
+                    text = <"24 horas mínima">
+                    description = <"Temperatura mínima em 24 horas">
+                >
+                ["at0020"] = <
+                    text = <"Protocolo">
+                    description = <"Protocolo">
+                >
+                ["at0021"] = <
+                    text = <"Local da medição">
+                    description = <"O local da medição da temperatua">
+                >
+                ["at0022"] = <
+                    text = <"Oral">
+                    description = <"Medição na boca">
+                >
+                ["at0023"] = <
+                    text = <"Aural">
+                    description = <"Medição no ouvido">
+                >
+                ["at0024"] = <
+                    text = <"Axilar">
+                    description = <"Medição na axila">
+                >
+                ["at0025"] = <
+                    text = <"Retal">
+                    description = <"Medição por via retal ">
+                >
+                ["at0026"] = <
+                    text = <"Corpórea">
+                    description = <"Medição dentro do corpo (bexiga, reto e intravascular">
+                >
+                ["at0027"] = <
+                    text = <"Intravesical">
+                    description = <"Medição intravesical">
+                >
+                ["at0028"] = <
+                    text = <"Intravascular">
+                    description = <"Medição intravascular">
+                >
+                ["at0029"] = <
+                    text = <"Condição">
+                    description = <"Informação sobre as condições do paciente">
+                >
+                ["at0030"] = <
+                    text = <"Estado Térmico">
+                    description = <"O estado térmico da pessoa cuja temperatura está sendo medida">
+                >
+                ["at0031"] = <
+                    text = <"Vestuário normal em ambiente fechado">
+                    description = <"Paciente com vestuário normal em ambiente fechado">
+                >
+                ["at0032"] = <
+                    text = <"Vestuário reduzido em ambiente fechado">
+                    description = <"Paciente com vestuário reduzido em ambiente fechado">
+                >
+                ["at0033"] = <
+                    text = <"Vestuário em excesso em ambiente fechado">
+                    description = <"Paciente com vestuário em excesso em ambiente fechado">
+                >
+                ["at0034"] = <
+                    text = <"Vestuário normal em ambiente aberto">
+                    description = <"Paciente com vestuário normal em ambiente aberto">
+                >
+                ["at0035"] = <
+                    text = <"Vestuário reduzido em ambiente aberto">
+                    description = <"Paciente com vestuário reduzido em ambiente aberto">
+                >
+                ["at0036"] = <
+                    text = <"Vestuário em excesso em ambiente aberto">
+                    description = <"Paciente com vestuário em excesso em ambiente aberto">
+                >
+                ["at0037"] = <
+                    text = <"Choque hipotérmico">
+                    description = <"Paciente exposto ao choque hipotérmico">
+                >
+                ["at0038"] = <
+                    text = <"Choque hipertérmico">
+                    description = <"Paciente exposto ao choque hipertérmico">
+                >
+                ["at0039"] = <
+                    text = <"Temperatura Ambiente">
+                    description = <"A temperatura na qual a pessoa está exposta">
+                >
+                ["at0040"] = <
+                    text = <"Incubadora Pediátrica">
+                    description = <"Paciente na incubadora pediátrica">
+                >
+                ["at0041"] = <
+                    text = <"Choque Térmico">
+                    description = <"Descrição das condições ambientais submetidas ao paciente">
+                >
+                ["at0042"] = <
+                    text = <"Despido">
+                    description = <"Paciente está despido">
+                >
+                ["at0043"] = <
+                    text = <"Temporal">
+                    description = <"*">
+                >
+            >
+        >
+    >
+    term_binding = <
+        ["LNC205"] = <
+            items = <
+                ["/data[at0002]/events[at0003]/data[at0001]/item[at0004]"] = <[LNC205::8310-5]>
+                ["/data[at0002]/events[at0005]/data[at0001]/item[at0004]"] = <[LNC205::8321-2]>
+                ["/data[at0002]/events[at0006]/data[at0001]/item[at0004]"] = <[LNC205::8311-3]>
+                ["/data[at0002]/events[at0007]/data[at0001]/item[at0004]"] = <[LNC205::8316-2]>
+                ["/data[at0002]/events[at0008]/data[at0001]/item[at0004]"] = <[LNC205::8332-0]>
+                ["/data[at0002]/events[at0009]/data[at0001]/item[at0004]"] = <[LNC205::8312-1]>
+                ["/data[at0002]/events[at0017]/data[at0001]/item[at0004]"] = <[LNC205::8325-3]>
+                ["/data[at0002]/events[at0019]/data[at0001]/item[at0004]"] = <[LNC205::8320-4]>
+            >
+        >
+    >

@@ -1,0 +1,1 @@
+/data[at0001]/events[at0002]/data[at0003]=guiRule:TURBECULOSIS_RISK

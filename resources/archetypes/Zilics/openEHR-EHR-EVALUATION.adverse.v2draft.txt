@@ -1,0 +1,4 @@
+/data[at0002]/items[at0061]/items[at0055]=summary
+/data[at0002]/items[at0061]/items[at0023]=summary
+/data[at0002]=allergy:true
+/=render:false

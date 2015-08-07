@@ -1,0 +1,162 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.problem_list-sus.v1
+
+concept
+	[at0000]	-- Problem List
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics, Australia">
+		["email"] = <"sam.heard@oceaninformatics.com">
+		["date"] = <"2013-02-19">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a persistent and managed list of diagnoses identified or problems experienced by the subject, or previous procedures performed, that may influence clinical decision-making and care provision.">
+			use = <"Use to record a persistent and managed list of diagnoses identified or problems experienced by the subject, or previous procedures performed, that may influence clinical decision-making and care provision. 
+
+This list can be utilised as a source of up-to-date problem list data for exchange or as the basis for decision support. 
+
+This list can be comprised of three types of archetype:
+- statements about the positive presence of problems, diagnoses or previous procedures are recorded using the EVALUATION.problem_diagnosis and/or ACTION.procedure archetypes; OR
+- a statement about the positive exclusion of medication use can be recorded using the specific EVALUATION.exclusion-problem_diagnosis or EVALUATION.exclusion-procedure archetypes - for example: \"No significant problems or diagnoses\" or No history of significant operations or procedures\"; OR
+- a statement about no information being available - neither a positive presence of a problem, diagnosis or procedure performed nor a positive exclusion - can be recorded using the EVALUATION.absence archetype.
+
+In order for this list to be accurate and safe to use as the basis for decision support activities and for exchange, this Problem List should ideally be curated by a clinician responsible for the health record, rather than managed automatically by the clinical system through business rules alone.">
+			keywords = <"problem", "list", "diagnosis", "diagnoses", "procedure">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar uma lista persistente e gerenciada de diagnósticos identificados, problemas experenciados pelo indivíduo, ou procedimentos realizados, que possam influenciar a decisão clínica e a prestação de cuidados. Pela sua relevância, inclui-se também nessa lista uma indicação sobre gravidez e amamentação.">
+			use = <"Usar para registrar uma lista persistente e gerenciada de diagnósticos identificados, problemas experenciados pelo indivíduo, ou procedimentos realizados, que possam influenciar a decisão clínica e a prestação de cuidados. Incluir também a indicação sobre gravidez e amamentação, quando relevante.
+
+Esta lista pode ser utilizada como uma fonte para a obtenção de informação atualizada sobre problemas, quer para a troca de informação, quer como uma base para o suporte à decisão.
+
+Esta lista pode incluir três diferentes tipos de arquétipos:
+- afirmações relativas à presença de problemas, diagnósticos ou procedimentos passados, registradas utilizando os arquétipos EVALUATION.problem_diagnosis e/ou ACTION.procedure; OU
+- afirmações sobre a exclusão de problemas, diagnósticos ou procedimentos, registradas utilizando os arquétipos EVALUATION.exclusion-problem_diagnosis ou EVALUATION.exclusion-procedure; OU
+- afirmações sobre o fato de não exisitir informação disponível - nem relativamente à presença de um problema, diagnóstico ou procedimento realizado, nem relativamente à sua exclusão - registradas utilizando o arquétipo EVALUATION.absence.
+
+Para que esta lista contenha informação fidedigna e possa ser utilizada com segurança no suporte à decisão, assim como na troca de informação, ela idealmente deverá ser gerenciada por um clínico responsável pelo prontuário, em vez de ser gerenciada de uma forma automática pelo sistema de acordo com regras de negócio pré-definidas.">
+			keywords = <"problema", "lista", "diagnóstico", "procedimento", "gravidez", "amamentação">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"CommitteeDraft">
+	other_contributors = <"Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Heather Leslie, Ocean Informatics, Australia", "Sistine Barretto-Daniels, Ocean Informatics, Australia">
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"EF858CA545C572028D4E795717895989">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Problem List
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION[at0002] occurrences matches {0..*} matches {	-- Problems or Diagnoses
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.problem_diagnosis(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype ACTION[at0003] occurrences matches {0..*} matches {	-- Procedures
+				include
+					archetype_id/value matches {/.*/}
+				exclude
+					archetype_id/value matches {/openEHR-EHR-ACTION\.procedure-sus\.v1/}
+			}
+			allow_archetype EVALUATION[at0004] occurrences matches {0..*} matches {	-- Exclusion Statements
+				include
+					archetype_id/value matches {/.*/}
+			}
+			allow_archetype EVALUATION[at0005] occurrences matches {0..*} matches {	-- Absent Information
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence-sus(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0006] occurrences matches {0..*} matches {	-- Pregnancy or Breastfeeding
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.alimentacao_bebe_sus(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.pregnancy-sus-gestacao_atencao_basica(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Problem List">
+					description = <"A persistent and managed list of diagnoses identified or problems experienced by the subject, or procedures performed, that may influence clinical decision-making and care provision.">
+				>
+				["at0002"] = <
+					text = <"Problems or Diagnoses">
+					description = <"Details about identified problems or diagnoses.">
+				>
+				["at0003"] = <
+					text = <"Procedures">
+					description = <"Details about identified procedures that have been performed.">
+				>
+				["at0004"] = <
+					text = <"Exclusion Statements">
+					description = <"Positive statement about the known exclusion of known problems or diagnoses and procedures performed.">
+					comment = <"For example: \"No significant problems or diagnoses\" or No history of significant operations or procedures\".">
+				>
+				["at0005"] = <
+					text = <"Absent Information">
+					description = <"Positive statement that no information is available about identification of problems or diagnoses, nor procedures performed.">
+				>
+				["at0006"] = <
+					text = <"Pregnancy or Breastfeeding">
+					description = <"*">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lista de problemas">
+					description = <"Uma lista persistente e gerenciada de diagnósticos identificados, problemas experenciados pelo indivíduo, ou procedimentos realizados, que possam influenciar a decisão clínica e a prestação de cuidados. Pela sua relevância, inclui-se também nessa lista uma indicação sobre gravidez e amamentação.">
+				>
+				["at0002"] = <
+					text = <"Problemas ou Diagnósticos">
+					description = <"Detalhes sobre problemas e diagnósticos identificados.">
+				>
+				["at0003"] = <
+					text = <"Procedimentos">
+					description = <"Detalhes sobre procedimentos realizados.">
+				>
+				["at0004"] = <
+					text = <"Afirmações de exclusão">
+					description = <"Afirmações sobre a declarada exclusão de problemas ou diagnósticos e procedimentos realizados.">
+					comment = <"*For example: \"No significant problems or diagnoses\" or No history of significant operations or procedures\".(en)">
+				>
+				["at0005"] = <
+					text = <"Ausência de informação">
+					description = <"Afirmação sobre a ausência de informação disponível sobre a identificação de problemas ou diagnósticos, nem da realização de procedimentos.">
+				>
+				["at0006"] = <
+					text = <"Gravidez ou amamentação">
+					description = <"Indicação da existência de uma gravidez ou de uma situação de amamentação.">
+				>
+			>
+		>
+	>

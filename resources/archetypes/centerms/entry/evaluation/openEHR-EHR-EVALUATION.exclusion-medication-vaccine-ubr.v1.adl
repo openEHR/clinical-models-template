@@ -1,0 +1,202 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.exclusion-medication-vaccine-ubr.v1
+specialise
+	openEHR-EHR-EVALUATION.exclusion.v1
+
+concept
+	[at0000.1]	-- Exclusion statement - Medications - Vaccines
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2/03/2010">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To positively record the absence or exclusion of any vaccine use within the health record.">
+			use = <"Use to record the positive exclusion or absence of vaccine use within the health record. This archetype avoids the need to use terminology to express negation about any item within the health record.
+This archetype is only to be used to record 'point in time' or event-based information. It is not to be used for a persistent storage of information as the patient should always be questioned about vaccination.">
+			keywords = <"exclusion", "no", "nil", "significant", "relevant", "medication">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar no prontuário clínico a exclusão de qualquer vacina ou a ausência de informação disponível sobre o assunto.">
+			use = <"Usar para registrar explicitamente no prontuário clínico a ausência ou a exclusão de vacinas. Este arquétipo evita a necessidade de utilizar terminologias específicas para a expressão de negação de qualquer informação.
+Este arquétipo apenas deve ser utilizado para registrar informação referente a um determinado momento no tempo.">
+			keywords = <"exclusão", "não", "nil", "vacina">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"7C3CF022A12132F9126317A74428C194">
+	>
+
+definition
+	EVALUATION[at0000.1] matches {	-- Afirmação de exclusão - Medicamentos - Vacinas
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..*} matches {	-- Afirmação geral
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0002.1] occurrences matches {0..*} matches {	-- Afirmação global
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::at0.8]}		-- Nunca foi administrada nenhuma vacina
+							}
+						}
+					}
+					ELEMENT[at0.5] occurrences matches {0..1} matches {	-- Nunca foi administrada
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0.7] matches {	-- Data de registro
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.3"] = <
+					text = <"Not currently taking any medication">
+					description = <"Not currently taking any medication.">
+				>
+				["at0.4"] = <
+					text = <"Not currently taking">
+					description = <"Positive statement about medications that are explicitly not being taken or used at the time of recording.">
+				>
+				["at0.5"] = <
+					text = <"Not ever taken">
+					description = <"Positive statement about vaccines that are explicitly known not to have ever been taken or used at the time of recording.">
+				>
+				["at0.6"] = <
+					text = <"Never taken any medication">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Registration date">
+					description = <"The date this statement was recorded.">
+				>
+				["at0.8"] = <
+					text = <"No vaccine has ever been administered ">
+					description = <"No vaccine has ever been administered">
+				>
+				["at0000"] = <
+					text = <"Exclusion statement">
+					description = <"Statements that need to be positively recorded as absent or excluded.">
+				>
+				["at0000.1"] = <
+					text = <"Exclusion statement - Medications - Vaccines">
+					description = <"Statements about vaccines that need to be positively recorded as absent or excluded.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"General Statement">
+					description = <"The statement about the absence or exclusion. Use to capture any information that is needed to be explicitly recorded as being absent or excluded within the record.">
+				>
+				["at0002.1"] = <
+					text = <"Global Statements">
+					description = <"The statement about the absence or exclusion. Use to capture any information that is needed to be explicitly recorded as being absent or excluded within the record.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0.3"] = <
+					text = <"Atualmente não usa nenhum medicamento">
+					description = <"Atualmente não usa nenhum medicamento.">
+				>
+				["at0.4"] = <
+					text = <"Atualmente não usa">
+					description = <"Afirmação que pretende explicitar no prontuário clínico medicamentos que não são usados no momento do registro.">
+				>
+				["at0.5"] = <
+					text = <"Nunca foi administrada">
+					description = <"Afirmação que pretende explicitar no prontuário clínico vacinas que nunca foram administradas ao sujeito até ao momento do registro.">
+				>
+				["at0.6"] = <
+					text = <"Nunca foi usado qualquer medicamento">
+					description = <"Afirmação que pretende explicitar no prontuário clínico que nunca foram usados quaisquer medicamentos pelo sujeito até ao momento do registro.">
+				>
+				["at0.7"] = <
+					text = <"Data de registro">
+					description = <"A data na qual este registro foi realizado.">
+				>
+				["at0.8"] = <
+					text = <"Nunca foi administrada nenhuma vacina">
+					description = <"Nunca foi administrada nenhuma vacina ao sujeito.">
+				>
+				["at0000"] = <
+					text = <"Afirmação de exclusão">
+					description = <"Afirmação que precisa de ser explicitamente registrada e pretende indicar a ausência ou exclusão.">
+				>
+				["at0000.1"] = <
+					text = <"Afirmação de exclusão - Medicamentos - Vacinas">
+					description = <"Afirmação sobre vacinas que precisa de ser explicitamente registrada e pretende indicar a sua ausência ou exclusão.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Afirmação geral">
+					description = <"Afirmações gerais de exclusão. Podem ser usadas para capturar qualquer informação que precise de ser explicitamente registrada como estando ausente ou  ter sido excluída.">
+				>
+				["at0002.1"] = <
+					text = <"Afirmação global">
+					description = <"Afirmações globais sobre a ausência ou exclusão de vacinas.">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"*New constraint(pt-br)">
+					description = <"**(pt-br)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["ac0.1"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>

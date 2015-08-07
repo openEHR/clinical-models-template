@@ -1,0 +1,369 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.health-promotion_triage.v1
+
+concept
+	[at0000]	-- Triagem e Avaliação de Riscos
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Ficha de Inscrição">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Ficha de Inscrição">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"A34673C4731C0FFAD98C3098048EB8F7">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Triagem e Avaliação de Riscos
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0005] occurrences matches {0..1} matches {	-- Anamnese
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					SECTION[at0013] occurrences matches {0..1} matches {	-- Sintomas Atuais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0014] occurrences matches {0..1} matches {	-- Atividade Física
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0015] occurrences matches {0..1} matches {	-- Número de Visitas ao Médico 
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/openEHR-EHR-OBSERVATION\.frequency_medical_visits\.draftv1/}
+							}
+						}
+					}
+					SECTION[at0016] occurrences matches {0..1} matches {	-- História Obstétrica
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0017] occurrences matches {0..1} matches {	-- Métodos Anticoncepcionais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0018] occurrences matches {0..1} matches {	-- Antecedentes Pessoais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0019] occurrences matches {0..1} matches {	-- Alergias e Reações Adversas
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0020] occurrences matches {0..1} matches {	-- Cirurgias Realizadas no Passado
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0021] occurrences matches {0..1} matches {	-- Fatores de Risco
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0023] occurrences matches {0..1} matches {	-- Inquérito Alimentar
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0024] occurrences matches {0..1} matches {	-- Medicamentos em Uso
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0025] occurrences matches {0..1} matches {	-- Antecedentes Familiares
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+					SECTION[at0026] occurrences matches {0..1} matches {	-- Deficiência Funcional
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0008] occurrences matches {0..1} matches {	-- Exame Físico
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					SECTION[at0028] occurrences matches {0..1} matches {	-- Sinais Vitais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0029] occurrences matches {0..1} matches {	-- Resultados de Exames Laboratoriais
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0030] occurrences matches {0..1} matches {	-- Avaliação Inicial
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0031] occurrences matches {0..1} matches {	-- Encaminhamentos Sugeridos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Triagem e Avaliação de Riscos">
+					description = <"Triagem e Avaliação de Riscos">
+				>
+				["at0005"] = <
+					text = <"Anamnese">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Exame Físico">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Sintomas Atuais">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Atividade Física">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Número de Visitas ao Médico ">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"História Obstétrica">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Métodos Anticoncepcionais">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Antecedentes Pessoais">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Alergias e Reações Adversas">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Cirurgias Realizadas no Passado">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Fatores de Risco">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Inquérito Alimentar">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Medicamentos em Uso">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Antecedentes Familiares">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Deficiência Funcional">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Sinais Vitais">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Resultados de Exames Laboratoriais">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Avaliação Inicial">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Encaminhamentos Sugeridos">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"unknown">
+					description = <"unknown">
+				>
+				["at0005"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0015"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0016"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0024"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0025"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0026"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0028"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0029"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+				["at0031"] = <
+					text = <"*Section(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

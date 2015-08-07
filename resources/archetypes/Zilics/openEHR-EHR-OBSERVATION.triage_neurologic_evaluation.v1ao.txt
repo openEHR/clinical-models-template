@@ -1,0 +1,8 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=conciousnessLevel:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0005]=paresthesia:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0006]=paresthesiaPeriod:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0007]=visualFieldDisorder:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0008]=afasia:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0009]=dyslalia:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0010]=neurologicLethargy:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0011]=agitation:true

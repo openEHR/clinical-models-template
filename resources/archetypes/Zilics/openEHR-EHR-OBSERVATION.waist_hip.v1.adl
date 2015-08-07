@@ -1,0 +1,168 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.waist_hip.v1
+
+concept
+	[at0000]	-- Relação da Cintura Quadril
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"John Doe">
+			>
+		>
+	>
+description
+	original_author = <
+		["organisation"] = <"Ocean Informatics">
+		["name"] = <"Heather Leslie">
+		["date"] = <"12/10/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the  waist (or girth) and hip circumference and waist/hip ratio">
+			keywords = <"waist", "hip">
+			copyright = <"copyright (c) 2009 openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*To record the  waist (or girth) and hip circumference and waist/hip ratio">
+			use = <"">
+			keywords = <"waist", "hip">
+			misuse = <"">
+			copyright = <"copyright (c) 2009 openEHR Foundation">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"41148961EB97E5594DC4C3ABAE040FB1">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Relação da Cintura Quadril
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event
+						data matches {
+							ITEM_LIST[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Cintura
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+														magnitude = <|>=0.0|>
+													>
+													["2"] = <
+														units = <"in">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Quadril
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"cm">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Relação cintura-quadril (RCQ):
+										value matches {
+											DV_PROPORTION matches {
+												numerator matches {|>0.0|}
+												denominator matches {|>0.0|}
+												type matches {1}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Circunferência abdominal e do quadril">
+					description = <"The waist (or girth) and hip circumference">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Timing event">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Waist circumference">
+					description = <"The waist circumference measured at or above the umbilicus">
+				>
+				["at0005"] = <
+					text = <"Hip circumference">
+					description = <"Measurement of body circumference at the widest point of the buttocks">
+				>
+				["at0006"] = <
+					text = <"Waist:hip ratio">
+					description = <"Ratio with unitary denominator">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Relação da Cintura Quadril">
+					description = <"Relação da Cintura Quadril">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"*Any event">
+					description = <"*Timing event">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Cintura">
+					description = <"*The waist circumference measured at or above the umbilicus">
+				>
+				["at0005"] = <
+					text = <"Quadril">
+					description = <"*Measurement of body circumference at the widest point of the buttocks">
+				>
+				["at0006"] = <
+					text = <"Relação cintura-quadril (RCQ):">
+					description = <" ">
+				>
+			>
+		>
+	>

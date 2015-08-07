@@ -1,0 +1,147 @@
+archetype
+    openEHR-EHR-EVALUATION.health_promotion_summary_data_spa.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0014] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0003] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0004,
+                                            at0005,
+                                            at0006,
+                                            at0007,
+                                            at0008,
+                                            at0009]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0011,
+                                            at0012,
+                                            at0013]
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0015] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Unknown">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Classifica‹o  no Programa de Saœde SPA">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Programa de saœde">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Programa de Diabetes Mellitus (DM) ">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Programa de Hipertens‹o Arterial Sistmica (HAS) ">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Programa de Neoplasias ">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Programa da Saœde da Criana ">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Programa Parto Natural ">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Programa de Diabetes Mellitus + Hipertens‹o Arterial Sistmica (DM +HAS)">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"N’vel no programa">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Prim‡rio">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Secund‡rio">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Terci‡rio">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Data de entrada no programa">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Data œltima atualiza‹o na classifica‹o">
+                    description = <"*">
+                >
+            >
+        >
+    >

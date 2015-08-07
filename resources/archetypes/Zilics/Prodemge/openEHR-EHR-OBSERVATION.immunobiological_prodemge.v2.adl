@@ -1,0 +1,970 @@
+archetype
+    openEHR-EHR-OBSERVATION.immunobiological_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+
+description
+    original_author = <
+        ["email"] = <"xxx">
+        ["name"] = <"Zilics">
+        ["organisation"] = <"xxx">
+        ["date"] = <"xxx">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"x">
+            use = <"x">
+            misuse = <"x">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0082] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0005] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0006,
+                                                            at0007,
+                                                            at0008,
+                                                            at0009,
+                                                            at0010,
+                                                            at0011,
+                                                            at0012,
+                                                            at0013,
+                                                            at0014,
+                                                            at0015,
+                                                            at0016,
+                                                            at0017,
+                                                            at0018,
+                                                            at0019,
+                                                            at0020,
+                                                            at0021,
+                                                            at0022,
+                                                            at0023,
+                                                            at0024,
+                                                            at0025,
+                                                            at0026,
+                                                            at0027,
+                                                            at0028,
+                                                            at0029,
+                                                            at0030,
+                                                            at0031,
+                                                            at0032,
+                                                            at0033,
+                                                            at0034,
+                                                            at0035,
+                                                            at0036,
+                                                            at0037,
+                                                            at0038,
+                                                            at0039,
+                                                            at0040,
+                                                            at0041,
+                                                            at0042,
+                                                            at0043,
+                                                            at0044,
+                                                            at0045,
+                                                            at0046,
+                                                            at0047,
+                                                            at0048,
+                                                            at0049,
+                                                            at0050,
+                                                            at0051,
+                                                            at0052,
+                                                            at0053,
+                                                            at0054,
+                                                            at0055,
+                                                            at0056,
+                                                            at0057,
+                                                            at0058,
+                                                            at0059,
+                                                            at0060,
+                                                            at0061,
+                                                            at0062,
+                                                            at0063,
+                                                            at0064,
+                                                            at0065]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0066] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0067,
+                                                            at0068,
+                                                            at0069,
+                                                            at0070,
+                                                            at0071,
+                                                            at0072,
+                                                            at0073,
+                                                            at0074,
+                                                            at0075,
+                                                            at0076,
+                                                            at0077]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0078] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0079] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DATE matches {
+                                                        value matches {yyyy-MM-dd}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0080] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DATE matches {
+                                                        value matches {yyyy-MM-dd}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0081] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0083,
+                                                    at0084,
+                                                    at0085,
+                                                    at0086,
+                                                    at0087,
+                                                    at0088,
+                                                    at0089,
+                                                    at0090,
+                                                    at0091,
+                                                    at0092,
+                                                    at0093,
+                                                    at0094,
+                                                    at0095,
+                                                    at0096,
+                                                    at0097,
+                                                    at0098,
+                                                    at0099,
+                                                    at0100,
+                                                    at0101,
+                                                    at0102,
+                                                    at0103,
+                                                    at0104,
+                                                    at0105,
+                                                    at0106,
+                                                    at0107,
+                                                    at0108,
+                                                    at0109,
+                                                    at0110,
+                                                    at0111,
+                                                    at0112,
+                                                    at0113,
+                                                    at0114,
+                                                    at0115,
+                                                    at0116,
+                                                    at0117,
+                                                    at0118,
+                                                    at0119,
+                                                    at0120,
+                                                    at0121,
+                                                    at0122,
+                                                    at0123,
+                                                    at0124,
+                                                    at0125,
+                                                    at0126,
+                                                    at0127,
+                                                    at0128,
+                                                    at0129,
+                                                    at0130,
+                                                    at0131,
+                                                    at0132,
+                                                    at0133,
+                                                    at0134,
+                                                    at0135,
+                                                    at0136,
+                                                    at0137,
+                                                    at0138,
+                                                    at0139,
+                                                    at0140,
+                                                    at0141,
+                                                    at0143,
+                                                    at0144,
+                                                    at0145,
+                                                    at0146,
+                                                    at0147,
+                                                    at0148]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    terminologies_available = <"PNI_IMUNO2008", "PNI_EAPV2008", ...>
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"ImunobiolÌ?gicos">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"CartÌ£o Espelho de ImunobiolÌ?gicos ">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Nome do Imunobiol—gico">
+                    description = <"Lista de imunobiol—gicos conforme PNI">
+                >
+                ["at0006"] = <
+                    text = <"BCG (BCG)">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"BCG - Hansen’ase (BH)">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Contra Febre Amarela (FA)">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Contra Febre Tif—ide (FT) ">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Contra Haemophilus influenzae tipo b (HM) ">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Contra Hepatite A (HA)">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Contra Hepatite B (HE) ">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Contra Influenza (IF)">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Contra Influenza (campanha) (IN)">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Contra Meningococo AC (MD)">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Contra Meningococo BC (ME)">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Contra Meningococo Conjugada - C (MG)">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Contra Pneumococo 23 (PN) ">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Contra Pneumococo Conjugada 7V (P7)">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Contra Raiva Humana (AR)">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Contra Raiva-Cultivo Celular/Dipl—ide (RD)">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Contra Raiva-Cultivo Celular/Vero (RV)">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Contra Raiva-Cultivo Celular/Embrion‡rio (RG)">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Contra RubŽola (monovalente) (RU)">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Contra Sarampo (monovalente) (SA)">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Contra Varicela Zoster (VZ) ">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Dupla Adulto (dT)">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Dupla Infantil (DT)">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Dupla Viral (SR) ">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Dupla Viral (mulheres em idade fŽrtil) (DM)">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Dupla Viral (implanta‹o) (TI) ">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Dupla Viral (seguimento) (TS) ">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Hexavalente (HX) ">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Inativada Contra Poliomielite (PO) ">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"Oral Contra Poliomielite (PO) ">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Oral Contra Poliomielite (Campanha 1A etapa) (P1)">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"Oral Contra Poliomielite (Campanha 2A etapa) (P2) ">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"Oral de Rotavirus Humano (RR) ">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"Pentavalente (DTP+HB+Hib) (PV) ">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Tetravalente (DTP/Hib) (TH) ">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"Tox—ide Tet‰nico  (TT)">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Tr’plice Acelular (TA)">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Tr’plice Bacteriana DTP - (TR)">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"Tr’plice Viral (TV)">
+                    description = <"*">
+                >
+                ["at0045"] = <
+                    text = <"Tr’plice Viral (campanha) (TC)">
+                    description = <"*">
+                >
+                ["at0046"] = <
+                    text = <"Tr’plice Viral (mulheres em idade fŽrtil) (TM)">
+                    description = <"*">
+                >
+                ["at0047"] = <
+                    text = <"Imunoglobulina humana anti-Hepatite B (IH)">
+                    description = <"*">
+                >
+                ["at0048"] = <
+                    text = <"Imunoglobulina humana anti-R‡bica (IR) ">
+                    description = <"*">
+                >
+                ["at0049"] = <
+                    text = <"Imunoglobulina humana anti-Tet‰nica (IT) ">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"Imunoglobulina humana anti-Varicela Zoster (IV) ">
+                    description = <"*">
+                >
+                ["at0051"] = <
+                    text = <"Soro anti-Aracn’dico (AC) ">
+                    description = <"*">
+                >
+                ["at0052"] = <
+                    text = <"Soro anti-Botr—pico (BO)">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Soro anti-BotrÌ?pico-CrotÌÁlico (BC) ">
+                    description = <"*">
+                >
+                ["at0054"] = <
+                    text = <"Soro anti-BotrÌ?pico-LaquÌ(c)tico (BL) ">
+                    description = <"*">
+                >
+                ["at0055"] = <
+                    text = <"Soro anti-Botul’nico (SB) ">
+                    description = <"*">
+                >
+                ["at0056"] = <
+                    text = <"Soro anti-Crot‡lico (CR)">
+                    description = <"*">
+                >
+                ["at0057"] = <
+                    text = <"Soro anti-DiftŽrico (DF) ">
+                    description = <"*">
+                >
+                ["at0058"] = <
+                    text = <"Soro anti-Elap’dico (LP) ">
+                    description = <"*">
+                >
+                ["at0059"] = <
+                    text = <"Soro anti-Escorpi™nico (ES)">
+                    description = <"*">
+                >
+                ["at0060"] = <
+                    text = <"Soro anti-LaquŽtico (LQ)">
+                    description = <"*">
+                >
+                ["at0061"] = <
+                    text = <"Soro anti-Latrodectus (LT)">
+                    description = <"*">
+                >
+                ["at0062"] = <
+                    text = <"Soro anti-Lonomia (LN) ">
+                    description = <"*">
+                >
+                ["at0063"] = <
+                    text = <"Soro anti-LoxocŽlico (LX)">
+                    description = <"*">
+                >
+                ["at0064"] = <
+                    text = <"Soro anti-R‡bico (RB) ">
+                    description = <"*">
+                >
+                ["at0065"] = <
+                    text = <"Soro anti-Tet‰nico (TE) ">
+                    description = <"*">
+                >
+                ["at0066"] = <
+                    text = <"Nœmero da Dose">
+                    description = <"*">
+                >
+                ["at0067"] = <
+                    text = <"1å(tm)">
+                    description = <"*">
+                >
+                ["at0068"] = <
+                    text = <"2å(tm)">
+                    description = <"*">
+                >
+                ["at0069"] = <
+                    text = <"3å(tm)">
+                    description = <"*">
+                >
+                ["at0070"] = <
+                    text = <"4å(tm)">
+                    description = <"*">
+                >
+                ["at0071"] = <
+                    text = <"5å(tm)">
+                    description = <"*">
+                >
+                ["at0072"] = <
+                    text = <"ReforÌ¤o">
+                    description = <"*">
+                >
+                ["at0073"] = <
+                    text = <"Dose Ì¼nica">
+                    description = <"*">
+                >
+                ["at0074"] = <
+                    text = <"Dose inicial">
+                    description = <"*">
+                >
+                ["at0075"] = <
+                    text = <"Dose anual">
+                    description = <"*">
+                >
+                ["at0076"] = <
+                    text = <"Soro heterÌ?logo">
+                    description = <"*">
+                >
+                ["at0077"] = <
+                    text = <"Soro homÌ?logo">
+                    description = <"*">
+                >
+                ["at0078"] = <
+                    text = <"Nœmero do Lote">
+                    description = <"*">
+                >
+                ["at0079"] = <
+                    text = <"Data de Vencimento do Lote">
+                    description = <"*">
+                >
+                ["at0080"] = <
+                    text = <"Data de Aplica‹o">
+                    description = <"*">
+                >
+                ["at0081"] = <
+                    text = <"Eventos Adversos a Imunobiol—gicos">
+                    description = <"*">
+                >
+                ["at0082"] = <
+                    text = <"Cart‹o Espelho de Imunobiol—gicos">
+                    description = <"*">
+                >
+                ["at0083"] = <
+                    text = <"Abcesso local frio">
+                    description = <"Tumora‹o no local de aplicac‹o com  flutua‹o, SEM sinais inflamat—rios evidentes.">
+                >
+                ["at0084"] = <
+                    text = <"Abscesso local quente">
+                    description = <"Tumora‹o no local de aplica‹o com flutua‹o, COM sinais inflamat—rios (edema, calor, rubor e dor).">
+                >
+                ["at0085"] = <
+                    text = <"Angiodema">
+                    description = <"*">
+                >
+                ["at0086"] = <
+                    text = <"ApnŽia">
+                    description = <"*">
+                >
+                ["at0087"] = <
+                    text = <"Artralgia">
+                    description = <"Dor nas articula›es.">
+                >
+                ["at0088"] = <
+                    text = <"Artrite">
+                    description = <"*">
+                >
+                ["at0089"] = <
+                    text = <"Ataxia">
+                    description = <"Altera‹o da marcha. Deve ser  avaliada por um profissional habilitado.">
+                >
+                ["at0090"] = <
+                    text = <"Atrofia no local da aplica‹o">
+                    description = <"Retra‹o da pele no local da aplica‹o.">
+                >
+                ["at0091"] = <
+                    text = <"CefalŽia">
+                    description = <"Dor de Cabea">
+                >
+                ["at0092"] = <
+                    text = <"CefalŽia + v™mitos">
+                    description = <"Dor de cabea +  v™mitos">
+                >
+                ["at0093"] = <
+                    text = <"Choque anafil‡tico / anafilact—ide">
+                    description = <"Hipotens‹o ou choque associado Êˆ urtic‡ria , edema de face, laringoespasmo.">
+                >
+                ["at0094"] = <
+                    text = <"Choro persistente">
+                    description = <"*">
+                >
+                ["at0095"] = <
+                    text = <"Convuls‹o febril">
+                    description = <"Altera‹o do n’vel de conscincia acompanhado de contra›es musculares involunt‡rias. Em crianas menores podem ocorrer sem contra›es evidentes.  Sem associa‹o com febre">
+                >
+                ["at0096"] = <
+                    text = <"Dificuldade de deambular">
+                    description = <"Dificuldade para caminhar. Deve ser avaliada por  profissional habilitado.">
+                >
+                ["at0097"] = <
+                    text = <"Doena vicerotr—pica aguda p—s vacina contra FA">
+                    description = <"Quadro de dissemina‹o do v’rus vacinal da FA com quadro semelhante ˆÊ doena por v’rus selvagem. Deve ser  avaliada por profissional habilitado e realiza‹o de exames complementares. ">
+                >
+                ["at0098"] = <
+                    text = <"Doena do soro">
+                    description = <"*">
+                >
+                ["at0099"] = <
+                    text = <"Dor, rubor e calor">
+                    description = <"Tipo de rea‹o no local de aplica‹o.">
+                >
+                ["at0100"] = <
+                    text = <"Encefalite">
+                    description = <"Inflama‹o do encŽfalo (cŽrebro) diagnosticada por  profissional habilitado, sendo afastadas outras causas conhecidas atravŽs de exames complementares.">
+                >
+                ["at0101"] = <
+                    text = <"Encefalopatia aguda">
+                    description = <"Distœrbio do Sistema Nervoso Central n‹o explicado por outra causa alŽm da vacina‹o, ocorrida nos primeiros 7 dias (geralmente nas primeiras 72 h) ap—s aplica‹o da DTP. Assemelha-se clinicamente ˆ encefalite, mas sem evidncia de rea‹o inflamat—ria">
+                >
+                ["at0102"] = <
+                    text = <"Encefalomielite disseminada aguda">
+                    description = <"*">
+                >
+                ["at0103"] = <
+                    text = <"Endura‹o">
+                    description = <"Tipo de rea‹o com endurecimento no local de aplica‹o.">
+                >
+                ["at0104"] = <
+                    text = <"Epis—dio Hipot™nico Hiporresponsivo">
+                    description = <"Palidez ou cianose perioral, hipotonia(ÒflacidezÓ) e diminui‹o de resposta a est’mulos de curta dura‹o.">
+                >
+                ["at0105"] = <
+                    text = <"Exantema generalizado">
+                    description = <"Erup‹o cut‰nea generalizada com ou sem prurido.">
+                >
+                ["at0106"] = <
+                    text = <"Febre maior ou igual a 39,5¡C">
+                    description = <"Verificada com term™metro.">
+                >
+                ["at0107"] = <
+                    text = <"Febre menor que 39,5C">
+                    description = <"Verificada com term™metro.">
+                >
+                ["at0108"] = <
+                    text = <"Granuloma">
+                    description = <"Tipo de rea‹o com forma‹o de ÒcarooÓ no local de aplica‹o (Diagn—stico histopatol—gico).">
+                >
+                ["at0109"] = <
+                    text = <"Icter’cia">
+                    description = <"Colora‹o amarelada da  pele e mucosas, mais evidente nos olhos.">
+                >
+                ["at0110"] = <
+                    text = <"Invagina‹o intestinal (intussuscep‹o) ">
+                    description = <"*">
+                >
+                ["at0111"] = <
+                    text = <"Les›es generalizadas (decorrentes de dissemina‹o de BCG)">
+                    description = <"Les›es semelhantes ˆs da tuberculose decorrentes da dissemina‹o do BCG nos —rg‹os.">
+                >
+                ["at0112"] = <
+                    text = <"Les›es localizadas decorrentes de dissemina‹o do BCG">
+                    description = <"*">
+                >
+                ["at0113"] = <
+                    text = <"Les›es generalizadas decorrentes de dissemina‹o de BCG (acometendo mais de 1 —rg‹o)">
+                    description = <"*">
+                >
+                ["at0114"] = <
+                    text = <"Linfadenite n‹o supurada maior que 03 cm ">
+                    description = <"Aumento dos g‰nglios linf‡ticos (’nguas)  SEM flutua‹o ou supura‹o.">
+                >
+                ["at0115"] = <
+                    text = <"Linfadenomegalia maior que 03 cm supurada">
+                    description = <"Aumento dos g‰nglios linf‡ticos (Ò’nguasÓ)  COM flutua‹o ou supura‹o.">
+                >
+                ["at0116"] = <
+                    text = <"Linfadenomegalia n‹o supurada">
+                    description = <"Aumento dos g‰nglios linf‡ticos (’nguas)  SEM flutua‹o ou supura‹o.">
+                >
+                ["at0117"] = <
+                    text = <"Linfadenite supurada">
+                    description = <"Aumento dos g‰nglios linf‡ticos (Ò’nguasÓ)  COM flutua‹o ou supura‹o.">
+                >
+                ["at0118"] = <
+                    text = <"Meningite">
+                    description = <"Inflama‹o das meninges com culturas do LCR  negativas.">
+                >
+                ["at0119"] = <
+                    text = <"Mialgia">
+                    description = <"Dor muscular.">
+                >
+                ["at0120"] = <
+                    text = <"Mielite">
+                    description = <"Inflama‹o da medula espinhal com diagn—stico por  profissional habilitado e realiza‹o de exames complementares.">
+                >
+                ["at0121"] = <
+                    text = <"Neurite braquial">
+                    description = <"*">
+                >
+                ["at0122"] = <
+                    text = <"N—dulo">
+                    description = <"Tipo de rea‹o com caroo palp‡vel no local da aplica‹o">
+                >
+                ["at0123"] = <
+                    text = <"îbito">
+                    description = <"*">
+                >
+                ["at0124"] = <
+                    text = <"Orquite">
+                    description = <"Inflama‹o dos test’culos.">
+                >
+                ["at0125"] = <
+                    text = <"Oste’te/Osteomielite">
+                    description = <"Infec‹o do aparelho —steoarticular.">
+                >
+                ["at0126"] = <
+                    text = <"Outras rea›es locais">
+                    description = <"Sem defini‹o - ÒUsar campo de resumo cl’nico para especificar o evento.">
+                >
+                ["at0127"] = <
+                    text = <"Outras paralisias">
+                    description = <"*">
+                >
+                ["at0128"] = <
+                    text = <"Outros eventos graves ou inusitados">
+                    description = <"Sem defini‹o - Ò Usar campo de resumo cl’nico para especificar o evento.">
+                >
+                ["at0129"] = <
+                    text = <"Outros eventos neurol—gicos graves">
+                    description = <"*">
+                >
+                ["at0130"] = <
+                    text = <"Pancreatite">
+                    description = <"Inflama‹o do p‰ncreas diagnosticado por profissional habilitado e realiza‹o de exames complementares.">
+                >
+                ["at0131"] = <
+                    text = <"Panencefalite esclerosante subaguda">
+                    description = <"*">
+                >
+                ["at0132"] = <
+                    text = <"Paralisia de membros inferiores">
+                    description = <"Paralisa‹o das pernas. Deve ser avaliada por profissional habilitado.">
+                >
+                ["at0133"] = <
+                    text = <"Paresia">
+                    description = <"Diminui‹o de fora de membros ou de um grupo muscular. Deve ser avaliada por profissional habilitado">
+                >
+                ["at0134"] = <
+                    text = <"Parestesia">
+                    description = <"Altera‹o de sensibilidade na pele (formigamento, dormncia). Deve ser avaliada por profissional habilitado.">
+                >
+                ["at0135"] = <
+                    text = <"Parotidite">
+                    description = <"Inflama‹o das par—tidas Ð regi‹o submandibular Ð normalmente acompanhado de febre e mal-estar.">
+                >
+                ["at0136"] = <
+                    text = <"Poliomielite p—s-vacinal (associada ˆÊvacina)">
+                    description = <"Paralisia fl‡cida aguda que ocorre  entre 4-40 dias ap—s aplica‹o da vacina sendo constatada  sequela ap—s 60 dias do in’cio do quadro. Nos casos de comunicantes dos vacinados o per’odo Ì(c) de 4-85 dias.">
+                >
+                ["at0137"] = <
+                    text = <"Polirradiculite (S’ndrome de Guillain-BarrŽt)">
+                    description = <"Inflama‹o das ra’zes nervosas da medula espinhal caracterizado por dor nos MMII e paralisia ascendente. Deve ser diagnosticada por  profissional habilitado e realiza‹o de exames complementares.">
+                >
+                ["at0138"] = <
+                    text = <"Pœrpura trombocitopnica">
+                    description = <"Presena de manchas viol‡ceas na pele de tamanhos variados ( puntiformes a equimoses) acompanhado da diminui‹o do nœmero de plaquetas no sangue.">
+                >
+                ["at0139"] = <
+                    text = <"Pœrpura n‹o trombocitopnica">
+                    description = <"*">
+                >
+                ["at0140"] = <
+                    text = <"Quel—ide">
+                    description = <"Cicatriz elevada e disforme no local da aplica‹o.">
+                >
+                ["at0141"] = <
+                    text = <"Rea‹o de Arthus">
+                    description = <"Rea‹o de hipersenbilidade local importante.">
+                >
+                ["at0142"] = <
+                    text = <"ReaÌ¤Ì£o de hipersensibilidade apÌ?s 2 h">
+                    description = <"UrticÌÁria localizada ou disseminada, edema de face, laringoespasmo.">
+                >
+                ["at0143"] = <
+                    text = <"Rea‹o de hipersensibilidade ap—s 2 h">
+                    description = <"Urtic‡ria localizada ou disseminada, edema de face, laringoespasmo.">
+                >
+                ["at0144"] = <
+                    text = <"Rea‹o de hipersensibilidade atŽ(c) 2 h">
+                    description = <"Urtic‡ria localizada ou disseminada, edema de face, laringoespasmo.">
+                >
+                ["at0145"] = <
+                    text = <"Rea›es locais intensas">
+                    description = <"*">
+                >
+                ["at0146"] = <
+                    text = <"S’ndrome de rea‹o sistmica precoce">
+                    description = <"*">
+                >
+                ["at0147"] = <
+                    text = <"òlcera maior que 01cm ap—s BCG">
+                    description = <"Formaa‹o de les‹o ulcerada maior que 01cm no local da aplica‹o.">
+                >
+                ["at0148"] = <
+                    text = <"Urtic‡ria generalizada">
+                    description = <"*">
+                >
+            >
+        >
+    >
+    term_binding = <
+        ["PNI_IMUNO2008"] = <
+            items = <
+                ["at0006"] = <[PNI_IMUNO2008::2]>
+                ["at0007"] = <[PNI_IMUNO2008::3]>
+                ["at0008"] = <[PNI_IMUNO2008::6]>
+                ["at0009"] = <[PNI_IMUNO2008::7]>
+                ["at0010"] = <[PNI_IMUNO2008::14]>
+                ["at0011"] = <[PNI_IMUNO2008::45]>
+                ["at0012"] = <[PNI_IMUNO2008::27]>
+                ["at0013"] = <[PNI_IMUNO2008::14]>
+                ["at0014"] = <[PNI_IMUNO2008::22]>
+                ["at0015"] = <[PNI_IMUNO2008::13]>
+                ["at0016"] = <[PNI_IMUNO2008::11]>
+                ["at0017"] = <[PNI_IMUNO2008::53]>
+                ["at0018"] = <[PNI_IMUNO2008::15]>
+                ["at0019"] = <[PNI_IMUNO2008::54]>
+                ["at0020"] = <[PNI_IMUNO2008::29]>
+                ["at0021"] = <[PNI_IMUNO2008::47]>
+                ["at0022"] = <[PNI_IMUNO2008::58]>
+                ["at0023"] = <[PNI_IMUNO2008::62]>
+                ["at0024"] = <[PNI_IMUNO2008::17]>
+                ["at0025"] = <[PNI_IMUNO2008::18]>
+                ["at0026"] = <[PNI_IMUNO2008::46]>
+                ["at0027"] = <[PNI_IMUNO2008::04]>
+                ["at0028"] = <[PNI_IMUNO2008::05]>
+                ["at0029"] = <[PNI_IMUNO2008::55]>
+                ["at0031"] = <[PNI_IMUNO2008::99]>
+                ["at0032"] = <[PNI_IMUNO2008::25]>
+                ["at0033"] = <[PNI_IMUNO2008::60]>
+                ["at0034"] = <[PNI_IMUNO2008::49]>
+                ["at0035"] = <[PNI_IMUNO2008::16]>
+                ["at0036"] = <[PNI_IMUNO2008::50]>
+                ["at0037"] = <[PNI_IMUNO2008::51]>
+                ["at0038"] = <[PNI_IMUNO2008::61]>
+                ["at0039"] = <[PNI_IMUNO2008::52]>
+                ["at0040"] = <[PNI_IMUNO2008::26]>
+                ["at0041"] = <[PNI_IMUNO2008::20]>
+                ["at0042"] = <[PNI_IMUNO2008::48]>
+                ["at0045"] = <[PNI_IMUNO2008::56]>
+                ["at0046"] = <[PNI_IMUNO2008::57]>
+                ["at0044"] = <[PNI_IMUNO2008::70]>
+                ["at0043"] = <[PNI_IMUNO2008::19]>
+                ["at0047"] = <[PNI_IMUNO2008::27]>
+                ["at0048"] = <[PNI_IMUNO2008::29]>
+                ["at0049"] = <[PNI_IMUNO2008::28]>
+                ["at0050"] = <[PNI_IMUNO2008::30]>
+                ["at0051"] = <[PNI_IMUNO2008::39]>
+                ["at0052"] = <[PNI_IMUNO2008::36]>
+                ["at0053"] = <[PNI_IMUNO2008::34]>
+                ["at0054"] = <[PNI_IMUNO2008::35]>
+                ["at0056"] = <[PNI_IMUNO2008::37]>
+                ["at0057"] = <[PNI_IMUNO2008::32]>
+                ["at0058"] = <[PNI_IMUNO2008::38]>
+                ["at0059"] = <[PNI_IMUNO2008::40]>
+                ["at0060"] = <[PNI_IMUNO2008::41]>
+                ["at0061"] = <[PNI_IMUNO2008::42]>
+                ["at0062"] = <[PNI_IMUNO2008::43]>
+                ["at0063"] = <[PNI_IMUNO2008::44]>
+                ["at0064"] = <[PNI_IMUNO2008::31]>
+                ["at0065"] = <[PNI_IMUNO2008::31]>
+                ["at0055"] = <[PNI_IMUNO2008::59]>
+                ["at0030"] = <[PNI_IMUNO2008::55]>
+            >
+        >
+        ["PNI_EAPV2008"] = <
+            items = <
+                ["at0083"] = <[PNI_EAPV2008::3]>
+                ["at0084"] = <[PNI_EAPV2008::2]>
+                ["at0085"] = <[PNI_EAPV2008::59]>
+                ["at0086"] = <[PNI_EAPV2008::60]>
+                ["at0087"] = <[PNI_EAPV2008::23]>
+                ["at0088"] = <[PNI_EAPV2008::45]>
+                ["at0089"] = <[PNI_EAPV2008::39]>
+                ["at0090"] = <[PNI_EAPV2008::57]>
+                ["at0091"] = <[PNI_EAPV2008::50]>
+                ["at0092"] = <[PNI_EAPV2008::54]>
+                ["at0093"] = <[PNI_EAPV2008::28]>
+                ["at0094"] = <[PNI_EAPV2008::72]>
+                ["at0095"] = <[PNI_EAPV2008::11]>
+                ["at0096"] = <[PNI_EAPV2008::52]>
+                ["at0097"] = <[PNI_EAPV2008::24]>
+                ["at0098"] = <[PNI_EAPV2008::65]>
+                ["at0099"] = <[PNI_EAPV2008::29]>
+                ["at0100"] = <[PNI_EAPV2008::35]>
+                ["at0101"] = <[PNI_EAPV2008::36]>
+                ["at0102"] = <[PNI_EAPV2008::69]>
+                ["at0103"] = <[PNI_EAPV2008::9]>
+                ["at0104"] = <[PNI_EAPV2008::13]>
+                ["at0105"] = <[PNI_EAPV2008::17]>
+                ["at0106"] = <[PNI_EAPV2008::10]>
+                ["at0107"] = <[PNI_EAPV2008::25]>
+                ["at0108"] = <[PNI_EAPV2008::58]>
+                ["at0109"] = <[PNI_EAPV2008::56]>
+                ["at0110"] = <[PNI_EAPV2008::61]>
+                ["at0111"] = <[PNI_EAPV2008::41]>
+                ["at0112"] = <[PNI_EAPV2008::41]>
+                ["at0113"] = <[PNI_EAPV2008::70]>
+                ["at0114"] = <[PNI_EAPV2008::6]>
+                ["at0115"] = <[PNI_EAPV2008::5]>
+                ["at0116"] = <[PNI_EAPV2008::7]>
+                ["at0117"] = <[PNI_EAPV2008::8]>
+                ["at0118"] = <[PNI_EAPV2008::22]>
+                ["at0119"] = <[PNI_EAPV2008::53]>
+                ["at0120"] = <[PNI_EAPV2008::42]>
+                ["at0121"] = <[PNI_EAPV2008::62]>
+                ["at0122"] = <[PNI_EAPV2008::14]>
+                ["at0123"] = <[PNI_EAPV2008::53]>
+                ["at0124"] = <[PNI_EAPV2008::46]>
+                ["at0125"] = <[PNI_EAPV2008::49]>
+                ["at0126"] = <[PNI_EAPV2008::1]>
+                ["at0127"] = <[PNI_EAPV2008::16]>
+                ["at0128"] = <[PNI_EAPV2008::47]>
+                ["at0129"] = <[PNI_EAPV2008::64]>
+                ["at0130"] = <[PNI_EAPV2008::43]>
+                ["at0131"] = <[PNI_EAPV2008::37]>
+                ["at0132"] = <[PNI_EAPV2008::26]>
+                ["at0133"] = <[PNI_EAPV2008::55]>
+                ["at0134"] = <[PNI_EAPV2008::15]>
+                ["at0135"] = <[PNI_EAPV2008::21]>
+                ["at0136"] = <[PNI_EAPV2008::38]>
+                ["at0137"] = <[PNI_EAPV2008::48]>
+                ["at0138"] = <[PNI_EAPV2008::18]>
+                ["at0139"] = <[PNI_EAPV2008::73]>
+                ["at0140"] = <[PNI_EAPV2008::27]>
+                ["at0141"] = <[PNI_EAPV2008::32]>
+                ["at0143"] = <[PNI_EAPV2008::51]>
+                ["at0144"] = <[PNI_EAPV2008::20]>
+                ["at0145"] = <[PNI_EAPV2008::66]>
+                ["at0146"] = <[PNI_EAPV2008::40]>
+                ["at0147"] = <[PNI_EAPV2008::4]>
+                ["at0148"] = <[PNI_EAPV2008::67]>
+                ["at0024"] = <[PNI_EAPV2008::17]>
+            >
+        >
+    >

@@ -1,0 +1,510 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_signs.v1ao
+
+concept
+	[at0000]	-- Sinais
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Sinais
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- List
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Vômitos
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0041, 	-- Recente com Sinais de Desidratação
+													at0042, 	-- Recente sem Sinais de Desidratação
+													at0043]	-- Ausente
+												}
+											}
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Náuseas
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0045, 	-- Recente com Sinais de Desidratação
+													at0046, 	-- Recente sem Sinais de Desidratação
+													at0047]	-- Ausente
+												}
+											}
+										}
+									}
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Diarréia
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0049, 	-- Recente com Sinais de Desidratação
+													at0050, 	-- Recente sem Sinais de Desidratação
+													at0051]	-- Ausente
+												}
+											}
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Melena
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Hematemese
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Enterorragia
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Palidez
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- Epistaxe
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0053, 	-- Com Alterações de SV
+													at0054, 	-- Sem Alterações de SV
+													at0055]	-- Ausente
+												}
+											}
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Cianose
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..1} matches {	-- Tontura / Fraqueza
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Desmaios
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Distúrbios Visuais (Diplopia, Escotomas)
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- Abcessos
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Sudorese
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0039] occurrences matches {0..1} matches {	-- Sinais de Desidratação
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Letargia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Mucosas Ressecadas
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Tugor Pastoso
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0056] occurrences matches {0..1} matches {	-- Estados de Pânico ou Uso de Drogas
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0057] occurrences matches {0..1} matches {	-- Estado Mental Alterado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sinais">
+					description = <"**(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0020"] = <
+					text = <"Letargia">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Mucosas Ressecadas">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Tugor Pastoso">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Enterorragia">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Desmaios">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Palidez">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Melena">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Abcessos">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Tontura / Fraqueza">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Hematemese">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Distúrbios Visuais (Diplopia, Escotomas)">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Cianose">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Sudorese">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Vômitos">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Náuseas">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Diarréia">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Epistaxe">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Com Alterações de SV">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Sem Alterações de SV">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Ausente">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Estados de Pânico ou Uso de Drogas">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Estado Mental Alterado">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sinais">
+					description = <"**(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"List">
+					description = <"@ internal @">
+				>
+				["at0020"] = <
+					text = <"Letargia">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Mucosas Ressecadas">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Tugor Pastoso">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Enterorragia">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Desmaios">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Palidez">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Melena">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Abcessos">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Tontura / Fraqueza">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Hematemese">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Distúrbios Visuais (Diplopia, Escotomas)">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Cianose">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Sudorese">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0040"] = <
+					text = <"Vômitos">
+					description = <"**(pt)">
+				>
+				["at0041"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0042"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0043"] = <
+					text = <"Ausente">
+					description = <"**(pt)">
+				>
+				["at0044"] = <
+					text = <"Náuseas">
+					description = <"**(pt)">
+				>
+				["at0045"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0046"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0047"] = <
+					text = <"Ausente">
+					description = <"**(pt)">
+				>
+				["at0048"] = <
+					text = <"Diarréia">
+					description = <"**(pt)">
+				>
+				["at0049"] = <
+					text = <"Recente com Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0050"] = <
+					text = <"Recente sem Sinais de Desidratação">
+					description = <"**(pt)">
+				>
+				["at0051"] = <
+					text = <"Ausente">
+					description = <"**(pt)">
+				>
+				["at0052"] = <
+					text = <"Epistaxe">
+					description = <"**(pt)">
+				>
+				["at0053"] = <
+					text = <"Com Alterações de SV">
+					description = <"**(pt)">
+				>
+				["at0054"] = <
+					text = <"Sem Alterações de SV">
+					description = <"**(pt)">
+				>
+				["at0055"] = <
+					text = <"Ausente">
+					description = <"**(pt)">
+				>
+				["at0056"] = <
+					text = <"Estado de Pânico ou Uso de Drogas">
+					description = <"**(pt)">
+				>
+				["at0057"] = <
+					text = <"Estado Mental Alterado">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

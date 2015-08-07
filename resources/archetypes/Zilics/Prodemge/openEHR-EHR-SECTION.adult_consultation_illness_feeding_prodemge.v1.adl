@@ -1,0 +1,81 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.adult_consultation_illness_feeding_prodemge.v1
+
+concept
+	[at0000]	-- Consulta de Adulto
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Consulta - Adulto">
+			use = <"Consulta - Adulto">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta - Adulto">
+			use = <"teste">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"2C48F96BC5D54763CBCDD2CEC85B1BB4">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Consulta - Adulto
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0003] occurrences matches {0..1} matches {	-- *testeSection(pt)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta - Adulto">
+					description = <"Consulta - Adulto">
+				>
+				["at0003"] = <
+					text = <"*testeSection(pt)">
+					description = <"Consulta - Adulto">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta - Adulto">
+					description = <"unknown">
+				>
+				["at0003"] = <
+					text = <"testeSection">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

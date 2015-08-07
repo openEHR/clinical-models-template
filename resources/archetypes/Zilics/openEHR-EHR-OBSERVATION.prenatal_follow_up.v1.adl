@@ -1,0 +1,886 @@
+archetype
+    openEHR-EHR-OBSERVATION.prenatal_follow_up.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+    translations = <
+        ["en-us"] = <
+            language = <[ISO_639-1::en-us]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"xxx">
+        ["name"] = <"Liz Peloso">
+        ["organisation"] = <"xxx">
+        ["date"] = <"July 18, 2011">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"x">
+            use = <"x">
+            misuse = <"x">
+        >
+        ["en-us"] = <
+            language = <[ISO_639-1::en-us]>
+            purpose = <"*x">
+            use = <"*x">
+            misuse = <"*x">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0092] occurrences matches {0..1} matches {
+                                        items cardinality matches {1..*; unordered} matches {
+                                            CLUSTER[at0074] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            C_DV_QUANTITY <
+                                                                property = <[openEHR::124]>
+                                                                list = <
+                                                                    ["1"] = <
+                                                                        units = <"kg">
+                                                                        magnitude = <|0.0..1000.0|>
+                                                                        precision = <|-1|>
+                                                                    >
+                                                                >
+                                                            >
+                                                        }
+                                                    }
+                                                    ELEMENT[at0017] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0016] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0035] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0053] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            C_DV_QUANTITY <
+                                                                property = <[openEHR::125]>
+                                                                list = <
+                                                                    ["1"] = <
+                                                                        units = <"mm[Hg]">
+                                                                        magnitude = <|>=0.0|>
+                                                                        precision = <|-1|>
+                                                                    >
+                                                                >
+                                                            >
+                                                        }
+                                                    }
+                                                    ELEMENT[at0054] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            C_DV_QUANTITY <
+                                                                property = <[openEHR::125]>
+                                                                list = <
+                                                                    ["1"] = <
+                                                                        units = <"mm[Hg]">
+                                                                        magnitude = <|0.0..1000.0|>
+                                                                        precision = <|-1|>
+                                                                    >
+                                                                >
+                                                            >
+                                                        }
+                                                    }
+                                                    ELEMENT[at0018] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0033] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0100] occurrences matches {0..1} matches {
+                                                items cardinality matches {1..*; unordered} matches {
+                                                    ELEMENT[at0080] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0073] occurrences matches {1..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0019] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0032] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            C_DV_QUANTITY <
+                                                                property = <[openEHR::127]>
+                                                                list = <
+                                                                    ["1"] = <
+                                                                        units = <"°C">
+                                                                        magnitude = <|>=0.0|>
+                                                                        precision = <|-1|>
+                                                                    >
+                                                                >
+                                                            >
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0081] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0093] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0096] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0097,
+                                                            at0098,
+                                                            at0099]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0094] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0104] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0105] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openEHR::128]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"wk">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0106] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openEHR::122]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"cm">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0107] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0108] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [ac0007]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0115] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0119] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0117,
+                                                            at0118]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0116] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0117,
+                                                            at0118]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0120] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0118,
+                                                            at0117]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0121] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Exame Físico">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Peso">
+                    description = <"Peso do cidadão.">
+                >
+                ["at0005"] = <
+                    text = <"Altura/ Estatura">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Posição">
+                    description = <"Posição utilizada para realizar a mensuração da altura/estatura do cidadão.">
+                >
+                ["at0007"] = <
+                    text = <"Ortostática">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Deitado">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Valor Mensurado">
+                    description = <"Valor do comprimento do corpo do cidadão do ápice da cabeça à sola do pé.">
+                >
+                ["at0019"] = <
+                    text = <"Temperatura Corporal">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Valor">
+                    description = <"Valor da temperatura corporal mensurada.">
+                >
+                ["at0034"] = <
+                    text = <"Posição">
+                    description = <"Posição do cidadão no momento que foi realizada a mensuração da pressão arterial.">
+                >
+                ["at0035"] = <
+                    text = <"Pressão Arterial">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Pressão Arterial Sistólica">
+                    description = <"Pico da pressão arterial sistêmica mensurada na fase sistólica ou de contração do ciclo do coração.">
+                >
+                ["at0054"] = <
+                    text = <"Pressão Arterial Diastólica">
+                    description = <"Mínimo da pressão arterial sistêmica mensurada na fase diastólica ou de relaxamento do ciclo do coração.">
+                >
+                ["at0055"] = <
+                    text = <"Frequência Cardíaca (bpm)">
+                    description = <"Valor da freqüência cardíaca.">
+                >
+                ["at0056"] = <
+                    text = <"Frequência Respiratória">
+                    description = <"*">
+                >
+                ["at0075"] = <
+                    text = <"Normal">
+                    description = <"*">
+                >
+                ["at0076"] = <
+                    text = <"Sobrepeso">
+                    description = <"*">
+                >
+                ["at0077"] = <
+                    text = <"Obeso Classe I">
+                    description = <"*">
+                >
+                ["at0078"] = <
+                    text = <"Obeso Classe II">
+                    description = <"*">
+                >
+                ["at0079"] = <
+                    text = <"Obeso Classe III">
+                    description = <"*">
+                >
+                ["at0087"] = <
+                    text = <"Exame Físico">
+                    description = <"Anotam-se dados sobre o exame físico realizado durante o atendimento.">
+                >
+                ["at0092"] = <
+                    text = <"Exame Físico">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0016"] = <
+                    text = <"Ganho de peso < 1kg no mes">
+                    description = <"**">
+                >
+                ["at0017"] = <
+                    text = <"Ganho de peso > 2kg no mes">
+                    description = <"**">
+                >
+                ["at0018"] = <
+                    text = <"Pressão arterial sistólica > 140 mmHg e ou pressão arterial diastólica > 90 mmHg (S/N)?">
+                    description = <"**">
+                >
+                ["at0033"] = <
+                    text = <"Pressão arterial sistólica < 90 mmHg or pressão arterial diastólica < 60 mmHg ?">
+                    description = <"**">
+                >
+                ["at0057"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0073"] = <
+                    text = <"Edema de Minf e ou face?">
+                    description = <"**">
+                >
+                ["at0074"] = <
+                    text = <"Medida do Peso">
+                    description = <"**">
+                >
+                ["at0080"] = <
+                    text = <"Exame de mamas? ">
+                    description = <"**">
+                >
+                ["at0081"] = <
+                    text = <"Lab results">
+                    description = <"**">
+                >
+                ["at0093"] = <
+                    text = <"Albuminuria (S/N)?">
+                    description = <"**">
+                >
+                ["at0094"] = <
+                    text = <"Hb < 110 g/L ?">
+                    description = <"**">
+                >
+                ["at0095"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0096"] = <
+                    text = <"VRDL (Sifilis)">
+                    description = <"**">
+                >
+                ["at0097"] = <
+                    text = <"*Positive">
+                    description = <"**">
+                >
+                ["at0098"] = <
+                    text = <"*Negative">
+                    description = <"**">
+                >
+                ["at0099"] = <
+                    text = <"*Not done">
+                    description = <"**">
+                >
+                ["at0100"] = <
+                    text = <"Achados">
+                    description = <"**">
+                >
+                ["at0101"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0102"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0103"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0104"] = <
+                    text = <"Avaliação Pre-natal">
+                    description = <"**">
+                >
+                ["at0105"] = <
+                    text = <"Idade gestacional em semanas">
+                    description = <"**">
+                >
+                ["at0106"] = <
+                    text = <"Altura do utero em cm">
+                    description = <"**">
+                >
+                ["at0107"] = <
+                    text = <"ALtura do utero correta para idade gestacional?">
+                    description = <"**">
+                >
+                ["at0108"] = <
+                    text = <"Posição do feto no útero">
+                    description = <"**">
+                >
+                ["at0109"] = <
+                    text = <"*cephalic">
+                    description = <"**">
+                >
+                ["at0110"] = <
+                    text = <"*breech">
+                    description = <"**">
+                >
+                ["at0111"] = <
+                    text = <"*transverse">
+                    description = <"**">
+                >
+                ["at0112"] = <
+                    text = <"*not sure">
+                    description = <"**">
+                >
+                ["at0113"] = <
+                    text = <"*not evaluated">
+                    description = <"**">
+                >
+                ["at0114"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0115"] = <
+                    text = <"BCF <120 ou maior que 160 bpm?">
+                    description = <"**">
+                >
+                ["at0116"] = <
+                    text = <"Medicamentos para anemia (acido folico e ferro?)">
+                    description = <"**">
+                >
+                ["at0117"] = <
+                    text = <"*Given">
+                    description = <"*Medication was given to the patient">
+                >
+                ["at0118"] = <
+                    text = <"*Not given">
+                    description = <"**">
+                >
+                ["at0119"] = <
+                    text = <"Mebendazol (depois do 4 mes de gravidez?)">
+                    description = <"**">
+                >
+                ["at0120"] = <
+                    text = <"Mosqueteiro entregue?">
+                    description = <"**">
+                >
+                ["at0121"] = <
+                    text = <"Sangramento Vaginal desde a ultima consulta?">
+                    description = <"**">
+                >
+            >
+        >
+        ["en-us"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"prenatal follow up consultation ">
+                    description = <"**">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"**">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Weight">
+                    description = <"*Peso do cidadão.">
+                >
+                ["at0005"] = <
+                    text = <"*Altura/ Estatura">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"*Posição">
+                    description = <"*Posição utilizada para realizar a mensuração da altura/estatura do cidadão.">
+                >
+                ["at0007"] = <
+                    text = <"*Ortostática">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"*Deitado">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"*Valor Mensurado">
+                    description = <"*Valor do comprimento do corpo do cidadão do ápice da cabeça à sola do pé.">
+                >
+                ["at0019"] = <
+                    text = <"Body Temperature">
+                    description = <"**">
+                >
+                ["at0032"] = <
+                    text = <"Value ">
+                    description = <"*Valor da temperatura corporal mensurada.">
+                >
+                ["at0034"] = <
+                    text = <"*Posição">
+                    description = <"*Posição do cidadão no momento que foi realizada a mensuração da pressão arterial.">
+                >
+                ["at0035"] = <
+                    text = <"Blood Pressure">
+                    description = <"**">
+                >
+                ["at0053"] = <
+                    text = <"Systolic Blood Pressure">
+                    description = <"*Pico da pressão arterial sistêmica mensurada na fase sistólica ou de contração do ciclo do coração.">
+                >
+                ["at0054"] = <
+                    text = <"Diastolic Blood Pressure">
+                    description = <"*Mínimo da pressão arterial sistêmica mensurada na fase diastólica ou de relaxamento do ciclo do coração.">
+                >
+                ["at0055"] = <
+                    text = <"*Frequência Cardíaca (bpm)">
+                    description = <"*Valor da freqüência cardíaca.">
+                >
+                ["at0056"] = <
+                    text = <"*Frequência Respiratória">
+                    description = <"**">
+                >
+                ["at0075"] = <
+                    text = <"*Normal">
+                    description = <"**">
+                >
+                ["at0076"] = <
+                    text = <"*Sobrepeso">
+                    description = <"**">
+                >
+                ["at0077"] = <
+                    text = <"*Obeso Classe I">
+                    description = <"**">
+                >
+                ["at0078"] = <
+                    text = <"*Obeso Classe II">
+                    description = <"**">
+                >
+                ["at0079"] = <
+                    text = <"*Obeso Classe III">
+                    description = <"**">
+                >
+                ["at0087"] = <
+                    text = <"*Exame Físico">
+                    description = <"*Anotam-se dados sobre o exame físico realizado durante o atendimento.">
+                >
+                ["at0092"] = <
+                    text = <"Physical Exam">
+                    description = <"**">
+                >
+                ["at0015"] = <
+                    text = <"Weight gain less than 1 kg in a month">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Weight gain less than 1 kg in a month">
+                    description = <"This will be automatically calculated by the system looking at previous wieght  on last consultations
+Method: if the (current weight - last weight measured) / (current consultation date - previous consultaiton date) is lower  than 1/30  than the field is true.">
+                >
+                ["at0017"] = <
+                    text = <"Weight gain greater than 2 kg in a month">
+                    description = <"This will be automatically calculated by the system looking at previous wieght  on last consultations
+Method: if the (current weight - last weight measured) / (current consultation date - previous consultaiton date) is greater  than 2/30  than the field is true.">
+                >
+                ["at0018"] = <
+                    text = <"High Blood pressure (systolic > 140 mmHg  and or diastolic  > 90 mmHg)">
+                    description = <"">
+                >
+                ["at0033"] = <
+                    text = <"Low blood pressure (systolic < 90 mmHg and/or diastolic < 60 mmHg)">
+                    description = <"*">
+                >
+                ["at0057"] = <
+                    text = <"New element *(en)">
+                    description = <"*">
+                >
+                ["at0073"] = <
+                    text = <"Swelling of feet and or face? (Y/N)">
+                    description = <"*">
+                >
+                ["at0074"] = <
+                    text = <"Weight">
+                    description = <"*">
+                >
+                ["at0080"] = <
+                    text = <"Breast exam ? (Y/N)">
+                    description = <"*">
+                >
+                ["at0081"] = <
+                    text = <"Lab Results">
+                    description = <"*">
+                >
+                ["at0093"] = <
+                    text = <"Albuminuria ? (Y/N) ">
+                    description = <"*">
+                >
+                ["at0094"] = <
+                    text = <"Hgb < 110 g/l? (Y/N)">
+                    description = <"*">
+                >
+                ["at0095"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0096"] = <
+                    text = <"RPR (Syphilis)">
+                    description = <"*">
+                >
+                ["at0097"] = <
+                    text = <"Positive">
+                    description = <"*">
+                >
+                ["at0098"] = <
+                    text = <"Negative">
+                    description = <"*">
+                >
+                ["at0099"] = <
+                    text = <"Not done">
+                    description = <"*">
+                >
+                ["at0100"] = <
+                    text = <"Findings">
+                    description = <"*">
+                >
+                ["at0101"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0102"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0103"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0104"] = <
+                    text = <"Pregnancy Check-up">
+                    description = <"*">
+                >
+                ["at0105"] = <
+                    text = <"Gestational age in weeks">
+                    description = <"calculated by the system using the current date - Last period date informed in the first prenatal consultation
+result in weeks.">
+                >
+                ["at0106"] = <
+                    text = <"Length of the uterus in cm">
+                    description = <"*">
+                >
+                ["at0107"] = <
+                    text = <"Is fundal height correct for gestational age? (Y/N)">
+                    description = <"Automatic calculated for all pregnancies over or equal 12 weeks. The filed is true if the value of the length of the uterus is the same as the gestational age in weeks.">
+                >
+                ["at0108"] = <
+                    text = <"Position of the fetus inside womb">
+                    description = <"*">
+                >
+                ["at0109"] = <
+                    text = <"cephalic">
+                    description = <"*">
+                >
+                ["at0110"] = <
+                    text = <"breech">
+                    description = <"*">
+                >
+                ["at0111"] = <
+                    text = <"transverse">
+                    description = <"*">
+                >
+                ["at0112"] = <
+                    text = <"not sure">
+                    description = <"*">
+                >
+                ["at0113"] = <
+                    text = <"not evaluated">
+                    description = <"*">
+                >
+                ["at0114"] = <
+                    text = <"Position of the fetus inside the womb">
+                    description = <"*">
+                >
+                ["at0115"] = <
+                    text = <"Fetal heart rate < 120 or > 160 bpm ? (Y/N)">
+                    description = <"*">
+                >
+                ["at0116"] = <
+                    text = <"Medicine that increases blood (Folic Acid and Iron)">
+                    description = <"*">
+                >
+                ["at0117"] = <
+                    text = <"Given">
+                    description = <"Medication was given to the patient">
+                >
+                ["at0118"] = <
+                    text = <"Not given">
+                    description = <"Medication was not given to the patient
+">
+                >
+                ["at0119"] = <
+                    text = <"Mebendazole (after 4 month of pregnancy)">
+                    description = <"*">
+                >
+                ["at0120"] = <
+                    text = <"Bed nets">
+                    description = <"*">
+                >
+                ["at0121"] = <
+                    text = <"Any vaginal bleeding since last visit? (Y/N)">
+                    description = <"*">
+                >
+            >
+        >
+    >
+    constraint_definitions = <
+        ["pt"] = <
+            items = <
+                ["ac0001"] = <
+                    text = <"*C">
+                    description = <"*Cephalic">
+                >
+                ["ac0003"] = <
+                    text = <"*O">
+                    description = <"*Oblique">
+                >
+                ["ac0004"] = <
+                    text = <"*B">
+                    description = <"*Breech">
+                >
+                ["ac0005"] = <
+                    text = <"*T">
+                    description = <"*Transverse">
+                >
+                ["ac0006"] = <
+                    text = <"*NE">
+                    description = <"*Not evaluated">
+                >
+                ["ac0007"] = <
+                    text = <"*NS">
+                    description = <"*Not sure">
+                >
+            >
+        >
+        ["en-us"] = <
+            items = <
+                ["ac0001"] = <
+                    text = <"C">
+                    description = <"Cephalic">
+                >
+                ["ac0003"] = <
+                    text = <"O">
+                    description = <"Oblique">
+                >
+                ["ac0004"] = <
+                    text = <"B">
+                    description = <"Breech">
+                >
+                ["ac0005"] = <
+                    text = <"T">
+                    description = <"Transverse">
+                >
+                ["ac0006"] = <
+                    text = <"NE">
+                    description = <"Not evaluated">
+                >
+                ["ac0007"] = <
+                    text = <"NS">
+                    description = <"Not sure">
+                >
+            >
+        >
+    >

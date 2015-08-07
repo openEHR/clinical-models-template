@@ -1,0 +1,14 @@
+/data[at0001]/events[at0002]/data[at0003]/items[at0004]=polytrauma:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0005]=tce:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0006]=whiteWeapon:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0007]=firearm:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0008]=runningOver:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0014]=fallFromAHeight:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0009]=attacks:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0010]=drowning:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0011]=shock:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0012]=vertebralColumnCompromised:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0016]=abdomenChestAndHeadDrilling:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0018]/items[at0019]=burning:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0018]/items[at0015]=affectedArea:true
+/data[at0001]/events[at0002]/data[at0003]/items[at0018]/items[at0020]=faceCompromise:true

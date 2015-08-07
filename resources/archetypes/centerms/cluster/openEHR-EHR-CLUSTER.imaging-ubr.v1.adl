@@ -1,0 +1,167 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.imaging-ubr.v1
+
+concept
+	[at0000]	-- Imaging details
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"14/12/2009">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record simple imaging details , used in requests for imaging, records of imaging procedures and imaging reports.">
+			use = <"For use within OBSERVATION. request, ACTION.imaging and OBSERVATION.imaging or similar archetypes.">
+			keywords = <"imaging", "radiology">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Para registrar detalhes simples de exames de imagem, em solicitações de exames de imagem, registros de procedimentos de imagem e em relatórios de exames de imagem.">
+			use = <"Usar com os seguintes arquétipos (ou similares) OBSERVATION. request, ACTION.imaging e OBSERVATION.imaging.">
+			keywords = <"exame de imagem", "radiologia">
+			misuse = <"">
+			copyright = <"© openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", "Heather Leslie, Ocean Informatics, Australia">
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"525501398A32BD93300580B44A376046">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Detalhes de imagem
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Categoria de imagem
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {	-- Nome do exame de imagem
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {	-- Local anatômico
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location-precise-ubr(-[a-zA-Z0-9_]+)*\.v1/}
+				exclude
+					archetype_id/value matches {/.*/}
+			}
+			CLUSTER[at0011] occurrences matches {0..*} matches {	-- Imagem
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Nome da imagem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Achados na imagem
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Imagem
+						value matches {
+							DV_MULTIMEDIA matches {
+								media_type matches {[openEHR::]}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Imaging details">
+					description = <"Details of imaging, used in requests for imaging, records of imaging procedures and imaging reports.">
+				>
+				["at0001"] = <
+					text = <"Imaging category">
+					description = <"The type of imaging.">
+				>
+				["at0007"] = <
+					text = <"Anatomical location">
+					description = <"The anatomical site(s) to be imaged.">
+				>
+				["at0010"] = <
+					text = <"Imaging test name">
+					description = <"Imaging test requested / performed.">
+				>
+				["at0011"] = <
+					text = <"View">
+					description = <"Details about a particular view.">
+				>
+				["at0012"] = <
+					text = <"View name">
+					description = <"A description of the view taken.">
+				>
+				["at0013"] = <
+					text = <"Per-view findings">
+					description = <"Findings related to the specific view.">
+				>
+				["at0015"] = <
+					text = <"Image">
+					description = <"*">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Detalhes de imagem">
+					description = <"Detalhes de imagem, usados em solicitações de exames de imagem, registros de procedimentos de imagem e relatórios de exames de imagem.">
+				>
+				["at0001"] = <
+					text = <"Categoria de imagem">
+					description = <"O tipo de exame de imagem.">
+				>
+				["at0007"] = <
+					text = <"Local anatômico">
+					description = <"O(s) local anatômico(s) sujeito(s) a exame de imagem.">
+				>
+				["at0010"] = <
+					text = <"Nome do exame de imagem">
+					description = <"Exame de imagem solicitado/executado.">
+				>
+				["at0011"] = <
+					text = <"Imagem">
+					description = <"Detalhes sobre uma imagem em particular.">
+				>
+				["at0012"] = <
+					text = <"Nome da imagem">
+					description = <"Uma descrição da imagem capturada.">
+				>
+				["at0013"] = <
+					text = <"Achados na imagem">
+					description = <"Achados relacionado com aquela imagem em particular.">
+				>
+				["at0015"] = <
+					text = <"Imagem">
+					description = <"Imagem.">
+				>
+			>
+		>
+	>

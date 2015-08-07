@@ -1,0 +1,155 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.estilodevidaehabitos.v1
+
+concept
+	[at0000]	-- Hábitos e Estilo de vida
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.com">
+		["date"] = <"2013-06-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Para registrar um sumario evolutivo e persistente de informçoes sobre hábitos e  estilos de vida que podem influenciar a conduta terapêutica e a prestação de cuidados prestados ao paciente.">
+			use = <"Usado para registrar um sumario evolutivo e persistente de informaçoes sobre estilo de vidas acotado e atividades que podem influenciar a conduta terapêutica e a prestacào de cuidados ao paciente.
+
+O uso desse registro pode incluir, mas não está limitado a:
+- uma visão geral do uso de tabaco;
+- uma visão geral do consumo de álcool;
+- uma visao geral do abuso de substancias;
+- uma visao geral das atividades físicas;
+- uma visao geral da dieta e nutriçao quando relevante,
+- uma visao geral da história sexual.
+
+The intent of this COMPOSITION is for use as a persistent summary, however it has been identified that for implementation the archetype also needs additional attributes related to the context of the event. As a result, the COMPOSITION has been temporarily modified as an EVENT COMPOSITION which allows addition of an Items SLOT into which additional context-related archetypes can be included. This new requirement for context-related attributes in the Persistent COMPOSITION has been requested as a future openEHR Reference Model update.
+
+Initial design of this archetype was funded by the iCareNet Antenatal Shared Care Plan project, Northern Territory, Australia.">
+			keywords = <"vida", "estilo", "fumo", "alcool", "compulsão ", "exercício", "estilo de vida", "hábitos", "estilo de vida", "risco", "dieta", "compulsao alimentar", "binge drinking">
+			misuse = <"Não é adequado para registrar uma série de OBSERVAÇÕES  sobre  as atividades presentes,   deve ser usado no contexto de um diario de uso de substancias e atividades fisicas">
+			copyright = <"© National E-Health Transition Authority">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*Para registrar um sumario evolutivo e persistente de informçoes sobre hábitos e  estilos de vida que podem influenciar a conduta terapêutica e a prestação de cuidados prestados ao paciente.(en)">
+			use = <"*Usado para registrar um sumario evolutivo e persistente de informaçoes sobre estilo de vidas acotado e atividades que podem influenciar a conduta terapêutica e a prestacào de cuidados ao paciente.
+
+O uso desse registro pode incluir, mas não está limitado a:
+- uma visão geral do uso de tabaco;
+- uma visão geral do consumo de álcool;
+- uma visao geral do abuso de substancias;
+- uma visao geral das atividades físicas;
+- uma visao geral da dieta e nutriçao quando relevante,
+- uma visao geral da história sexual.
+O objetivo dessa  COMPOSITION é para ser usada como um sumário persitente, mas foi identificado que para implementaçao desse arquétipo se necesstia yambém de atributos adicionais relacionados ao contexto do evento. Como resultado essa COMPOSITION foi modificada, temporariamente, para uma EVENT COMPOSITION, o que permite adicionar um SLOT no qual arquetipos adicionais relacionados ao contexto do evento podem ser incluídos. Esse novo requisito para  que se adicione atributos relacionados ao eventos na COMPOSITION PERSISTENTE foi solicitada de ser incluida na atutalizaçao futura  do Modelo de Referencia openEHR.
+
+O  design inicial desse arquétipo foi finaciado pelo Projeto de Plano de cuidados compartilhados do período antenatal-  iCareNet Antenatal Shared Care Plan project,  do Território Norte da  Austrália.">
+			keywords = <"*vida(en)", "*estilo(en)", "*fumo(en)", "*alcool(en)", "*compulsão (en)", "*exercício(en)", "*estilo de vida(en)", "*hábitos(en)", "*estilo de vida(en)", "*risco(en)", "*dieta(en)", "*compulsao alimentar(en)", "*binge drinking(en)">
+			misuse = <"*Não é adequado para registrar uma série de OBSERVAÇÕES  sobre  as atividades presentes,   deve ser usado no contexto de um diario de uso de substancias e atividades fisicas(en)">
+			copyright = <"*© National E-Health Transition Authority(en)">
+		>
+	>
+	lifecycle_state = <"Obsolete">
+	other_contributors = <>
+	other_details = <
+		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
+		["MD5-CAM-1.0.1"] = <"AC101F3F15550E45F45F0091810A8740">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- *Habitos e estilo de vida(en)
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		context matches {
+			EVENT_CONTEXT matches {
+				other_context matches {
+					ITEM_TREE[at0002] matches {	-- *Tree(en)
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype ITEM[at0003] occurrences matches {0..*} matches {	-- *Items(en)
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.document_entry_metadata(-[a-zA-Z0-9_]+)*\.v1/}
+							}
+						}
+					}
+				}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype EVALUATION[at0004] occurrences matches {0..*} matches {	-- Fatores
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.alcohol_use_summary(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.nutrition_summary(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.physical_activity_summary(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.substance_use_summary(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.tobacco_use_summary(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-EVALUATION\.exposure(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+			allow_archetype EVALUATION[at0001] occurrences matches {0..*} matches {	-- Ausencia
+				include
+					archetype_id/value matches {/openEHR-EHR-EVALUATION\.absence(-[a-zA-Z0-9_]+)*\.v1/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Hábitos e Estilo de vida">
+					description = <"Um sumário persistente e evolutivo dos hábitos e estilos de vida que podem influenciar as condutas terapêuticas e  a prestação de cuidados ao paciente.">
+				>
+				["at0001"] = <
+					text = <"Absence">
+					description = <"Registro sobre a ausencia de habitos e estilos de vida.">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Items">
+					description = <"Additional COMPOSITION related data.">
+				>
+				["at0004"] = <
+					text = <"Factors">
+					description = <"Informaçao sumária sobre cada um dos hábitos e estilos de vida.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Habitos e estilo de vida(en)">
+					description = <"*A persistent and evolving summary record of information about lifestyle factors that may influence clinical decision-making and care provision.(en)">
+				>
+				["at0001"] = <
+					text = <"Ausencia">
+					description = <"Registro sobre a ausencia de habitos e estilos de vida.">
+				>
+				["at0002"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0003"] = <
+					text = <"*Items(en)">
+					description = <"*Additional COMPOSITION related data.(en)">
+				>
+				["at0004"] = <
+					text = <"Fatores">
+					description = <"Informaçao sumária sobre cada um dos hábitos e estilos de vida.">
+				>
+			>
+		>
+	>

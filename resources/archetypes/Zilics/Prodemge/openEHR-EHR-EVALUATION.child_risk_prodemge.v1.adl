@@ -1,0 +1,515 @@
+archetype
+    openEHR-EHR-EVALUATION.child_risk_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"NotSet">
+    details = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+        >
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            CLUSTER[at0027] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0028] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0008] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0003] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0004] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0005] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0007] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0009] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0010] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0011] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0012] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0013] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0014] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0015] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0017] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0016] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0018] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0019] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0020] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0021] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0023] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0022] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0024] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0026] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0025] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false; false}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0030] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0031,
+                                            at0032,
+                                            at0033]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Avaliação de Ricos da Criança">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Estratificação de risco da criança">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Mãe com baixa escolaridade">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Mãe adolescente">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Mãe deficiente mental">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Mãe soropositiva para HIV, toxoplasmose ou sífilis (obs.: enquanto não for concluído o diagnóstico negativo da criança, ela deve ser considerada dentro do Grupo II de risco);">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Morte materna">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"RIsco Grupo 1">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"História de óbito de menores de 1 ano na família">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Condições ambientais, sociais e familiares desfavoráveis">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Pais ou responsáveis dependentes de drogas lícitas e ilícitas">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Criança nascida de parto domiciliar não assistido">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Recém-nascido retido na maternidade">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Desmame antes do 6º mês de vida">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Desnutrição">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Internação prévia">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Criança não-vacinada ou com vacinação atrasada">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Risco Grupo 2">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Baixo peso ao nascer">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Prematuridade">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Desnutrição grave">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Triagem neonatal positiva para hipotireoidismo, fenilcetonúria, anemia falciforme ou fibrose cística">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Doenças de transmissão vertical: toxoplasmose, sífilis, Aids">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Intercorrências importantes, no período neonatal, notificadas na alta hospitalar">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"Crescimento e/ou desenvolvimento inadequados">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Evolução desfavorável de qualquer doença">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Sem Risco">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Sem os critérios citados">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Resultado da Estratificação de Risco da Criança">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Sem Risco">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Risco Grupo 2">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Risco Grupo 1">
+                    description = <"*">
+                >
+            >
+        >
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Avaliação de ">
+                    description = <"**">
+                >
+                ["at0001"] = <
+                    text = <"*ITEM_TREE">
+                    description = <"*@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*New cluster">
+                    description = <"**">
+                >
+                ["at0003"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0004"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0005"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"*New cluster">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0011"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0012"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0013"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0014"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0015"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0016"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0017"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0018"] = <
+                    text = <"*New cluster">
+                    description = <"**">
+                >
+                ["at0019"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0020"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0021"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0022"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0023"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0024"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0025"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0026"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0027"] = <
+                    text = <"*New cluster">
+                    description = <"**">
+                >
+                ["at0028"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0029"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0030"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0031"] = <
+                    text = <"*Sem Risco">
+                    description = <"**">
+                >
+                ["at0032"] = <
+                    text = <"*Risco Grupo 2">
+                    description = <"**">
+                >
+                ["at0033"] = <
+                    text = <"*Risco Grupo 1">
+                    description = <"**">
+                >
+            >
+        >
+    >

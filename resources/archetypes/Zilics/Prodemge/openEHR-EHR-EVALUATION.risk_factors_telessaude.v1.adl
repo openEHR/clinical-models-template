@@ -1,0 +1,279 @@
+archetype
+    openEHR-EHR-EVALUATION.cardiovascular_risk_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0010] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0011] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0012] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0046] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0013] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0014] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0020] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Estratificação de Risco – Risco Cardiovascular">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Estratificação de Risco – Risco Cardiovascular">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Classificação da PA">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Classificação da PA">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Leve ou estágio 1 (140-159 X 90-99 mmHg)">
+                    description = <"Pressão sistólica entre  140-159 mmHg e pressão diastólica entre 90-99 mmHg">
+                >
+                ["at0007"] = <
+                    text = <"Moderada ou estágio 2 (160-179 X 100-109 mmHg)">
+                    description = <"Pressão sistólica enttre  160-179 mmHg  e pressão diastólica entre 100-109 mmHg">
+                >
+                ["at0008"] = <
+                    text = <"Grave ou estágio 3 (≥180 X ≥ 110 mmHg)">
+                    description = <"Pressão sistólica ≥18 mmHg e diastólica  ≥ 110 mmHg">
+                >
+                ["at0009"] = <
+                    text = <"Sistólica Isolada (≥ 140X < 90 mmHg)">
+                    description = <"Pressão sistólica ≥ 140 ou  < 90 mmHg">
+                >
+                ["at0010"] = <
+                    text = <"Fatores de Risco">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Tabagismo">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Dislipidemia">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Diabetes Mellitus">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Nefropatia">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Idade acima de 60 anos">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"em mulheres com menos de 65 anos">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"História familiar de doença cardiovascular">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"em homens com menos de 55 anos">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Relação cintura/quadril aumentada">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Circunferência da cintura aumentada">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Microalbuminúria">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Tolerância à glicose diminuída/glicemia de jejum alterada">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Hiperuricemia">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"PCR ultra-sensível aumentada">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"Identificação de lesões de órgãos-alvo e doenças cardiovasculares">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"Hipertrofia do ventrículo esquerdo">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"Angina do peito ou infarto agudo do miocárdio prévio">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"Revascularização miocárdica prévia">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"Insuficiência cardíaca">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Acidente vascular cerebral">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Isquemia cerebral transitória">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Alterações cognitivas ou demência vascular">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Nefropatia">
+                    description = <"*">
+                >
+                ["at0035"] = <
+                    text = <"Doença vascular arterial de extremidades">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Retinopatia hipertensiva">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"Total de Fatores de Risco">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"Lesão em órgão-alvo">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"Sim">
+                    description = <"*">
+                >
+                ["at0040"] = <
+                    text = <"Não">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"Risco Estratificado e Quantificação de Prognóstico">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Risco Baixo">
+                    description = <"Sem outros fatores de risco (FR) + hipertensão leve ">
+                >
+                ["at0043"] = <
+                    text = <"Risco Médio">
+                    description = <"Sem outros fatores de risco (FR) +  hipertensão moderada  ou 
+1 a 2 fatores de risco + hipertensão leve ou moderada">
+                >
+                ["at0044"] = <
+                    text = <"Risco Alto">
+                    description = <"3 ou + FR ou lesões nos órgãos alvo ou diabetes + hipertensão leve ou moderada  ou  sem outros fatores de risco + hipertensão grave">
+                >
+                ["at0045"] = <
+                    text = <"Risco Muito Alto">
+                    description = <"1 a 2 fatores de risco + hipertensão grave ou 
+3 ou + FR ou lesões nos órgãos alvo ou diabetes + hipertensão grave   ou
+CCA com qualquer nível de hipertensão">
+                >
+                ["at0046"] = <
+                    text = <"Hipertensão">
+                    description = <"*">
+                >
+                ["at0047"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+            >
+        >
+    >

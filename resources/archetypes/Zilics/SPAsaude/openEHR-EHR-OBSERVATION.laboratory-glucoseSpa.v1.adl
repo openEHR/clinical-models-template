@@ -1,0 +1,945 @@
+archetype
+    openEHR-EHR-OBSERVATION.laboratory-glucose.v1
+specialize
+    openEHR-EHR-OBSERVATION.laboratory.v1
+
+concept
+    [at0000.1]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"26/03/2006">
+    >
+    lifecycle_state = <"AuthorDraft">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"Recording blood glucose measurements with a full history and state model to allow the patient state to be recorded.">
+            keywords = <"GTT","glucose tolerance","BSL","blood sugar">
+            use = <"For BSL measurements, GTTs and following other challenges.">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Recording blood glucose measurements with a full history and state model to allow the patient state to be recorded.">
+            keywords = <"GTT","glucose tolerance","BSL","blood sugar">
+            use = <"*For BSL measurements, GTTs and following other challenges.">
+        >
+    >
+
+definition
+    OBSERVATION[at0000.1] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..*} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {1..*; ordered} matches {
+                                    CLUSTER[at0045.1] occurrences matches {0..1} matches {
+                                        items cardinality matches {1..*; unordered} matches {
+                                            ELEMENT[at0046.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DATE_TIME matches {
+                                                        value matches {yyyy-??-??T??:??:??}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0044.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0013.1] occurrences matches {1..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openEHR::119]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"mg/dl">
+                                                                magnitude = <|0.0..2000.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at5.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0043.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0047.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_URI matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0017.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        state matches {
+                            ITEM_TREE[at0.44] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0.45] occurrences matches {0..1} matches {
+                                        items cardinality matches {1..*; unordered} matches {
+                                            ELEMENT[at0.46] occurrences matches {1..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0.47,
+                                                            at0.48,
+                                                            at0.49,
+                                                            at0.53;
+                                                            at0.53]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0.52] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openehr::128]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"min">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                            ["2"] = <
+                                                                units = <"h">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0.54] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0.55] occurrences matches {0..1} matches {
+                                        items cardinality matches {1..*; unordered} matches {
+                                            ELEMENT[at0.56] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0.57,
+                                                            at0.58;
+                                                            at0.58]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0.60] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openehr::124]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"gm">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0.61] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0.62,
+                                                            at0.63;
+                                                            at0.62]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            use_node ELEMENT occurrences matches {0..1} /data[at0001]/events[at0002]/state[at0.44]/items[at0.45]/items[at0.52]
+                                        }
+                                    }
+                                    CLUSTER[at0.64] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; ordered} matches {
+                                            ELEMENT[at0.65] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openehr::445]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"U">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0.66] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::
+                                                            at0.63,
+                                                            at0.67;
+                                                            at0.67]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            use_node ELEMENT occurrences matches {0..1} /data[at0001]/events[at0002]/state[at0.44]/items[at0.55]/items[at0.56]
+                                            use_node ELEMENT occurrences matches {0..1} /data[at0001]/events[at0002]/state[at0.44]/items[at0.45]/items[at0.52]
+                                        }
+                                    }
+                                    CLUSTER[at0.68] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0.69] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            use_node ELEMENT occurrences matches {0..1} /data[at0001]/events[at0002]/state[at0.44]/items[at0.55]/items[at0.56]
+                                            use_node ELEMENT occurrences matches {0..1} /data[at0001]/events[at0002]/state[at0.44]/items[at0.45]/items[at0.52]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0033] matches {
+                items existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    CLUSTER[at0034] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; ordered} matches {
+                            ELEMENT[at0035] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0036] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0039] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0040] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0041] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0.43] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [ac0.2]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0042] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0038] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0.43"] = <
+                    text = <"Blood sample">
+                    description = <"The type of blood sample processed">
+                >
+                ["at0.44"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0.45"] = <
+                    text = <"Diet">
+                    description = <"Description of when the patient has eaten">
+                >
+                ["at0.46"] = <
+                    text = <"Intake">
+                    description = <"Description of calorific intake">
+                >
+                ["at0.47"] = <
+                    text = <"Fasting">
+                    description = <"No calorific intake">
+                >
+                ["at0.48"] = <
+                    text = <"Post-prandial">
+                    description = <"After a meal">
+                >
+                ["at0.49"] = <
+                    text = <"Pre-prandial">
+                    description = <"Before a meal">
+                >
+                ["at0.52"] = <
+                    text = <"Duration">
+                    description = <"The timing of the specimen in relation to the intake">
+                >
+                ["at0.53"] = <
+                    text = <"Random">
+                    description = <"Timing is not known">
+                >
+                ["at0.54"] = <
+                    text = <"Description">
+                    description = <"Description of the intake">
+                >
+                ["at0.55"] = <
+                    text = <"Glucose challenge">
+                    description = <"Information about a glucose challenge if relevant">
+                >
+                ["at0.56"] = <
+                    text = <"Timing">
+                    description = <"The relationship of the sample to the challenge">
+                >
+                ["at0.57"] = <
+                    text = <"Pre-challenge">
+                    description = <"The sample was taken prior to the challenge">
+                >
+                ["at0.58"] = <
+                    text = <"Post-challenge">
+                    description = <"The sample was taken after the challenge">
+                >
+                ["at0.60"] = <
+                    text = <"Dose">
+                    description = <"Dose of glucose">
+                >
+                ["at0.61"] = <
+                    text = <"Route">
+                    description = <"The route of administration of the glucose challenge">
+                >
+                ["at0.62"] = <
+                    text = <"Oral">
+                    description = <"The glucose was taken orally">
+                >
+                ["at0.63"] = <
+                    text = <"Intravenous">
+                    description = <"The glucose was administered intravenously">
+                >
+                ["at0.64"] = <
+                    text = <"Insulin challenge">
+                    description = <"Information about an insulin challenge">
+                >
+                ["at0.65"] = <
+                    text = <"Dose">
+                    description = <"Dose of insulin">
+                >
+                ["at0.66"] = <
+                    text = <"Route">
+                    description = <"The route of administration of the insulin">
+                >
+                ["at0.67"] = <
+                    text = <"Subcutaneous">
+                    description = <"Subcutaneous administration">
+                >
+                ["at0.68"] = <
+                    text = <"Event">
+                    description = <"An event">
+                >
+                ["at0.69"] = <
+                    text = <"Event name">
+                    description = <"A name for the event">
+                >
+                ["at0000"] = <
+                    text = <"Laboratory result">
+                    description = <"Generic laboratory result archetype to allow terminology driven results on a generic framework">
+                >
+                ["at0000.1"] = <
+                    text = <"Blood glucose">
+                    description = <"The concentration of glucose in the blood">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"Any event in a time series">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Specimen">
+                    description = <"Specimen details">
+                >
+                ["at0006"] = <
+                    text = <"Description">
+                    description = <"Description of the specimen">
+                >
+                ["at0007"] = <
+                    text = <"Body site">
+                    description = <"The site of the body where the specimen was collected">
+                >
+                ["at0008"] = <
+                    text = <"Diagnostic service">
+                    description = <"The type of diagnostic service">
+                >
+                ["at0009"] = <
+                    text = <"Chemistry">
+                    description = <"Biochemical and chemical analysis">
+                >
+                ["at0010"] = <
+                    text = <"Microbiology">
+                    description = <"Results of microbiological analysis">
+                >
+                ["at0011"] = <
+                    text = <"level 1">
+                    description = <"A cluster to enable level one battery labels">
+                >
+                ["at0012"] = <
+                    text = <"level 2">
+                    description = <"A cluster to enable level 2 battery labels">
+                >
+                ["at0013"] = <
+                    text = <"Any result">
+                    description = <"Generic result - data type is not set">
+                >
+                ["at0013.1"] = <
+                    text = <"Blood glucose">
+                    description = <"Generic result - data type is not set">
+                >
+                ["at0014"] = <
+                    text = <"Comment">
+                    description = <"Comments relating to a specific result @Path">
+                >
+                ["at0015"] = <
+                    text = <"Path">
+                    description = <"The path of the result to which the comment relates">
+                >
+                ["at0016"] = <
+                    text = <"Comment">
+                    description = <"Comment relating to a specific result at the path indicated">
+                >
+                ["at0017"] = <
+                    text = <"Overall Comment">
+                    description = <"Comment on all results">
+                >
+                ["at0018"] = <
+                    text = <"Quality">
+                    description = <"Quality parameters">
+                >
+                ["at0019"] = <
+                    text = <"Specimen">
+                    description = <"Specimen quality paraments">
+                >
+                ["at0020"] = <
+                    text = <"Issue">
+                    description = <"Issue arising with specimen">
+                >
+                ["at0021"] = <
+                    text = <"Haemolysed">
+                    description = <"The specimen was haemolysed">
+                >
+                ["at0022"] = <
+                    text = <"Lipaemic">
+                    description = <"The specimen was lipaemic">
+                >
+                ["at0023"] = <
+                    text = <"Incorrect preservative">
+                    description = <"An incorrect preservative was used when transporting the specimen">
+                >
+                ["at0024"] = <
+                    text = <"Insufficient sample">
+                    description = <"An insufficient sample was given to undertake measurement">
+                >
+                ["at0025"] = <
+                    text = <"Rating">
+                    description = <"The degree of the stated issue">
+                >
+                ["at0026"] = <
+                    text = <"Handling">
+                    description = <"Handling quality parameters">
+                >
+                ["at0027"] = <
+                    text = <"Issue">
+                    description = <"Issue arising with handling of the specimen">
+                >
+                ["at0028"] = <
+                    text = <"Handling error">
+                    description = <"A handling error occurred">
+                >
+                ["at0029"] = <
+                    text = <"Age">
+                    description = <"The specimen was delivered too long after it was taken">
+                >
+                ["at0030"] = <
+                    text = <"Laboratory accident">
+                    description = <"An accident occurred with the sample in the laboratory">
+                >
+                ["at0031"] = <
+                    text = <"Fail">
+                    description = <"The specimen could not be analysed for technical reasons">
+                >
+                ["at0032"] = <
+                    text = <"Description">
+                    description = <"A description of the quality issue">
+                >
+                ["at0033"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0034"] = <
+                    text = <"Identification">
+                    description = <"Information identifying the laboratory and specimen">
+                >
+                ["at0035"] = <
+                    text = <"Specimen identification">
+                    description = <"The identifying information about the specimen">
+                >
+                ["at0036"] = <
+                    text = <"Laboratory">
+                    description = <"Information identiying the laboratory">
+                >
+                ["at0037"] = <
+                    text = <"Multimedia representation">
+                    description = <"The laboratory result in a specific display format">
+                >
+                ["at0038"] = <
+                    text = <"Device">
+                    description = <"The device used to make the measurement">
+                >
+                ["at0039"] = <
+                    text = <"Specimen details">
+                    description = <"Details about the specimen">
+                >
+                ["at0040"] = <
+                    text = <"DateTime received">
+                    description = <"The date and time the specimen was received in the laboratory">
+                >
+                ["at0041"] = <
+                    text = <"DateTime processed">
+                    description = <"The date and time the specimen was processed in the laboratory">
+                >
+                ["at0042"] = <
+                    text = <"Methods">
+                    description = <"The method used to measure the glucose">
+                >
+                ["at5.1"] = <
+                    text = <"Reference Values">
+                    description = <"*">
+                >
+                ["at0043.1"] = <
+                    text = <"Method">
+                    description = <"*">
+                >
+                ["at0017.1"] = <
+                    text = <"*! - *Overall Comment">
+                    description = <"*! - *Comment on all results">
+                >
+                ["at0044.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0045.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0046.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0047.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0.43"] = <
+                    text = <"*Blood sample">
+                    description = <"*The type of blood sample processed">
+                >
+                ["at0.44"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0.45"] = <
+                    text = <"*Diet">
+                    description = <"*Description of when the patient has eaten">
+                >
+                ["at0.46"] = <
+                    text = <"*Intake">
+                    description = <"*Description of calorific intake">
+                >
+                ["at0.47"] = <
+                    text = <"*Fasting">
+                    description = <"*No calorific intake">
+                >
+                ["at0.48"] = <
+                    text = <"*Post-prandial">
+                    description = <"*After a meal">
+                >
+                ["at0.49"] = <
+                    text = <"*Pre-prandial">
+                    description = <"*Before a meal">
+                >
+                ["at0.52"] = <
+                    text = <"*Duration">
+                    description = <"*The timing of the specimen in relation to the intake">
+                >
+                ["at0.53"] = <
+                    text = <"*Random">
+                    description = <"*Timing is not known">
+                >
+                ["at0.54"] = <
+                    text = <"*Description">
+                    description = <"*Description of the intake">
+                >
+                ["at0.55"] = <
+                    text = <"*Glucose challenge">
+                    description = <"*Information about a glucose challenge if relevant">
+                >
+                ["at0.56"] = <
+                    text = <"*Timing">
+                    description = <"*The relationship of the sample to the challenge">
+                >
+                ["at0.57"] = <
+                    text = <"*Pre-challenge">
+                    description = <"*The sample was taken prior to the challenge">
+                >
+                ["at0.58"] = <
+                    text = <"*Post-challenge">
+                    description = <"*The sample was taken after the challenge">
+                >
+                ["at0.60"] = <
+                    text = <"*Dose">
+                    description = <"*Dose of glucose">
+                >
+                ["at0.61"] = <
+                    text = <"*Route">
+                    description = <"*The route of administration of the glucose challenge">
+                >
+                ["at0.62"] = <
+                    text = <"*Oral">
+                    description = <"*The glucose was taken orally">
+                >
+                ["at0.63"] = <
+                    text = <"*Intravenous">
+                    description = <"*The glucose was administered intravenously">
+                >
+                ["at0.64"] = <
+                    text = <"*Insulin challenge">
+                    description = <"*Information about an insulin challenge">
+                >
+                ["at0.65"] = <
+                    text = <"*Dose">
+                    description = <"*Dose of insulin">
+                >
+                ["at0.66"] = <
+                    text = <"*Route">
+                    description = <"*The route of administration of the insulin">
+                >
+                ["at0.67"] = <
+                    text = <"*Subcutaneous">
+                    description = <"*Subcutaneous administration">
+                >
+                ["at0.68"] = <
+                    text = <"*Event">
+                    description = <"*An event">
+                >
+                ["at0.69"] = <
+                    text = <"*Event name">
+                    description = <"*A name for the event">
+                >
+                ["at0000"] = <
+                    text = <"*Laboratory result">
+                    description = <"*Generic laboratory result archetype to allow terminology driven results on a generic framework">
+                >
+                ["at0000.1"] = <
+                    text = <"*Blood glucose">
+                    description = <"*The concentration of glucose in the blood">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"*Any event in a time series">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"*Specimen">
+                    description = <"*Specimen details">
+                >
+                ["at0006"] = <
+                    text = <"*Description">
+                    description = <"*Description of the specimen">
+                >
+                ["at0007"] = <
+                    text = <"*Body site">
+                    description = <"*The site of the body where the specimen was collected">
+                >
+                ["at0008"] = <
+                    text = <"*Diagnostic service">
+                    description = <"*The type of diagnostic service">
+                >
+                ["at0009"] = <
+                    text = <"*Chemistry">
+                    description = <"*Biochemical and chemical analysis">
+                >
+                ["at0010"] = <
+                    text = <"*Microbiology">
+                    description = <"*Results of microbiological analysis">
+                >
+                ["at0011"] = <
+                    text = <"*level 1">
+                    description = <"*A cluster to enable level one battery labels">
+                >
+                ["at0012"] = <
+                    text = <"*level 2">
+                    description = <"*A cluster to enable level 2 battery labels">
+                >
+                ["at0013"] = <
+                    text = <"*Any result">
+                    description = <"*Generic result - data type is not set">
+                >
+                ["at0013.1"] = <
+                    text = <"Glicemia em Jejum">
+                    description = <"*Generic result - data type is not set">
+                >
+                ["at0014"] = <
+                    text = <"*Comment">
+                    description = <"*Comments relating to a specific result @Path">
+                >
+                ["at0015"] = <
+                    text = <"*Path">
+                    description = <"*The path of the result to which the comment relates">
+                >
+                ["at0016"] = <
+                    text = <"*Comment">
+                    description = <"*Comment relating to a specific result at the path indicated">
+                >
+                ["at0017"] = <
+                    text = <"*Overall Comment">
+                    description = <"*Comment on all results">
+                >
+                ["at0018"] = <
+                    text = <"*Quality">
+                    description = <"*Quality parameters">
+                >
+                ["at0019"] = <
+                    text = <"*Specimen">
+                    description = <"*Specimen quality paraments">
+                >
+                ["at0020"] = <
+                    text = <"*Issue">
+                    description = <"*Issue arising with specimen">
+                >
+                ["at0021"] = <
+                    text = <"*Haemolysed">
+                    description = <"*The specimen was haemolysed">
+                >
+                ["at0022"] = <
+                    text = <"*Lipaemic">
+                    description = <"*The specimen was lipaemic">
+                >
+                ["at0023"] = <
+                    text = <"*Incorrect preservative">
+                    description = <"*An incorrect preservative was used when transporting the specimen">
+                >
+                ["at0024"] = <
+                    text = <"*Insufficient sample">
+                    description = <"*An insufficient sample was given to undertake measurement">
+                >
+                ["at0025"] = <
+                    text = <"*Rating">
+                    description = <"*The degree of the stated issue">
+                >
+                ["at0026"] = <
+                    text = <"*Handling">
+                    description = <"*Handling quality parameters">
+                >
+                ["at0027"] = <
+                    text = <"*Issue">
+                    description = <"*Issue arising with handling of the specimen">
+                >
+                ["at0028"] = <
+                    text = <"*Handling error">
+                    description = <"*A handling error occurred">
+                >
+                ["at0029"] = <
+                    text = <"*Age">
+                    description = <"*The specimen was delivered too long after it was taken">
+                >
+                ["at0030"] = <
+                    text = <"*Laboratory accident">
+                    description = <"*An accident occurred with the sample in the laboratory">
+                >
+                ["at0031"] = <
+                    text = <"*Fail">
+                    description = <"*The specimen could not be analysed for technical reasons">
+                >
+                ["at0032"] = <
+                    text = <"*Description">
+                    description = <"*A description of the quality issue">
+                >
+                ["at0033"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0034"] = <
+                    text = <"*Identification">
+                    description = <"*Information identifying the laboratory and specimen">
+                >
+                ["at0035"] = <
+                    text = <"*Specimen identification">
+                    description = <"*The identifying information about the specimen">
+                >
+                ["at0036"] = <
+                    text = <"*Laboratory">
+                    description = <"*Information identiying the laboratory">
+                >
+                ["at0037"] = <
+                    text = <"*Multimedia representation">
+                    description = <"*The laboratory result in a specific display format">
+                >
+                ["at0038"] = <
+                    text = <"*Device">
+                    description = <"*The device used to make the measurement">
+                >
+                ["at0039"] = <
+                    text = <"*Specimen details">
+                    description = <"*Details about the specimen">
+                >
+                ["at0040"] = <
+                    text = <"*DateTime received">
+                    description = <"*The date and time the specimen was received in the laboratory">
+                >
+                ["at0041"] = <
+                    text = <"*DateTime processed">
+                    description = <"*The date and time the specimen was processed in the laboratory">
+                >
+                ["at0042"] = <
+                    text = <"*Methods">
+                    description = <"*The method used to measure the glucose">
+                >
+                ["at5.1"] = <
+                    text = <"Valores de Referência">
+                    description = <"**">
+                >
+                ["at0043.1"] = <
+                    text = <"Método">
+                    description = <"**">
+                >
+                ["at0017.1"] = <
+                    text = <"Comentários/ Observações">
+                    description = <"! - *Comment on all results">
+                >
+                ["at0044.1"] = <
+                    text = <"Código do Prestador">
+                    description = <"terminologia - cadastro de prestadores laboratoriais do spa">
+                >
+                ["at0045.1"] = <
+                    text = <"Glicemia ">
+                    description = <"*">
+                >
+                ["at0046.1"] = <
+                    text = <"Data coleta do exame">
+                    description = <"*">
+                >
+                ["at0047.1"] = <
+                    text = <"URL do resultado">
+                    description = <"*">
+                >
+            >
+        >
+    >
+    constraint_definitions = <
+        ["en"] = <
+            items = <
+                ["ac0.2"] = <
+                    text = <"Is blood">
+                    description = <"Whole blood, capillary blood, serum, plasma or serum/plasma, venous blood, arterial blood">
+                >
+                ["ac0000"] = <
+                    text = <"=LOINC::Battery_name">
+                    description = <"Any name for a set of tests from the LOINC set of battery names">
+                >
+                ["ac0001"] = <
+                    text = <"=LOINC::Battery_name">
+                    description = <"Any name for a set of tests from the LOINC set of battery names">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["ac0.2"] = <
+                    text = <"*Is blood">
+                    description = <"*Whole blood, capillary blood, serum, plasma or serum/plasma, venous blood, arterial blood">
+                >
+                ["ac0000"] = <
+                    text = <"*=LOINC::Battery_name">
+                    description = <"*Any name for a set of tests from the LOINC set of battery names">
+                >
+                ["ac0001"] = <
+                    text = <"*=LOINC::Battery_name">
+                    description = <"*Any name for a set of tests from the LOINC set of battery names">
+                >
+            >
+        >
+    >

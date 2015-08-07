@@ -1,0 +1,266 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.anesthesia_type.v1zl
+
+concept
+	[at0000]	-- Tipo de Anestesia
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"*">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Tipo de Anestesia
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sedação
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Local
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Geral Inala
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Geral Intravenosa
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Bloqueio 
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Assistência Respiratória
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Tipo de Anestesia
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0019, 	-- Subdural
+													at0020, 	-- Epidural
+													at0021, 	-- Axiliar
+													at0022, 	-- Caudal
+													at0023, 	-- Intravenosa Regional
+													at0024, 	-- Duplo Bloqueio
+													at0025]	-- Outros
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Máscara
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Intubação
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Facial
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Orot
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Laríngea
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Nasot
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Sonda
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Número
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tipo de Anestesia">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Sedação">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Local">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Geral Inala">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Geral Intravenosa">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Bloqueio ">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Assistência Respiratória">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Tipo de Anestesia">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Máscara">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Intubação">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Facial">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Orot">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Laríngea">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Nasot">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Sonda">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Número">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Subdural">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Epidural">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Axiliar">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Caudal">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Intravenosa Regional">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Duplo Bloqueio">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Outros">
+					description = <"*">
+				>
+			>
+		>
+	>

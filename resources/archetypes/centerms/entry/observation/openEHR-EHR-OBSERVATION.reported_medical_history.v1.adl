@@ -1,0 +1,281 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.reported_medical_history.v1
+
+concept
+	[at0000]	-- Reported medical history
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Gustavo M. Bacelar-Silva">
+		["email"] = <"mail@gustavobacelar.com">
+		["date"] = <"25/06/2013">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar informação sumária sobre os problemas e/ou diagnósticos (tais como definidos no respectivo arquétipo) reportados por um paciente ou acompanhante (e.g. mãe).">
+			use = <"Usar para registrar informação sumária sobre os problemas e/ou diagnósticos reportados por um paciente ou acompanhante (e.g. mãe). Esta informação pode ser usada como a base para uma avaliação de risco do indivíduo baseada em condições potencialmente existentes, avaliação de diagnósticos atuais, ou para a iniciação de atividades de saúde preventiva.
+
+Detalhes adcionais sobre problemas ou diagnósticos específicos podem ser capturados usando o arquétipo EVALUATION.problem_diagnosis.">
+			keywords = <"história médica", "passada", "reportada">
+			misuse = <"Não usar para registrar informação sobre um problema ou diagnóstico avaliado - para esse fim usar o arquétipo EVALUATION.problem_diagnosis.">
+			copyright = <"© openEHR Foundation(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"To record information about the past problems or diagnoses (as defined in the Problem/Diagnosis archetype) reported by the patient or a companion.">
+			use = <"Use to record a summary information about the past medical history (e.g.g problems and/or diagnoses) reported by the patient or a companion (e.g. mother). This information may be used as the basis for assessment of risk to the individual from potentially existing conditions, assessment of current diagnosis or initiation of preventive health activities.
+
+Additional detail about a specific problem or diagnosis can be captured using the EVALUATION.problem_diagnosis archetype.">
+			misuse = <"Not to be used to record information about an assessed problem or diagnosis  - use the EVALUATION.problem_diagnosis archetype.">
+			copyright = <"© openEHR Foundation">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Ian McNicoll, Ocean Informatics UK, United Kingdom", ...>
+	other_details = <
+		["current_contact"] = <"Gustavo M. Bacelar-Silva, , mail@gustavobacelar.com">
+		["MD5-CAM-1.0.1"] = <"0128CAC07D6A57EFBFD17EE084E83617">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- História médica reportada
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Problema/Diagnóstico
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Descrição clínica
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Idade na data de início
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"a">
+													>
+													["2"] = <
+														units = <"wk">
+													>
+													["3"] = <
+														units = <"d">
+													>
+													["4"] = <
+														units = <"h">
+													>
+													["5"] = <
+														units = <"min">
+													>
+												>
+											>
+										}
+									}
+									CLUSTER[at0007] occurrences matches {0..1} matches {	-- Procedimento realizado
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Procedimento
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Descrição
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											allow_archetype CLUSTER[at0010] occurrences matches {0..*} matches {	-- Detalhes sobre o local anatômico
+												include
+													archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-[a-zA-Z0-9_]+)*\.v1/}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Idade na data do procedimento
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::128]>
+														list = <
+															["1"] = <
+																units = <"a">
+															>
+															["2"] = <
+																units = <"d">
+															>
+															["3"] = <
+																units = <"wk">
+															>
+															["4"] = <
+																units = <"h">
+															>
+															["5"] = <
+																units = <"min">
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0012] matches {	-- *Tree(pt)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0013] occurrences matches {0..*} matches {	-- Informante
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.informant(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"História médica reportada">
+					description = <"Informação sumária sobre os problemas e/ou diagnósticos reportados por um paciente ou acompanhante (e.g. mãe).">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Problema/Diagnóstico">
+					description = <"Identificação do problema ou diagnóstico.">
+					comment = <"*Coding of the problem or diagnosis with a terminology is preferred, where possible. May link from this data element to a detailed record of a Problem/Diagnosis using the EVALUATION.problem_diagnosis archetype.(pt)">
+				>
+				["at0005"] = <
+					text = <"Descrição clínica">
+					description = <"Descrição narrativa ou comentários sobre aspectos clínicos do problema/diagnóstico.">
+				>
+				["at0007"] = <
+					text = <"Procedimento realizado">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Procedimento">
+					description = <"O nome do procedimento realizado que foir reportado.">
+				>
+				["at0009"] = <
+					text = <"Descrição">
+					description = <"Descrição narrativa sobre o procediemtno realizado.">
+				>
+				["at0010"] = <
+					text = <"Detalhes sobre o local anatômico">
+					description = <"Detalhes sobre o local anatômico do procedimento.">
+				>
+				["at0011"] = <
+					text = <"Idade na data do procedimento">
+					description = <"Idade na qual o procediemnto foi realizado.">
+				>
+				["at0012"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0013"] = <
+					text = <"Informante">
+					description = <"Indivíduo que forneceu a maior parte da informação relativa à história médica passada do paciente.">
+				>
+				["at0014"] = <
+					text = <"Idade na data de início">
+					description = <"Idade do paciente, real ou estimada, na data em que o problema/diagnóstico foi identificado clinicamente.">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Reported medical history">
+					description = <"Summary information about the problems and/or diagnoses reported by the patient or a companion (e.g. mother).">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Problem/Diagnosis">
+					description = <"Identification of the problem or diagnosis.">
+					comment = <"Coding of the problem or diagnosis with a terminology is preferred, where possible. May link from this data element to a detailed record of a Problem/Diagnosis using the EVALUATION.problem_diagnosis archetype.">
+				>
+				["at0005"] = <
+					text = <"Clinical Description">
+					description = <"Narrative description or comments about clinical aspects of the problem/diagnosis.">
+				>
+				["at0007"] = <
+					text = <"Procedure undertaken">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Procedure">
+					description = <"The name of the reported procedure performed.">
+				>
+				["at0009"] = <
+					text = <"Description">
+					description = <"Narrative description about the procedure carried out.">
+				>
+				["at0010"] = <
+					text = <"Anatomical site details">
+					description = <"Details about the anatomical site of procedure.">
+				>
+				["at0011"] = <
+					text = <"Age at procedure">
+					description = <"The age at which the procedure was performed.">
+				>
+				["at0012"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0013"] = <
+					text = <"Informant">
+					description = <"Person who supplies most of the past medical history information.">
+				>
+				["at0014"] = <
+					text = <"Age at onset">
+					description = <"Estimated or actual age of the patient when the problem/diagnosis was clinically recognised.">
+				>
+			>
+		>
+	>

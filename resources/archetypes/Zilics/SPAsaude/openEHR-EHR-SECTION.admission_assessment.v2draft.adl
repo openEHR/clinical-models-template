@@ -1,0 +1,263 @@
+archetype
+    openEHR-EHR-SECTION.admission_assessment.v2draft
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            author = <
+                ["name"] = <"?">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"12/03/2007">
+    >
+    lifecycle_state = <"Initial">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"For organising the information recorded at an emergency presentation">
+            keywords = <"emergency">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"Controle da informação registrada em uma avaliação.
+
+
+">
+            keywords = <"*emergency(en)">
+            use = <"*
+
+
+">
+            misuse = <"*
+
+
+">
+        >
+    >
+
+definition
+    SECTION[at0000] matches {
+        items existence matches {0..1} cardinality matches {0..1; ordered} matches {
+            SECTION[at0001] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype SECTION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype OBSERVATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                }
+            }
+            SECTION[at0002] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    SECTION[at0017] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                            allow_archetype OBSERVATION occurrences matches {0..*} matches {
+                                include
+                                    domain_concept matches {/.*/}
+                            }
+                        }
+                    }
+                    allow_archetype SECTION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                }
+            }
+            SECTION[at0013] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype SECTION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    SECTION[at0016] occurrences matches {0..1} matches {
+                        items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                            allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/.*/}
+                            }
+                            allow_archetype EVALUATION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/.*/}
+                            }
+                            allow_archetype SECTION occurrences matches {0..1} matches {
+                                include
+                                    domain_concept matches {/.*/}
+                            }
+                        }
+                    }
+                }
+            }
+            SECTION[at0003] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype OBSERVATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype EVALUATION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                }
+            }
+            SECTION[at0004] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype ACTION occurrences matches {0..1} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                }
+            }
+            SECTION[at0011] occurrences matches {0..1} matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    allow_archetype EVALUATION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype INSTRUCTION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                    allow_archetype ACTION occurrences matches {0..*} matches {
+                        include
+                            domain_concept matches {/.*/}
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Emergency template">
+                    description = <"A section to contain the key information collected when a patient presents with an emergency or major injury">
+                >
+                ["at0001"] = <
+                    text = <"History">
+                    description = <"A heading to collect the information about the presenting event">
+                >
+                ["at0002"] = <
+                    text = <"Examination">
+                    description = <"Examination findings">
+                >
+                ["at0003"] = <
+                    text = <"Evaluations">
+                    description = <"Evaluations and assessments">
+                >
+                ["at0004"] = <
+                    text = <"Clinical Management Plan and Actions">
+                    description = <"Any orders or things that have been done">
+                >
+                ["at0011"] = <
+                    text = <"Management">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Investigations">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Other investigations">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"*?(en)">
+                    description = <"**(en)">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Template de Internação">
+                    description = <"Uma seção que contém as informações coletadas quando um paciente apresenta uma emergência ou um trauma
+">
+                >
+                ["at0001"] = <
+                    text = <"Subjetivo">
+                    description = <"Anamnese - Coleta de informações sobre o problema médica atual">
+                >
+                ["at0002"] = <
+                    text = <"Objetivo">
+                    description = <"Achados no exame físico">
+                >
+                ["at0003"] = <
+                    text = <"Avaliações">
+                    description = <"Avaliações e controles">
+                >
+                ["at0004"] = <
+                    text = <"Prescrição Médica">
+                    description = <"Qualquer ordem, solicitação ou procedimentos já realizados">
+                >
+                ["at0011"] = <
+                    text = <"Procedimentos">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Investigações">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Outras investigações">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Sinais Vitais">
+                    description = <"*">
+                >
+            >
+        >
+    >

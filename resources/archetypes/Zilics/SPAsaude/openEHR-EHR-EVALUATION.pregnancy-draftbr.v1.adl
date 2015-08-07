@@ -1,0 +1,1730 @@
+archetype
+    openEHR-EHR-EVALUATION.pregnancy-draftbr.v1
+specialize
+    openEHR-EHR-EVALUATION.pregnancy.v1
+
+concept
+    [at0000.1]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["de"] = <
+            language = <[ISO_639-1::de]>
+            author = <
+                ["name"] = <"Jasmin Buck, Sebastian Garde">
+                ["organisation"] = <"University of Heidelberg, Central Queensland University">
+            >
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["name"] = <"Sam Heard">
+    >
+    lifecycle_state = <"AuthorDraft">
+    details = <
+        ["de"] = <
+            language = <[ISO_639-1::de]>
+            purpose = <"Eine Zusammenfassung der Schwangerschaft. Beinhaltet Zustandsattribute, die einer Software ermöglichen zu ermitteln, ob die Schwangerschaft noch aktuell ist, das Kind lebensfähig ist und gestillt wird.">
+            keywords = <"stillen","Wehen">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+            use = <"*">
+            misuse = <"*">
+        >
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"A summary statement about a pregnancy. It includes a state attribute which allows software to test if the pregnancy is still active, viable or breast feeding is taking place.">
+            keywords = <"breast feeding","labour">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*A summary statement about a pregnancy. It includes a state attribute which allows software to test if the pregnancy is still active, viable or breast feeding is taking place.">
+            keywords = <"breast feeding","labour">
+            copyright = <"copyright (c) 2009 openEHR Foundation">
+        >
+    >
+
+definition
+    EVALUATION[at0000.1] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0018.1] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0033.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_COUNT matches {*}
+                                }
+                            }
+                            CLUSTER[at0109.1] occurrences matches {0..*} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0122.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_DATE_TIME matches {
+                                                value matches {yyyy-??-??T??:??:??}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0110.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_INTERVAL matches {
+                                                lower matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                                upper matches {
+                                                    DV_COUNT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0113.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0112.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0114.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::at0115.1]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0017.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_COUNT matches {*}
+                                }
+                            }
+                            ELEMENT[at0031.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_COUNT matches {*}
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0019.1] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0010.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE matches {
+                                        value matches {yyyy-MM-XX}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0013.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE matches {
+                                        value matches {yyyy-MM-XX}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0108.1] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DURATION matches {
+                                        value matches {PT0S}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["de"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Schwangerschaft">
+                    description = <"Aufzeichnungen zu einer einzelnen menschlichen Schwangerschaft, die mehr als einen Fötus oder Nachkommen umfassen kann">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Schwangerschafts-Status">
+                    description = <"Der Status diese Schwangerschaft, ermöglicht  rechnerunterstützte Entscheidungen">
+                >
+                ["at0003"] = <
+                    text = <"Aktuell - lebensfähig">
+                    description = <"Die Schwangerschaft dauert an und mindestens ein Fötus ist lebensfähig">
+                >
+                ["at0004"] = <
+                    text = <"Aktuell - nicht lebensfähig">
+                    description = <"Die Schwangerschaft dauert an, es ist aber kein Fötus lebensfähig">
+                >
+                ["at0005"] = <
+                    text = <"Stillen">
+                    description = <"Die Schwangerschaft ist abgeschlossen, die Mutter stillt derzeit">
+                >
+                ["at0006"] = <
+                    text = <"Abgeschlossen">
+                    description = <"Die Schwangerschaft ist abgeschlossen, die Mutter stillt derzeit nicht">
+                >
+                ["at0007"] = <
+                    text = <"Empfängnis">
+                    description = <"Einzelheiten zur Empfängnis oder dem Beginn der Schwangerschaft">
+                >
+                ["at0008"] = <
+                    text = <"Datum der letzten Periode">
+                    description = <"Das Datum der letzten Menstruation, falls bekannt">
+                >
+                ["at0009"] = <
+                    text = <"Datum der Empfängnis">
+                    description = <"Das Datum der Empfängnis, falls bekannt">
+                >
+                ["at0011"] = <
+                    text = <"Nachkomme">
+                    description = <"Informationen über das Baby oder den Fötus">
+                >
+                ["at0012"] = <
+                    text = <"Name">
+                    description = <"Der Name des Kindes">
+                >
+                ["at0013"] = <
+                    text = <"Errechnetes Geburtsdatum">
+                    description = <"Das errechnete Geburtsdatum oder Datum der Niederkunft">
+                >
+                ["at0014"] = <
+                    text = <"Datum der Niederkunft">
+                    description = <"Das Geburtsdatum dieses Babys oder dieses Fötus">
+                >
+                ["at0015"] = <
+                    text = <"Basis für das geschätzte Geburtsdatum">
+                    description = <"Die Basis für das geschätzte Geburtsdatum">
+                >
+                ["at0016"] = <
+                    text = <"Geburtsmodus">
+                    description = <"Das bedeutet, wie das Baby geboren wurde">
+                >
+                ["at0017"] = <
+                    text = <"Parität">
+                    description = <"Anzahl bisheriger Schwangerschaften länger als 20 Wochen">
+                >
+                ["at0018"] = <
+                    text = <"bisherige Schwangerschaften">
+                    description = <"Einzelheiten der bisherigen Schwangerschaften">
+                >
+                ["at0019"] = <
+                    text = <"aktuelle Schwangerschaft">
+                    description = <"Einzelheiten dieser Schwangerschaft">
+                >
+                ["at0020"] = <
+                    text = <"Anzahl der Föten">
+                    description = <"Die Anzahl der Föten dieser Schwangerschaft">
+                >
+                ["at0021"] = <
+                    text = <"Beliebige frühere Schwangerschaft">
+                    description = <"True, wenn keine früheren Schwangerschaften bestehen">
+                >
+                ["at0022"] = <
+                    text = <"Geburtsgewicht">
+                    description = <"Das Gewicht des Babys oder des Fötus bei der Geburt">
+                >
+                ["at0023"] = <
+                    text = <"Stillen">
+                    description = <"True, wenn das Baby gestillt wurde">
+                >
+                ["at0024"] = <
+                    text = <"Abstilldatum">
+                    description = <"Das Datum ab dem das Baby nicht mehr gestillt wurde">
+                >
+                ["at0025"] = <
+                    text = <"Alter beim Abstillen">
+                    description = <"Das Alter des Babys als es abgestillt wurde">
+                >
+                ["at0026"] = <
+                    text = <"geschätztes Gestationsalter">
+                    description = <"Das geschätzte Alter des Babys von der letzten Periode bis zur Geburt">
+                >
+                ["at0027"] = <
+                    text = <"Geschlecht">
+                    description = <"Das Geschlecht des Nachkömmlings">
+                >
+                ["at0028"] = <
+                    text = <"Junge">
+                    description = <"Das Baby ist ein Junge">
+                >
+                ["at0029"] = <
+                    text = <"Mädchen">
+                    description = <"Das Baby ist ein Mädchen">
+                >
+                ["at0030"] = <
+                    text = <"Unbestimmt">
+                    description = <"Das Geschlecht des Babys oder des Fötus kann zurzeit nicht bestimmt werden ">
+                >
+                ["at0031"] = <
+                    text = <"Fehlgeburten ">
+                    description = <"Die Anzahl an Fehlgeburten vor dieser Schwangerschaft">
+                >
+                ["at0032"] = <
+                    text = <"Schwangerschaftsabbrüche">
+                    description = <"Die Anzahl an Schwangerschaftsabbrüchen vor dieser Schwangerschaft">
+                >
+                ["at0033"] = <
+                    text = <"Anzahl früherer Schwangerschaften">
+                    description = <"Die Anzahl an früheren Schwangerschaften vor dieser Schwangerschaft">
+                >
+                ["at0034"] = <
+                    text = <"Geplantes Pflegemodell">
+                    description = <"Das Pflegmodell, das für die Geburt geplant ist">
+                >
+                ["at0035"] = <
+                    text = <"Pflegemodell bei der Niederkunft">
+                    description = <"Das Pflegemodell zum Zeitpunkt der Niederkunft">
+                >
+                ["at0036"] = <
+                    text = <"Anzahl der Föten">
+                    description = <"Die Anzahl der Föten bei einer bestimmten Schwangerschaft">
+                >
+                ["at0037"] = <
+                    text = <"Schwangerschaft">
+                    description = <"Die Schwangerschaft zum Zeitpunkt der Beurteilung der Anzahl der Föten">
+                >
+                ["at0038"] = <
+                    text = <"Wehen bei der Niederkunft">
+                    description = <"Einzelheiten zu den Wehen (kann unter Umständen mehrfach vorkommen)">
+                >
+                ["at0039"] = <
+                    text = <"Beginn">
+                    description = <"Einzelheiten zum Beginn">
+                >
+                ["at0040"] = <
+                    text = <"Art">
+                    description = <"Art des Beginns">
+                >
+                ["at0041"] = <
+                    text = <"Zeitpunkt des Beginns">
+                    description = <"Der Beginn der Vorwehen">
+                >
+                ["at0042"] = <
+                    text = <"Bemerkungen">
+                    description = <"Beliebige Bemerkung zu den Wehen">
+                >
+                ["at0043"] = <
+                    text = <"Blasensprung">
+                    description = <"Informationen zum Blasensprung">
+                >
+                ["at0044"] = <
+                    text = <"Art">
+                    description = <"Die Art des Fruchtwassers">
+                >
+                ["at0045"] = <
+                    text = <"Spontan">
+                    description = <"Beginn ohne Eingriff">
+                >
+                ["at0046"] = <
+                    text = <"Herbeiführen">
+                    description = <"Beginn durch Herbeiführen">
+                >
+                ["at0047"] = <
+                    text = <"Eihautschnitt">
+                    description = <"Künstlich herbeigeführter Blasensprung">
+                >
+                ["at0048"] = <
+                    text = <"Zeitpunkt des Blasensprungs">
+                    description = <"Der Zeitpunkt des Blasensprungs">
+                >
+                ["at0049"] = <
+                    text = <"Steigerung">
+                    description = <"Die Steigerungen der Wehen abgesehen vom Blasensprung">
+                >
+                ["at0050"] = <
+                    text = <"Art">
+                    description = <"Art der Steigerung">
+                >
+                ["at0051"] = <
+                    text = <"Zeitpunkt der Steigerung">
+                    description = <"Das Datum und der Zeitpunkt der Steigerung der Wehen">
+                >
+                ["at0052"] = <
+                    text = <"Unbekannt">
+                    description = <"Das Geschlecht ist unbekannt">
+                >
+                ["at0053"] = <
+                    text = <"Komplikationen">
+                    description = <"Die Komplikationen dieser Schwangerschaft">
+                >
+                ["at0054"] = <
+                    text = <"Komplikationen">
+                    description = <"Eine bestimmte Komplikation">
+                >
+                ["at0055"] = <
+                    text = <"Datum des Beginns">
+                    description = <"Das Datum und der Zeitpunkt des Beginns der Komplikation">
+                >
+                ["at0056"] = <
+                    text = <"Klinische Beschreibung">
+                    description = <"Klinische Beschreibung der Komplikation">
+                >
+                ["at0057"] = <
+                    text = <"Beschreibung der Geburt">
+                    description = <"Einzelheiten zur Geburt">
+                >
+                ["at0058"] = <
+                    text = <"Unterstützt">
+                    description = <"Geburt wurde unterstützt durch Geburtszange oder Saugglocke">
+                >
+                ["at0059"] = <
+                    text = <"Kaiserschnitt">
+                    description = <"Geburt des Baby aus dem Bauch">
+                >
+                ["at0060"] = <
+                    text = <"Eingriff">
+                    description = <"Genauere Informationen zum Eingriff, der zur Geburt führt">
+                >
+                ["at0061"] = <
+                    text = <"Art">
+                    description = <"Art des Eingriffs">
+                >
+                ["at0062"] = <
+                    text = <"Geburtszange tief">
+                    description = <"Geburtszange wird tief im Becken an den Kopf angelegt">
+                >
+                ["at0063"] = <
+                    text = <"Geburtszange hoch">
+                    description = <"Geburtszange wird hoch im Becken an den Kopf angelegt">
+                >
+                ["at0064"] = <
+                    text = <"Geburtszange gedreht">
+                    description = <"Geburtszange wird angelegt und vor dem Ziehen gedreht">
+                >
+                ["at0065"] = <
+                    text = <"Saugglocke tief">
+                    description = <"Saugglocke wird tief im Becken an den Kopf angelegt">
+                >
+                ["at0066"] = <
+                    text = <"Anzeichen">
+                    description = <"Die Anzeichen für einen Eingriff">
+                >
+                ["at0067"] = <
+                    text = <"Status">
+                    description = <"Die Art des Eingriffs">
+                >
+                ["at0068"] = <
+                    text = <"Notfall">
+                    description = <"Ungeplant und sich aus dem klinischen Ablauf ergebend">
+                >
+                ["at0069"] = <
+                    text = <"Wahlweise">
+                    description = <"Im voraus geplant und vor dem Entstehen der Situation durchgeführt">
+                >
+                ["at0070"] = <
+                    text = <"Keine Wehen">
+                    description = <"Keine Wehen stattgefunden">
+                >
+                ["at0071"] = <
+                    text = <"Dauer der Zunahme">
+                    description = <"Die Dauer der Zunahme der Wehen">
+                >
+                ["at0072"] = <
+                    text = <"Dauer des Blasensprungs">
+                    description = <"Die Zeit zwischen Blasensprung und Geburt">
+                >
+                ["at0073"] = <
+                    text = <"Dauer">
+                    description = <"Die Dauer der Wehen">
+                >
+                ["at0074"] = <
+                    text = <"Tiefer Kaiserschnitt">
+                    description = <"Kaiserschnitt im unteren Segment">
+                >
+                ["at0075"] = <
+                    text = <"Klassischer Kaiserschnitt">
+                    description = <"Klassischer Kaiserschnitt">
+                >
+                ["at0076"] = <
+                    text = <"Erfolgreich">
+                    description = <"Führte der Eingriff zur Geburt">
+                >
+                ["at0077"] = <
+                    text = <"Beschreibung">
+                    description = <"Beschreibung des Eingriffs">
+                >
+                ["at0080"] = <
+                    text = <"Ausgang">
+                    description = <"Der Ausgang der Schwangerschaft">
+                >
+                ["at0081"] = <
+                    text = <"Lebendgeburt">
+                    description = <"Aus der Schwangerschaft ging ein lebendes Kind hervor">
+                >
+                ["at0082"] = <
+                    text = <"Neonataltod">
+                    description = <"Das Baby wurde lebend geboren, starb aber nach weniger als 28 Tagen">
+                >
+                ["at0083"] = <
+                    text = <"Todgeburt">
+                    description = <"Das Baby war bei der Geburt nicht am Leben">
+                >
+                ["at0084"] = <
+                    text = <"Fehlgeburt">
+                    description = <"Der Fötus ist eine Fehlgeburt">
+                >
+                ["at0085"] = <
+                    text = <"Abbruch">
+                    description = <"Die Schwangerschaft wurde abgebrochen">
+                >
+                ["at0086"] = <
+                    text = <"Einzelheiten des Nachkömmlings">
+                    description = <"Informationen zum Nachkömmling">
+                >
+                ["at0087"] = <
+                    text = <"Fötale oder neonatale Komplikationen">
+                    description = <"Gruppierung neonataler Komplikationen, falls vorhanden">
+                >
+                ["at0088"] = <
+                    text = <"Fötale oder neonatale Komplikationen">
+                    description = <"Benennung der neonatalen Komplikationen">
+                >
+                ["at0089"] = <
+                    text = <"Beginndatum">
+                    description = <"Datum des Beginns der neonatalen Komplikationen">
+                >
+                ["at0090"] = <
+                    text = <"klinische Beschreibung">
+                    description = <"klinische Beschreibung der neonatalen Komplikationen">
+                >
+                ["at0091"] = <
+                    text = <"Geburtsort">
+                    description = <"Der Ort der Geburt">
+                >
+                ["at0092"] = <
+                    text = <"Beschreibung des Fruchtwassers">
+                    description = <"Beschreibung des Fruchtwassers während der Wehen und der Geburt">
+                >
+                ["at0093"] = <
+                    text = <"Schultergeburt">
+                    description = <"Vorgehen zur Unterstützung der Geburt der Schultern">
+                >
+                ["at0094"] = <
+                    text = <"Zu sehender Teil bei der Geburt">
+                    description = <"*">
+                >
+                ["at0095"] = <
+                    text = <"Scheitel">
+                    description = <"Scheitel zu sehen">
+                >
+                ["at0096"] = <
+                    text = <"Steiß - gestreckt">
+                    description = <"Steiß zu sehen, mit gestreckten Beinen und gebeugter Hüfte">
+                >
+                ["at0097"] = <
+                    text = <"Steiß - gebeugt">
+                    description = <"Steiß zu sehen, mit gebeugten Beinen und Hüfte">
+                >
+                ["at0098"] = <
+                    text = <"Quer">
+                    description = <"Fötus liegt quer im Bauch">
+                >
+                ["at0099"] = <
+                    text = <"Steiß">
+                    description = <"Steiß zu sehen, mit einem oder beiden Beinen und der Hüfte gestreckt">
+                >
+                ["at0100"] = <
+                    text = <"Schräg">
+                    description = <"Fötus liegt schräg in der Gebärmutter">
+                >
+                ["at0101"] = <
+                    text = <"Stirn">
+                    description = <"Stirn ist zu sehen">
+                >
+                ["at0102"] = <
+                    text = <"Gesicht">
+                    description = <"Gesicht ist zu sehen">
+                >
+                ["at0103"] = <
+                    text = <"Eingriffe">
+                    description = <"Während der Geburt unternommene Eingriffe">
+                >
+                ["at0104"] = <
+                    text = <"Ernährung">
+                    description = <"*">
+                >
+                ["at0105"] = <
+                    text = <"Alter beim Beginn des Stillens">
+                    description = <"Das Alter des Kindes beim ersten Stillen">
+                >
+                ["at0106"] = <
+                    text = <"Beschreibung der Ernährung">
+                    description = <"Beschreibung der Ernährung">
+                >
+                ["at0107"] = <
+                    text = <"Dauer der Eröffnungswehen">
+                    description = <"*">
+                >
+                ["at0000.1"] = <
+                    text = <"*previous pregnancies">
+                    description = <"*!- Recordings related to a single human pregnancy which may include more than one fetus or offspring">
+                >
+                ["at0018.1"] = <
+                    text = <"*! - *bisherige Schwangerschaften">
+                    description = <"*! - *Einzelheiten der bisherigen Schwangerschaften">
+                >
+                ["at0033.1"] = <
+                    text = <"*! - *Anzahl früherer Schwangerschaften">
+                    description = <"*! - *Die Anzahl an früheren Schwangerschaften vor dieser Schwangerschaft">
+                >
+                ["at0017.1"] = <
+                    text = <"*! - *Parität">
+                    description = <"*! - *Anzahl bisheriger Schwangerschaften länger als 20 Wochen">
+                >
+                ["at0031.1"] = <
+                    text = <"*! - *Fehlgeburten ">
+                    description = <"*! - *Die Anzahl an Fehlgeburten vor dieser Schwangerschaft">
+                >
+                ["at0019.1"] = <
+                    text = <"*! - *aktuelle Schwangerschaft">
+                    description = <"*! - *Einzelheiten dieser Schwangerschaft">
+                >
+                ["at0013.1"] = <
+                    text = <"*! - *Errechnetes Geburtsdatum">
+                    description = <"*! - *Das errechnete Geburtsdatum oder Datum der Niederkunft">
+                >
+                ["at0010.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0078.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0079.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0108.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0109.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0110.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0111.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0112.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0113.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0114.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0115.1"] = <
+                    text = <"*eclampsia">
+                    description = <"**">
+                >
+                ["at0116.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0117.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0118.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0119.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0120.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0121.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0122.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Pregnancy">
+                    description = <"Recordings related to a single human pregnancy which may include more than one fetus or offspring">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Maternity states">
+                    description = <"The state of this pregnancy enabling computational decision support">
+                >
+                ["at0003"] = <
+                    text = <"Active - viable">
+                    description = <"The pregnancy is continuing and at least one fetus is viable">
+                >
+                ["at0004"] = <
+                    text = <"Active - non-viable">
+                    description = <"The pregnancy is active but there is no fetal viability">
+                >
+                ["at0005"] = <
+                    text = <"Breast feeding">
+                    description = <"The pregnancy has completed, the mother is currently breast feeding">
+                >
+                ["at0006"] = <
+                    text = <"Completed">
+                    description = <"The pregnancy is complete and the mother is not currently breast feeding">
+                >
+                ["at0007"] = <
+                    text = <"Conception">
+                    description = <"Details of conception or the beginning of pregnancy">
+                >
+                ["at0008"] = <
+                    text = <"Date of LMP">
+                    description = <"The date of the last menstrual period if known">
+                >
+                ["at0009"] = <
+                    text = <"Date of conception">
+                    description = <"The date of conception if known">
+                >
+                ["at0011"] = <
+                    text = <"Offspring">
+                    description = <"Information about the baby or fetus">
+                >
+                ["at0012"] = <
+                    text = <"Name">
+                    description = <"The name of the child">
+                >
+                ["at0013"] = <
+                    text = <"Expected date of birth">
+                    description = <"The expected date of birth or delivery (EDD)">
+                >
+                ["at0014"] = <
+                    text = <"Date of delivery">
+                    description = <"The date of birth of this baby or fetus">
+                >
+                ["at0015"] = <
+                    text = <"Basis for estimated date of birth">
+                    description = <"The basis for the estimated date of birth">
+                >
+                ["at0016"] = <
+                    text = <"Mode of birth">
+                    description = <"The means by which the baby was born">
+                >
+                ["at0017"] = <
+                    text = <"Parity">
+                    description = <"Number of previous pregnancies of more than 20 weeks">
+                >
+                ["at0018"] = <
+                    text = <"Previous pregnancies">
+                    description = <"Details of previous pregnancies">
+                >
+                ["at0019"] = <
+                    text = <"Current pregnancy">
+                    description = <"Details of this pregnancy">
+                >
+                ["at0020"] = <
+                    text = <"Number of fetuses">
+                    description = <"The number of fetuses in this pregnancy at a particular gestation">
+                >
+                ["at0021"] = <
+                    text = <"Any prior pregnancy">
+                    description = <"True if there have been no prior pregnancies">
+                >
+                ["at0022"] = <
+                    text = <"Birth weight">
+                    description = <"The weight of this baby or fetus at birth">
+                >
+                ["at0023"] = <
+                    text = <"Breast fed">
+                    description = <"True if the baby was breast fed">
+                >
+                ["at0024"] = <
+                    text = <"Date ceased breast feeding">
+                    description = <"The date the mother stopped breastfeeding this baby">
+                >
+                ["at0025"] = <
+                    text = <"Age ceased breast feeding">
+                    description = <"The age of the baby when breastfeeding ceased (duration)">
+                >
+                ["at0026"] = <
+                    text = <"Estimated gestational age">
+                    description = <"The estimated age of the baby from LMP at the time of birth">
+                >
+                ["at0027"] = <
+                    text = <"Gender">
+                    description = <"The gender of the offspring">
+                >
+                ["at0028"] = <
+                    text = <"Boy">
+                    description = <"Baby is a boy">
+                >
+                ["at0029"] = <
+                    text = <"Girl">
+                    description = <"Baby is a girl">
+                >
+                ["at0030"] = <
+                    text = <"Indeterminant">
+                    description = <"The gender of the baby or fetus cannot be determined at this point">
+                >
+                ["at0031"] = <
+                    text = <"Miscarriages">
+                    description = <"Number of miscarriages prior to this pregnancy">
+                >
+                ["at0032"] = <
+                    text = <"Terminations of pregnancy">
+                    description = <"The number of terminations of pregnancy prior to this pregnancy">
+                >
+                ["at0033"] = <
+                    text = <"Number of prior pregnancies">
+                    description = <"The number of pregnancies prior to this pregnancy">
+                >
+                ["at0034"] = <
+                    text = <"Planned model of care">
+                    description = <"The model of care planned for birth">
+                >
+                ["at0035"] = <
+                    text = <"Model of care at delivery">
+                    description = <"The model of care at the time of birth">
+                >
+                ["at0036"] = <
+                    text = <"Number of fetuses">
+                    description = <"The number of fetuses at a given gestation">
+                >
+                ["at0037"] = <
+                    text = <"Gestation">
+                    description = <"The gestation at the time of estimation of the number of fetuses">
+                >
+                ["at0038"] = <
+                    text = <"Labour or delivery">
+                    description = <"Details of labour (can be mulitple in unusual circumstances)">
+                >
+                ["at0039"] = <
+                    text = <"Onset">
+                    description = <"Details of onset">
+                >
+                ["at0040"] = <
+                    text = <"Type">
+                    description = <"Type of onset">
+                >
+                ["at0041"] = <
+                    text = <"Time of onset">
+                    description = <"The beginning of stage 1 of labour">
+                >
+                ["at0042"] = <
+                    text = <"Comments">
+                    description = <"Any comments on the labour">
+                >
+                ["at0043"] = <
+                    text = <"Rupture of membranes">
+                    description = <"Information about the rupture of membranes">
+                >
+                ["at0044"] = <
+                    text = <"Type">
+                    description = <"The type of amniotic membrane rupture">
+                >
+                ["at0045"] = <
+                    text = <"Spontaneous">
+                    description = <"Onset without intervention">
+                >
+                ["at0046"] = <
+                    text = <"Induced">
+                    description = <"Onset through intervention">
+                >
+                ["at0047"] = <
+                    text = <"Amniotomy">
+                    description = <"Rupture of the membranes by procedure">
+                >
+                ["at0048"] = <
+                    text = <"Time of rupture">
+                    description = <"The time of the rupture of the membranes">
+                >
+                ["at0049"] = <
+                    text = <"Augmentation">
+                    description = <"Augmentation of labour apart from rupture of membranes">
+                >
+                ["at0050"] = <
+                    text = <"Type">
+                    description = <"Type of augmentation">
+                >
+                ["at0051"] = <
+                    text = <"Time of augmentation">
+                    description = <"The date and time of beginning augmentation of labour">
+                >
+                ["at0052"] = <
+                    text = <"Unknown">
+                    description = <"The gender is unknown">
+                >
+                ["at0053"] = <
+                    text = <"Complications">
+                    description = <"The complications of this pregnancy">
+                >
+                ["at0054"] = <
+                    text = <"Complication">
+                    description = <"A specific complication">
+                >
+                ["at0055"] = <
+                    text = <"Date of onset">
+                    description = <"The date and time of onset of the complication">
+                >
+                ["at0056"] = <
+                    text = <"Clinical description">
+                    description = <"Clinical description of the complication">
+                >
+                ["at0057"] = <
+                    text = <"Description of birth">
+                    description = <"Details of the birth">
+                >
+                ["at0058"] = <
+                    text = <"Assisted">
+                    description = <"Birth was assisted by forceps or vacuum extraction">
+                >
+                ["at0059"] = <
+                    text = <"Caesarian section">
+                    description = <"Abdominal delivery of baby">
+                >
+                ["at0060"] = <
+                    text = <"Intervention">
+                    description = <"More detailed information about intervention(s) leading to birth">
+                >
+                ["at0061"] = <
+                    text = <"Type">
+                    description = <"Type of intervention">
+                >
+                ["at0062"] = <
+                    text = <"Low forceps">
+                    description = <"Forceps applied to the head low in pelvis">
+                >
+                ["at0063"] = <
+                    text = <"High forceps">
+                    description = <"Forceps applied to the head high in the pelvis">
+                >
+                ["at0064"] = <
+                    text = <"Rotational forceps">
+                    description = <"Forceps applied to the head and rotated prior to traction">
+                >
+                ["at0065"] = <
+                    text = <"Low Ventouse">
+                    description = <"Ventouse applied to the head low in the pelvis">
+                >
+                ["at0066"] = <
+                    text = <"Indication">
+                    description = <"The indication for the intervention">
+                >
+                ["at0067"] = <
+                    text = <"Status">
+                    description = <"The nature of the intervention">
+                >
+                ["at0068"] = <
+                    text = <"Emergency">
+                    description = <"Unplanned and arising as a result of clinical course">
+                >
+                ["at0069"] = <
+                    text = <"Elective">
+                    description = <"Planned in advance and undertaken prior to situation arising">
+                >
+                ["at0070"] = <
+                    text = <"No labour">
+                    description = <"Labour did not take place">
+                >
+                ["at0071"] = <
+                    text = <"Duration of augmentation">
+                    description = <"The duration of augmentation of labour">
+                >
+                ["at0072"] = <
+                    text = <"Duration of ruptured membranes">
+                    description = <"The time between rupture of the membranes and birth">
+                >
+                ["at0073"] = <
+                    text = <"Duration">
+                    description = <"The duration of labour">
+                >
+                ["at0074"] = <
+                    text = <"LSCS">
+                    description = <"Lower segment caesarian section">
+                >
+                ["at0075"] = <
+                    text = <"Classical CS">
+                    description = <"Classical caesarian section">
+                >
+                ["at0076"] = <
+                    text = <"Successful">
+                    description = <"Did the intervention lead to birth">
+                >
+                ["at0077"] = <
+                    text = <"Description">
+                    description = <"Description of the intervention">
+                >
+                ["at0080"] = <
+                    text = <"Outcome">
+                    description = <"The outcome of the pregnancy">
+                >
+                ["at0081"] = <
+                    text = <"Live birth">
+                    description = <"Pregnancy resulted in a live baby">
+                >
+                ["at0082"] = <
+                    text = <"Neonatal death">
+                    description = <"The baby was born alive but lived less than 28 days">
+                >
+                ["at0083"] = <
+                    text = <"Still birth">
+                    description = <"The baby was not alive when born">
+                >
+                ["at0084"] = <
+                    text = <"Miscarriage">
+                    description = <"The foetus miscarried">
+                >
+                ["at0085"] = <
+                    text = <"Termination">
+                    description = <"The pregnancy was terminated">
+                >
+                ["at0086"] = <
+                    text = <"Details of the offspring">
+                    description = <"Information about the offspring">
+                >
+                ["at0087"] = <
+                    text = <"Fetal or Neontal complications">
+                    description = <"Grouping of neonatal complications if any">
+                >
+                ["at0088"] = <
+                    text = <"Fetal or Neonatal complication">
+                    description = <"The name of the fetal or neonatal complications">
+                >
+                ["at0089"] = <
+                    text = <"Date of onset">
+                    description = <"Date of onset of neonatal complications">
+                >
+                ["at0090"] = <
+                    text = <"Clinical description">
+                    description = <"Clinical description of the neonatal complications">
+                >
+                ["at0091"] = <
+                    text = <"Place of birth">
+                    description = <"The place of birth">
+                >
+                ["at0092"] = <
+                    text = <"Decription of liquor">
+                    description = <"Description of the liquor during labour and delivery">
+                >
+                ["at0093"] = <
+                    text = <"Shoulder manouvre">
+                    description = <"Manouvre to assist birth of shoulders">
+                >
+                ["at0094"] = <
+                    text = <"Presenting part at birth">
+                    description = <"*">
+                >
+                ["at0095"] = <
+                    text = <"Vertex">
+                    description = <"Vertex presentation">
+                >
+                ["at0096"] = <
+                    text = <"Breech - extended">
+                    description = <"Breech presentation with legs extended, hips flexed">
+                >
+                ["at0097"] = <
+                    text = <"Breech - flexed ">
+                    description = <"Breech presentation with hips and legs flexed">
+                >
+                ["at0098"] = <
+                    text = <"Transverse">
+                    description = <"Fetus lying transverse in the abdomen">
+                >
+                ["at0099"] = <
+                    text = <"Breech - footling">
+                    description = <"Breech with one or both legs and hips extended">
+                >
+                ["at0100"] = <
+                    text = <"Oblique">
+                    description = <"Fetus lying obliquely in the uterus">
+                >
+                ["at0101"] = <
+                    text = <"Brow">
+                    description = <"Forehead presenting">
+                >
+                ["at0102"] = <
+                    text = <"Face">
+                    description = <"Face presenting">
+                >
+                ["at0103"] = <
+                    text = <"Interventions">
+                    description = <"Interventions made during birth">
+                >
+                ["at0104"] = <
+                    text = <"Feeding">
+                    description = <"*">
+                >
+                ["at0105"] = <
+                    text = <"Age of onset of breast feeding">
+                    description = <"The age of the child at first breast feed">
+                >
+                ["at0106"] = <
+                    text = <"Description of feeding">
+                    description = <"Description of feeding">
+                >
+                ["at0107"] = <
+                    text = <"Duration of second stage">
+                    description = <"*">
+                >
+                ["at0000.1"] = <
+                    text = <"previous pregnancies">
+                    description = <"!- Recordings related to a single human pregnancy which may include more than one fetus or offspring">
+                >
+                ["at0018.1"] = <
+                    text = <"*! - *bisherige Schwangerschaften">
+                    description = <"*! - *Einzelheiten der bisherigen Schwangerschaften">
+                >
+                ["at0033.1"] = <
+                    text = <"*! - *Anzahl früherer Schwangerschaften">
+                    description = <"*! - *Die Anzahl an früheren Schwangerschaften vor dieser Schwangerschaft">
+                >
+                ["at0017.1"] = <
+                    text = <"*! - *Parität">
+                    description = <"*! - *Anzahl bisheriger Schwangerschaften länger als 20 Wochen">
+                >
+                ["at0031.1"] = <
+                    text = <"*! - *Fehlgeburten ">
+                    description = <"*! - *Die Anzahl an Fehlgeburten vor dieser Schwangerschaft">
+                >
+                ["at0019.1"] = <
+                    text = <"*! - *aktuelle Schwangerschaft">
+                    description = <"*! - *Einzelheiten dieser Schwangerschaft">
+                >
+                ["at0013.1"] = <
+                    text = <"*! - *Errechnetes Geburtsdatum">
+                    description = <"*! - *Das errechnete Geburtsdatum oder Datum der Niederkunft">
+                >
+                ["at0010.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0078.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0079.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0108.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0109.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0110.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0111.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0112.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0113.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0114.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0115.1"] = <
+                    text = <"*eclampsia">
+                    description = <"**">
+                >
+                ["at0116.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0117.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0118.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0119.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0120.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0121.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0122.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Schwangerschaft">
+                    description = <"*Aufzeichnungen zu einer einzelnen menschlichen Schwangerschaft, die mehr als einen Fötus oder Nachkommen umfassen kann">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Schwangerschafts-Status">
+                    description = <"*Der Status diese Schwangerschaft, ermöglicht  rechnerunterstützte Entscheidungen">
+                >
+                ["at0003"] = <
+                    text = <"*Aktuell - lebensfähig">
+                    description = <"*Die Schwangerschaft dauert an und mindestens ein Fötus ist lebensfähig">
+                >
+                ["at0004"] = <
+                    text = <"*Aktuell - nicht lebensfähig">
+                    description = <"*Die Schwangerschaft dauert an, es ist aber kein Fötus lebensfähig">
+                >
+                ["at0005"] = <
+                    text = <"*Stillen">
+                    description = <"*Die Schwangerschaft ist abgeschlossen, die Mutter stillt derzeit">
+                >
+                ["at0006"] = <
+                    text = <"*Abgeschlossen">
+                    description = <"*Die Schwangerschaft ist abgeschlossen, die Mutter stillt derzeit nicht">
+                >
+                ["at0007"] = <
+                    text = <"*Empfängnis">
+                    description = <"*Einzelheiten zur Empfängnis oder dem Beginn der Schwangerschaft">
+                >
+                ["at0008"] = <
+                    text = <"*Datum der letzten Periode">
+                    description = <"*Das Datum der letzten Menstruation, falls bekannt">
+                >
+                ["at0009"] = <
+                    text = <"*Datum der Empfängnis">
+                    description = <"*Das Datum der Empfängnis, falls bekannt">
+                >
+                ["at0011"] = <
+                    text = <"*Nachkomme">
+                    description = <"*Informationen über das Baby oder den Fötus">
+                >
+                ["at0012"] = <
+                    text = <"*Name">
+                    description = <"*Der Name des Kindes">
+                >
+                ["at0013"] = <
+                    text = <"*Errechnetes Geburtsdatum">
+                    description = <"*Das errechnete Geburtsdatum oder Datum der Niederkunft">
+                >
+                ["at0014"] = <
+                    text = <"*Datum der Niederkunft">
+                    description = <"*Das Geburtsdatum dieses Babys oder dieses Fötus">
+                >
+                ["at0015"] = <
+                    text = <"*Basis für das geschätzte Geburtsdatum">
+                    description = <"*Die Basis für das geschätzte Geburtsdatum">
+                >
+                ["at0016"] = <
+                    text = <"*Geburtsmodus">
+                    description = <"*Das bedeutet, wie das Baby geboren wurde">
+                >
+                ["at0017"] = <
+                    text = <"*Parität">
+                    description = <"*Anzahl bisheriger Schwangerschaften länger als 20 Wochen">
+                >
+                ["at0018"] = <
+                    text = <"*bisherige Schwangerschaften">
+                    description = <"*Einzelheiten der bisherigen Schwangerschaften">
+                >
+                ["at0019"] = <
+                    text = <"*aktuelle Schwangerschaft">
+                    description = <"*Einzelheiten dieser Schwangerschaft">
+                >
+                ["at0020"] = <
+                    text = <"*Anzahl der Föten">
+                    description = <"*Die Anzahl der Föten dieser Schwangerschaft">
+                >
+                ["at0021"] = <
+                    text = <"*Beliebige frühere Schwangerschaft">
+                    description = <"*True, wenn keine früheren Schwangerschaften bestehen">
+                >
+                ["at0022"] = <
+                    text = <"*Geburtsgewicht">
+                    description = <"*Das Gewicht des Babys oder des Fötus bei der Geburt">
+                >
+                ["at0023"] = <
+                    text = <"*Stillen">
+                    description = <"*True, wenn das Baby gestillt wurde">
+                >
+                ["at0024"] = <
+                    text = <"*Abstilldatum">
+                    description = <"*Das Datum ab dem das Baby nicht mehr gestillt wurde">
+                >
+                ["at0025"] = <
+                    text = <"*Alter beim Abstillen">
+                    description = <"*Das Alter des Babys als es abgestillt wurde">
+                >
+                ["at0026"] = <
+                    text = <"*geschätztes Gestationsalter">
+                    description = <"*Das geschätzte Alter des Babys von der letzten Periode bis zur Geburt">
+                >
+                ["at0027"] = <
+                    text = <"*Geschlecht">
+                    description = <"*Das Geschlecht des Nachkömmlings">
+                >
+                ["at0028"] = <
+                    text = <"*Junge">
+                    description = <"*Das Baby ist ein Junge">
+                >
+                ["at0029"] = <
+                    text = <"*Mädchen">
+                    description = <"*Das Baby ist ein Mädchen">
+                >
+                ["at0030"] = <
+                    text = <"*Unbestimmt">
+                    description = <"*Das Geschlecht des Babys oder des Fötus kann zurzeit nicht bestimmt werden ">
+                >
+                ["at0031"] = <
+                    text = <"*Fehlgeburten ">
+                    description = <"*Die Anzahl an Fehlgeburten vor dieser Schwangerschaft">
+                >
+                ["at0032"] = <
+                    text = <"*Schwangerschaftsabbrüche">
+                    description = <"*Die Anzahl an Schwangerschaftsabbrüchen vor dieser Schwangerschaft">
+                >
+                ["at0033"] = <
+                    text = <"*Anzahl früherer Schwangerschaften">
+                    description = <"*Die Anzahl an früheren Schwangerschaften vor dieser Schwangerschaft">
+                >
+                ["at0034"] = <
+                    text = <"*Geplantes Pflegemodell">
+                    description = <"*Das Pflegmodell, das für die Geburt geplant ist">
+                >
+                ["at0035"] = <
+                    text = <"*Pflegemodell bei der Niederkunft">
+                    description = <"*Das Pflegemodell zum Zeitpunkt der Niederkunft">
+                >
+                ["at0036"] = <
+                    text = <"*Anzahl der Föten">
+                    description = <"*Die Anzahl der Föten bei einer bestimmten Schwangerschaft">
+                >
+                ["at0037"] = <
+                    text = <"*Schwangerschaft">
+                    description = <"*Die Schwangerschaft zum Zeitpunkt der Beurteilung der Anzahl der Föten">
+                >
+                ["at0038"] = <
+                    text = <"*Wehen bei der Niederkunft">
+                    description = <"*Einzelheiten zu den Wehen (kann unter Umständen mehrfach vorkommen)">
+                >
+                ["at0039"] = <
+                    text = <"*Beginn">
+                    description = <"*Einzelheiten zum Beginn">
+                >
+                ["at0040"] = <
+                    text = <"*Art">
+                    description = <"*Art des Beginns">
+                >
+                ["at0041"] = <
+                    text = <"*Zeitpunkt des Beginns">
+                    description = <"*Der Beginn der Vorwehen">
+                >
+                ["at0042"] = <
+                    text = <"*Bemerkungen">
+                    description = <"*Beliebige Bemerkung zu den Wehen">
+                >
+                ["at0043"] = <
+                    text = <"*Blasensprung">
+                    description = <"*Informationen zum Blasensprung">
+                >
+                ["at0044"] = <
+                    text = <"*Art">
+                    description = <"*Die Art des Fruchtwassers">
+                >
+                ["at0045"] = <
+                    text = <"*Spontan">
+                    description = <"*Beginn ohne Eingriff">
+                >
+                ["at0046"] = <
+                    text = <"*Herbeiführen">
+                    description = <"*Beginn durch Herbeiführen">
+                >
+                ["at0047"] = <
+                    text = <"*Eihautschnitt">
+                    description = <"*Künstlich herbeigeführter Blasensprung">
+                >
+                ["at0048"] = <
+                    text = <"*Zeitpunkt des Blasensprungs">
+                    description = <"*Der Zeitpunkt des Blasensprungs">
+                >
+                ["at0049"] = <
+                    text = <"*Steigerung">
+                    description = <"*Die Steigerungen der Wehen abgesehen vom Blasensprung">
+                >
+                ["at0050"] = <
+                    text = <"*Art">
+                    description = <"*Art der Steigerung">
+                >
+                ["at0051"] = <
+                    text = <"*Zeitpunkt der Steigerung">
+                    description = <"*Das Datum und der Zeitpunkt der Steigerung der Wehen">
+                >
+                ["at0052"] = <
+                    text = <"*Unbekannt">
+                    description = <"*Das Geschlecht ist unbekannt">
+                >
+                ["at0053"] = <
+                    text = <"*Komplikationen">
+                    description = <"*Die Komplikationen dieser Schwangerschaft">
+                >
+                ["at0054"] = <
+                    text = <"*Komplikationen">
+                    description = <"*Eine bestimmte Komplikation">
+                >
+                ["at0055"] = <
+                    text = <"*Datum des Beginns">
+                    description = <"*Das Datum und der Zeitpunkt des Beginns der Komplikation">
+                >
+                ["at0056"] = <
+                    text = <"*Klinische Beschreibung">
+                    description = <"*Klinische Beschreibung der Komplikation">
+                >
+                ["at0057"] = <
+                    text = <"*Beschreibung der Geburt">
+                    description = <"*Einzelheiten zur Geburt">
+                >
+                ["at0058"] = <
+                    text = <"*Unterstützt">
+                    description = <"*Geburt wurde unterstützt durch Geburtszange oder Saugglocke">
+                >
+                ["at0059"] = <
+                    text = <"*Kaiserschnitt">
+                    description = <"*Geburt des Baby aus dem Bauch">
+                >
+                ["at0060"] = <
+                    text = <"*Eingriff">
+                    description = <"*Genauere Informationen zum Eingriff, der zur Geburt führt">
+                >
+                ["at0061"] = <
+                    text = <"*Art">
+                    description = <"*Art des Eingriffs">
+                >
+                ["at0062"] = <
+                    text = <"*Geburtszange tief">
+                    description = <"*Geburtszange wird tief im Becken an den Kopf angelegt">
+                >
+                ["at0063"] = <
+                    text = <"*Geburtszange hoch">
+                    description = <"*Geburtszange wird hoch im Becken an den Kopf angelegt">
+                >
+                ["at0064"] = <
+                    text = <"*Geburtszange gedreht">
+                    description = <"*Geburtszange wird angelegt und vor dem Ziehen gedreht">
+                >
+                ["at0065"] = <
+                    text = <"*Saugglocke tief">
+                    description = <"*Saugglocke wird tief im Becken an den Kopf angelegt">
+                >
+                ["at0066"] = <
+                    text = <"*Anzeichen">
+                    description = <"*Die Anzeichen für einen Eingriff">
+                >
+                ["at0067"] = <
+                    text = <"*Status">
+                    description = <"*Die Art des Eingriffs">
+                >
+                ["at0068"] = <
+                    text = <"*Notfall">
+                    description = <"*Ungeplant und sich aus dem klinischen Ablauf ergebend">
+                >
+                ["at0069"] = <
+                    text = <"*Wahlweise">
+                    description = <"*Im voraus geplant und vor dem Entstehen der Situation durchgeführt">
+                >
+                ["at0070"] = <
+                    text = <"*Keine Wehen">
+                    description = <"*Keine Wehen stattgefunden">
+                >
+                ["at0071"] = <
+                    text = <"*Dauer der Zunahme">
+                    description = <"*Die Dauer der Zunahme der Wehen">
+                >
+                ["at0072"] = <
+                    text = <"*Dauer des Blasensprungs">
+                    description = <"*Die Zeit zwischen Blasensprung und Geburt">
+                >
+                ["at0073"] = <
+                    text = <"*Dauer">
+                    description = <"*Die Dauer der Wehen">
+                >
+                ["at0074"] = <
+                    text = <"*Tiefer Kaiserschnitt">
+                    description = <"*Kaiserschnitt im unteren Segment">
+                >
+                ["at0075"] = <
+                    text = <"*Klassischer Kaiserschnitt">
+                    description = <"*Klassischer Kaiserschnitt">
+                >
+                ["at0076"] = <
+                    text = <"*Erfolgreich">
+                    description = <"*Führte der Eingriff zur Geburt">
+                >
+                ["at0077"] = <
+                    text = <"*Beschreibung">
+                    description = <"*Beschreibung des Eingriffs">
+                >
+                ["at0080"] = <
+                    text = <"*Ausgang">
+                    description = <"*Der Ausgang der Schwangerschaft">
+                >
+                ["at0081"] = <
+                    text = <"*Lebendgeburt">
+                    description = <"*Aus der Schwangerschaft ging ein lebendes Kind hervor">
+                >
+                ["at0082"] = <
+                    text = <"*Neonataltod">
+                    description = <"*Das Baby wurde lebend geboren, starb aber nach weniger als 28 Tagen">
+                >
+                ["at0083"] = <
+                    text = <"*Todgeburt">
+                    description = <"*Das Baby war bei der Geburt nicht am Leben">
+                >
+                ["at0084"] = <
+                    text = <"*Fehlgeburt">
+                    description = <"*Der Fötus ist eine Fehlgeburt">
+                >
+                ["at0085"] = <
+                    text = <"*Abbruch">
+                    description = <"*Die Schwangerschaft wurde abgebrochen">
+                >
+                ["at0086"] = <
+                    text = <"*Einzelheiten des Nachkömmlings">
+                    description = <"*Informationen zum Nachkömmling">
+                >
+                ["at0087"] = <
+                    text = <"*Fötale oder neonatale Komplikationen">
+                    description = <"*Gruppierung neonataler Komplikationen, falls vorhanden">
+                >
+                ["at0088"] = <
+                    text = <"*Fötale oder neonatale Komplikationen">
+                    description = <"*Benennung der neonatalen Komplikationen">
+                >
+                ["at0089"] = <
+                    text = <"*Beginndatum">
+                    description = <"*Datum des Beginns der neonatalen Komplikationen">
+                >
+                ["at0090"] = <
+                    text = <"*klinische Beschreibung">
+                    description = <"*klinische Beschreibung der neonatalen Komplikationen">
+                >
+                ["at0091"] = <
+                    text = <"*Geburtsort">
+                    description = <"*Der Ort der Geburt">
+                >
+                ["at0092"] = <
+                    text = <"*Beschreibung des Fruchtwassers">
+                    description = <"*Beschreibung des Fruchtwassers während der Wehen und der Geburt">
+                >
+                ["at0093"] = <
+                    text = <"*Schultergeburt">
+                    description = <"*Vorgehen zur Unterstützung der Geburt der Schultern">
+                >
+                ["at0094"] = <
+                    text = <"*Zu sehender Teil bei der Geburt">
+                    description = <"**">
+                >
+                ["at0095"] = <
+                    text = <"*Scheitel">
+                    description = <"*Scheitel zu sehen">
+                >
+                ["at0096"] = <
+                    text = <"*Steiß - gestreckt">
+                    description = <"*Steiß zu sehen, mit gestreckten Beinen und gebeugter Hüfte">
+                >
+                ["at0097"] = <
+                    text = <"*Steiß - gebeugt">
+                    description = <"*Steiß zu sehen, mit gebeugten Beinen und Hüfte">
+                >
+                ["at0098"] = <
+                    text = <"*Quer">
+                    description = <"*Fötus liegt quer im Bauch">
+                >
+                ["at0099"] = <
+                    text = <"*Steiß">
+                    description = <"*Steiß zu sehen, mit einem oder beiden Beinen und der Hüfte gestreckt">
+                >
+                ["at0100"] = <
+                    text = <"*Schräg">
+                    description = <"*Fötus liegt schräg in der Gebärmutter">
+                >
+                ["at0101"] = <
+                    text = <"*Stirn">
+                    description = <"*Stirn ist zu sehen">
+                >
+                ["at0102"] = <
+                    text = <"*Gesicht">
+                    description = <"*Gesicht ist zu sehen">
+                >
+                ["at0103"] = <
+                    text = <"*Eingriffe">
+                    description = <"*Während der Geburt unternommene Eingriffe">
+                >
+                ["at0104"] = <
+                    text = <"*Ernährung">
+                    description = <"**">
+                >
+                ["at0105"] = <
+                    text = <"*Alter beim Beginn des Stillens">
+                    description = <"*Das Alter des Kindes beim ersten Stillen">
+                >
+                ["at0106"] = <
+                    text = <"*Beschreibung der Ernährung">
+                    description = <"*Beschreibung der Ernährung">
+                >
+                ["at0107"] = <
+                    text = <"*Dauer der Eröffnungswehen">
+                    description = <"**">
+                >
+                ["at0000.1"] = <
+                    text = <"**previous pregnancies">
+                    description = <"**!- Recordings related to a single human pregnancy which may include more than one fetus or offspring">
+                >
+                ["at0018.1"] = <
+                    text = <"Gestações anteriores">
+                    description = <"! - *Einzelheiten der bisherigen Schwangerschaften">
+                >
+                ["at0033.1"] = <
+                    text = <"Numero de gestações anteriores">
+                    description = <"Número de gravidezes anteriores">
+                >
+                ["at0017.1"] = <
+                    text = <"Paridade">
+                    description = <"! - *Anzahl bisheriger Schwangerschaften länger als 20 Wochen">
+                >
+                ["at0031.1"] = <
+                    text = <"Abortos">
+                    description = <"! - *Die Anzahl an Fehlgeburten vor dieser Schwangerschaft">
+                >
+                ["at0019.1"] = <
+                    text = <"Gestação atual">
+                    description = <"! - *Einzelheiten dieser Schwangerschaft">
+                >
+                ["at0013.1"] = <
+                    text = <"Data prevista do parto">
+                    description = <"! - *Das errechnete Geburtsdatum oder Datum der Niederkunft">
+                >
+                ["at0010.1"] = <
+                    text = <"DUM - Data da última menstruação ">
+                    description = <"*">
+                >
+                ["at0078.1"] = <
+                    text = <"New element *(en)">
+                    description = <"*">
+                >
+                ["at0079.1"] = <
+                    text = <"New element *(en)">
+                    description = <"*">
+                >
+                ["at0108.1"] = <
+                    text = <"Duração da gestação atual">
+                    description = <"*">
+                >
+                ["at0109.1"] = <
+                    text = <"Detalhes partos anteriores">
+                    description = <"*">
+                >
+                ["at0110.1"] = <
+                    text = <"Peso ao nascer">
+                    description = <"*">
+                >
+                ["at0111.1"] = <
+                    text = <"New element *(en)">
+                    description = <"*">
+                >
+                ["at0112.1"] = <
+                    text = <"Diabete gestacional?">
+                    description = <"*">
+                >
+                ["at0113.1"] = <
+                    text = <"Hipertensão gestacional?">
+                    description = <"*">
+                >
+                ["at0114.1"] = <
+                    text = <"Outras complicações da gravidez">
+                    description = <"*">
+                >
+                ["at0115.1"] = <
+                    text = <"eclampsia">
+                    description = <"*">
+                >
+                ["at0116.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0117.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0118.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0119.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0120.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0121.1"] = <
+                    text = <"New cluster *(en)">
+                    description = <"*">
+                >
+                ["at0122.1"] = <
+                    text = <"Data partos anteriores">
+                    description = <"*">
+                >
+            >
+        >
+    >

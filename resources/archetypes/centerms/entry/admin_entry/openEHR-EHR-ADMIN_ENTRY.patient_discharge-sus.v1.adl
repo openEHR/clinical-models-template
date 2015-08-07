@@ -1,0 +1,319 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.patient_discharge-sus.v1
+
+concept
+	[at0000]	-- Patient discharge
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"CSW">
+		["organisation"] = <"Critical Software">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Record patient discharge data">
+			use = <"Record patient discharge data">
+			keywords = <"discharge", ...>
+			misuse = <"N/A">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registro da informação sobre a alta do paciente.">
+			use = <"Registrar a informação sobre a alta do paciente.">
+			keywords = <"alta", "saída">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"59F80909DA5CEC1CB875D7722360B0BE">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Alta do paciente
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0003] occurrences matches {0..1} matches {	-- Alta
+						items cardinality matches {2..*; unordered} matches {
+							ELEMENT[at0010] matches {	-- Data/hora de alta
+								value matches {
+									DV_DATE_TIME matches {
+										value matches {yyyy-mm-ddTHH:MM:SS}
+									}
+								}
+							}
+							ELEMENT[at0006] matches {	-- Condição na alta
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[ac0001]}		-- New constraint
+									}
+								}
+							}
+							ELEMENT[at0014] occurrences matches {0..1} matches {	-- Encaminhamento
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0015, 	-- Retorno para consulta agendada
+											at0016, 	-- Retorno para cuidado continuado/programado
+											at0017, 	-- Agendamento p/ NASF
+											at0018, 	-- Encaminhamento p/ Serviço Especializado
+											at0019, 	-- Encaminhamento p/ CAPS
+											at0020, 	-- Encaminhamento p/ Internação Hospitalar
+											at0021, 	-- Encaminhamento p/ Urgência
+											at0022, 	-- Encaminhamento p/ Serviço de Atenção Domiciliar
+											at0023]	-- Alta do episódio
+										}
+									}
+								}
+							}
+							ELEMENT[at0013] occurrences matches {0..1} matches {	-- Ficou em observação
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {True, False}
+									}
+								}
+							}
+						}
+					}
+					CLUSTER[at0007] occurrences matches {0..1} matches {	-- Médico responsável
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0011] matches {	-- Login
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0008] occurrences matches {0..1} matches {	-- Primeiro nome
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0009] occurrences matches {0..1} matches {	-- Sobrenome
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0012] occurrences matches {0..1} matches {	-- Nome completo
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patient discharge">
+					description = <"Patient discharge information">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"*@ internal @(pt)">
+				>
+				["at0003"] = <
+					text = <"Discharge">
+					description = <"Discharge">
+				>
+				["at0006"] = <
+					text = <"Discharge condition">
+					description = <"discharge condition">
+				>
+				["at0007"] = <
+					text = <"Attending doctor">
+					description = <"The attending doctor information">
+				>
+				["at0008"] = <
+					text = <"Given name">
+					description = <"The first name">
+				>
+				["at0009"] = <
+					text = <"Last name">
+					description = <"The last name">
+				>
+				["at0010"] = <
+					text = <"Discharge date time">
+					description = <"The discharge date time">
+				>
+				["at0011"] = <
+					text = <"Login">
+					description = <"The attending doctor login.">
+				>
+				["at0012"] = <
+					text = <"Full name">
+					description = <"The full name.">
+				>
+				["at0013"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"*Retorno para consulta agendada(en)">
+					description = <"**(en)">
+				>
+				["at0016"] = <
+					text = <"*Retorno para cuidado continuado/programado(en)">
+					description = <"**(en)">
+				>
+				["at0017"] = <
+					text = <"*Agendamento p/ NASF(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*Encaminhamento p/ Serviço Especializado(en)">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"*Encaminhamento p/ CAPS(en)">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"*Encaminhamento p/ Internação Hospitalar(en)">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"*Encaminhamento p/ Urgência(en)">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"*Encaminhamento p/ Serviço de Atenção Domiciliar(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Alta do episódio(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alta do paciente">
+					description = <"Informação sobre a alta do paciente.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"**@ internal @(pt)(en)">
+				>
+				["at0003"] = <
+					text = <"Alta">
+					description = <"Ata">
+				>
+				["at0006"] = <
+					text = <"Condição na alta">
+					description = <"Condição na alta.">
+				>
+				["at0007"] = <
+					text = <"Médico responsável">
+					description = <"Informação sobre o médico responsável.">
+				>
+				["at0008"] = <
+					text = <"Primeiro nome">
+					description = <"Primeiro nome.">
+				>
+				["at0009"] = <
+					text = <"Sobrenome">
+					description = <"Sobrenome.">
+				>
+				["at0010"] = <
+					text = <"Data/hora de alta">
+					description = <"A data/hora da alta.">
+				>
+				["at0011"] = <
+					text = <"Login">
+					description = <"O login do médico responsável.">
+				>
+				["at0012"] = <
+					text = <"Nome completo">
+					description = <"O nome completo do médico responsável.">
+				>
+				["at0013"] = <
+					text = <"Ficou em observação">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Encaminhamento">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Retorno para consulta agendada">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Retorno para cuidado continuado/programado">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Agendamento p/ NASF">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Encaminhamento p/ Serviço Especializado">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Encaminhamento p/ CAPS">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Encaminhamento p/ Internação Hospitalar">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Encaminhamento p/ Urgência">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Encaminhamento p/ Serviço de Atenção Domiciliar">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Alta do episódio">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0001"] = <
+					text = <"*New constraint(pt-br)">
+					description = <"**(pt-br)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["ac0001"] = <
+					text = <"New constraint">
+					description = <"*">
+				>
+			>
+		>
+	>

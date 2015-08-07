@@ -1,0 +1,237 @@
+archetype
+    openEHR-EHR-EVALUATION.elderly_risk_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+
+description
+    original_author = <
+        ["name"] = <"John Doe">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+        >
+    >
+
+definition
+    EVALUATION[at0000] matches {
+        data matches {
+            ITEM_TREE[at0001] matches {
+                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                    CLUSTER[at0002] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_BOOLEAN matches {
+                                        value matches {true, false; false}
+                                    }
+                                }
+                            }
+                            CLUSTER[at0011] occurrences matches {0..1} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0012] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0013] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0014] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0015] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0016] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0017] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0018] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0019] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0020] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_BOOLEAN matches {
+                                                value matches {true, false}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0023] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0007,
+                                    at0021]
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0024] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Avaliação de Risco no Idoso">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Avaliação de Risco no Idoso">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Risco Habitual">
+                    description = <"Idosos entre 60 e 79 anos sem as
+condições ou patologias apresentadas
+no item Alto Risco/Idoso Fragil">
+                >
+                ["at0004"] = <
+                    text = <"Sim">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Não">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Estratificação de Risco para o Idoso">
+                    description = <"Idosos ≥ 80 anos ou  Idosos com ≥ 60 anos apresentando condiçoes e patologias associadass
+
+
+">
+                >
+                ["at0007"] = <
+                    text = <"Alto Risco / Idoso Fragil">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Idosos ≥ 80 anos">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Idosos com ≥ 60 anos apresentando">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Polipatologias (≥ 5 diagnósticos)">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Polifarmácia (≥ 5 drogas/dia)">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Imobilidade parcial ou total">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"Incontinência urinária ou fecal">
+                    description = <"*">
+                >
+                ["at0016"] = <
+                    text = <"Instabilidade postural (quedas de repetição)">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"Incapacidade cognitiva (declínio cognitivo, síndrome demencial, depressão, delirium)">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"Idosos com história de internações freqüentes e/ou no período de pós-alta hospitalar">
+                    description = <"*">
+                >
+                ["at0019"] = <
+                    text = <"Idosos dependentes nas atividades de vida diária básica – AVD">
+                    description = <"*">
+                >
+                ["at0020"] = <
+                    text = <"Insuficiência familiar: idosos que moram sós ou estão institucionalizados">
+                    description = <"*">
+                >
+                ["at0021"] = <
+                    text = <"Risco Habitual">
+                    description = <"*">
+                >
+                ["at0022"] = <
+                    text = <"Alto Risco / Idoso Frágil">
+                    description = <"*">
+                >
+                ["at0023"] = <
+                    text = <"Estratificação de Risco do Idoso">
+                    description = <"*">
+                >
+                ["at0024"] = <
+                    text = <"Alerta de Encaminhamento do Idoso">
+                    description = <"*">
+                >
+            >
+        >
+    >

@@ -1,0 +1,514 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.substance_use_alcohol.v2br
+
+concept
+	[at0000.1]	-- Álcool
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Heather Leslie">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"heather.leslie@oceaninformatics.biz">
+		["date"] = <"9/04/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record alcohol consumption based on information reported by the person.">
+			use = <"">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro do consumo de álcool segundo informações da própria pessoa">
+			use = <"*">
+			misuse = <"*">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000.1] matches {	-- Álcool
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Ocorrência distinta
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Consumo de álcool
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Nome da bebida
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tipo de álcool consumido
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0.38, 	-- Destilados (whisky, aguardentes, conhaque...)
+															at0.39, 	-- Vinhos e espumantes
+															at0.40, 	-- Cerveja
+															at0031.1]	-- Outros
+														}
+													}
+												}
+											}
+											CLUSTER[at0.47] occurrences matches {0..1} matches {	-- Regularidade de consumo
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0008] occurrences matches {0..1} matches {	-- Regularidade
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0028, 	-- Regular
+																	at0029]	-- Ocasional
+																}
+															}
+														}
+													}
+													ELEMENT[at0.44] occurrences matches {0..1} matches {	-- Consumo de álcool desde
+														value matches {
+															DV_DURATION matches {*}
+														}
+													}
+													ELEMENT[at0.45] occurrences matches {0..1} matches {	-- Interrupção
+														value matches {
+															DV_DATE matches {
+																value matches {yyyy-??-??}
+															}
+															C_DV_QUANTITY <
+																property = <[openehr::128]>
+																list = <
+																	["1"] = <
+																		units = <"Dia">
+																	>
+																	["2"] = <
+																		units = <"Mes">
+																	>
+																	["3"] = <
+																		units = <"Ano">
+																	>
+																>
+															>
+														}
+													}
+												}
+											}
+											CLUSTER[at0030] occurrences matches {0..1} matches {	-- Quantidade consumida
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0.48] occurrences matches {0..1} matches {	-- Consumo médio
+														value matches {
+															C_DV_QUANTITY <
+																property = <[openehr::128]>
+																list = <
+																	["1"] = <
+																		units = <"Diário">
+																	>
+																	["2"] = <
+																		units = <"Semanal">
+																	>
+																	["3"] = <
+																		units = <"Mensal">
+																	>
+																	["4"] = <
+																		units = <"Anual">
+																	>
+																>
+															>
+														}
+													}
+													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Consumo médio semanal
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													ELEMENT[at0009] occurrences matches {0..1} matches {	-- Consumo médio diário
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+													ELEMENT[at0034] occurrences matches {0..1} matches {	-- Consumo máximo diario
+														value matches {
+															DV_COUNT matches {*}
+														}
+													}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Observações
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0016] occurrences matches {0..1} matches {	-- Tentativas de interrupção do hábito
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Local da terapia de remissão
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Data da tentativa
+												value matches {
+													DV_DATE matches {
+														value matches {yyyy-??-??}
+													}
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Descrição da tentativa
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											CLUSTER[at0018] occurrences matches {0..1} matches {	-- Intervenção terapeutica
+												items cardinality matches {0..*; unordered} matches {
+													ELEMENT[at0022] occurrences matches {0..1} matches {	-- Droga
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0023] occurrences matches {0..1} matches {	-- Uso adequado
+														value matches {
+															DV_BOOLEAN matches {
+																value matches {True, False}
+															}
+														}
+													}
+													ELEMENT[at0024] occurrences matches {0..1} matches {	-- Observações
+														value matches {
+															DV_TEXT matches {*}
+														}
+													}
+													ELEMENT[at0021] occurrences matches {0..1} matches {	-- Resultados
+														value matches {
+															DV_CODED_TEXT matches {
+																defining_code matches {
+																	[local::
+																	at0035, 	-- Falha
+																	at0036, 	-- Sucesso
+																	at0037]	-- Recaída
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.38"] = <
+					text = <"Spirits">
+					description = <"*">
+				>
+				["at0.39"] = <
+					text = <"Wine">
+					description = <"*">
+				>
+				["at0.40"] = <
+					text = <"Beer">
+					description = <"*">
+				>
+				["at0.44"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.45"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0.47"] = <
+					text = <"*New cluster(en)">
+					description = <"**(en)">
+				>
+				["at0.48"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0000.1"] = <
+					text = <"Alcohol consumption">
+					description = <"For recording details about acohol consumption by the person
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Substance name">
+					description = <"Name of substance being used by person">
+				>
+				["at0006"] = <
+					text = <"Details of alcohol consumption">
+					description = <"Details about the use of the substance">
+				>
+				["at0007"] = <
+					text = <"Form">
+					description = <"Form or type of alcohol">
+				>
+				["at0008"] = <
+					text = <"Regularity of use">
+					description = <"Regularity of use">
+				>
+				["at0009"] = <
+					text = <"Average daily consumption">
+					description = <"Average number of units of alcohol consumed in a day">
+				>
+				["at0014"] = <
+					text = <"Comment">
+					description = <"Other information on substance use">
+				>
+				["at0016"] = <
+					text = <"Previous attempts to cease use">
+					description = <"Details about previous attempts to cease using substance">
+				>
+				["at0017"] = <
+					text = <"Location">
+					description = <"Place where attempt to cease use occurred eg home or name of institution">
+				>
+				["at0018"] = <
+					text = <"Therapeutic intervention">
+					description = <"Use of therapeutic agent to assist in ceasing use of substance">
+				>
+				["at0019"] = <
+					text = <"Date of attempt">
+					description = <"Date of attempt">
+				>
+				["at0020"] = <
+					text = <"Description of attempt">
+					description = <"Description of details of attempt">
+				>
+				["at0021"] = <
+					text = <"Outcome">
+					description = <"Outcome of attempt to cease use">
+				>
+				["at0022"] = <
+					text = <"Agent">
+					description = <"Name of agent used">
+				>
+				["at0023"] = <
+					text = <"Used optimally">
+					description = <"Was the agent used optimally?">
+				>
+				["at0024"] = <
+					text = <"Comment">
+					description = <"Comment about the effect of the agent on the attempt">
+				>
+				["at0028"] = <
+					text = <"Regular">
+					description = <"Regular use">
+				>
+				["at0029"] = <
+					text = <"Occasional">
+					description = <"Occasional use">
+				>
+				["at0030"] = <
+					text = <"Consumption">
+					description = <"Amount of substance">
+				>
+				["at0031.1"] = <
+					text = <"*Outros">
+					description = <"**">
+				>
+				["at0033"] = <
+					text = <"Average weekly consumption">
+					description = <"Average number of units of alcohol consumed in a week">
+				>
+				["at0034"] = <
+					text = <"Maximal daily consumption">
+					description = <"Maximal number of units of alcohol consumed in a day">
+				>
+				["at0035"] = <
+					text = <"Failed">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Successful ">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Successful but relapsed">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0.38"] = <
+					text = <"Destilados (whisky, aguardentes, conhaque...)">
+					description = <"*">
+				>
+				["at0.39"] = <
+					text = <"Vinhos e espumantes">
+					description = <"*">
+				>
+				["at0.40"] = <
+					text = <"Cerveja">
+					description = <"*">
+				>
+				["at0.44"] = <
+					text = <"Consumo de álcool desde">
+					description = <"*">
+				>
+				["at0.45"] = <
+					text = <"Interrupção">
+					description = <"*">
+				>
+				["at0.47"] = <
+					text = <"Regularidade de consumo">
+					description = <"*">
+				>
+				["at0.48"] = <
+					text = <"Consumo médio">
+					description = <"*">
+				>
+				["at0000.1"] = <
+					text = <"Álcool">
+					description = <"Registro do consumo de álcool segundo informações da própria pessoa">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal@">
+				>
+				["at0002"] = <
+					text = <"Ocorrência distinta">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Nome da bebida">
+					description = <"Nome da bebida usada pela pessoa">
+				>
+				["at0006"] = <
+					text = <"Consumo de álcool">
+					description = <"Detalhes sobre o consumo de álcool">
+				>
+				["at0007"] = <
+					text = <"Tipo de álcool consumido">
+					description = <"Tipo de álcool consumido">
+				>
+				["at0008"] = <
+					text = <"Regularidade">
+					description = <"Regularidade de uso">
+				>
+				["at0009"] = <
+					text = <"Consumo médio diário">
+					description = <"Consumo médio diário de álcool">
+				>
+				["at0014"] = <
+					text = <"Observações">
+					description = <"Informações sobre o uso de álcool">
+				>
+				["at0016"] = <
+					text = <"Tentativas de interrupção do hábito">
+					description = <"Detalhes sobre tentativas de remissão do uso de álcool   ">
+				>
+				["at0017"] = <
+					text = <"Local da terapia de remissão">
+					description = <"Local onde se deu o tratamento de remisão do uso de alcóol">
+				>
+				["at0018"] = <
+					text = <"Intervenção terapeutica">
+					description = <"Uso de drogas terapeuticas para auxílio na remissão do uso de álcool">
+				>
+				["at0019"] = <
+					text = <"Data da tentativa">
+					description = <"Data da tentativa de supressão do álcool">
+				>
+				["at0020"] = <
+					text = <"Descrição da tentativa">
+					description = <"Descrição da tentativa de remissão ao uso de álcool">
+				>
+				["at0021"] = <
+					text = <"Resultados">
+					description = <"Resultados da tentativa de remissão ao uso de álcool">
+				>
+				["at0022"] = <
+					text = <"Droga">
+					description = <"Nome da droga usada">
+				>
+				["at0023"] = <
+					text = <"Uso adequado">
+					description = <"A droga foi usada na sua plenitude">
+				>
+				["at0024"] = <
+					text = <"Observações">
+					description = <"Comentário sobre os efeitos da droga usada">
+				>
+				["at0028"] = <
+					text = <"Regular">
+					description = <"Uso regular">
+				>
+				["at0029"] = <
+					text = <"Ocasional">
+					description = <"Uso ocasional">
+				>
+				["at0030"] = <
+					text = <"Quantidade consumida">
+					description = <"Quantidade de consumo">
+				>
+				["at0031.1"] = <
+					text = <"Outros">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Consumo médio semanal">
+					description = <"Consumo médio semanal de álcool">
+				>
+				["at0034"] = <
+					text = <"Consumo máximo diario">
+					description = <"Consumo máximo diário de álcool">
+				>
+				["at0035"] = <
+					text = <"Falha">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Sucesso">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Recaída">
+					description = <"*">
+				>
+			>
+		>
+	>

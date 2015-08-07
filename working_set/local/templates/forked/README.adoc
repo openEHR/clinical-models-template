@@ -1,0 +1,2 @@
+= Contents
+Models in this directory are directly modified copies of archetypes already managed elsewhere, known as 'forked' archetypes.

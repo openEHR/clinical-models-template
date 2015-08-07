@@ -1,0 +1,360 @@
+archetype
+    openEHR-EHR-INSTRUCTION.request-spa.v1
+specialize
+    openEHR-EHR-INSTRUCTION.request.v1
+
+concept
+    [at0000.1]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"ian.mcnicoll@oceaninformatics.com">
+        ["name"] = <"Dr Ian McNicoll">
+        ["organisation"] = <"Ocean Informatics, United Kingdom">
+        ["date"] = <"08/12/2009">
+    >
+    lifecycle_state = <"AuthorDraft">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+            keywords = <"request","refer","order","service","provide">
+            copyright = <"copyright (c) 2010 openEHR foundation">
+        >
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"*Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+            keywords = <"request","refer","order","service","provide">
+            copyright = <"copyright (c) 2010 openEHR foundation">
+        >
+    >
+
+definition
+    INSTRUCTION[at0000.1] matches {
+        activities cardinality matches {1..1; unordered} matches {
+            ACTIVITY[at0001] occurrences matches {1..*} matches {
+                action_archetype_id matches {/.*/}
+                description matches {
+                    ITEM_TREE[at0009] matches {
+                        items existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                            CLUSTER[at0061] occurrences matches {0..*} matches {
+                                items cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0068.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::
+                                                    at0003.1,
+                                                    at0004.1]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0062] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0047.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0002.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0040] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_DATE_TIME matches {
+                                                value matches {yyyy-??-??T??:??:??}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0131.1] occurrences matches {0..*} matches {
+                                        value matches {
+                                            DV_TEXT matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0006.1] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0008] matches {
+                items existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0010] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0011] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0125] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0129] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0126] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0130] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0127] occurrences matches {0..1} matches {
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Request a healthcare service">
+                    description = <"Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+                >
+                ["at0001"] = <
+                    text = <"Request">
+                    description = <"Current Activity">
+                >
+                ["at0008"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0009"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0010"] = <
+                    text = <"Placer order identifier">
+                    description = <"The ID assigned to the order by the order requester. Equivalent to the NEHTA Requester Order Identifier.">
+                >
+                ["at0011"] = <
+                    text = <"Filler order identifier">
+                    description = <"The ID assigned to the test order by the order filler, usually by the (LIS) Laboratory Information System. Equivalent to the DICOM Accession Number and NEHTA Laboratory Request Identifier.">
+                >
+                ["at0040"] = <
+                    text = <"Datetime service required">
+                    description = <"The date and time that the service should be performed.">
+                >
+                ["at0046"] = <
+                    text = <"Patient requirements">
+                    description = <"Specific patient requirements related to the request e,g language, transport or cultural requirements">
+                >
+                ["at0061"] = <
+                    text = <"Reason for request">
+                    description = <"*">
+                >
+                ["at0062"] = <
+                    text = <"Principle reason">
+                    description = <"A short description of the main reason for the request.">
+                >
+                ["at0063"] = <
+                    text = <"Date of onset">
+                    description = <"The date of onset of the clinical circumstances which have lead to the request e.g. date of onset of symptoms">
+                >
+                ["at0064"] = <
+                    text = <"Description">
+                    description = <"A text description explaining the reason for the request.">
+                >
+                ["at0065"] = <
+                    text = <"Expectation of outcome / goal">
+                    description = <"*">
+                >
+                ["at0077"] = <
+                    text = <"Supplementary information to follow">
+                    description = <"Additional information which may follow after the initial request e.g when a referral is made, a lab result is not initially availble but will be expected to follow.">
+                >
+                ["at0078"] = <
+                    text = <"Details">
+                    description = <"Details of the supplementary information that is to follow">
+                >
+                ["at0000.1"] = <
+                    text = <"! - Request a healthcare service">
+                    description = <"! - Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+                >
+                ["at0047.1"] = <
+                    text = <"*! - *Request category">
+                    description = <"*! - *The general category of request e.g. Referral or Lab request, clinical procedure, surgical procedure.">
+                >
+                ["at0121.1"] = <
+                    text = <"*! - *Service requested">
+                    description = <"*! - *The specific request, normally coded with a terminology.">
+                >
+                ["at0002.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0131.1"] = <
+                    text = <"*! - *Additional instructions">
+                    description = <"*! - *Any additional specific instructions for the service provider.">
+                >
+                ["at0068.1"] = <
+                    text = <"*! - *Priority">
+                    description = <"*! - *Urgency or priority of the request">
+                >
+                ["at0003.1"] = <
+                    text = <"*Eletiva">
+                    description = <"**">
+                >
+                ["at0004.1"] = <
+                    text = <"*Urgência/Emergência">
+                    description = <"**">
+                >
+                ["at0005.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0006.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"*Request a healthcare service">
+                    description = <"*Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+                >
+                ["at0001"] = <
+                    text = <"*Request">
+                    description = <"*Current Activity">
+                >
+                ["at0008"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0009"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0010"] = <
+                    text = <"*Placer order identifier">
+                    description = <"*The ID assigned to the order by the order requester. Equivalent to the NEHTA Requester Order Identifier.">
+                >
+                ["at0011"] = <
+                    text = <"*Filler order identifier">
+                    description = <"*The ID assigned to the test order by the order filler, usually by the (LIS) Laboratory Information System. Equivalent to the DICOM Accession Number and NEHTA Laboratory Request Identifier.">
+                >
+                ["at0040"] = <
+                    text = <"Data (e hora) para a realização do exame">
+                    description = <"Data e hora desejada para a realização do exame">
+                >
+                ["at0046"] = <
+                    text = <"*Patient requirements">
+                    description = <"*Specific patient requirements related to the request e,g language, transport or cultural requirements">
+                >
+                ["at0061"] = <
+                    text = <"Indicação clínica">
+                    description = <"**">
+                >
+                ["at0062"] = <
+                    text = <"Diagnóstico provável (CID-10)">
+                    description = <"Código CID  10 do diagnóstico">
+                >
+                ["at0063"] = <
+                    text = <"Data de início dos sintomas">
+                    description = <"*The date of onset of the clinical circumstances which have lead to the request e.g. date of onset of symptoms">
+                >
+                ["at0064"] = <
+                    text = <"Doença atual - história">
+                    description = <"">
+                >
+                ["at0065"] = <
+                    text = <"Expectativas com relação ao resultado do exame">
+                    description = <"**">
+                >
+                ["at0077"] = <
+                    text = <"Orientações após realização do exame">
+                    description = <" ">
+                >
+                ["at0078"] = <
+                    text = <"Detalhes">
+                    description = <" ">
+                >
+                ["at0000.1"] = <
+                    text = <"*! - Request a healthcare service">
+                    description = <"*! - Generic request for a range of different healthcare services e.g referral, lab request, equipment request.">
+                >
+                ["at0047.1"] = <
+                    text = <"Categoria do procedimento solicitado">
+                    description = <"! - *The general category of request e.g. Referral or Lab request, clinical procedure, surgical procedure.">
+                >
+                ["at0121.1"] = <
+                    text = <"Procedimento solicitado">
+                    description = <"! - *The specific request, normally coded with a terminology.">
+                >
+                ["at0002.1"] = <
+                    text = <"Código do procedimento solicitado (SPA)">
+                    description = <"*">
+                >
+                ["at0131.1"] = <
+                    text = <"Instruções adicionais à solicitação">
+                    description = <"! - *Any additional specific instructions for the service provider.">
+                >
+                ["at0068.1"] = <
+                    text = <"Caráter da solicitação">
+                    description = <"! - *Urgency or priority of the request">
+                >
+                ["at0003.1"] = <
+                    text = <"Eletiva">
+                    description = <"*">
+                >
+                ["at0004.1"] = <
+                    text = <"Urgência/Emergência">
+                    description = <"*">
+                >
+                ["at0005.1"] = <
+                    text = <"Quantidade solicitada">
+                    description = <"*">
+                >
+                ["at0006.1"] = <
+                    text = <"Instruções após a realização do exame">
+                    description = <"*">
+                >
+            >
+        >
+    >

@@ -1,0 +1,741 @@
+archetype
+    openEHR-EHR-OBSERVATION.laboratory-urea_and_electrolytes.v1
+specialize
+    openEHR-EHR-OBSERVATION.laboratory.v1
+
+concept
+    [at0000.1]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"sam.heard@oceaninformatics.biz">
+        ["name"] = <"Sam Heard">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"26/03/2006">
+    >
+    lifecycle_state = <"AuthorDraft">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the levels of electrolytes and urea in the blood.">
+            keywords = <"U&Es","U&E","electrolytes">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*To record the levels of electrolytes and urea in the blood.">
+            keywords = <"U&Es","U&E","electrolytes">
+        >
+    >
+
+definition
+    OBSERVATION[at0000.1] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..*} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                                    CLUSTER[at5.1] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0044.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DATE_TIME matches {
+                                                        value matches {yyyy-??-??T??:??:??}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0045.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0013.5] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    C_DV_QUANTITY <
+                                                        property = <[openEHR::119]>
+                                                        list = <
+                                                            ["1"] = <
+                                                                units = <"mg/dl">
+                                                                magnitude = <|>=0.0|>
+                                                                precision = <|-1|>
+                                                            >
+                                                        >
+                                                    >
+                                                }
+                                            }
+                                            ELEMENT[at0043.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0032.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0046.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_URI matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0017.1] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0033] matches {
+                items existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    CLUSTER[at0034] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; ordered} matches {
+                            ELEMENT[at0035] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0036] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0039] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0040] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0041] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_DATE_TIME matches {
+                                        value matches {yyyy-??-??T??:??:??}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0.15] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [ac0.2]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    CLUSTER[at0042] occurrences matches {0..1} matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0038] occurrences matches {0..1} matches {
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0.10"] = <
+                    text = <"perspiration">
+                    description = <"sweat collected from the patient's skin">
+                >
+                ["at0.12"] = <
+                    text = <"Blood component">
+                    description = <"The blood component used for the measurement">
+                >
+                ["at0.13"] = <
+                    text = <"serum">
+                    description = <"blood serum">
+                >
+                ["at0.14"] = <
+                    text = <"plasma">
+                    description = <"blood plasma">
+                >
+                ["at0.15"] = <
+                    text = <"Blood sample">
+                    description = <"The type of blood sample processed">
+                >
+                ["at0.7"] = <
+                    text = <"Type">
+                    description = <"The type of specimen">
+                >
+                ["at0000"] = <
+                    text = <"Laboratory result">
+                    description = <"Generic laboratory result archetype to allow terminology driven results on a generic framework">
+                >
+                ["at0000.1"] = <
+                    text = <"Urea and electrolytes">
+                    description = <"Laboratory result for reporting blood urea and electrolyte concentrations">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"Any event in a time series">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Specimen">
+                    description = <"Specimen details">
+                >
+                ["at0006"] = <
+                    text = <"Description">
+                    description = <"Description of the specimen">
+                >
+                ["at0007"] = <
+                    text = <"Body site">
+                    description = <"The site of the body where the specimen was collected">
+                >
+                ["at0008"] = <
+                    text = <"Diagnostic service">
+                    description = <"The type of diagnostic service">
+                >
+                ["at0009"] = <
+                    text = <"Chemistry">
+                    description = <"Biochemical and chemical analysis">
+                >
+                ["at0010"] = <
+                    text = <"Microbiology">
+                    description = <"Results of microbiological analysis">
+                >
+                ["at0011"] = <
+                    text = <"level 1">
+                    description = <"A cluster to enable level one battery labels">
+                >
+                ["at0012"] = <
+                    text = <"level 2">
+                    description = <"A cluster to enable level 2 battery labels">
+                >
+                ["at0013"] = <
+                    text = <"Any result">
+                    description = <"Generic result - data type is not set">
+                >
+                ["at0013.1"] = <
+                    text = <"Sodium">
+                    description = <"Sodium level in this specimen">
+                >
+                ["at0013.2"] = <
+                    text = <"Potassium">
+                    description = <"Potassium level in this specimen">
+                >
+                ["at0013.3"] = <
+                    text = <"Bicarbonate">
+                    description = <"Bicarbonate level in this specimen">
+                >
+                ["at0013.4"] = <
+                    text = <"Urea">
+                    description = <"Generic result - data type is not set">
+                >
+                ["at0013.5"] = <
+                    text = <"Creatinine">
+                    description = <"Creatinine level in this specimen">
+                >
+                ["at0013.6"] = <
+                    text = <"Chloride">
+                    description = <"Generic result - data type is not set">
+                >
+                ["at0013.7"] = <
+                    text = <"Sodium/potassium ratio">
+                    description = <"The ratio of concentration of sodium and potassium">
+                >
+                ["at0014"] = <
+                    text = <"Comment">
+                    description = <"Comments relating to a specific result @Path">
+                >
+                ["at0015"] = <
+                    text = <"Path">
+                    description = <"The path of the result to which the comment relates">
+                >
+                ["at0016"] = <
+                    text = <"Comment">
+                    description = <"Comment relating to a specific result at the path indicated">
+                >
+                ["at0017"] = <
+                    text = <"Overall Comment">
+                    description = <"Comment on all results">
+                >
+                ["at0018"] = <
+                    text = <"Quality">
+                    description = <"Quality parameters">
+                >
+                ["at0019"] = <
+                    text = <"Specimen">
+                    description = <"Specimen quality paraments">
+                >
+                ["at0020"] = <
+                    text = <"Issue">
+                    description = <"Issue arising with specimen">
+                >
+                ["at0021"] = <
+                    text = <"Haemolysed">
+                    description = <"The specimen was haemolysed">
+                >
+                ["at0022"] = <
+                    text = <"Lipaemic">
+                    description = <"The specimen was lipaemic">
+                >
+                ["at0023"] = <
+                    text = <"Incorrect preservative">
+                    description = <"An incorrect preservative was used when transporting the specimen">
+                >
+                ["at0024"] = <
+                    text = <"Insufficient sample">
+                    description = <"An insufficient sample was given to undertake measurement">
+                >
+                ["at0025"] = <
+                    text = <"Rating">
+                    description = <"The degree of the stated issue">
+                >
+                ["at0026"] = <
+                    text = <"Handling">
+                    description = <"Handling quality parameters">
+                >
+                ["at0027"] = <
+                    text = <"Issue">
+                    description = <"Issue arising with handling of the specimen">
+                >
+                ["at0028"] = <
+                    text = <"Handling error">
+                    description = <"A handling error occurred">
+                >
+                ["at0029"] = <
+                    text = <"Age">
+                    description = <"The specimen was delivered too long after it was taken">
+                >
+                ["at0030"] = <
+                    text = <"Laboratory accident">
+                    description = <"An accident occurred with the sample in the laboratory">
+                >
+                ["at0031"] = <
+                    text = <"Fail">
+                    description = <"The specimen could not be analysed for technical reasons">
+                >
+                ["at0032"] = <
+                    text = <"Description">
+                    description = <"A description of the quality issue">
+                >
+                ["at0033"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0034"] = <
+                    text = <"Identification">
+                    description = <"Information identifying the laboratory and specimen">
+                >
+                ["at0035"] = <
+                    text = <"Specimen identification">
+                    description = <"The identifying information about the specimen">
+                >
+                ["at0036"] = <
+                    text = <"Laboratory">
+                    description = <"Information identiying the laboratory">
+                >
+                ["at0037"] = <
+                    text = <"Multimedia representation">
+                    description = <"The laboratory result in a specific display format">
+                >
+                ["at0038"] = <
+                    text = <"Device">
+                    description = <"The device used to make the measurement">
+                >
+                ["at0039"] = <
+                    text = <"Specimen details">
+                    description = <"Details about the specimen">
+                >
+                ["at0040"] = <
+                    text = <"DateTime received">
+                    description = <"The date and time the specimen was received in the laboratory">
+                >
+                ["at0041"] = <
+                    text = <"DateTime processed">
+                    description = <"The date and time the specimen was processed in the laboratory">
+                >
+                ["at0042"] = <
+                    text = <"Methods">
+                    description = <"*">
+                >
+                ["at0018.1"] = <
+                    text = <"Não Conformidades da Amostra">
+                    description = <"! - Quality parameters">
+                >
+                ["at0032.1"] = <
+                    text = <"Descrição">
+                    description = <"! - A description of the quality issue">
+                >
+                ["at0014.1"] = <
+                    text = <"*! - *Comment">
+                    description = <"*! - *Comments relating to a specific result @Path">
+                >
+                ["at0017.1"] = <
+                    text = <"*! - *Overall Comment">
+                    description = <"*! - *Comment on all results">
+                >
+                ["at5.1"] = <
+                    text = <"*New cluster *(en)">
+                    description = <"**">
+                >
+                ["at0043.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0044.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0045.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+                ["at0046.1"] = <
+                    text = <"*New element *(en)">
+                    description = <"**">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0.10"] = <
+                    text = <"*perspiration">
+                    description = <"*sweat collected from the patient's skin">
+                >
+                ["at0.12"] = <
+                    text = <"*Blood component">
+                    description = <"*The blood component used for the measurement">
+                >
+                ["at0.13"] = <
+                    text = <"*serum">
+                    description = <"*blood serum">
+                >
+                ["at0.14"] = <
+                    text = <"*plasma">
+                    description = <"*blood plasma">
+                >
+                ["at0.15"] = <
+                    text = <"*Blood sample">
+                    description = <"*The type of blood sample processed">
+                >
+                ["at0.7"] = <
+                    text = <"*Type">
+                    description = <"*The type of specimen">
+                >
+                ["at0000"] = <
+                    text = <"*Laboratory result">
+                    description = <"*Generic laboratory result archetype to allow terminology driven results on a generic framework">
+                >
+                ["at0000.1"] = <
+                    text = <"*Urea and electrolytes">
+                    description = <"*Laboratory result for reporting blood urea and electrolyte concentrations">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"*Any event in a time series">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"*Specimen">
+                    description = <"*Specimen details">
+                >
+                ["at0006"] = <
+                    text = <"*Description">
+                    description = <"*Description of the specimen">
+                >
+                ["at0007"] = <
+                    text = <"*Body site">
+                    description = <"*The site of the body where the specimen was collected">
+                >
+                ["at0008"] = <
+                    text = <"*Diagnostic service">
+                    description = <"*The type of diagnostic service">
+                >
+                ["at0009"] = <
+                    text = <"*Chemistry">
+                    description = <"*Biochemical and chemical analysis">
+                >
+                ["at0010"] = <
+                    text = <"*Microbiology">
+                    description = <"*Results of microbiological analysis">
+                >
+                ["at0011"] = <
+                    text = <"*level 1">
+                    description = <"*A cluster to enable level one battery labels">
+                >
+                ["at0012"] = <
+                    text = <"*level 2">
+                    description = <"*A cluster to enable level 2 battery labels">
+                >
+                ["at0013"] = <
+                    text = <"*Any result">
+                    description = <"*Generic result - data type is not set">
+                >
+                ["at0013.1"] = <
+                    text = <"*Sodium">
+                    description = <"*Sodium level in this specimen">
+                >
+                ["at0013.2"] = <
+                    text = <"*Potassium">
+                    description = <"*Potassium level in this specimen">
+                >
+                ["at0013.3"] = <
+                    text = <"*Bicarbonate">
+                    description = <"*Bicarbonate level in this specimen">
+                >
+                ["at0013.4"] = <
+                    text = <"*Urea">
+                    description = <"*Generic result - data type is not set">
+                >
+                ["at0013.5"] = <
+                    text = <"Dosagem creatinina">
+                    description = <"Nível de Creatinina">
+                >
+                ["at0013.6"] = <
+                    text = <"*Chloride">
+                    description = <"*Generic result - data type is not set">
+                >
+                ["at0013.7"] = <
+                    text = <"*Sodium/potassium ratio">
+                    description = <"*The ratio of concentration of sodium and potassium">
+                >
+                ["at0014"] = <
+                    text = <"*Comment">
+                    description = <"*Comments relating to a specific result @Path">
+                >
+                ["at0015"] = <
+                    text = <"*Path">
+                    description = <"*The path of the result to which the comment relates">
+                >
+                ["at0016"] = <
+                    text = <"*Comment">
+                    description = <"*Comment relating to a specific result at the path indicated">
+                >
+                ["at0017"] = <
+                    text = <"*Overall Comment">
+                    description = <"*Comment on all results">
+                >
+                ["at0018"] = <
+                    text = <"*Quality">
+                    description = <"*Quality parameters">
+                >
+                ["at0019"] = <
+                    text = <"*Specimen">
+                    description = <"*Specimen quality paraments">
+                >
+                ["at0020"] = <
+                    text = <"*Issue">
+                    description = <"*Issue arising with specimen">
+                >
+                ["at0021"] = <
+                    text = <"*Haemolysed">
+                    description = <"*The specimen was haemolysed">
+                >
+                ["at0022"] = <
+                    text = <"*Lipaemic">
+                    description = <"*The specimen was lipaemic">
+                >
+                ["at0023"] = <
+                    text = <"*Incorrect preservative">
+                    description = <"*An incorrect preservative was used when transporting the specimen">
+                >
+                ["at0024"] = <
+                    text = <"*Insufficient sample">
+                    description = <"*An insufficient sample was given to undertake measurement">
+                >
+                ["at0025"] = <
+                    text = <"*Rating">
+                    description = <"*The degree of the stated issue">
+                >
+                ["at0026"] = <
+                    text = <"*Handling">
+                    description = <"*Handling quality parameters">
+                >
+                ["at0027"] = <
+                    text = <"*Issue">
+                    description = <"*Issue arising with handling of the specimen">
+                >
+                ["at0028"] = <
+                    text = <"*Handling error">
+                    description = <"*A handling error occurred">
+                >
+                ["at0029"] = <
+                    text = <"*Age">
+                    description = <"*The specimen was delivered too long after it was taken">
+                >
+                ["at0030"] = <
+                    text = <"*Laboratory accident">
+                    description = <"*An accident occurred with the sample in the laboratory">
+                >
+                ["at0031"] = <
+                    text = <"*Fail">
+                    description = <"*The specimen could not be analysed for technical reasons">
+                >
+                ["at0032"] = <
+                    text = <"*Description">
+                    description = <"*A description of the quality issue">
+                >
+                ["at0033"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0034"] = <
+                    text = <"*Identification">
+                    description = <"*Information identifying the laboratory and specimen">
+                >
+                ["at0035"] = <
+                    text = <"*Specimen identification">
+                    description = <"*The identifying information about the specimen">
+                >
+                ["at0036"] = <
+                    text = <"*Laboratory">
+                    description = <"*Information identiying the laboratory">
+                >
+                ["at0037"] = <
+                    text = <"*Multimedia representation">
+                    description = <"*The laboratory result in a specific display format">
+                >
+                ["at0038"] = <
+                    text = <"*Device">
+                    description = <"*The device used to make the measurement">
+                >
+                ["at0039"] = <
+                    text = <"*Specimen details">
+                    description = <"*Details about the specimen">
+                >
+                ["at0040"] = <
+                    text = <"*DateTime received">
+                    description = <"*The date and time the specimen was received in the laboratory">
+                >
+                ["at0041"] = <
+                    text = <"*DateTime processed">
+                    description = <"*The date and time the specimen was processed in the laboratory">
+                >
+                ["at0042"] = <
+                    text = <"*Methods">
+                    description = <"**">
+                >
+                ["at0018.1"] = <
+                    text = <"Não Conformidades da Amostra">
+                    description = <"*! - Quality parameters">
+                >
+                ["at0032.1"] = <
+                    text = <"Método">
+                    description = <"*! - A description of the quality issue">
+                >
+                ["at0014.1"] = <
+                    text = <"Observações">
+                    description = <"! - *Comments relating to a specific result @Path">
+                >
+                ["at0017.1"] = <
+                    text = <" Observações / Comentários">
+                    description = <"! - *Comment on all results">
+                >
+                ["at5.1"] = <
+                    text = <"Creatinina Sérica">
+                    description = <"*">
+                >
+                ["at0043.1"] = <
+                    text = <"Valores de Referência">
+                    description = <"*">
+                >
+                ["at0044.1"] = <
+                    text = <"Data de coleta do exame">
+                    description = <"*">
+                >
+                ["at0045.1"] = <
+                    text = <"Código do Prestador">
+                    description = <"*">
+                >
+                ["at0046.1"] = <
+                    text = <"URL do resultado">
+                    description = <"*">
+                >
+            >
+        >
+    >
+    constraint_definitions = <
+        ["en"] = <
+            items = <
+                ["ac0.1"] = <
+                    text = <"is_a body fluid">
+                    description = <"Electrolyte measurements can be made on blood (serum/plasma), sweat, urine, dialysis fluid, faeces, breast milk, cerebrospinal fluid, and other body and non-body fluids">
+                >
+                ["ac0.2"] = <
+                    text = <"Is blood">
+                    description = <"Whole blood, capillary blood, serum, plasma or serum/plasma">
+                >
+                ["ac0000"] = <
+                    text = <"=LOINC::Battery_name">
+                    description = <"Any name for a set of tests from the LOINC set of battery names">
+                >
+                ["ac0001"] = <
+                    text = <"=LOINC::Battery_name">
+                    description = <"Any name for a set of tests from the LOINC set of battery names">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["ac0.1"] = <
+                    text = <"*is_a body fluid">
+                    description = <"*Electrolyte measurements can be made on blood (serum/plasma), sweat, urine, dialysis fluid, faeces, breast milk, cerebrospinal fluid, and other body and non-body fluids">
+                >
+                ["ac0.2"] = <
+                    text = <"*Is blood">
+                    description = <"*Whole blood, capillary blood, serum, plasma or serum/plasma">
+                >
+                ["ac0000"] = <
+                    text = <"*=LOINC::Battery_name">
+                    description = <"*Any name for a set of tests from the LOINC set of battery names">
+                >
+                ["ac0001"] = <
+                    text = <"*=LOINC::Battery_name">
+                    description = <"*Any name for a set of tests from the LOINC set of battery names">
+                >
+            >
+        >
+    >

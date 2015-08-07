@@ -1,0 +1,480 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.gestation_current_risk_prodemge.v1
+
+concept
+	[at0000]	-- Estratificação de Risco da Gestação Atual
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Estratificação de Risco da Gestação Atual
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Risco na Gestação Atual
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Idade menor de 17 e maior de 35 anos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Situação conjugal insegura
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Baixa escolaridade
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Condições ambientais desfavoráveis
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Altura menor que 1,45 m
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Peso menor que 45 kg ou maior que 75 kg
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Recém-nascido com crescimento retardado, pré-termo ou mal formado, em gestação anterior
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Intervalo interpartal menor que 2 anos
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Nuliparidade e multiparidade
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Síndrome hemorrágica ou hipertensiva, em gestação anterior
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Cirurgia uterina anterior
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Ganho ponderal inadequado
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Dependência de drogas lícitas e ilícitas
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Morte perinatal anterior
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0021] occurrences matches {0..1} matches {	-- Abortamento habitual
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Esterilidade/ infertilidade
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Desvio quanto ao crescimento uterino, número de fetos e volume de líquido amniótico
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0024] occurrences matches {0..1} matches {	-- Trabalho de parto prematuro e gravidez prolongada
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0025] occurrences matches {0..1} matches {	-- Pré-eclâmpsia e eclâmpsia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0026] occurrences matches {0..1} matches {	-- Diabetes gestacional
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0027] occurrences matches {0..1} matches {	-- Amniorrexe prematura
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0028] occurrences matches {0..1} matches {	-- Hemorragias da gestação
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0029] occurrences matches {0..1} matches {	-- Isoimunização
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0030] occurrences matches {0..1} matches {	-- Óbito fetal
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0031] occurrences matches {0..1} matches {	-- Hipertensão arterial
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0032] occurrences matches {0..1} matches {	-- Cardiopatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Pneumopatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0034] occurrences matches {0..1} matches {	-- Nefropatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0035] occurrences matches {0..1} matches {	-- Endocrinopatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0036] occurrences matches {0..1} matches {	-- Hemopatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0037] occurrences matches {0..1} matches {	-- Epilepsia
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0038] occurrences matches {0..1} matches {	-- Doenças infecciosas
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0039] occurrences matches {0..1} matches {	-- Doenças auto-imunes
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0040] occurrences matches {0..1} matches {	-- Ginecopatias
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Extratificação de Risco
+										value matches {
+											1|[local::at0041], 	-- Alto Risco
+											2|[local::at0042]  	-- new ordinal
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Estratificação de Risco da Gestação Atual">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Risco na Gestação Atual">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Extratificação de Risco">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Idade menor de 17 e maior de 35 anos">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Ocupação: esforço físico, carga horária, rotatividade de horário, exposição a agentes físicos, químicos e biológicos nocivos, estresse">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Situação conjugal insegura">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Baixa escolaridade">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Condições ambientais desfavoráveis">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Altura menor que 1,45 m">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Peso menor que 45 kg ou maior que 75 kg">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Recém-nascido com crescimento retardado, pré-termo ou mal formado, em gestação anterior">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Intervalo interpartal menor que 2 anos">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Nuliparidade e multiparidade">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Síndrome hemorrágica ou hipertensiva, em gestação anterior">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Cirurgia uterina anterior">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Ganho ponderal inadequado">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Dependência de drogas lícitas e ilícitas">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Morte perinatal anterior">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Abortamento habitual">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Esterilidade/ infertilidade">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Desvio quanto ao crescimento uterino, número de fetos e volume de líquido amniótico">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Trabalho de parto prematuro e gravidez prolongada">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Pré-eclâmpsia e eclâmpsia">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Diabetes gestacional">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Amniorrexe prematura">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Hemorragias da gestação">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Isoimunização">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Óbito fetal">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Hipertensão arterial">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Cardiopatias">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Pneumopatias">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Nefropatias">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Endocrinopatias">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Hemopatias">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Epilepsia">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Doenças infecciosas">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Doenças auto-imunes">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Ginecopatias">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Alto Risco">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"new ordinal">
+					description = <"*">
+				>
+			>
+		>
+	>

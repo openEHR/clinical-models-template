@@ -1,0 +1,108 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.subject_demographic_data.v1
+
+concept
+	[at0000]	-- Subject demographic data
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"csw">
+			>
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"csw">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The purpose of this composition is record patient clinically relevant demographic data, such as birth date, sex...">
+			use = <"Record  patient clinically relevant demographic data.">
+			misuse = <"Any patient identifiable demographic data cannot be record in this composition">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"O objectivo desta composição é gravar os dados demográficos clinicamente relevantes do paciente.">
+			use = <"Registar os dados clinicamente relavantes do paciente.">
+			misuse = <"Qualquer informação demográfica que identifique o paciente.">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar informação demográfica do sujeito que poderá ser também relevante em contexto clínico.">
+			use = <"Usar para registrar informação demográfica do sujeito que poderá ser também relevante em contexto clínico.">
+			misuse = <"Não usar para registrar informação demográfica do sujeito que o possa identificar diretamente.">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"4B45BA76E5DE74EC957B212F3A1B2B1E">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Informação demográfica do sujeito
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::431]}
+			}
+		}
+		content cardinality matches {1..*; unordered} matches {
+			allow_archetype ADMIN_ENTRY[at0001] occurrences matches {1..*} matches {	-- Informação demográfica clinicamente relevante
+				include
+					archetype_id/value matches {/openEHR-EHR-ADMIN_ENTRY\.subject_demographic_data(-[a-zA-Z0-9_]+)*\.v2/}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Subject demographic data">
+					description = <"Subject demographic data">
+				>
+				["at0001"] = <
+					text = <"*ADMIN_ENTRY(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informação demográfica clinicamente relevante">
+					description = <"Informação demográfica clinicamente relevante">
+				>
+				["at0001"] = <
+					text = <"EHR demographic data">
+					description = <"*">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informação demográfica do sujeito">
+					description = <"Informação demográfica do sujeito">
+				>
+				["at0001"] = <
+					text = <"Informação demográfica clinicamente relevante">
+					description = <"Informação demográfica clinicamente relevante.">
+				>
+			>
+		>
+	>

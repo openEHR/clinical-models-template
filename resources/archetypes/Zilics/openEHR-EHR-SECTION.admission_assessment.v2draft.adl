@@ -1,0 +1,269 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.admission_assessment.v2draft
+
+concept
+	[at0000]	-- Template de Internação
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+		["date"] = <"12/03/2007">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For organising the information recorded at an emergency presentation">
+			use = <"">
+			keywords = <"emergency", ...>
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Controle da informação registrada em uma avaliação.
+
+
+">
+			use = <"*
+
+
+">
+			keywords = <"*emergency(en)", ...>
+			misuse = <"*
+
+
+">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Template de Internação
+		items cardinality matches {0..1; ordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Subjetivo
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype SECTION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/check_list-condition\.v2br|check_list-surgical_procedure\.v2draft/}
+					}
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/substance_use-alcohol\.v2br|substance_use-tobacco\.v2br|substance_use\.v2br|personal_and_social_history\.v1draftbr/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/check_list_condition_third_party\.v2draftbr/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/check_list-medication\.v2/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/adverse\.v2draft/}
+					}
+				}
+			}
+			SECTION[at0002] occurrences matches {0..1} matches {	-- Objetivo
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0017] occurrences matches {0..1} matches {	-- Sinais Vitais
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..*} matches {
+								include
+									archetype_id/value matches {/blood_pressure\.v1|body_temperature\.v1|body_weight\.v1|respiration\.v1|pupils\.v1|heart_rate-pulse\.v1|height\.v1|heart_rate\.v1|oximetry\.v1/}
+							}
+						}
+					}
+					allow_archetype SECTION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/physical_exam-region\.v1draft/}
+					}
+				}
+			}
+			SECTION[at0013] occurrences matches {0..1} matches {	-- Investigações
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype SECTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					SECTION[at0016] occurrences matches {0..1} matches {	-- Outras investigações
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype OBSERVATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+							allow_archetype EVALUATION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+							allow_archetype SECTION occurrences matches {0..1} matches {
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
+			SECTION[at0003] occurrences matches {0..1} matches {	-- Avaliações
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/placeholder\.v1draft/}
+						exclude
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype EVALUATION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/problem-diagnosis\.v2draft/}
+					}
+				}
+			}
+			SECTION[at0004] occurrences matches {0..1} matches {	-- Prescrição Médica
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype INSTRUCTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype ACTION occurrences matches {0..1} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0011] occurrences matches {0..1} matches {	-- Procedimentos
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype INSTRUCTION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+					allow_archetype ACTION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Emergency template">
+					description = <"A section to contain the key information collected when a patient presents with an emergency or major injury">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"A heading to collect the information about the presenting event">
+				>
+				["at0002"] = <
+					text = <"Examination">
+					description = <"Examination findings">
+				>
+				["at0003"] = <
+					text = <"Evaluations">
+					description = <"Evaluations and assessments">
+				>
+				["at0004"] = <
+					text = <"Clinical Management Plan and Actions">
+					description = <"Any orders or things that have been done">
+				>
+				["at0011"] = <
+					text = <"Management">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Investigations">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Other investigations">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"*?(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Template de Internação">
+					description = <"Uma seção que contém as informações coletadas quando um paciente apresenta uma emergência ou um trauma
+">
+				>
+				["at0001"] = <
+					text = <"Subjetivo">
+					description = <"Anamnese - Coleta de informações sobre o problema médica atual">
+				>
+				["at0002"] = <
+					text = <"Objetivo">
+					description = <"Achados no exame físico">
+				>
+				["at0003"] = <
+					text = <"Avaliações">
+					description = <"Avaliações e controles">
+				>
+				["at0004"] = <
+					text = <"Prescrição Médica">
+					description = <"Qualquer ordem, solicitação ou procedimentos já realizados">
+				>
+				["at0011"] = <
+					text = <"Procedimentos">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Investigações">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Outras investigações">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Sinais Vitais">
+					description = <"*">
+				>
+			>
+		>
+	>

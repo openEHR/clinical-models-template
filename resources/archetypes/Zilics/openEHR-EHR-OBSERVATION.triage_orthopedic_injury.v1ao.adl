@@ -1,0 +1,236 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.triage_orthopedic_injury.v1ao
+
+concept
+	[at0000]	-- Lesões Ortopédicas
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*(pt)">
+			use = <"*(pt)">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Triagem">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Lesões Ortopédicas
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Qualquer evento
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *List(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Entorces Com Suspeita de Fratura
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+									CLUSTER[at0013] occurrences matches {0..1} matches {	-- Luxações
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Luxações
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Caracterização
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0010, 	-- Com Comprometimento Neurovascular
+															at0011, 	-- Com Dor Intensa
+															at0014]	-- Sem Comprometimento Neurovascular
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Fraturas
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Expostas
+													at0018]	-- Anguladas
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Avaliação de Gesso
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lesões Ortopédicas">
+					description = <"Lesões Ortopédicas">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Entorces Com Suspeita de Fratura">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Luxações">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Caracterização">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Avaliação de Gesso">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Com Comprometimento Neurovascular">
+					description = <"Com comprometimento neurovascular">
+				>
+				["at0011"] = <
+					text = <"Com Dor Intensa">
+					description = <"Com dor intensa">
+				>
+				["at0013"] = <
+					text = <"Luxações">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Sem Comprometimento Neurovascular">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Fraturas">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Expostas">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Anguladas">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lesões Ortopédicas">
+					description = <"Lesões Ortopédicas">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Qualquer evento">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*List(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Entorces Com Suspeita de Fratura">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Luxações">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Categoria de Luxação">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Avaliação de Gesso">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Com Comprometimento Neurovascular">
+					description = <"Com comprometimento neurovascular">
+				>
+				["at0011"] = <
+					text = <"Com Dor Intensa">
+					description = <"Com dor intensa">
+				>
+				["at0013"] = <
+					text = <"Luxações">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"Sem Comprometimento Neurovascular">
+					description = <"**(pt)">
+				>
+				["at0016"] = <
+					text = <"Fraturas">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"Expostas">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"Anguladas">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

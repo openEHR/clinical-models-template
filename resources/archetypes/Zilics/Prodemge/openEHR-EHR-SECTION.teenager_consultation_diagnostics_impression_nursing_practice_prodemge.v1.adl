@@ -1,0 +1,97 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.teenager_consultation_diagnostics_impression_nursing_practice_prodemge.v1
+
+concept
+	[at0000]	-- Consulta Adolescente
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Consulta Adolescente">
+			use = <"">
+			misuse = <"*(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Consulta Adolescente
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0020] occurrences matches {0..1} matches {	-- Impressão Diagnóstica
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|diagnostics_impression_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0021] occurrences matches {0..1} matches {	-- Estratificação de risco
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype EVALUATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/adverse\.v1|diabetes_risk_prodemge\.v1|teenager_risk_prodemge\.v1|cardiovascular_risk_prodemge\.v1/}
+					}
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|pregnancy_risk_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0022] occurrences matches {0..1} matches {	-- Conduta/ Plano de Cuidado
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|care_conduct_plan_prodemge\.v1/}
+					}
+				}
+			}
+			SECTION[at0023] occurrences matches {0..1} matches {	-- Sistematização da Prática de Enfermagem
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype OBSERVATION occurrences matches {0..*} matches {
+						include
+							archetype_id/value matches {/apgar\.v1|nursing_practice_systemization_prodemge\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Consulta Adolescente">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Impressão Diagnóstica">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Estratificação de risco">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Conduta/ Plano de Cuidado">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Sistematização da Prática de Enfermagem">
+					description = <"*">
+				>
+			>
+		>
+	>

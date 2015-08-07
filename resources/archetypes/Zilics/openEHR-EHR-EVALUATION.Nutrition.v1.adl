@@ -1,0 +1,242 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.Nutrition.v1
+
+concept
+	[at0000]	-- Alimentos Consumidos
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"John Doe">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Beatriz de Faria Leao">
+		["organisation"] = <"Zilics ">
+		["email"] = <"bfleao@terra.com.br">
+		["date"] = <"Sept 18, 2009">
+	>
+	details = <
+		["en"] = <
+			language = <[openEHR::en]>
+			purpose = <"Unknown">
+			use = <"To list types of food normally consumed.">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*Unknown">
+			use = <"*To list types of food normally consumed.">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"932AE36CB9B2937D4F4B96D9960BF797">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Alimentos Consumidos
+		data matches {
+			ITEM_TREE[at0001] matches {	-- ITEM_TREE
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0002] occurrences matches {0..*} matches {	-- Inquerito Alimentar
+						items cardinality matches {1..2; unordered} matches {
+							ELEMENT[at0003] occurrences matches {1..*} matches {	-- Tipo de Alimento Consumido
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0004, 	-- Aves
+											at0005, 	-- Carne Bovina
+											at0006, 	-- Carne Suína
+											at0007, 	-- Peixes e frutos de mar
+											at0008, 	-- Frituras
+											at0009, 	-- Verduras e Legumes
+											at0010, 	-- Sementes 
+											at0011, 	-- Grãos
+											at0012, 	-- Frutas
+											at0013, 	-- Massas 
+											at0014, 	-- Pães
+											at0015]	-- Embutidos
+										}
+									}
+								}
+							}
+							ELEMENT[at0020] occurrences matches {0..1} matches {	-- Número de porções consumidas
+								value matches {
+									DV_COUNT matches {*}
+								}
+							}
+							ELEMENT[at0022] occurrences matches {0..1} matches {	-- Período de consumo
+								value matches {
+									DV_DURATION matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Food consumed">
+					description = <"This archetype assesses the type of food consumed">
+				>
+				["at0001"] = <
+					text = <"*ITEM_LIST">
+					description = <"*@ internal @">
+				>
+				["at0002"] = <
+					text = <"Nutritional Inquiry">
+					description = <"**">
+				>
+				["at0003"] = <
+					text = <"Food consumed">
+					description = <"**">
+				>
+				["at0004"] = <
+					text = <"Poltry">
+					description = <"Poltry consumption">
+				>
+				["at0005"] = <
+					text = <"Beef">
+					description = <"Beef consumption">
+				>
+				["at0006"] = <
+					text = <"Pork ">
+					description = <"Pork consumption">
+				>
+				["at0007"] = <
+					text = <"Sea food">
+					description = <"Sea food Consumption">
+				>
+				["at0008"] = <
+					text = <"Fried food">
+					description = <"Fried food consumption">
+				>
+				["at0009"] = <
+					text = <"Vegetables">
+					description = <"Vegetables consumption">
+				>
+				["at0010"] = <
+					text = <"Seeds and Nuts">
+					description = <"**">
+				>
+				["at0011"] = <
+					text = <"Grains">
+					description = <"**">
+				>
+				["at0012"] = <
+					text = <"Fruits">
+					description = <"**">
+				>
+				["at0013"] = <
+					text = <"Pasta">
+					description = <"**">
+				>
+				["at0014"] = <
+					text = <"Bread, Cereal">
+					description = <"**">
+				>
+				["at0015"] = <
+					text = <"Sausage">
+					description = <"**">
+				>
+				["at0020"] = <
+					text = <"Number of portions ">
+					description = <"**">
+				>
+				["at0022"] = <
+					text = <"Period of intake">
+					description = <"**">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alimentos Consumidos">
+					description = <"*This archetype assesses the type of food consumed">
+				>
+				["at0001"] = <
+					text = <"ITEM_TREE">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Inquerito Alimentar">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tipo de Alimento Consumido">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Aves">
+					description = <"Consumo de carne de aves">
+				>
+				["at0005"] = <
+					text = <"Carne Bovina">
+					description = <"Cosumo de Carne Bovina">
+				>
+				["at0006"] = <
+					text = <"Carne Suína">
+					description = <"Consumo de carne suína">
+				>
+				["at0007"] = <
+					text = <"Peixes e frutos de mar">
+					description = <"Consumo de peixes e frutos do mar">
+				>
+				["at0008"] = <
+					text = <"Frituras">
+					description = <"Cosumo de frituras">
+				>
+				["at0009"] = <
+					text = <"Verduras e Legumes">
+					description = <"Consumo de Verduras e Legumes">
+				>
+				["at0010"] = <
+					text = <"Sementes ">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Grãos">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Frutas">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Massas ">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Pães">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Embutidos">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Número de porções consumidas">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Período de consumo">
+					description = <"*">
+				>
+			>
+		>
+	>

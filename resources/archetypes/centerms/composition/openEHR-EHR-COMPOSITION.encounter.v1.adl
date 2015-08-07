@@ -1,0 +1,91 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.encounter.v1
+
+concept
+	[at0000]	-- Encounter
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Thomas Beale">
+		["organisation"] = <"Ocean Informatics">
+		["date"] = <"2005-10-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Record of encounter as a progress note.">
+			use = <"">
+			keywords = <"progress", "note", "encounter">
+			misuse = <"">
+			copyright = <"copyright (c) 2010 openEHR Foundation">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Composição para um episódio genérico ou registro de uma nota de progresso.">
+			use = <"">
+			keywords = <"progresso", "nota", "episódio">
+			misuse = <"">
+			copyright = <"copyright (c) 2010 openEHR Foundation(en)">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"C8B8D151453D76707464CFA998A12218">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Episódio
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		context matches {
+			EVENT_CONTEXT matches {
+				other_context matches {
+					ITEM_TREE[at0001] matches {*}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Encounter">
+					description = <"Generic encounter or progress note composition">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Episódio">
+					description = <"Composição para um episódio genérico ou registro de uma nota de progresso.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+			>
+		>
+	>

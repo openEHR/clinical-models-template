@@ -1,0 +1,138 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.informant.v1
+
+concept
+	[at0000]	-- Informant
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"Fátima Almeida">
+				["organisation"] = <"Critical Software">
+				["email"] = <"fatima.c.almeida@criticalsoftware.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Gustavo M. Bacelar-Silva">
+		["email"] = <"mail@gustavobacelar.com">
+		["date"] = <"2013-07-15">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registrar detalhes sobre o principal informante de uma informação clínica.">
+			use = <"Usar para registrar detalhes sobre o principal informante (indivíduo que deu a maior parte das respostas durante o processo de questionamento) de uma informação clínica.">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"To record details about the main informant of a clinical data.">
+			use = <"Use to record detailed information about the main informant (person who supplies most of the answers to an investigator questions) of a clinical data.">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <" Ian McNicoll, Ocean Informatics, United Kingdom", ...>
+	other_details = <
+		["current_contact"] = <"Gustavo M. Bacelar-Silva, , mail@gustavobacelar.com">
+		["MD5-CAM-1.0.1"] = <"C4503B91197C082D650587A81B933059">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Informante
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Próprio paciente
+				value matches {
+					DV_BOOLEAN matches {
+						value matches {True, False}
+					}
+				}
+			}
+			CLUSTER[at0002] occurrences matches {0..1} matches {	-- Acompanhante
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Nome
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pseudônimo
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Relação
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informante">
+					description = <"O indivíduo que deu a maior parte das respostas durante o processo de questionamento.">
+				>
+				["at0001"] = <
+					text = <"Próprio paciente">
+					description = <"O principal informante foi o próprio paciente.">
+				>
+				["at0002"] = <
+					text = <"Acompanhante">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Nome">
+					description = <"Nome do acompanhante.">
+				>
+				["at0004"] = <
+					text = <"Pseudônimo">
+					description = <"Um pseudônimo ou descrição que identifique univocamente o acompanhante sem que um nome pessoal seja usado.">
+				>
+				["at0005"] = <
+					text = <"Relação">
+					description = <"A relação entre o acompanhante e o paciente.">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Informant">
+					description = <"The person who supplies most of the answers to an investigator questions.">
+				>
+				["at0001"] = <
+					text = <"Patient him/herself">
+					description = <"The main informant was the patient him/herself.">
+				>
+				["at0002"] = <
+					text = <"Companion">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Name">
+					description = <"Name of companion.">
+				>
+				["at0004"] = <
+					text = <"Alias">
+					description = <"An alias or label to uniquely identify a companion, without using a personal name.">
+				>
+				["at0005"] = <
+					text = <"Relationship">
+					description = <"The relationship of the companion to the individual.">
+				>
+			>
+		>
+	>

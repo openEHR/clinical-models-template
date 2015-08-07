@@ -1,0 +1,322 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.feeding_prodemge.v1
+
+concept
+	[at0000]	-- *Alimentação(pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Zilics">
+		["organisation"] = <"xxx">
+		["email"] = <"xxx">
+		["date"] = <"xxx">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*x(pt)">
+			use = <"*x(pt)">
+			misuse = <"*x(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"44100C0CA0FBD38995492910E9A91593">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- *Alimentação(pt)
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Recordatório Alimentar
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Aleitamento Materno
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Aleitamento Materno
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0007, 	-- *Exclusivo(pt)
+															at0008, 	-- *Misto(pt)
+															at0009]	-- *Não amamenta(pt)
+														}
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- *Considerações Sobre Aleitamento Materno(pt)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0011] occurrences matches {0..1} matches {	-- *Desmame(pt)
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- *Idade de Início (Anos)(pt)
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::128]>
+														list = <
+															["1"] = <
+																units = <"a">
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- *Idade de Início (Meses)(pt)
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::128]>
+														list = <
+															["1"] = <
+																units = <"mo">
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- *Introdução de Outros Alimentos(pt)
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- *Item de Conclusão da Alimentação(pt)
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0016, 	-- *Adequada (pt)
+													at0017, 	-- *Hipoprotéica(pt)
+													at0018, 	-- *Hiperprotéica(pt)
+													at0019, 	-- *Hipocalórica (pt)
+													at0020, 	-- *Hipercalórica (pt)
+													at0021]	-- *Hipovitamínica(pt)
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alimentação">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Recordatório Alimentar">
+					description = <"Descrição das refeições realizadas no dia anterior.">
+				>
+				["at0005"] = <
+					text = <"Aleitamento Materno">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Aleitamento Materno">
+					description = <"Alimentação por leite materno. ">
+				>
+				["at0007"] = <
+					text = <"Exclusivo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Misto">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Não amamenta">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Considerações Sobre Aleitamento Materno">
+					description = <"Informações relativas ao aleitamento materno.">
+				>
+				["at0011"] = <
+					text = <"Desmame">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Idade de Início (Anos)">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Idade de Início (Meses)">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Introdução de Outros Alimentos">
+					description = <"Informações relativas a introdução de outros alimentos.">
+				>
+				["at0015"] = <
+					text = <"Item de Conclusão da Alimentação">
+					description = <"Conclusão sobre a alimentação.">
+				>
+				["at0016"] = <
+					text = <"Adequada ">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Hipoprotéica">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Hiperprotéica">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Hipocalórica ">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Hipercalórica ">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Hipovitamínica">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alimentação">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Recordatório Alimentar">
+					description = <"Descrição das refeições realizadas no dia anterior.">
+				>
+				["at0005"] = <
+					text = <"Aleitamento Materno">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Aleitamento Materno">
+					description = <"Alimentação por leite materno. ">
+				>
+				["at0007"] = <
+					text = <"Exclusivo">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Misto">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Não amamenta">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Considerações Sobre Aleitamento Materno">
+					description = <"Informações relativas ao aleitamento materno.">
+				>
+				["at0011"] = <
+					text = <"Desmame">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Idade de Início (Anos)">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Idade de Início (Meses)">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Introdução de Outros Alimentos">
+					description = <"Informações relativas a introdução de outros alimentos.">
+				>
+				["at0015"] = <
+					text = <"Item de Conclusão da Alimentação">
+					description = <"Conclusão sobre a alimentação.">
+				>
+				["at0016"] = <
+					text = <"Adequada ">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Hipoprotéica">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Hiperprotéica">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Hipocalórica ">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Hipercalórica ">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Hipovitamínica">
+					description = <"*">
+				>
+			>
+		>
+	>

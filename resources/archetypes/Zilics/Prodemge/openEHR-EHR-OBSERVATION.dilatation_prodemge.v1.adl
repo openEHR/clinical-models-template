@@ -1,0 +1,153 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.dilatation_prodemge.v1
+
+concept
+	[at0000]	-- Dilatação
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"Registro da dilatação">
+			use = <"Registro da dilatação">
+			misuse = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"459CB7B7B3ACB94B2E0DC84F60D1C91A">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Dilatação
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Presença de Dilatação
+										value matches {
+											1|[local::at0005], 	-- Fechado
+											2|[local::at0006], 	-- OE Pérveo
+											3|[local::at0007]  	-- Dilatado
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Valor da Dilatação
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dilatação">
+					description = <"Dilatação">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Presença de Dilatação">
+					description = <"Marcar a dilatação">
+				>
+				["at0005"] = <
+					text = <"Fechado">
+					description = <"Fechado">
+				>
+				["at0006"] = <
+					text = <"OE Pérveo">
+					description = <"OE Pérveo">
+				>
+				["at0007"] = <
+					text = <"Dilatado">
+					description = <"Dilatado">
+				>
+				["at0008"] = <
+					text = <"Valor da Dilatação">
+					description = <"Caso a gestante apresente dilatação, deve-se anotar o valor. ">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"unknown">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*new ordinal(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

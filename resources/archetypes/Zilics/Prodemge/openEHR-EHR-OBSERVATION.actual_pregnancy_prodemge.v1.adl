@@ -1,0 +1,190 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.actual_pregnancy_prodemge.v1
+
+concept
+	[at0000]	-- Gestação Atual
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"*Registro das informações referentes a Gestação Atual">
+			use = <"*Registro das informações referentes a Gestação Atual">
+			misuse = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Registro das informações referentes a Gestação Atual">
+			use = <"Registro das informações referentes a Gestação Atual">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"0458B0F4F2BE7D6F7759A18F212AAF5F">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Gestação Atual
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0010] occurrences matches {0..1} matches {	-- Gestação Atual
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- SIS Pré-Natal
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Número da consulta
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Data da última menstruação
+												value matches {
+													DV_DATE_TIME matches {*}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Data Provável do Parto
+												value matches {
+													DV_DATE_TIME matches {*}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Data provável do Parto após 1a. Ultrasonografia
+												value matches {
+													DV_DATE_TIME matches {*}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- 1a. Ultrasonografia
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gestação Atual">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"SIS Pré-Natal">
+					description = <"Número do SISPRENATAL de acompanhamento de gestante.">
+				>
+				["at0005"] = <
+					text = <"Número da consulta">
+					description = <"Número da consulta atual do acompanhamento pré-natal">
+				>
+				["at0006"] = <
+					text = <"Data da última menstruação">
+					description = <"Data aproximada da ultima menstruação">
+				>
+				["at0007"] = <
+					text = <"Data Provável do Parto">
+					description = <"Data provável do parto">
+				>
+				["at0008"] = <
+					text = <"Data provável do Parto após 1a. Ultrasonografia">
+					description = <"Data provável do Parto após a execução da primeira ultrasonografia">
+				>
+				["at0009"] = <
+					text = <"1a. Ultrasonografia">
+					description = <"Resultado da primeira ultrasonografia">
+				>
+				["at0010"] = <
+					text = <"Gestação Atual">
+					description = <"*">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gestação Atual">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"SIS Pré-Natal">
+					description = <"Número do SISPRENATAL de acompanhamento de gestante.">
+				>
+				["at0005"] = <
+					text = <"Número da consulta">
+					description = <"Número da consulta atual do acompanhamento pré-natal">
+				>
+				["at0006"] = <
+					text = <"Data da última menstruação">
+					description = <"Data aproximada da ultima menstruação">
+				>
+				["at0007"] = <
+					text = <"Data Provável do Parto">
+					description = <"Data provável do parto">
+				>
+				["at0008"] = <
+					text = <"Data provável do Parto após 1a. Ultrasonografia">
+					description = <"Data provável do Parto após a execução da primeira ultrasonografia">
+				>
+				["at0009"] = <
+					text = <"1a. Ultrasonografia">
+					description = <"Resultado da primeira ultrasonografia">
+				>
+				["at0010"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

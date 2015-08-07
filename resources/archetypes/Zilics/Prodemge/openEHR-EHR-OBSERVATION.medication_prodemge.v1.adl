@@ -1,0 +1,153 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.medication_prodemge.v1
+
+concept
+	[at0000]	-- Medicamentos
+language
+	original_language = <[ISO_639-1::pt]>
+description
+	original_author = <
+		["name"] = <"????">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"x">
+			use = <"x">
+			misuse = <"x">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"80699F02B57863E102E5563FD26B27B2">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Medicamentos
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0019] occurrences matches {0..*} matches {	-- Medicamentos em Uso
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Medicamento
+												value matches {
+													1|[local::at0009], 	-- Em Uso
+													2|[local::at0010]  	-- Já Utilizado
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Nome(Nome do farmaco,Concentração, Forma farm.)
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Data de Início
+												value matches {
+													DV_DATE matches {*}
+													1|[local::at0013], 	-- Não Informado
+													2|[local::at0014]  	-- Não Relatado
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Posologia
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Prescrição Médica
+												value matches {
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Efeitos Adversos a Medicamentos
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Medicamentos">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Medicamento">
+					description = <"Nome do medicamento.">
+				>
+				["at0009"] = <
+					text = <"Em Uso">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Já Utilizado">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Data de Início">
+					description = <"Data de inicio de uso do medicamento. ">
+				>
+				["at0013"] = <
+					text = <"Não Informado">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Não Relatado">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Posologia">
+					description = <"Posologia do medicamento. ">
+				>
+				["at0017"] = <
+					text = <"Prescrição Médica">
+					description = <"Indicar se a prescrição foi médica. ">
+				>
+				["at0018"] = <
+					text = <"Efeitos Adversos a Medicamentos">
+					description = <"Efeitos adversos a medicamentos.">
+				>
+				["at0019"] = <
+					text = <"Medicamentos em Uso">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Nome(Nome do farmaco,Concentração, Forma farm.)">
+					description = <"*1.	Nome do fármaco
+2.	Concentração (quantidade e unidade de medida)
+3.	Forma famacêutica
+">
+				>
+			>
+		>
+	>

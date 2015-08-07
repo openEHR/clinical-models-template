@@ -1,0 +1,670 @@
+archetype
+    openEHR-EHR-OBSERVATION.birth_control_methods.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::en]>
+    translations = <
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            author = <
+                ["name"] = <"John Doe">
+            >
+        >
+    >
+
+description
+    original_author = <
+        ["email"] = <"bfleao@terra.com.br">
+        ["date"] = <"Ocotber 9.2009">
+        ["name"] = <"Beatriz de Faria Leão">
+        ["organisation"] = <"Zilics">
+    >
+    lifecycle_state = <"draft">
+    details = <
+        ["en"] = <
+            language = <[openEHR::en]>
+            purpose = <"Unknown">
+            keywords = <"birth control methods">
+            use = <"Patient history to collect data on the birth control methods in use or used in the past.">
+        >
+        ["pt-br"] = <
+            language = <[ISO_639-1::pt-br]>
+            purpose = <"*Unknown">
+            keywords = <"birth control methods">
+            use = <"*Patient history to collect data on the birth control methods in use or used in the past.">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {0..*; ordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0004] occurrences matches {0..*} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            CLUSTER[at0041] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0042] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false; false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0043] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_CODED_TEXT matches {
+                                                                defining_code matches {
+                                                                    [local::
+                                                                    at0044,
+                                                                    at0045,
+                                                                    at0046,
+                                                                    at0047]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0050] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_INTERVAL matches {
+                                                                lower matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                                upper matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0031] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0032] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false; false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0033] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_CODED_TEXT matches {
+                                                                defining_code matches {
+                                                                    [local::
+                                                                    at0009,
+                                                                    at0034]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0051] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_INTERVAL matches {
+                                                                lower matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                                upper matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0012] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0016] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false; false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0005] occurrences matches {0..*} matches {
+                                                        value matches {
+                                                            DV_CODED_TEXT matches {
+                                                                defining_code matches {
+                                                                    [local::
+                                                                    at0007,
+                                                                    at0014,
+                                                                    at0017,
+                                                                    at0018,
+                                                                    at0011]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0052] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_INTERVAL matches {
+                                                                lower matches {
+                                                                    DV_DATE_TIME matches {
+                                                                        value matches {yyyy-??-??T??:??:??}
+                                                                    }
+                                                                }
+                                                                upper matches {
+                                                                    DV_DATE_TIME matches {
+                                                                        value matches {yyyy-??-??T??:??:??}
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0021] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0020] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_BOOLEAN matches {
+                                                                value matches {true, false; false}
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0019] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_CODED_TEXT matches {
+                                                                defining_code matches {
+                                                                    [local::
+                                                                    at0025,
+                                                                    at0026,
+                                                                    at0027,
+                                                                    at0028,
+                                                                    at0029,
+                                                                    at0030]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0053] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_INTERVAL matches {
+                                                                lower matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                                upper matches {
+                                                                    DV_DATE matches {
+                                                                        value matches {yyyy-MM-XX}
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            CLUSTER[at0036] occurrences matches {0..1} matches {
+                                                items cardinality matches {0..*; unordered} matches {
+                                                    ELEMENT[at0039] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_CODED_TEXT matches {
+                                                                defining_code matches {
+                                                                    [local::
+                                                                    at0008,
+                                                                    at0010,
+                                                                    at0040]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ELEMENT[at0038] occurrences matches {0..1} matches {
+                                                        value matches {
+                                                            DV_DATE_TIME matches {
+                                                                value matches {yyyy-??-??T??:??:??}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0048] occurrences matches {0..*} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"birth control methods">
+                    description = <"registers the birth control methods used  or being used">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Contraception Methods">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Method">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"oral contraceptives">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"diaphragm">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"tubal ligation">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Intrauterine device (IUD)">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"vasectomy">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"other">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"other">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"condom">
+                    description = <"*">
+                >
+                ["at0015"] = <
+                    text = <"calendar">
+                    description = <"*">
+                >
+                ["at0017"] = <
+                    text = <"spermicide">
+                    description = <"*">
+                >
+                ["at0018"] = <
+                    text = <"female condom">
+                    description = <"*">
+                >
+                ["at0025"] = <
+                    text = <"oral contraceptive pill">
+                    description = <"*">
+                >
+                ["at0026"] = <
+                    text = <"contraceptive patch">
+                    description = <"*">
+                >
+                ["at0027"] = <
+                    text = <"contraceptive vaginal ring ">
+                    description = <"*">
+                >
+                ["at0028"] = <
+                    text = <"injectable contraceptive">
+                    description = <"*">
+                >
+                ["at0029"] = <
+                    text = <"contraceptive implants">
+                    description = <"*">
+                >
+                ["at0030"] = <
+                    text = <"emergency contraception">
+                    description = <"*">
+                >
+                ["at0031"] = <
+                    text = <"Intrauterine Methods">
+                    description = <"*">
+                >
+                ["at0032"] = <
+                    text = <"Current in use">
+                    description = <"*">
+                >
+                ["at0033"] = <
+                    text = <"Method">
+                    description = <"*">
+                >
+                ["at0034"] = <
+                    text = <"Intra-Uterine System (IUS)">
+                    description = <"hormonal intrauterine contraceptives - term used in UK">
+                >
+                ["at0035"] = <
+                    text = <"Period of utilization">
+                    description = <"*">
+                >
+                ["at0036"] = <
+                    text = <"Sterilization">
+                    description = <"*">
+                >
+                ["at0037"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0038"] = <
+                    text = <"Date sterilization">
+                    description = <"*">
+                >
+                ["at0039"] = <
+                    text = <"Type">
+                    description = <"If masculine only vasectomy should appear. If feminine only tubal ligation and histerectomy">
+                >
+                ["at0040"] = <
+                    text = <"histerectomy">
+                    description = <"*">
+                >
+                ["at0041"] = <
+                    text = <"Behavioral methods">
+                    description = <"*">
+                >
+                ["at0042"] = <
+                    text = <"Currently in use">
+                    description = <"*">
+                >
+                ["at0043"] = <
+                    text = <"Method">
+                    description = <"*">
+                >
+                ["at0044"] = <
+                    text = <"coitus interruptus">
+                    description = <"*">
+                >
+                ["at0045"] = <
+                    text = <"calendar-based methods ">
+                    description = <"*">
+                >
+                ["at0046"] = <
+                    text = <"sexual abstinence ">
+                    description = <"*">
+                >
+                ["at0047"] = <
+                    text = <"cervical mucous">
+                    description = <"*">
+                >
+                ["at0048"] = <
+                    text = <"Other Method">
+                    description = <"*">
+                >
+                ["at0049"] = <
+                    text = <"New element">
+                    description = <"*">
+                >
+                ["at0050"] = <
+                    text = <"Period of utilization">
+                    description = <"*">
+                >
+                ["at0051"] = <
+                    text = <"Period of utilization">
+                    description = <"*">
+                >
+                ["at0052"] = <
+                    text = <"Period of utilization">
+                    description = <"*">
+                >
+                ["at0053"] = <
+                    text = <"Period of utilization">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Barrier Methods">
+                    description = <"description">
+                >
+                ["at0016"] = <
+                    text = <"Currently in use">
+                    description = <"description">
+                >
+                ["at0019"] = <
+                    text = <"Hormonal method">
+                    description = <"description">
+                >
+                ["at0020"] = <
+                    text = <"Currently in use">
+                    description = <"description">
+                >
+                ["at0021"] = <
+                    text = <"Hormonal Methods">
+                    description = <"description">
+                >
+            >
+        >
+        ["pt-br"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Métodos Anticoncepcionais">
+                    description = <"Registra os métodos anticoncepcionais utilizados ou em uso">
+                >
+                ["at0001"] = <
+                    text = <"history">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"*Any event">
+                    description = <"**">
+                >
+                ["at0003"] = <
+                    text = <"ITEM_TREE">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Métodos Anticoncepcionais">
+                    description = <"**">
+                >
+                ["at0005"] = <
+                    text = <"Tipo de método">
+                    description = <"**">
+                >
+                ["at0006"] = <
+                    text = <"pilula anticoncepcional">
+                    description = <"**">
+                >
+                ["at0007"] = <
+                    text = <"diafragma">
+                    description = <"**">
+                >
+                ["at0008"] = <
+                    text = <"laqueadura">
+                    description = <"**">
+                >
+                ["at0009"] = <
+                    text = <"dispositivo intra-uterino (DIU)">
+                    description = <"**">
+                >
+                ["at0010"] = <
+                    text = <"vasectomia">
+                    description = <"**">
+                >
+                ["at0011"] = <
+                    text = <"outro">
+                    description = <"**">
+                >
+                ["at0013"] = <
+                    text = <"outros">
+                    description = <"**">
+                >
+                ["at0014"] = <
+                    text = <"preservativo">
+                    description = <"camisinha">
+                >
+                ["at0015"] = <
+                    text = <"calendário">
+                    description = <"**">
+                >
+                ["at0017"] = <
+                    text = <"gel espermaticida">
+                    description = <"**">
+                >
+                ["at0018"] = <
+                    text = <"preservativo feminino">
+                    description = <"camisinha feminina">
+                >
+                ["at0025"] = <
+                    text = <"pílula anticoncepcional">
+                    description = <"**">
+                >
+                ["at0026"] = <
+                    text = <"patch anticoncepcional">
+                    description = <"**">
+                >
+                ["at0027"] = <
+                    text = <"anel vaginal anticoncepcional">
+                    description = <"**">
+                >
+                ["at0028"] = <
+                    text = <"anticoncepcional injetável">
+                    description = <"**">
+                >
+                ["at0029"] = <
+                    text = <"implante de anticoncepcional">
+                    description = <"**">
+                >
+                ["at0030"] = <
+                    text = <"anticoncepcional de emergência (pílula do dia seguinte)">
+                    description = <"**">
+                >
+                ["at0031"] = <
+                    text = <"Métodos Intra-uterinos">
+                    description = <"**">
+                >
+                ["at0032"] = <
+                    text = <"Em uso">
+                    description = <"**">
+                >
+                ["at0033"] = <
+                    text = <"Tipo de método">
+                    description = <"**">
+                >
+                ["at0034"] = <
+                    text = <"sistema intra-uterino  (SIU)">
+                    description = <"*hormonal intrauterine contraceptives - term used in UK">
+                >
+                ["at0035"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0036"] = <
+                    text = <"Esterilização">
+                    description = <"**">
+                >
+                ["at0037"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0038"] = <
+                    text = <"Data realização procedimento">
+                    description = <"**">
+                >
+                ["at0039"] = <
+                    text = <"Procedimento realizado">
+                    description = <"**">
+                >
+                ["at0040"] = <
+                    text = <"histerectomia">
+                    description = <"**">
+                >
+                ["at0041"] = <
+                    text = <"Métodos Comportamentais">
+                    description = <"**">
+                >
+                ["at0042"] = <
+                    text = <"Em uso">
+                    description = <"**">
+                >
+                ["at0043"] = <
+                    text = <"Tipo de método">
+                    description = <"**">
+                >
+                ["at0044"] = <
+                    text = <"coito interrompido">
+                    description = <"**">
+                >
+                ["at0045"] = <
+                    text = <"métodos baseados em calendário">
+                    description = <"**">
+                >
+                ["at0046"] = <
+                    text = <"abstinência sexual">
+                    description = <"**">
+                >
+                ["at0047"] = <
+                    text = <"muco cervical">
+                    description = <"**">
+                >
+                ["at0048"] = <
+                    text = <"Outros métodos anticoncepcionais">
+                    description = <"**">
+                >
+                ["at0049"] = <
+                    text = <"*New element">
+                    description = <"**">
+                >
+                ["at0050"] = <
+                    text = <"Período de utilização">
+                    description = <"**">
+                >
+                ["at0051"] = <
+                    text = <"Período de Utilização">
+                    description = <"**">
+                >
+                ["at0052"] = <
+                    text = <"Período de Utilização">
+                    description = <"**">
+                >
+                ["at0053"] = <
+                    text = <"Período de utilização">
+                    description = <"**">
+                >
+                ["at0012"] = <
+                    text = <"Métodos de Barreira">
+                    description = <"*description">
+                >
+                ["at0016"] = <
+                    text = <"Em uso ">
+                    description = <"*description">
+                >
+                ["at0019"] = <
+                    text = <"Tipo de hormônio utilizado">
+                    description = <"*description">
+                >
+                ["at0020"] = <
+                    text = <"Em uso">
+                    description = <"*description">
+                >
+                ["at0021"] = <
+                    text = <"Métodos Hormonais">
+                    description = <"*description">
+                >
+            >
+        >
+    >

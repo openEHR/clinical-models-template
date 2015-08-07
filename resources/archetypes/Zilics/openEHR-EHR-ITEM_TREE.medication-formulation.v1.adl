@@ -1,0 +1,692 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ITEM_TREE.medication-formulation.v1
+specialize
+	openEHR-EHR-ITEM_TREE.medication.v1
+
+concept
+	[at0000.1]	-- Descrição de medicação que contém uma fórmula de manipulação de substâncias
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Sam Heard">
+		["organisation"] = <"Ocean Informatics">
+		["date"] = <"12/03/2006">
+		["email"] = <"sam.heard@oceaninformatics.biz">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Especifica a descrição de uma fórmula de manipulação de uma ou mais substâncias como parte de uma SOLICITAÇÃO ou REALIZAÇÃO. Geralmente ocorre em resposta à uma ordem ou prescrição médica, podendo ser auto-administrada ou fornecida pela farmácia.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+">
+			use = <"Uso através de 'INSTRUCTION.medication' (SOLICITAR.medicação) e 'ACTION.medication' (REALIZAR.medicação) para descrever uma fórmula de substâncias para prescrição médica.">
+			keywords = <"*medication(en)", "*description(en)", "*formulation(en)">
+			misuse = <"*">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Specifies the description of a formulation with more than one ingredient as part of an INSTRUCTION or ACTION recording. This will usually be in response to a medication order or prescription, but may be self administered or supplied by a pharmacy.">
+			use = <"For use with INSTRUCTION.medication and ACTION.medication to describe the formulation">
+			keywords = <"medication", "description", "formulation">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+	>
+
+definition
+	ITEM_TREE[at0000.1] occurrences matches {0..*} matches {	-- Descrição de medicação que contém uma fórmula de manipulação de substâncias
+		items cardinality matches {0..*; ordered} matches {
+			ELEMENT[at0001.1] matches {	-- Nome da fórmula
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0.32] occurrences matches {0..1} matches {	-- Substâncias
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0.33] occurrences matches {1..*} matches {	-- Substância
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0.34] occurrences matches {0..1} matches {	-- Nome da substância
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[local::]}
+									}
+								}
+							}
+							ELEMENT[at0.35] occurrences matches {0..1} matches {	-- Quantidade
+								value matches {
+									C_DV_QUANTITY <
+									>
+								}
+							}
+						}
+					}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {	-- Instruções para administração
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {	-- Concentração por dose unitária
+				value matches {
+					C_DV_QUANTITY <
+					>
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {	-- Forma/Tipo
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {[ac0000]}		-- Qualquer termo relacionado à forma ou ao tipo de medicação
+					}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {	-- Dose
+				value matches {
+					DV_COUNT matches {
+						magnitude matches {|>=1|}
+					}
+					DV_INTERVAL<DV_COUNT> matches {
+						upper matches {
+							DV_COUNT matches {*}
+						}
+						lower matches {
+							DV_COUNT matches {
+								magnitude matches {|>=1|}
+							}
+						}
+					}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {	-- Dose unitária
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {[ac0001]}		-- Qualquer termo relacionado à dose unitária e a forma de medicação
+					}
+				}
+			}
+			ELEMENT[at0007] occurrences matches {0..1} matches {	-- Duração da dose
+				value matches {
+					C_DV_QUANTITY <
+					>
+				}
+			}
+			ELEMENT[at0008] occurrences matches {0..1} matches {	-- Via
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {[ac0002]}		-- Qualquer termo relacionado à via de administração
+					}
+				}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {	-- Uso crônico
+				value matches {
+					DV_BOOLEAN matches {
+						value matches {True, False}
+					}
+				}
+			}
+			CLUSTER[at0010] occurrences matches {0..1} matches {	-- Indicações
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0011] occurrences matches {0..*} matches {	-- Indicação
+						value matches {
+							DV_TEXT matches {*}
+							DV_URI matches {*}
+						}
+					}
+				}
+			}
+			ELEMENT[at0012] occurrences matches {0..1} matches {	-- Nome genérico
+				name matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {[ac0003]}		-- Nome genérico OU nome comercial
+					}
+				}
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			CLUSTER[at0013] occurrences matches {0..1} matches {	-- Precauções
+				items cardinality matches {1..4; ordered} matches {
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Frequência máxima da dose unitária
+						value matches {
+							C_DV_QUANTITY <
+							>
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Dose por Kg de peso
+						value matches {
+							DV_INTERVAL<DV_QUANTITY> matches {
+								upper matches {
+									C_DV_QUANTITY <
+										property = <[openehr::0]>
+									>
+								}
+								lower matches {
+									C_DV_QUANTITY <
+										property = <[openehr::0]>
+									>
+								}
+							}
+						}
+					}
+					ELEMENT[at0016] occurrences matches {0..1} matches {	-- Intervalo mínimo da dose
+						value matches {
+							C_DV_QUANTITY <
+							>
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {	-- Intervalo máximo da dose
+						value matches {
+							C_DV_QUANTITY <
+							>
+						}
+					}
+				}
+			}
+			CLUSTER[at0018] occurrences matches {0..1} matches {	-- Informação da administração
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0019] occurrences matches {0..1} matches {	-- Data (hora) da primeira admnistração
+						value matches {
+							DV_DATE_TIME matches {
+								value matches {yyyy-??-??T??:??:??}
+							}
+						}
+					}
+					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Código de identificação
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0021] occurrences matches {0..1} matches {	-- Local da administração
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::]}
+							}
+						}
+					}
+					ELEMENT[at0022] occurrences matches {0..1} matches {	-- Número sequencial da dose
+						value matches {
+							DV_COUNT matches {*}
+						}
+					}
+					ELEMENT[at0032] occurrences matches {0..1} matches {	-- Data (hora) da última administração
+						value matches {
+							DV_DATE_TIME matches {
+								value matches {yyyy-??-??T??:??:??}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0023] occurrences matches {0..1} matches {	-- Informação sobre dispensação
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0024] occurrences matches {0..1} matches {	-- Quantidade a ser dispensada
+						value matches {
+							C_DV_QUANTITY <
+							>
+							DV_COUNT matches {
+								magnitude matches {|>0|; 1}
+							}
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {	-- Número de autorizações de uma medicação dispensada.
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|>=0|}
+							}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {	-- Produto dispensado
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {	-- Permite substituição por medicação alternativa
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {	-- Código de autorização da dispensação
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {	-- Paciente informado sobre o uso da medicação
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Medicação em atraso
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0031] occurrences matches {0..1} matches {	-- Causas do atraso do fornecimento da medicação
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0.32"] = <
+					description = <"Substâncias de um formulação">
+					text = <"Substâncias">
+				>
+				["at0.33"] = <
+					description = <"Uma substância da formulação">
+					text = <"Substância">
+				>
+				["at0.34"] = <
+					description = <"Nome da substância usada na formulação - pode ser codificada">
+					text = <"Nome da substância">
+				>
+				["at0.35"] = <
+					description = <"A quantidade da substância adicionada na formulação">
+					text = <"Quantidade">
+				>
+				["at0.36"] = <
+					description = <"*">
+					text = <"New Cluster">
+				>
+				["at0.37"] = <
+					description = <"*">
+					text = <"New Element">
+				>
+				["at0000"] = <
+					description = <"Descrição de uma medicação como parte de uma SOLICITAÇÃO ou REALIZAÇÃO.">
+					text = <"Descrição da medicação">
+				>
+				["at0000.1"] = <
+					description = <"Registro de medicação que contém uma fórmula de manipulação de uma ou mais substâncias como parte de uma SOLICITAÇÃO ou REALIZAÇÃO.">
+					text = <"Descrição de medicação que contém uma fórmula de manipulação de substâncias">
+				>
+				["at0001"] = <
+					description = <"Nome da medicação - pode ser codificada">
+					text = <"Nome da medicação">
+				>
+				["at0001.1"] = <
+					description = <"O nome da formulação - pode ser codificada">
+					text = <"Nome da fórmula">
+				>
+				["at0002"] = <
+					description = <"Instruções detalhadas sobre o modo de administração da medicação">
+					text = <"Instruções para administração">
+				>
+				["at0003"] = <
+					description = <"A concentração de um dose de medicação">
+					text = <"Concentração por dose unitária">
+				>
+				["at0004"] = <
+					description = <"A forma ou o tipo de medicação">
+					text = <"Forma/Tipo">
+				>
+				["at0005"] = <
+					description = <"O número de dose unitária tomada em qualquer tempo">
+					text = <"Dose">
+				>
+				["at0006"] = <
+					description = <"A dose unitária dada desta medicação">
+					text = <"Dose unitária">
+				>
+				["at0007"] = <
+					description = <"A duração da dose unitária a ser administrada">
+					text = <"Duração da dose">
+				>
+				["at0008"] = <
+					description = <"A via de administração">
+					text = <"Via">
+				>
+				["at0009"] = <
+					description = <"Registra se a medicação é de uso crônico ou de uso a longo prazo
+">
+					text = <"Uso crônico">
+				>
+				["at0010"] = <
+					description = <"Registra as indicações de uso da medicação, incluindo os problemas relacionados, os diagnósticos e os resultados anormais de testes laboratoriais
+">
+					text = <"Indicações">
+				>
+				["at0011"] = <
+					description = <"A indicação para a realização da medicação">
+					text = <"Indicação">
+				>
+				["at0012"] = <
+					description = <"O nome genérico da medicação alternativa">
+					text = <"Nome genérico">
+				>
+				["at0013"] = <
+					description = <"*">
+					text = <"Precauções">
+				>
+				["at0014"] = <
+					description = <"Frequência máxima da dose unitária tomada num período de tempo">
+					text = <"Frequência máxima da dose unitária">
+				>
+				["at0015"] = <
+					description = <"A dose por kilograma de peso">
+					text = <"Dose por Kg de peso">
+				>
+				["at0016"] = <
+					description = <"O intervalo mínimo seguro entre as doses administradas">
+					text = <"Intervalo mínimo da dose">
+				>
+				["at0017"] = <
+					description = <"O Intervalo máximo seguro entre as doses administradas">
+					text = <"Intervalo máximo da dose">
+				>
+				["at0018"] = <
+					description = <"Informação relacionada à admnistração da medicação solicitada">
+					text = <"Informação da administração">
+				>
+				["at0019"] = <
+					description = <"A data e a hora (se necessário) da primeira administração da medicação">
+					text = <"Data (hora) da primeira admnistração">
+				>
+				["at0020"] = <
+					description = <"Código de identificação do fabricante">
+					text = <"Código de identificação">
+				>
+				["at0021"] = <
+					description = <"O local da administração da medicação.  Isto é, na coxa se intramuscular, ou via enteral ou parenteral se não for possível a via oral">
+					text = <"Local da administração">
+				>
+				["at0022"] = <
+					description = <"O número sequencial da dose administrada">
+					text = <"Número sequencial da dose">
+				>
+				["at0023"] = <
+					description = <"Informação relacionada à dispensação">
+					text = <"Informação sobre dispensação">
+				>
+				["at0024"] = <
+					description = <"O total da quantidade dispensada.">
+					text = <"Quantidade a ser dispensada">
+				>
+				["at0025"] = <
+					description = <"O número de vezes que a medicação pode ser dispensada antes da próxima prescrição">
+					text = <"Número de autorizações de uma medicação dispensada.">
+				>
+				["at0026"] = <
+					description = <"O nome do produto dispensado.">
+					text = <"Produto dispensado">
+				>
+				["at0027"] = <
+					description = <"Confirmar se uma medicação alternativa pode ser dispensada.">
+					text = <"Permite substituição por medicação alternativa">
+				>
+				["at0028"] = <
+					description = <"*">
+					text = <"Código de autorização da dispensação">
+				>
+				["at0029"] = <
+					description = <"Confirmar se as informações sobre o medicação foram fornecidas ao paciente.">
+					text = <"Paciente informado sobre o uso da medicação">
+				>
+				["at0030"] = <
+					description = <"Confirmar se a medicação está atrasada. ">
+					text = <"Medicação em atraso">
+				>
+				["at0031"] = <
+					description = <"Informação da causa do atraso do fornecimento da medicação.
+">
+					text = <"Causas do atraso do fornecimento da medicação">
+				>
+				["at0032"] = <
+					description = <"A data e a hora (se necessário) da última administração da medicação ">
+					text = <"Data (hora) da última administração">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0.32"] = <
+					description = <"Ingredients in the formulation">
+					text = <"Ingredients">
+				>
+				["at0.33"] = <
+					description = <"An ingredient in a formulation">
+					text = <"Ingredient">
+				>
+				["at0.34"] = <
+					description = <"The name of one ingredient used in the formulation - may be coded">
+					text = <"Name of ingredient">
+				>
+				["at0.35"] = <
+					description = <"The quantity of the ingredient added to the formulation">
+					text = <"Quantity">
+				>
+				["at0.36"] = <
+					description = <"*">
+					text = <"New cluster">
+				>
+				["at0.37"] = <
+					description = <"*">
+					text = <"New element">
+				>
+				["at0000"] = <
+					description = <"The description of a medication for recording as part of an ACTION or INSTRUCTION">
+					text = <"Medication description">
+				>
+				["at0000.1"] = <
+					description = <"A recording of the details of the formulation as part of an ACTION or INSTRUCTION">
+					text = <"Medication description involving a formulation">
+				>
+				["at0001"] = <
+					description = <"The name of the intervention - which may be coded">
+					text = <"Name of medication">
+				>
+				["at0001.1"] = <
+					description = <"The name of the formulation - which may be coded">
+					text = <"Name of formulation">
+				>
+				["at0002"] = <
+					description = <"Detailed instructions about how to administer this medication">
+					text = <"Administration instructions">
+				>
+				["at0003"] = <
+					description = <"The strength of the medication">
+					text = <"Strength per dose unit">
+				>
+				["at0004"] = <
+					description = <"The form of the medication">
+					text = <"Form">
+				>
+				["at0005"] = <
+					description = <"The number of dose units to be taken at any time">
+					text = <"Dose">
+				>
+				["at0006"] = <
+					description = <"The dose unit that is given for this type of medication">
+					text = <"Dose unit">
+				>
+				["at0007"] = <
+					description = <"The time over which an individual dose is to be administered">
+					text = <"Dose duration">
+				>
+				["at0008"] = <
+					description = <"The route of administration">
+					text = <"Route">
+				>
+				["at0009"] = <
+					description = <"Included and set to true if this medication is to be used continuously or repeatedly over a significant period of time.">
+					text = <"Is long term">
+				>
+				["at0010"] = <
+					description = <"Indications including related problems and diagnoses, abnormal test results etc">
+					text = <"Indications">
+				>
+				["at0011"] = <
+					description = <"The indication for the intervention">
+					text = <"Indication">
+				>
+				["at0012"] = <
+					description = <"The generic name of the drug which is an alternative name to the name of medication">
+					text = <"Generic name">
+				>
+				["at0013"] = <
+					description = <"*">
+					text = <"Safety limits">
+				>
+				["at0014"] = <
+					description = <"The maximum number of dose units to be taken in a particular time">
+					text = <"Maximum dose unit frequency">
+				>
+				["at0015"] = <
+					description = <"The dose per kg of body weight">
+					text = <"Dosage per kg body weight">
+				>
+				["at0016"] = <
+					description = <"The minimum safe interval between doses">
+					text = <"Minimum dose interval">
+				>
+				["at0017"] = <
+					description = <"The maximum safe interval between doses">
+					text = <"Maximum dose interval">
+				>
+				["at0018"] = <
+					description = <"Information relating to the administration of the medication order">
+					text = <"Administration information">
+				>
+				["at0019"] = <
+					description = <"The date and time (if required) the medication is/was first administered">
+					text = <"Date (time) of first administration">
+				>
+				["at0020"] = <
+					description = <"Manufacturer's identification number">
+					text = <"Batch number">
+				>
+				["at0021"] = <
+					description = <"The site of administration e.g. outer thigh if intramuscular, via PEG if patient is nil orally">
+					text = <"Site of administration">
+				>
+				["at0022"] = <
+					description = <"The dose number or sequence">
+					text = <"Sequence number">
+				>
+				["at0023"] = <
+					description = <"Data relating to dispensing">
+					text = <"Dispensing information">
+				>
+				["at0024"] = <
+					description = <"The total quantity to be dispensed">
+					text = <"Quantity to be dispensed">
+				>
+				["at0025"] = <
+					description = <"The number of times this quantity of medication may be dispensed before a further prescription is required">
+					text = <"Number of authorised repeat dispensing">
+				>
+				["at0026"] = <
+					description = <"The name of the product dispensed">
+					text = <"Dispensed product">
+				>
+				["at0027"] = <
+					description = <"True if an alternative brand may be substituted when dispensing">
+					text = <"Brand substitution allowed">
+				>
+				["at0028"] = <
+					description = <"*">
+					text = <"Authority approval number">
+				>
+				["at0029"] = <
+					description = <"Dispenser counselled the patient with regard to the Consumer Medicines Information">
+					text = <"Patient counselled on CMI">
+				>
+				["at0030"] = <
+					description = <"True if the supply of the medication has been deferred">
+					text = <"Deferred supply">
+				>
+				["at0031"] = <
+					description = <"Information relating to the reason for deferred supply">
+					text = <"Reason for deferred supply">
+				>
+				["at0032"] = <
+					description = <"The date and time (if required) the medication is  to be administered for the last time">
+					text = <"Date (time) of last administration">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["pt"] = <
+			items = <
+				["ac0000"] = <
+					description = <"Termos tais como drágeas, inalador, suspensão">
+					text = <"Qualquer termo relacionado à forma ou ao tipo de medicação">
+				>
+				["ac0001"] = <
+					description = <"Termos que descrevem as doses unitárias das medicações - permitindo que a dose possa ser expressa como um código">
+					text = <"Qualquer termo relacionado à dose unitária e a forma de medicação">
+				>
+				["ac0002"] = <
+					description = <"A via de administração em que a medicação é utilizada.">
+					text = <"Qualquer termo relacionado à via de administração">
+				>
+				["ac0003"] = <
+					description = <"*">
+					text = <"Nome genérico OU nome comercial">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["ac0000"] = <
+					description = <"Terms such as tablet, inhaler, liquid....">
+					text = <"Any term that 'is_a' form of medication">
+				>
+				["ac0001"] = <
+					description = <"A set of terms that describes the dose units for medication - which allow the dose to be expressed as a number">
+					text = <"any term that 'is a' Dose unit for this form">
+				>
+				["ac0002"] = <
+					description = <"The route by which the medication is administered">
+					text = <"Any term that 'is_a' route of administration">
+				>
+				["ac0003"] = <
+					description = <"*">
+					text = <"=Generic name OR Brand name">
+				>
+			>
+		>
+	>

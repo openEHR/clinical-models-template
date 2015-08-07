@@ -1,0 +1,153 @@
+archetype
+    openEHR-EHR-OBSERVATION.placeholder_exams_spa.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+
+description
+    original_author = <
+        ["name"] = <"nobody">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"unknow">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    ELEMENT[at0005] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_DATE_TIME matches {
+                                                value matches {yyyy-??-??T??:??:??}
+                                            }
+                                        }
+                                    }
+                                    ELEMENT[at0006] occurrences matches {0..1} matches {
+                                        value matches {
+                                            DV_CODED_TEXT matches {
+                                                defining_code matches {
+                                                    [local::]
+                                                }
+                                            }
+                                        }
+                                    }
+                                    CLUSTER[at0008] occurrences matches {0..*} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0007] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0009] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0004] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_CODED_TEXT matches {
+                                                        defining_code matches {
+                                                            [local::]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0011] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false; false}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Observações">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Qualquer evento">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0004"] = <
+                    text = <"Resultado do exame">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Data de realização do exame">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Código do prestador">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Nome do exame realizado">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Dados dos exames">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Código do exame realizado (SPA)">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"CID 10 resultado do exame">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Exame normal?">
+                    description = <"*">
+                >
+            >
+        >
+    >

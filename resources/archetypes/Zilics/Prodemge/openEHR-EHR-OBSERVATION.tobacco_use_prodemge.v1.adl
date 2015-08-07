@@ -1,0 +1,116 @@
+archetype
+    openEHR-EHR-OBSERVATION.tobacco_use_prodemge.v1
+
+concept
+    [at0000]
+
+language
+    original_language = <[openEHR::pt]>
+
+description
+    original_author = <
+        ["email"] = <"xxx">
+        ["name"] = <"Zilics">
+        ["organisation"] = <"xxx">
+        ["date"] = <"xxx">
+    >
+    lifecycle_state = <"0">
+    details = <
+        ["pt"] = <
+            language = <[ISO_639-1::pt]>
+            purpose = <"x">
+            use = <"x">
+            misuse = <"x">
+        >
+    >
+
+definition
+    OBSERVATION[at0000] matches {
+        data matches {
+            HISTORY[at0001] matches {
+                events existence matches {0..1} cardinality matches {1..*; unordered} matches {
+                    EVENT[at0002] occurrences matches {0..1} matches {
+                        data matches {
+                            ITEM_TREE[at0003] matches {
+                                items existence matches {0..1} cardinality matches {0..*; unordered} matches {
+                                    CLUSTER[at0004] occurrences matches {0..1} matches {
+                                        items cardinality matches {0..*; unordered} matches {
+                                            ELEMENT[at0011] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_BOOLEAN matches {
+                                                        value matches {true, false}
+                                                    }
+                                                }
+                                            }
+                                            ELEMENT[at0012] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_DATE matches {
+                                                        value matches {yyyy-??-??}
+                                                    }
+                                                    1|[local::at0013],
+                                                    2|[local::at0014]
+                                                }
+                                            }
+                                            ELEMENT[at0010] occurrences matches {0..1} matches {
+                                                value matches {
+                                                    DV_TEXT matches {*}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["pt"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Tabagismo">
+                    description = <"*">
+                >
+                ["at0001"] = <
+                    text = <"Event Series">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Any event">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0010"] = <
+                    text = <"Informações sobre o Tabagismo">
+                    description = <"Informações relativas ao tabagismo.">
+                >
+                ["at0011"] = <
+                    text = <"Tabagismo">
+                    description = <"*">
+                >
+                ["at0012"] = <
+                    text = <"Idade de Início">
+                    description = <"*">
+                >
+                ["at0013"] = <
+                    text = <"Não Informado">
+                    description = <"*">
+                >
+                ["at0014"] = <
+                    text = <"Não Relatado">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Tabagismo">
+                    description = <"*">
+                >
+            >
+        >
+    >
